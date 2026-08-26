@@ -1,0 +1,6 @@
+{
+  "name": "Veille Fiscale Communale",
+  "description": "Outil de veille fiscale en temps réel sur les communes de Wallonie et Bruxelles.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
