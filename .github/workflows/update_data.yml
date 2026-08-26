@@ -1,33 +1,47 @@
-name: Mise à jour automatique TaxWatch
+name: Deploy TaxWatch App
 
 on:
+  push:
+    branches: ["main"]
   schedule:
-    - cron: '0 6 * * *'  # S'exécute chaque jour à 06:00 UTC
-  workflow_dispatch:     # Permet aussi de lancer la mise à jour à la main si besoin
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  update:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Installer Python
-        uses: actions/setup-python@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.10'
+          node-version: 20
 
-      - name: Installer les dépendances
-        run: pip install google-genai pandas
+      - name: Install dependencies
+        run: npm install
 
-      - name: Exécuter la veille automatique
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python update_script.py
+      - name: Build site
+        run: npm run build
 
-      - name: Sauvegarder et publier les nouvelles données
-        run: |
-          git config --global user.name 'Bot TaxWatch'
-          git config --global user.email 'bot@taxwatch.local'
-          git add data.json
-          git commit -m "Mise à jour automatique des taxes" || exit 0
-          git push
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
