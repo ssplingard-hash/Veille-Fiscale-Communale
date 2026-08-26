@@ -1,0 +1,33 @@
+name: Mise à jour automatique TaxWatch
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # S'exécute chaque jour à 06:00 UTC
+  workflow_dispatch:     # Permet aussi de lancer la mise à jour à la main si besoin
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Installer Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Installer les dépendances
+        run: pip install google-genai pandas
+
+      - name: Exécuter la veille automatique
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python update_script.py
+
+      - name: Sauvegarder et publier les nouvelles données
+        run: |
+          git config --global user.name 'Bot TaxWatch'
+          git config --global user.email 'bot@taxwatch.local'
+          git add data.json
+          git commit -m "Mise à jour automatique des taxes" || exit 0
+          git push
