@@ -4,7 +4,7 @@ import { Plus, Minus } from "lucide-react";
 import { municipalities } from '../data/municipalities';
 import { useNavigate } from 'react-router-dom';
 
-const geoUrl = `${import.meta.env.BASE_URL}b.geojson`;
+const geoUrl = `${import.meta.env.BASE_URL}map.json`;
 
 interface MapProps {
   mapType: 'IPP' | 'PRI' | 'TAXES';
