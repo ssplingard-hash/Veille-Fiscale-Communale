@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { CommuneFiscalData } from '../types';
+import { municipalities } from '../data/municipalities';
 import { Loader2, Mail, Phone, ExternalLink, FileText, Activity, MapPin } from 'lucide-react';
 
 export default function MunicipalityDetail() {
@@ -11,28 +12,26 @@ export default function MunicipalityDetail() {
   const [activeTab, setActiveTab] = useState<'VIGUEUR' | 'PROJETS'>('VIGUEUR');
 
   useEffect(() => {
-    if (!name) return;
-    const fetchData = async () => {
+   const fetchData = () => {
       setLoading(true);
       setError('');
       try {
-        const response = await fetch('/api/fiscal-data', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ municipality: name }),
-        });
-        
-        if (!response.ok) {
-          throw new Error('Erreur lors de la récupération des données');
+        const found = municipalities.find(m => 
+          decodeURIComponent(m.name).toLowerCase().replace(/[- ]/g, '') === 
+          decodeURIComponent(name || '').toLowerCase().replace(/[- ]/g, '')
+        );
+
+        if (!found) {
+          throw new Error('Commune non trouvée');
         }
-        
-        const result = await response.json();
-        setData(result);
+
+        setData(found as unknown as CommuneFiscalData);
       } catch (err: any) {
         setError(err.message || 'Une erreur est survenue');
       } finally {
         setLoading(false);
       }
+    };
     };
     
     fetchData();
