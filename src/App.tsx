@@ -6,18 +6,22 @@ import Directory from './pages/Directory';
 import Discussions from './pages/Discussions';
 import Adoptions from './pages/Adoptions';
 
-// Intercepteur pour neutraliser l'erreur 405 sur les requêtes API en hébergement statique
-const originalFetch = window.fetch;
-window.fetch = async (...args) => {
-  const url = args[0]?.toString() || '';
-  if (url.includes('api/fiscal-data')) {
-    return new Response(JSON.stringify({ status: 'ok' }), { 
-      status: 200, 
-      headers: { 'Content-Type': 'application/json' } 
-    });
-  }
-  return originalFetch(...args);
-};
+// Interception globale immédiate
+if (typeof window !== 'undefined') {
+  const nativeFetch = window.fetch;
+  window.fetch = function (...args) {
+    const url = String(args[0] || '');
+    if (url.includes('api/fiscal-data')) {
+      return Promise.resolve(
+        new Response(JSON.stringify([]), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        })
+      );
+    }
+    return nativeFetch.apply(this, args);
+  };
+}
 
 export default function App() {
   return (
