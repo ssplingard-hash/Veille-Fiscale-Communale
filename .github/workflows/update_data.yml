@@ -1,14 +1,12 @@
 name: Continuous Tax Regulations Update & Deploy
 
 on:
-  schedule:
-    - cron: '0 0 * * *'
   push:
     branches: ["main"]
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -34,7 +32,7 @@ jobs:
           pip install beautifulsoup4 requests pandas lxml || true
 
       - name: Run Tax Scraper
-        run: python scripts/update_taxes.py || echo "Scraper fallback active"
+        run: python scripts/update_taxes.py || echo "Scraper step bypassed"
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -43,10 +41,10 @@ jobs:
           cache: 'npm'
 
       - name: Install Node Dependencies
-        run: npm ci || npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build Vite App
-        run: npm run build
+        run: npx vite build
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
