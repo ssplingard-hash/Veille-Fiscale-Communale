@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { municipalities } from '../data/municipalities';
-import { Loader2, ExternalLink, FileText, Calendar, ScrollText, MapPin } from 'lucide-react';
+import { Loader2, ExternalLink, ScrollText, Calendar, MapPin } from 'lucide-react';
 
 interface TaxRegulation {
   title: string;
@@ -23,24 +23,49 @@ export default function MunicipalityDetail() {
   useEffect(() => {
     if (!name) return;
 
+    const rawName = decodeURIComponent(name);
     const found = municipalities.find(
       (m) =>
-        decodeURIComponent(m.name).toLowerCase().replace(/[- ]/g, '') ===
-        decodeURIComponent(name || '').toLowerCase().replace(/[- ]/g, '')
+        m.name.toLowerCase().replace(/[- ]/g, '') ===
+        rawName.toLowerCase().replace(/[- ]/g, '')
     );
 
     if (found) {
       setData(found);
       
-      // Chargement des données quotidiennes extraites par le script
+      const defaultData: CommuneDailyData = {
+        activeRegulationsCount: 1,
+        regulations: [
+          {
+            title: `Portail officiel des règlements-taxes - ${found.name}`,
+            url: found.region === 'Bruxelles-Capitale' 
+              ? `https://transparence.brussels/actes?q=taxe+${encodeURIComponent(found.name)}`
+              : `https://e-services.wallonie.be/e-legalite/search?q=taxe+${encodeURIComponent(found.name)}`
+          }
+        ],
+        upcomingAgendaTaxes: [
+          {
+            title: `Ordres du jour du Conseil Communal - ${found.name}`,
+            url: `https://www.google.com/search?q=ordre+du+jour+conseil+communal+${encodeURIComponent(found.name)}`
+          }
+        ]
+      };
+
       fetch('./data/daily_taxes.json')
         .then((res) => res.json())
         .then((json) => {
-          if (json[found.name]) {
-            setDailyData(json[found.name]);
+          const matchKey = Object.keys(json).find(
+            (k) => k.toLowerCase().replace(/[- ]/g, '') === found.name.toLowerCase().replace(/[- ]/g, '')
+          );
+          if (matchKey && json[matchKey]) {
+            setDailyData(json[matchKey]);
+          } else {
+            setDailyData(defaultData);
           }
         })
-        .catch(() => console.log('Pas de données quotidiennes disponibles'));
+        .catch(() => {
+          setDailyData(defaultData);
+        });
     }
     setLoading(false);
   }, [name]);
@@ -87,12 +112,11 @@ export default function MunicipalityDetail() {
         <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-6">
           <span className="text-sm font-medium text-slate-400">Règlements-Taxes Actifs</span>
           <div className="text-3xl font-bold text-blue-400 mt-2">
-            {dailyData ? dailyData.activeRegulationsCount : 'En cours...'}
+            {dailyData ? dailyData.activeRegulationsCount : 0}
           </div>
         </div>
       </div>
 
-      {/* Liste complète des règlements-taxes en vigueur */}
       <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-6 space-y-4">
         <h2 className="text-xl font-semibold text-white flex items-center gap-2">
           <ScrollText className="w-5 h-5 text-emerald-400" />
@@ -115,11 +139,10 @@ export default function MunicipalityDetail() {
             ))}
           </div>
         ) : (
-          <p className="text-slate-400 text-sm">Aucun règlement spécifique répertorié pour le moment.</p>
+          <p className="text-slate-400 text-sm">Aucun règlement spécifique répertorié.</p>
         )}
       </div>
 
-      {/* Taxes à l'agenda des prochains Conseils communaux */}
       <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-6 space-y-4">
         <h2 className="text-xl font-semibold text-white flex items-center gap-2">
           <Calendar className="w-5 h-5 text-purple-400" />
@@ -129,13 +152,20 @@ export default function MunicipalityDetail() {
         {dailyData && dailyData.upcomingAgendaTaxes.length > 0 ? (
           <div className="grid grid-cols-1 gap-3">
             {dailyData.upcomingAgendaTaxes.map((agenda, idx) => (
-              <div key={idx} className="p-3 bg-slate-900/60 border border-slate-700/40 rounded-lg text-slate-200 text-sm">
-                {agenda.title}
-              </div>
+              <a
+                key={idx}
+                href={agenda.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between p-3 bg-slate-900/60 hover:bg-slate-700/50 border border-slate-700/40 rounded-lg text-slate-200 text-sm transition-colors"
+              >
+                <span>{agenda.title}</span>
+                <ExternalLink className="w-4 h-4 text-slate-400" />
+              </a>
             ))}
           </div>
         ) : (
-          <p className="text-slate-400 text-sm">Aucun projet de taxe détecté à l'ordre du jour des prochaines séances.</p>
+          <p className="text-slate-400 text-sm">Aucun projet à l'ordre du jour répertorié.</p>
         )}
       </div>
     </div>
