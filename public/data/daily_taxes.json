@@ -1,17 +1,4202 @@
 {
-  "Bruxelles": {
-    "activeRegulationsCount": 0,
-    "regulations": [],
-    "upcomingAgendaTaxes": []
+  "Aiseau-Presles": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Aiseau-Presles",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Aiseau-Presles"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Aiseau-Presles",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Aiseau-Presles"
+      }
+    ]
   },
-  "Ixelles": {
-    "activeRegulationsCount": 0,
-    "regulations": [],
-    "upcomingAgendaTaxes": []
+  "Amay": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Amay",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Amay"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Amay",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Amay"
+      }
+    ]
+  },
+  "Amblève": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Amblève",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ambl%C3%A8ve"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Amblève",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Ambl%C3%A8ve"
+      }
+    ]
+  },
+  "Andenne": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Andenne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Andenne"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Andenne",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Andenne"
+      }
+    ]
+  },
+  "Anderlues": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Anderlues",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Anderlues"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Anderlues",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Anderlues"
+      }
+    ]
+  },
+  "Anhée": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Anhée",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Anh%C3%A9e"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Anhée",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Anh%C3%A9e"
+      }
+    ]
+  },
+  "Ans": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Ans",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ans"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Ans",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Ans"
+      }
+    ]
+  },
+  "Anthisnes": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Anthisnes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Anthisnes"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Anthisnes",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Anthisnes"
+      }
+    ]
+  },
+  "Antoing": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Antoing",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Antoing"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Antoing",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Antoing"
+      }
+    ]
+  },
+  "Arlon": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Arlon",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Arlon"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Arlon",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Arlon"
+      }
+    ]
+  },
+  "Assesse": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Assesse",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Assesse"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Assesse",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Assesse"
+      }
+    ]
+  },
+  "Ath": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Ath",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ath"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Ath",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Ath"
+      }
+    ]
+  },
+  "Attert": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Attert",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Attert"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Attert",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Attert"
+      }
+    ]
+  },
+  "Aubange": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Aubange",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Aubange"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Aubange",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Aubange"
+      }
+    ]
+  },
+  "Aubel": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Aubel",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Aubel"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Aubel",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Aubel"
+      }
+    ]
+  },
+  "Awans": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Awans",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Awans"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Awans",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Awans"
+      }
+    ]
+  },
+  "Aywaille": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Aywaille",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Aywaille"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Aywaille",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Aywaille"
+      }
+    ]
+  },
+  "Baelen": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Baelen",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Baelen"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Baelen",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Baelen"
+      }
+    ]
+  },
+  "Bassenge": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Bassenge",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Bassenge"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Bassenge",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Bassenge"
+      }
+    ]
+  },
+  "Bastogne": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Bastogne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Bastogne"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Bastogne",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Bastogne"
+      }
+    ]
+  },
+  "Beaumont": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Beaumont",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Beaumont"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Beaumont",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Beaumont"
+      }
+    ]
+  },
+  "Beauraing": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Beauraing",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Beauraing"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Beauraing",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Beauraing"
+      }
+    ]
+  },
+  "Beauvechain": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Beauvechain",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Beauvechain"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Beauvechain",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Beauvechain"
+      }
+    ]
+  },
+  "Belœil": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Belœil",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Bel%C5%93il"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Belœil",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Bel%C5%93il"
+      }
+    ]
+  },
+  "Berloz": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Berloz",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Berloz"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Berloz",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Berloz"
+      }
+    ]
+  },
+  "Bernissart": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Bernissart",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Bernissart"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Bernissart",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Bernissart"
+      }
+    ]
+  },
+  "Bertrix": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Bertrix",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Bertrix"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Bertrix",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Bertrix"
+      }
+    ]
+  },
+  "Beyne-Heusay": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Beyne-Heusay",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Beyne-Heusay"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Beyne-Heusay",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Beyne-Heusay"
+      }
+    ]
+  },
+  "Bièvre": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Bièvre",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Bi%C3%A8vre"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Bièvre",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Bi%C3%A8vre"
+      }
+    ]
+  },
+  "Binche": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Binche",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Binche"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Binche",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Binche"
+      }
+    ]
+  },
+  "Blegny": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Blegny",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Blegny"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Blegny",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Blegny"
+      }
+    ]
+  },
+  "Bouillon": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Bouillon",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Bouillon"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Bouillon",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Bouillon"
+      }
+    ]
+  },
+  "Boussu": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Boussu",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Boussu"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Boussu",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Boussu"
+      }
+    ]
+  },
+  "Braine-l\\": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Braine-l\\",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Braine-l%5C"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Braine-l\\",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Braine-l%5C"
+      }
+    ]
+  },
+  "Braine-le-Château": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Braine-le-Château",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Braine-le-Ch%C3%A2teau"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Braine-le-Château",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Braine-le-Ch%C3%A2teau"
+      }
+    ]
+  },
+  "Braine-le-Comte": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Braine-le-Comte",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Braine-le-Comte"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Braine-le-Comte",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Braine-le-Comte"
+      }
+    ]
+  },
+  "Braives": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Braives",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Braives"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Braives",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Braives"
+      }
+    ]
+  },
+  "Brugelette": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Brugelette",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Brugelette"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Brugelette",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Brugelette"
+      }
+    ]
+  },
+  "Brunehaut": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Brunehaut",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Brunehaut"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Brunehaut",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Brunehaut"
+      }
+    ]
+  },
+  "Bullange": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Bullange",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Bullange"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Bullange",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Bullange"
+      }
+    ]
+  },
+  "Burdinne": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Burdinne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Burdinne"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Burdinne",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Burdinne"
+      }
+    ]
+  },
+  "Burg-Reuland": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Burg-Reuland",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Burg-Reuland"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Burg-Reuland",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Burg-Reuland"
+      }
+    ]
+  },
+  "Butgenbach": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Butgenbach",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Butgenbach"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Butgenbach",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Butgenbach"
+      }
+    ]
+  },
+  "Celles": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Celles",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Celles"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Celles",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Celles"
+      }
+    ]
+  },
+  "Cerfontaine": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Cerfontaine",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Cerfontaine"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Cerfontaine",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Cerfontaine"
+      }
+    ]
+  },
+  "Chapelle-lez-Herlaimont": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Chapelle-lez-Herlaimont",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Chapelle-lez-Herlaimont"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Chapelle-lez-Herlaimont",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Chapelle-lez-Herlaimont"
+      }
+    ]
+  },
+  "Charleroi": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Charleroi",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Charleroi"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Charleroi",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Charleroi"
+      }
+    ]
+  },
+  "Chastre": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Chastre",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Chastre"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Chastre",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Chastre"
+      }
+    ]
+  },
+  "Châtelet": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Châtelet",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ch%C3%A2telet"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Châtelet",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Ch%C3%A2telet"
+      }
+    ]
+  },
+  "Chaudfontaine": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Chaudfontaine",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Chaudfontaine"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Chaudfontaine",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Chaudfontaine"
+      }
+    ]
+  },
+  "Chaumont-Gistoux": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Chaumont-Gistoux",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Chaumont-Gistoux"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Chaumont-Gistoux",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Chaumont-Gistoux"
+      }
+    ]
+  },
+  "Chièvres": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Chièvres",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Chi%C3%A8vres"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Chièvres",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Chi%C3%A8vres"
+      }
+    ]
+  },
+  "Chimay": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Chimay",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Chimay"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Chimay",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Chimay"
+      }
+    ]
+  },
+  "Chiny": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Chiny",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Chiny"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Chiny",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Chiny"
+      }
+    ]
+  },
+  "Ciney": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Ciney",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ciney"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Ciney",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Ciney"
+      }
+    ]
+  },
+  "Clavier": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Clavier",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Clavier"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Clavier",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Clavier"
+      }
+    ]
+  },
+  "Colfontaine": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Colfontaine",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Colfontaine"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Colfontaine",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Colfontaine"
+      }
+    ]
+  },
+  "Comblain-au-Pont": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Comblain-au-Pont",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Comblain-au-Pont"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Comblain-au-Pont",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Comblain-au-Pont"
+      }
+    ]
+  },
+  "Comines-Warneton": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Comines-Warneton",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Comines-Warneton"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Comines-Warneton",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Comines-Warneton"
+      }
+    ]
+  },
+  "Courcelles": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Courcelles",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Courcelles"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Courcelles",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Courcelles"
+      }
+    ]
+  },
+  "Court-Saint-Étienne": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Court-Saint-Étienne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Court-Saint-%C3%89tienne"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Court-Saint-Étienne",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Court-Saint-%C3%89tienne"
+      }
+    ]
+  },
+  "Couvin": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Couvin",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Couvin"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Couvin",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Couvin"
+      }
+    ]
+  },
+  "Crisnée": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Crisnée",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Crisn%C3%A9e"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Crisnée",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Crisn%C3%A9e"
+      }
+    ]
+  },
+  "Dalhem": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Dalhem",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Dalhem"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Dalhem",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Dalhem"
+      }
+    ]
+  },
+  "Daverdisse": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Daverdisse",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Daverdisse"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Daverdisse",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Daverdisse"
+      }
+    ]
+  },
+  "Dinant": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Dinant",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Dinant"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Dinant",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Dinant"
+      }
+    ]
+  },
+  "Dison": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Dison",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Dison"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Dison",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Dison"
+      }
+    ]
+  },
+  "Doische": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Doische",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Doische"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Doische",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Doische"
+      }
+    ]
+  },
+  "Donceel": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Donceel",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Donceel"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Donceel",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Donceel"
+      }
+    ]
+  },
+  "Dour": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Dour",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Dour"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Dour",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Dour"
+      }
+    ]
+  },
+  "Durbuy": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Durbuy",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Durbuy"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Durbuy",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Durbuy"
+      }
+    ]
+  },
+  "Écaussinnes": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Écaussinnes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+%C3%89caussinnes"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Écaussinnes",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+%C3%89caussinnes"
+      }
+    ]
+  },
+  "Éghezée": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Éghezée",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+%C3%89ghez%C3%A9e"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Éghezée",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+%C3%89ghez%C3%A9e"
+      }
+    ]
+  },
+  "Ellezelles": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Ellezelles",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ellezelles"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Ellezelles",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Ellezelles"
+      }
+    ]
+  },
+  "Enghien": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Enghien",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Enghien"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Enghien",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Enghien"
+      }
+    ]
+  },
+  "Engis": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Engis",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Engis"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Engis",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Engis"
+      }
+    ]
+  },
+  "Érezée": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Érezée",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+%C3%89rez%C3%A9e"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Érezée",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+%C3%89rez%C3%A9e"
+      }
+    ]
+  },
+  "Erquelinnes": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Erquelinnes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Erquelinnes"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Erquelinnes",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Erquelinnes"
+      }
+    ]
+  },
+  "Esneux": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Esneux",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Esneux"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Esneux",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Esneux"
+      }
+    ]
+  },
+  "Estaimpuis": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Estaimpuis",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Estaimpuis"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Estaimpuis",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Estaimpuis"
+      }
+    ]
+  },
+  "Estinnes": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Estinnes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Estinnes"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Estinnes",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Estinnes"
+      }
+    ]
+  },
+  "Étalle": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Étalle",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+%C3%89talle"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Étalle",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+%C3%89talle"
+      }
+    ]
+  },
+  "Eupen": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Eupen",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Eupen"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Eupen",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Eupen"
+      }
+    ]
+  },
+  "Faimes": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Faimes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Faimes"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Faimes",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Faimes"
+      }
+    ]
+  },
+  "Farciennes": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Farciennes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Farciennes"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Farciennes",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Farciennes"
+      }
+    ]
+  },
+  "Fauvillers": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Fauvillers",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Fauvillers"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Fauvillers",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Fauvillers"
+      }
+    ]
+  },
+  "Fernelmont": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Fernelmont",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Fernelmont"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Fernelmont",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Fernelmont"
+      }
+    ]
+  },
+  "Ferrières": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Ferrières",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ferri%C3%A8res"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Ferrières",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Ferri%C3%A8res"
+      }
+    ]
+  },
+  "Fexhe-le-Haut-Clocher": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Fexhe-le-Haut-Clocher",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Fexhe-le-Haut-Clocher"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Fexhe-le-Haut-Clocher",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Fexhe-le-Haut-Clocher"
+      }
+    ]
+  },
+  "Flémalle": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Flémalle",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Fl%C3%A9malle"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Flémalle",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Fl%C3%A9malle"
+      }
+    ]
+  },
+  "Fléron": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Fléron",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Fl%C3%A9ron"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Fléron",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Fl%C3%A9ron"
+      }
+    ]
+  },
+  "Fleurus": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Fleurus",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Fleurus"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Fleurus",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Fleurus"
+      }
+    ]
+  },
+  "Flobecq": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Flobecq",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Flobecq"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Flobecq",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Flobecq"
+      }
+    ]
+  },
+  "Floreffe": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Floreffe",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Floreffe"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Floreffe",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Floreffe"
+      }
+    ]
+  },
+  "Florennes": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Florennes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Florennes"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Florennes",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Florennes"
+      }
+    ]
+  },
+  "Florenville": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Florenville",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Florenville"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Florenville",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Florenville"
+      }
+    ]
+  },
+  "Fontaine-l\\": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Fontaine-l\\",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Fontaine-l%5C"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Fontaine-l\\",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Fontaine-l%5C"
+      }
+    ]
+  },
+  "Fosses-la-Ville": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Fosses-la-Ville",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Fosses-la-Ville"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Fosses-la-Ville",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Fosses-la-Ville"
+      }
+    ]
+  },
+  "Frameries": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Frameries",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Frameries"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Frameries",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Frameries"
+      }
+    ]
+  },
+  "Frasnes-lez-Anvaing": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Frasnes-lez-Anvaing",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Frasnes-lez-Anvaing"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Frasnes-lez-Anvaing",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Frasnes-lez-Anvaing"
+      }
+    ]
+  },
+  "Froidchapelle": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Froidchapelle",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Froidchapelle"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Froidchapelle",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Froidchapelle"
+      }
+    ]
+  },
+  "Gedinne": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Gedinne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Gedinne"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Gedinne",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Gedinne"
+      }
+    ]
+  },
+  "Geer": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Geer",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Geer"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Geer",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Geer"
+      }
+    ]
+  },
+  "Gembloux": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Gembloux",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Gembloux"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Gembloux",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Gembloux"
+      }
+    ]
+  },
+  "Genappe": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Genappe",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Genappe"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Genappe",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Genappe"
+      }
+    ]
+  },
+  "Gerpinnes": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Gerpinnes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Gerpinnes"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Gerpinnes",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Gerpinnes"
+      }
+    ]
+  },
+  "Gesves": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Gesves",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Gesves"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Gesves",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Gesves"
+      }
+    ]
+  },
+  "Gouvy": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Gouvy",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Gouvy"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Gouvy",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Gouvy"
+      }
+    ]
+  },
+  "Grâce-Hollogne": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Grâce-Hollogne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Gr%C3%A2ce-Hollogne"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Grâce-Hollogne",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Gr%C3%A2ce-Hollogne"
+      }
+    ]
+  },
+  "Grez-Doiceau": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Grez-Doiceau",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Grez-Doiceau"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Grez-Doiceau",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Grez-Doiceau"
+      }
+    ]
+  },
+  "Habay": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Habay",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Habay"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Habay",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Habay"
+      }
+    ]
+  },
+  "Ham-sur-Heure-Nalinnes": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Ham-sur-Heure-Nalinnes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ham-sur-Heure-Nalinnes"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Ham-sur-Heure-Nalinnes",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Ham-sur-Heure-Nalinnes"
+      }
+    ]
+  },
+  "Hamoir": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Hamoir",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Hamoir"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Hamoir",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Hamoir"
+      }
+    ]
+  },
+  "Hamois": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Hamois",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Hamois"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Hamois",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Hamois"
+      }
+    ]
+  },
+  "Hannut": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Hannut",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Hannut"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Hannut",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Hannut"
+      }
+    ]
+  },
+  "Hastière": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Hastière",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Hasti%C3%A8re"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Hastière",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Hasti%C3%A8re"
+      }
+    ]
+  },
+  "Havelange": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Havelange",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Havelange"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Havelange",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Havelange"
+      }
+    ]
+  },
+  "Hélécine": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Hélécine",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+H%C3%A9l%C3%A9cine"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Hélécine",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+H%C3%A9l%C3%A9cine"
+      }
+    ]
+  },
+  "Hensies": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Hensies",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Hensies"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Hensies",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Hensies"
+      }
+    ]
+  },
+  "Herbeumont": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Herbeumont",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Herbeumont"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Herbeumont",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Herbeumont"
+      }
+    ]
+  },
+  "Héron": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Héron",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+H%C3%A9ron"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Héron",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+H%C3%A9ron"
+      }
+    ]
+  },
+  "Herstal": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Herstal",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Herstal"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Herstal",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Herstal"
+      }
+    ]
+  },
+  "Herve": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Herve",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Herve"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Herve",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Herve"
+      }
+    ]
+  },
+  "Honnelles": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Honnelles",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Honnelles"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Honnelles",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Honnelles"
+      }
+    ]
+  },
+  "Hotton": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Hotton",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Hotton"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Hotton",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Hotton"
+      }
+    ]
+  },
+  "Houffalize": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Houffalize",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Houffalize"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Houffalize",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Houffalize"
+      }
+    ]
+  },
+  "Houyet": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Houyet",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Houyet"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Houyet",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Houyet"
+      }
+    ]
+  },
+  "Huy": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Huy",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Huy"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Huy",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Huy"
+      }
+    ]
+  },
+  "Incourt": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Incourt",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Incourt"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Incourt",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Incourt"
+      }
+    ]
+  },
+  "Ittre": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Ittre",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ittre"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Ittre",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Ittre"
+      }
+    ]
+  },
+  "Jalhay": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Jalhay",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Jalhay"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Jalhay",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Jalhay"
+      }
+    ]
+  },
+  "Jemeppe-sur-Sambre": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Jemeppe-sur-Sambre",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Jemeppe-sur-Sambre"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Jemeppe-sur-Sambre",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Jemeppe-sur-Sambre"
+      }
+    ]
+  },
+  "Jodoigne": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Jodoigne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Jodoigne"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Jodoigne",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Jodoigne"
+      }
+    ]
+  },
+  "Juprelle": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Juprelle",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Juprelle"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Juprelle",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Juprelle"
+      }
+    ]
+  },
+  "Jurbise": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Jurbise",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Jurbise"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Jurbise",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Jurbise"
+      }
+    ]
+  },
+  "La Bruyère": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - La Bruyère",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+La%20Bruy%C3%A8re"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - La Bruyère",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+La%20Bruy%C3%A8re"
+      }
+    ]
+  },
+  "La Calamine": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - La Calamine",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+La%20Calamine"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - La Calamine",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+La%20Calamine"
+      }
+    ]
+  },
+  "La Hulpe": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - La Hulpe",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+La%20Hulpe"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - La Hulpe",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+La%20Hulpe"
+      }
+    ]
+  },
+  "La Roche-en-Ardenne": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - La Roche-en-Ardenne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+La%20Roche-en-Ardenne"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - La Roche-en-Ardenne",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+La%20Roche-en-Ardenne"
+      }
+    ]
+  },
+  "Lasne": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Lasne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Lasne"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Lasne",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Lasne"
+      }
+    ]
+  },
+  "Léglise": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Léglise",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+L%C3%A9glise"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Léglise",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+L%C3%A9glise"
+      }
+    ]
+  },
+  "Lens": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Lens",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Lens"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Lens",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Lens"
+      }
+    ]
+  },
+  "Le Rœulx": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Le Rœulx",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Le%20R%C5%93ulx"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Le Rœulx",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Le%20R%C5%93ulx"
+      }
+    ]
+  },
+  "Les Bons Villers": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Les Bons Villers",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Les%20Bons%20Villers"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Les Bons Villers",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Les%20Bons%20Villers"
+      }
+    ]
+  },
+  "Lessines": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Lessines",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Lessines"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Lessines",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Lessines"
+      }
+    ]
+  },
+  "Leuze-en-Hainaut": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Leuze-en-Hainaut",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Leuze-en-Hainaut"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Leuze-en-Hainaut",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Leuze-en-Hainaut"
+      }
+    ]
+  },
+  "Libin": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Libin",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Libin"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Libin",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Libin"
+      }
+    ]
+  },
+  "Libramont-Chevigny": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Libramont-Chevigny",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Libramont-Chevigny"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Libramont-Chevigny",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Libramont-Chevigny"
+      }
+    ]
+  },
+  "Liège": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Liège",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Li%C3%A8ge"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Liège",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Li%C3%A8ge"
+      }
+    ]
+  },
+  "Lierneux": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Lierneux",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Lierneux"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Lierneux",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Lierneux"
+      }
+    ]
+  },
+  "Limbourg": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Limbourg",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Limbourg"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Limbourg",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Limbourg"
+      }
+    ]
+  },
+  "Lincent": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Lincent",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Lincent"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Lincent",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Lincent"
+      }
+    ]
+  },
+  "Lobbes": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Lobbes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Lobbes"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Lobbes",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Lobbes"
+      }
+    ]
+  },
+  "Lontzen": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Lontzen",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Lontzen"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Lontzen",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Lontzen"
+      }
+    ]
+  },
+  "La Louvière": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - La Louvière",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+La%20Louvi%C3%A8re"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - La Louvière",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+La%20Louvi%C3%A8re"
+      }
+    ]
+  },
+  "Malmedy": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Malmedy",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Malmedy"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Malmedy",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Malmedy"
+      }
+    ]
+  },
+  "Manage": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Manage",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Manage"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Manage",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Manage"
+      }
+    ]
+  },
+  "Manhay": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Manhay",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Manhay"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Manhay",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Manhay"
+      }
+    ]
+  },
+  "Marche-en-Famenne": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Marche-en-Famenne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Marche-en-Famenne"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Marche-en-Famenne",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Marche-en-Famenne"
+      }
+    ]
+  },
+  "Marchin": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Marchin",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Marchin"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Marchin",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Marchin"
+      }
+    ]
+  },
+  "Martelange": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Martelange",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Martelange"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Martelange",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Martelange"
+      }
+    ]
+  },
+  "Meix-devant-Virton": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Meix-devant-Virton",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Meix-devant-Virton"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Meix-devant-Virton",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Meix-devant-Virton"
+      }
+    ]
+  },
+  "Merbes-le-Château": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Merbes-le-Château",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Merbes-le-Ch%C3%A2teau"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Merbes-le-Château",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Merbes-le-Ch%C3%A2teau"
+      }
+    ]
+  },
+  "Messancy": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Messancy",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Messancy"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Messancy",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Messancy"
+      }
+    ]
+  },
+  "Mettet": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Mettet",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Mettet"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Mettet",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Mettet"
+      }
+    ]
+  },
+  "Modave": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Modave",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Modave"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Modave",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Modave"
+      }
+    ]
+  },
+  "Momignies": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Momignies",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Momignies"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Momignies",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Momignies"
+      }
+    ]
+  },
+  "Mons": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Mons",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Mons"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Mons",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Mons"
+      }
+    ]
+  },
+  "Mont-de-l\\": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Mont-de-l\\",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Mont-de-l%5C"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Mont-de-l\\",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Mont-de-l%5C"
+      }
+    ]
+  },
+  "Montigny-le-Tilleul": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Montigny-le-Tilleul",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Montigny-le-Tilleul"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Montigny-le-Tilleul",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Montigny-le-Tilleul"
+      }
+    ]
+  },
+  "Mont-Saint-Guibert": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Mont-Saint-Guibert",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Mont-Saint-Guibert"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Mont-Saint-Guibert",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Mont-Saint-Guibert"
+      }
+    ]
+  },
+  "Morlanwelz": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Morlanwelz",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Morlanwelz"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Morlanwelz",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Morlanwelz"
+      }
+    ]
+  },
+  "Mouscron": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Mouscron",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Mouscron"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Mouscron",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Mouscron"
+      }
+    ]
+  },
+  "Musson": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Musson",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Musson"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Musson",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Musson"
+      }
+    ]
   },
   "Namur": {
-    "activeRegulationsCount": 0,
-    "regulations": [],
-    "upcomingAgendaTaxes": []
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Namur",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Namur"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Namur",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Namur"
+      }
+    ]
+  },
+  "Nandrin": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Nandrin",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Nandrin"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Nandrin",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Nandrin"
+      }
+    ]
+  },
+  "Nassogne": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Nassogne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Nassogne"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Nassogne",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Nassogne"
+      }
+    ]
+  },
+  "Neufchâteau": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Neufchâteau",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Neufch%C3%A2teau"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Neufchâteau",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Neufch%C3%A2teau"
+      }
+    ]
+  },
+  "Neupré": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Neupré",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Neupr%C3%A9"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Neupré",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Neupr%C3%A9"
+      }
+    ]
+  },
+  "Nivelles": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Nivelles",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Nivelles"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Nivelles",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Nivelles"
+      }
+    ]
+  },
+  "Ohey": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Ohey",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ohey"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Ohey",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Ohey"
+      }
+    ]
+  },
+  "Olne": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Olne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Olne"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Olne",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Olne"
+      }
+    ]
+  },
+  "Onhaye": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Onhaye",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Onhaye"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Onhaye",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Onhaye"
+      }
+    ]
+  },
+  "Oreye": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Oreye",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Oreye"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Oreye",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Oreye"
+      }
+    ]
+  },
+  "Orp-Jauche": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Orp-Jauche",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Orp-Jauche"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Orp-Jauche",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Orp-Jauche"
+      }
+    ]
+  },
+  "Ottignies-Louvain-la-Neuve": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Ottignies-Louvain-la-Neuve",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ottignies-Louvain-la-Neuve"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Ottignies-Louvain-la-Neuve",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Ottignies-Louvain-la-Neuve"
+      }
+    ]
+  },
+  "Ouffet": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Ouffet",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ouffet"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Ouffet",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Ouffet"
+      }
+    ]
+  },
+  "Oupeye": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Oupeye",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Oupeye"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Oupeye",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Oupeye"
+      }
+    ]
+  },
+  "Paliseul": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Paliseul",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Paliseul"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Paliseul",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Paliseul"
+      }
+    ]
+  },
+  "Pecq": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Pecq",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Pecq"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Pecq",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Pecq"
+      }
+    ]
+  },
+  "Pepinster": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Pepinster",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Pepinster"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Pepinster",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Pepinster"
+      }
+    ]
+  },
+  "Péruwelz": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Péruwelz",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+P%C3%A9ruwelz"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Péruwelz",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+P%C3%A9ruwelz"
+      }
+    ]
+  },
+  "Perwez": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Perwez",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Perwez"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Perwez",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Perwez"
+      }
+    ]
+  },
+  "Philippeville": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Philippeville",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Philippeville"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Philippeville",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Philippeville"
+      }
+    ]
+  },
+  "Plombières": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Plombières",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Plombi%C3%A8res"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Plombières",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Plombi%C3%A8res"
+      }
+    ]
+  },
+  "Pont-à-Celles": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Pont-à-Celles",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Pont-%C3%A0-Celles"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Pont-à-Celles",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Pont-%C3%A0-Celles"
+      }
+    ]
+  },
+  "Profondeville": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Profondeville",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Profondeville"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Profondeville",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Profondeville"
+      }
+    ]
+  },
+  "Quaregnon": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Quaregnon",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Quaregnon"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Quaregnon",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Quaregnon"
+      }
+    ]
+  },
+  "Quévy": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Quévy",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Qu%C3%A9vy"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Quévy",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Qu%C3%A9vy"
+      }
+    ]
+  },
+  "Quiévrain": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Quiévrain",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Qui%C3%A9vrain"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Quiévrain",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Qui%C3%A9vrain"
+      }
+    ]
+  },
+  "Raeren": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Raeren",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Raeren"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Raeren",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Raeren"
+      }
+    ]
+  },
+  "Ramillies": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Ramillies",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ramillies"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Ramillies",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Ramillies"
+      }
+    ]
+  },
+  "Rebecq": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Rebecq",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Rebecq"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Rebecq",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Rebecq"
+      }
+    ]
+  },
+  "Remicourt": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Remicourt",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Remicourt"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Remicourt",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Remicourt"
+      }
+    ]
+  },
+  "Rendeux": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Rendeux",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Rendeux"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Rendeux",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Rendeux"
+      }
+    ]
+  },
+  "Rixensart": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Rixensart",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Rixensart"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Rixensart",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Rixensart"
+      }
+    ]
+  },
+  "Rochefort": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Rochefort",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Rochefort"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Rochefort",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Rochefort"
+      }
+    ]
+  },
+  "Rouvroy": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Rouvroy",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Rouvroy"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Rouvroy",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Rouvroy"
+      }
+    ]
+  },
+  "Rumes": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Rumes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Rumes"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Rumes",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Rumes"
+      }
+    ]
+  },
+  "Sainte-Ode": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Sainte-Ode",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Sainte-Ode"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Sainte-Ode",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Sainte-Ode"
+      }
+    ]
+  },
+  "Saint-Georges-sur-Meuse": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Saint-Georges-sur-Meuse",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Saint-Georges-sur-Meuse"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Saint-Georges-sur-Meuse",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Saint-Georges-sur-Meuse"
+      }
+    ]
+  },
+  "Saint-Ghislain": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Saint-Ghislain",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Saint-Ghislain"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Saint-Ghislain",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Saint-Ghislain"
+      }
+    ]
+  },
+  "Saint-Hubert": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Saint-Hubert",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Saint-Hubert"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Saint-Hubert",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Saint-Hubert"
+      }
+    ]
+  },
+  "Saint-Léger": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Saint-Léger",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Saint-L%C3%A9ger"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Saint-Léger",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Saint-L%C3%A9ger"
+      }
+    ]
+  },
+  "Saint-Nicolas": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Saint-Nicolas",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Saint-Nicolas"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Saint-Nicolas",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Saint-Nicolas"
+      }
+    ]
+  },
+  "Saint-Vith": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Saint-Vith",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Saint-Vith"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Saint-Vith",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Saint-Vith"
+      }
+    ]
+  },
+  "Sambreville": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Sambreville",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Sambreville"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Sambreville",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Sambreville"
+      }
+    ]
+  },
+  "Seneffe": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Seneffe",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Seneffe"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Seneffe",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Seneffe"
+      }
+    ]
+  },
+  "Seraing": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Seraing",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Seraing"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Seraing",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Seraing"
+      }
+    ]
+  },
+  "Silly": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Silly",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Silly"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Silly",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Silly"
+      }
+    ]
+  },
+  "Sivry-Rance": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Sivry-Rance",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Sivry-Rance"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Sivry-Rance",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Sivry-Rance"
+      }
+    ]
+  },
+  "Soignies": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Soignies",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Soignies"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Soignies",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Soignies"
+      }
+    ]
+  },
+  "Sombreffe": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Sombreffe",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Sombreffe"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Sombreffe",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Sombreffe"
+      }
+    ]
+  },
+  "Somme-Leuze": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Somme-Leuze",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Somme-Leuze"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Somme-Leuze",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Somme-Leuze"
+      }
+    ]
+  },
+  "Soumagne": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Soumagne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Soumagne"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Soumagne",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Soumagne"
+      }
+    ]
+  },
+  "Spa": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Spa",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Spa"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Spa",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Spa"
+      }
+    ]
+  },
+  "Sprimont": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Sprimont",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Sprimont"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Sprimont",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Sprimont"
+      }
+    ]
+  },
+  "Stavelot": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Stavelot",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Stavelot"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Stavelot",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Stavelot"
+      }
+    ]
+  },
+  "Stoumont": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Stoumont",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Stoumont"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Stoumont",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Stoumont"
+      }
+    ]
+  },
+  "Tellin": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Tellin",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Tellin"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Tellin",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Tellin"
+      }
+    ]
+  },
+  "Tenneville": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Tenneville",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Tenneville"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Tenneville",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Tenneville"
+      }
+    ]
+  },
+  "Theux": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Theux",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Theux"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Theux",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Theux"
+      }
+    ]
+  },
+  "Thimister-Clermont": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Thimister-Clermont",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Thimister-Clermont"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Thimister-Clermont",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Thimister-Clermont"
+      }
+    ]
+  },
+  "Thuin": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Thuin",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Thuin"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Thuin",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Thuin"
+      }
+    ]
+  },
+  "Tinlot": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Tinlot",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Tinlot"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Tinlot",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Tinlot"
+      }
+    ]
+  },
+  "Tintigny": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Tintigny",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Tintigny"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Tintigny",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Tintigny"
+      }
+    ]
+  },
+  "Tournai": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Tournai",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Tournai"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Tournai",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Tournai"
+      }
+    ]
+  },
+  "Trois-Ponts": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Trois-Ponts",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Trois-Ponts"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Trois-Ponts",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Trois-Ponts"
+      }
+    ]
+  },
+  "Trooz": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Trooz",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Trooz"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Trooz",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Trooz"
+      }
+    ]
+  },
+  "Tubize": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Tubize",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Tubize"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Tubize",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Tubize"
+      }
+    ]
+  },
+  "Vaux-sur-Sûre": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Vaux-sur-Sûre",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Vaux-sur-S%C3%BBre"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Vaux-sur-Sûre",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Vaux-sur-S%C3%BBre"
+      }
+    ]
+  },
+  "Verlaine": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Verlaine",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Verlaine"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Verlaine",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Verlaine"
+      }
+    ]
+  },
+  "Verviers": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Verviers",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Verviers"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Verviers",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Verviers"
+      }
+    ]
+  },
+  "Vielsalm": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Vielsalm",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Vielsalm"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Vielsalm",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Vielsalm"
+      }
+    ]
+  },
+  "Villers-le-Bouillet": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Villers-le-Bouillet",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Villers-le-Bouillet"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Villers-le-Bouillet",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Villers-le-Bouillet"
+      }
+    ]
+  },
+  "Villers-la-Ville": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Villers-la-Ville",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Villers-la-Ville"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Villers-la-Ville",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Villers-la-Ville"
+      }
+    ]
+  },
+  "Viroinval": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Viroinval",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Viroinval"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Viroinval",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Viroinval"
+      }
+    ]
+  },
+  "Virton": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Virton",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Virton"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Virton",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Virton"
+      }
+    ]
+  },
+  "Visé": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Visé",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Vis%C3%A9"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Visé",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Vis%C3%A9"
+      }
+    ]
+  },
+  "Vresse-sur-Semois": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Vresse-sur-Semois",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Vresse-sur-Semois"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Vresse-sur-Semois",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Vresse-sur-Semois"
+      }
+    ]
+  },
+  "Waimes": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Waimes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Waimes"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Waimes",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Waimes"
+      }
+    ]
+  },
+  "Walcourt": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Walcourt",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Walcourt"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Walcourt",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Walcourt"
+      }
+    ]
+  },
+  "Walhain": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Walhain",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Walhain"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Walhain",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Walhain"
+      }
+    ]
+  },
+  "Wanze": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Wanze",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Wanze"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Wanze",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Wanze"
+      }
+    ]
+  },
+  "Waremme": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Waremme",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Waremme"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Waremme",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Waremme"
+      }
+    ]
+  },
+  "Wasseiges": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Wasseiges",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Wasseiges"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Wasseiges",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Wasseiges"
+      }
+    ]
+  },
+  "Waterloo": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Waterloo",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Waterloo"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Waterloo",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Waterloo"
+      }
+    ]
+  },
+  "Wavre": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Wavre",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Wavre"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Wavre",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Wavre"
+      }
+    ]
+  },
+  "Welkenraedt": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Welkenraedt",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Welkenraedt"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Welkenraedt",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Welkenraedt"
+      }
+    ]
+  },
+  "Wellin": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Wellin",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Wellin"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Wellin",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Wellin"
+      }
+    ]
+  },
+  "Yvoir": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Yvoir",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Yvoir"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Yvoir",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Yvoir"
+      }
+    ]
+  },
+  "Anderlecht": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Anderlecht",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Anderlecht"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Anderlecht",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Anderlecht"
+      }
+    ]
+  },
+  "Auderghem": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Auderghem",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Auderghem"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Auderghem",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Auderghem"
+      }
+    ]
+  },
+  "Berchem-Sainte-Agathe": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Berchem-Sainte-Agathe",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Berchem-Sainte-Agathe"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Berchem-Sainte-Agathe",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Berchem-Sainte-Agathe"
+      }
+    ]
+  },
+  "Ville de Bruxelles": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Ville de Bruxelles",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ville%20de%20Bruxelles"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Ville de Bruxelles",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Ville%20de%20Bruxelles"
+      }
+    ]
+  },
+  "Etterbeek": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Etterbeek",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Etterbeek"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Etterbeek",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Etterbeek"
+      }
+    ]
+  },
+  "Evere": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Evere",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Evere"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Evere",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Evere"
+      }
+    ]
+  },
+  "Forest": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Forest",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Forest"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Forest",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Forest"
+      }
+    ]
+  },
+  "Ganshoren": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Ganshoren",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ganshoren"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Ganshoren",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Ganshoren"
+      }
+    ]
+  },
+  "Ixelles": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Ixelles",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ixelles"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Ixelles",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Ixelles"
+      }
+    ]
+  },
+  "Jette": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Jette",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Jette"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Jette",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Jette"
+      }
+    ]
+  },
+  "Koekelberg": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Koekelberg",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Koekelberg"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Koekelberg",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Koekelberg"
+      }
+    ]
+  },
+  "Molenbeek-Saint-Jean": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Molenbeek-Saint-Jean",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Molenbeek-Saint-Jean"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Molenbeek-Saint-Jean",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Molenbeek-Saint-Jean"
+      }
+    ]
+  },
+  "Saint-Gilles": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Saint-Gilles",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Saint-Gilles"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Saint-Gilles",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Saint-Gilles"
+      }
+    ]
+  },
+  "Saint-Josse-ten-Noode": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Saint-Josse-ten-Noode",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Saint-Josse-ten-Noode"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Saint-Josse-ten-Noode",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Saint-Josse-ten-Noode"
+      }
+    ]
+  },
+  "Schaerbeek": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Schaerbeek",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Schaerbeek"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Schaerbeek",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Schaerbeek"
+      }
+    ]
+  },
+  "Uccle": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Uccle",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Uccle"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Uccle",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Uccle"
+      }
+    ]
+  },
+  "Watermael-Boitsfort": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Watermael-Boitsfort",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Watermael-Boitsfort"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Watermael-Boitsfort",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Watermael-Boitsfort"
+      }
+    ]
+  },
+  "Woluwe-Saint-Lambert": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Woluwe-Saint-Lambert",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Woluwe-Saint-Lambert"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Woluwe-Saint-Lambert",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Woluwe-Saint-Lambert"
+      }
+    ]
+  },
+  "Woluwe-Saint-Pierre": {
+    "activeRegulationsCount": 1,
+    "regulations": [
+      {
+        "title": "Règlements-taxes officiels - Woluwe-Saint-Pierre",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Woluwe-Saint-Pierre"
+      }
+    ],
+    "upcomingAgendaTaxes": [
+      {
+        "title": "Prochains ordres du jour & délibérations - Woluwe-Saint-Pierre",
+        "url": "https://www.google.com/search?q=ordre+du+jour+conseil+communal+Woluwe-Saint-Pierre"
+      }
+    ]
   }
 }
