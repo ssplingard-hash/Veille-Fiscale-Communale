@@ -1,1 +1,17 @@
-{}
+{
+  "Bruxelles": {
+    "activeRegulationsCount": 0,
+    "regulations": [],
+    "upcomingAgendaTaxes": []
+  },
+  "Ixelles": {
+    "activeRegulationsCount": 0,
+    "regulations": [],
+    "upcomingAgendaTaxes": []
+  },
+  "Namur": {
+    "activeRegulationsCount": 0,
+    "regulations": [],
+    "upcomingAgendaTaxes": []
+  }
+}
