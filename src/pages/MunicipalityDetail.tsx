@@ -33,7 +33,7 @@ export default function MunicipalityDetail() {
       setData(found);
       
       // Chargement des données quotidiennes extraites par le script
-      fetch('/data/daily_taxes.json')
+      fetch('./data/daily_taxes.json')
         .then((res) => res.json())
         .then((json) => {
           if (json[found.name]) {
