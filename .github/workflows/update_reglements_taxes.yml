@@ -24,7 +24,7 @@ jobs:
           node-version: 20
 
       - name: Install scraper dependency (cheerio)
-        run: npm install --no-save cheerio
+        run: npm install --no-save --legacy-peer-deps cheerio
 
       - name: Run scraper
         run: node scripts/scrape-reglements-taxes.mjs
