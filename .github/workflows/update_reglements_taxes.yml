@@ -1,1 +1,43 @@
+name: Update règlements-taxes (deliberations.be)
+
+on:
+  schedule:
+    # Tous les jours à 6h00 UTC (avant le build/deploy de 6h00 déjà existant :
+    # on le déclenche 15 min plus tôt pour que les nouvelles données soient
+    # incluses dans le déploiement du jour).
+    - cron: '45 5 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install scraper dependency (cheerio)
+        run: npm install --no-save cheerio
+
+      - name: Run scraper
+        run: node scripts/scrape-reglements-taxes.mjs
+
+      - name: Commit updated data (if changed)
+        run: |
+          git config user.name "reglements-taxes-bot"
+          git config user.email "actions@github.com"
+          git add src/data/reglements-taxes.json
+          if git diff --cached --quiet; then
+            echo "Aucun changement détecté."
+          else
+            git commit -m "Mise à jour quotidienne des règlements-taxes (deliberations.be)"
+            git push
+          fi
 
