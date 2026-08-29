@@ -1,1 +1,1972 @@
-{}
+{
+  "Aiseau-Presles": {
+    "updatedAt": "2026-08-29T07:16:46.714Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Amay": {
+    "updatedAt": "2026-08-29T07:17:01.760Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Andenne": {
+    "updatedAt": "2026-08-29T07:17:14.982Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Anderlues": {
+    "updatedAt": "2026-08-29T07:17:29.066Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Ans": {
+    "updatedAt": "2026-08-29T07:17:40.386Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Anthisnes": {
+    "updatedAt": "2026-08-29T07:17:54.626Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Arlon": {
+    "updatedAt": "2026-08-29T07:18:07.909Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Assesse": {
+    "updatedAt": "2026-08-29T07:18:20.845Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Ath": {
+    "updatedAt": "2026-08-29T07:18:32.371Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Attert": {
+    "updatedAt": "2026-08-29T07:18:45.355Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Aubel": {
+    "updatedAt": "2026-08-29T07:18:57.109Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Awans": {
+    "updatedAt": "2026-08-29T07:19:09.521Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Baelen": {
+    "updatedAt": "2026-08-29T07:19:22.399Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Bastogne": {
+    "updatedAt": "2026-08-29T07:19:36.588Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Beaumont": {
+    "updatedAt": "2026-08-29T07:19:51.243Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Beauraing": {
+    "updatedAt": "2026-08-29T07:20:05.067Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Beloeil": {
+    "updatedAt": "2026-08-29T07:20:18.247Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Berloz": {
+    "updatedAt": "2026-08-29T07:20:30.373Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Bertrix": {
+    "updatedAt": "2026-08-29T07:20:42.074Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Beyne-Heusay": {
+    "updatedAt": "2026-08-29T07:20:56.289Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Binche": {
+    "updatedAt": "2026-08-29T07:21:07.949Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Blegny": {
+    "updatedAt": "2026-08-29T07:21:21.076Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Bouillon": {
+    "updatedAt": "2026-08-29T07:21:35.300Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Boussu": {
+    "updatedAt": "2026-08-29T07:21:37.388Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Braine-l'Alleud": {
+    "updatedAt": "2026-08-29T07:21:52.002Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Braine-le-Château": {
+    "updatedAt": "2026-08-29T07:22:04.335Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Braine-le-Comte": {
+    "updatedAt": "2026-08-29T07:22:17.821Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Braives": {
+    "updatedAt": "2026-08-29T07:22:30.503Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Brunehaut": {
+    "updatedAt": "2026-08-29T07:22:44.801Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Celles": {
+    "updatedAt": "2026-08-29T07:22:59.165Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Cerfontaine": {
+    "updatedAt": "2026-08-29T07:23:12.901Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Chapelle-lez-Herlaimont": {
+    "updatedAt": "2026-08-29T07:23:25.941Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Charleroi": {
+    "updatedAt": "2026-08-29T07:23:38.885Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Chastre": {
+    "updatedAt": "2026-08-29T07:23:55.348Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Châtelet": {
+    "updatedAt": "2026-08-29T07:24:12.496Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Chaumont-Gistoux": {
+    "updatedAt": "2026-08-29T07:24:29.447Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Chièvres": {
+    "updatedAt": "2026-08-29T07:24:30.830Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Chimay": {
+    "updatedAt": "2026-08-29T07:24:48.570Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Chiny": {
+    "updatedAt": "2026-08-29T07:25:13.782Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Ciney": {
+    "updatedAt": "2026-08-29T07:25:29.473Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Clavier": {
+    "updatedAt": "2026-08-29T07:25:43.536Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Colfontaine": {
+    "updatedAt": "2026-08-29T07:25:56.751Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Comblain-au-Pont": {
+    "updatedAt": "2026-08-29T07:26:09.662Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Comines-Warneton": {
+    "updatedAt": "2026-08-29T07:26:22.279Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Courcelles": {
+    "updatedAt": "2026-08-29T07:26:34.458Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Court-Saint-Etienne": {
+    "updatedAt": "2026-08-29T07:26:45.746Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Couvin": {
+    "updatedAt": "2026-08-29T07:26:57.499Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Dalhem": {
+    "updatedAt": "2026-08-29T07:27:11.186Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Daverdisse": {
+    "updatedAt": "2026-08-29T07:27:25.477Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Dinant": {
+    "updatedAt": "2026-08-29T07:27:38.904Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Dison": {
+    "updatedAt": "2026-08-29T07:27:50.832Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Doische": {
+    "updatedAt": "2026-08-29T07:28:06.383Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Donceel": {
+    "updatedAt": "2026-08-29T07:28:07.617Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Dour": {
+    "updatedAt": "2026-08-29T07:28:20.255Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Durbuy": {
+    "updatedAt": "2026-08-29T07:28:34.109Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Ecaussinnes": {
+    "updatedAt": "2026-08-29T07:28:55.130Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "NOTIFICATION DE LA TUTELLE - Taxe communale annuelle sur les moteurs - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/23-juin-2026-19-15/notification-de-la-tutelle-taxe-communale-annuelle-sur-les-moteurs-exercices-2026-a-2031",
+        "matiere": "Patrimoine",
+        "date": "2026-06-23T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Taxe sur la force motrice - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/21-avril-2026-19-15/finances-communales-taxe-sur-la-force-motrice-exercices-2026-a-2031",
+        "matiere": "Administration générale",
+        "date": "2026-04-21T00:00:00.000Z"
+      },
+      {
+        "titre": "NOTIFICATION DE LA TUTELLE - Règlements fiscaux - Taxes - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/27-janvier-2026-19-15/notification-de-la-tutelle-reglements-fiscaux-taxes-exercices-2026-a-2031",
+        "matiere": "Politique générale",
+        "date": "2026-01-27T00:00:00.000Z"
+      },
+      {
+        "titre": "NOTIFICATION DE LA TUTELLE - Règlements fiscaux - Redevances - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/27-janvier-2026-19-15/notification-de-la-tutelle-reglements-fiscaux-redevances-exercices-2026-a-2031",
+        "matiere": "Politique générale",
+        "date": "2026-01-27T00:00:00.000Z"
+      },
+      {
+        "titre": "NOTIFICATION DE LA TUTELLE - Redevance communale sur la demande d'autorisation d'activités en application du Décret du 11 mars 1999 relatif au permis d'environnement - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/27-janvier-2026-19-15/notification-de-la-tutelle-redevance-communale-sur-la-demande-dautorisation-dactivites-en-application-du-decret-du-11-mars-1999-relatif-au-permis-denvironnement-exercices-2026-a-2031",
+        "matiere": "Politique générale",
+        "date": "2026-01-27T00:00:00.000Z"
+      },
+      {
+        "titre": "NOTIFICATION DE LA TUTELLE - Taxe additionnelle à l'impôt des personnes physiques - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/09-decembre-2025-19-15/notification-de-la-tutelle-taxe-additionnelle-a-limpot-des-personnes-physiques-exercices-2026-a-2031",
+        "matiere": "Politique générale",
+        "date": "2025-12-09T00:00:00.000Z"
+      },
+      {
+        "titre": "NOTIFICATION DE LA TUTELLE - Taxe additionnelle au précompte immobilier - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/09-decembre-2025-19-15/notification-de-la-tutelle-taxe-additionnelle-au-precompte-immobilier-exercices-2026-a-2031",
+        "matiere": "Politique générale",
+        "date": "2025-12-09T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Taxe sur la collecte et le traitement des déchets ménagers et assimilés pour l’exercice 2026",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/09-decembre-2025-19-15/finances-communales-taxe-sur-la-collecte-et-le-traitement-des-dechets-menagers-et-assimiles-pour-lexercice-2026",
+        "matiere": "Politique générale",
+        "date": "2025-12-09T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Taxe pour les demandes de changement de nom - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/09-decembre-2025-19-15/finances-communales-taxe-pour-les-demandes-de-changement-de-nom-exercices-2026-a-2031",
+        "matiere": "Politique générale",
+        "date": "2025-12-09T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Taxe sur les terrains de camping - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/09-decembre-2025-19-15/finances-communales-taxe-sur-les-terrains-de-camping-exercices-2026-a-2031",
+        "matiere": "Politique générale",
+        "date": "2025-12-09T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Taxe sur les secondes résidences - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/09-decembre-2025-19-15/finances-communales-taxe-sur-les-secondes-residences-exercices-2026-a-2031",
+        "matiere": "Politique générale",
+        "date": "2025-12-09T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Taxe sur les mâts d'éoliennes destinées à la production industrielle d'électricité - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/09-decembre-2025-19-15/finances-communales-taxe-sur-les-mats-deoliennes-destinees-a-la-production-industrielle-delectricite-exercices-2026-a-2031",
+        "matiere": "Politique générale",
+        "date": "2025-12-09T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Taxe sur les agences bancaires - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/09-decembre-2025-19-15/finances-communales-taxe-sur-les-agences-bancaires-exercices-2026-a-2031",
+        "matiere": "Politique générale",
+        "date": "2025-12-09T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Taxe sur la distribution gratuite à domicile d'écrits publicitaires non adressés -  Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/09-decembre-2025-19-15/finances-communales-taxe-sur-la-distribution-gratuite-a-domicile-decrits-publicitaires-non-adresses-exercices-2026-a-2031",
+        "matiere": "Politique générale",
+        "date": "2025-12-09T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Taxe sur les immeubles bâtis inoccupés - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/09-decembre-2025-19-15/finances-communales-taxe-sur-les-immeubles-batis-inoccupes-exercices-2026-a-2031",
+        "matiere": "Politique générale",
+        "date": "2025-12-09T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Redevance pour les frais d'expulsion - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/09-decembre-2025-19-15/finances-communales-redevance-pour-les-frais-dexpulsion-exercices-2026-a-2031",
+        "matiere": "Politique générale",
+        "date": "2025-12-09T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Redevance pour l’occupation de la voie publique lors de déménagements, livraisons, travaux de construction, démolition, reconstruction, aménagement ou transformation d'un bien immobilier - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/09-decembre-2025-19-15/finances-communales-redevance-pour-loccupation-de-la-voie-publique-lors-de-demenagements-livraisons-travaux-de-construction-demolition-reconstruction-amenagement-ou-transformation-dun-bien-immobilier-exercices-2026-a-2031",
+        "matiere": "Politique générale",
+        "date": "2025-12-09T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Redevance sur la délivrance d'un permis d'urbanisation - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/09-decembre-2025-19-15/finances-communales-redevance-sur-la-delivrance-dun-permis-durbanisation-exercices-2026-a-2031",
+        "matiere": "Politique générale",
+        "date": "2025-12-09T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Taxe additionnelle au précompte immobilier - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-taxe-additionnelle-au-precompte-immobilier-exercices-2026-a-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-14T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Taxe additionnelle à l'impôt des personnes physiques - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-taxe-additionnelle-a-limpot-des-personnes-physiques-exercices-2026-a-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-14T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Taxe sur les inhumations, dispersions des cendres et mises en columbarium - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-taxe-sur-les-inhumations-dispersions-des-cendres-et-mises-en-columbarium-exercices-2026-a-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-14T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Taxe sur la délivrance de documents administratifs -  Exercice 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-taxe-sur-la-delivrance-de-documents-administratifs-exercice-2026-a-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-14T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Redevance bibliothèque communale - Exercice 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-redevance-bibliotheque-communale-exercice-2026-a-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-14T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Redevance Ludothèque - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-redevance-ludotheque-exercices-2026-a-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-14T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Redevance  pour l'occupation du domaine public par le placement de loges foraines et loges mobiles - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-redevance-pour-loccupation-du-domaine-public-par-le-placement-de-loges-foraines-et-loges-mobiles-exercices-2026-a-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-14T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Redevance pour l’occupation du domaine public pour l'installation de commerces permanents - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-redevance-pour-loccupation-du-domaine-public-pour-linstallation-de-commerces-permanents-exercices-2026-a-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-14T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Redevance pour la location de parkings vélos sécurisés - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-redevance-pour-la-location-de-parkings-velos-securises-exercices-2026-a-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-14T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Redevance pour supports non soumis au droit de timbre  - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-redevance-pour-supports-non-soumis-au-droit-de-timbre-exercices-2026-a-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-14T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Redevance sur l'occupation d'un caveau d'attente ou d'une cellule de columbarium d'attente - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-redevance-sur-loccupation-dun-caveau-dattente-ou-dune-cellule-de-columbarium-dattente-exercices-2026-a-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-14T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Redevance sur les exhumations de confort et sur le rassemblement de restes mortels - Exercices 2026 - 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-redevance-sur-les-exhumations-de-confort-et-sur-le-rassemblement-de-restes-mortels-exercices-2026-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-14T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Redevance sur le contrôle d’implantation des constructions par l’intervention d’un géomètre - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-redevance-sur-le-controle-dimplantation-des-constructions-par-lintervention-dun-geometre-exercices-2026-a-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-14T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Redevance sur les concessions, les caveaux, les columbariums, les cavurnes, les plaquettes souvenirs pour aires de dispersion - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-redevance-sur-les-concessions-les-caveaux-les-columbariums-les-cavurnes-les-plaquettes-souvenirs-pour-aires-de-dispersion-exercices-2026-a-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-14T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Redevance sur la délivrance de certificat d'urbanisme, permis d'urbanisme, permis d'urbanisme de régularisation - Exercice 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-redevance-sur-la-delivrance-de-certificat-durbanisme-permis-durbanisme-permis-durbanisme-de-regularisation-exercice-2026-a-2031",
+        "matiere": "Finances",
+        "date": "2025-10-14T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Redevance sur la demande d’autorisation d’activités en application du Décret du 11 mars 1999 relatif au permis d’environnement - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-redevance-sur-la-demande-dautorisation-dactivites-en-application-du-decret-du-11-mars-1999-relatif-au-permis-denvironnement-exercices-2026-a-2031",
+        "matiere": "Finances",
+        "date": "2025-10-14T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Redevance sur l'enlèvement des versages sauvages - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-redevance-sur-lenlevement-des-versages-sauvages-exercices-2026-a-2031",
+        "matiere": "Finances",
+        "date": "2025-10-14T00:00:00.000Z"
+      },
+      {
+        "titre": "FINANCES COMMUNALES - Redevance sur les actes requis par le CoDT et par le Décret du 6 février 2014 sur la voirie communale pour couvrir les frais administratifs engendrés par le traitement de ces dossiers - Exercices 2026 à 2031",
+        "url": "https://www.deliberations.be/ecaussinnes/decisions/14-octobre-2025-19-15/finances-communales-redevance-sur-les-actes-requis-par-le-codt-et-par-le-decret-du-6-fevrier-2014-sur-la-voirie-communale-pour-couvrir-les-frais-administratifs-engendres-par-le-traitement-de-ces-dossiers-exercices-2026-a-2031",
+        "matiere": "Finances",
+        "date": "2025-10-14T00:00:00.000Z"
+      }
+    ],
+    "prochainesTaxes": []
+  },
+  "Eghezée": {
+    "updatedAt": "2026-08-29T07:29:09.584Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Ellezelles": {
+    "updatedAt": "2026-08-29T07:29:11.578Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Enghien": {
+    "updatedAt": "2026-08-29T07:29:23.398Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Engis": {
+    "updatedAt": "2026-08-29T07:29:37.245Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Erezée": {
+    "updatedAt": "2026-08-29T07:29:52.756Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Erquelinnes": {
+    "updatedAt": "2026-08-29T07:30:05.147Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Estaimpuis": {
+    "updatedAt": "2026-08-29T07:30:06.742Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Estinnes": {
+    "updatedAt": "2026-08-29T07:30:20.010Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Etalle": {
+    "updatedAt": "2026-08-29T07:30:33.344Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Faimes": {
+    "updatedAt": "2026-08-29T07:30:46.277Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Farciennes": {
+    "updatedAt": "2026-08-29T07:30:59.382Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Fauvillers": {
+    "updatedAt": "2026-08-29T07:31:16.031Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Ferrières": {
+    "updatedAt": "2026-08-29T07:31:28.934Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Fexhe-le-Haut-Clocher": {
+    "updatedAt": "2026-08-29T07:31:41.757Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Flémalle": {
+    "updatedAt": "2026-08-29T07:31:57.544Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Fléron": {
+    "updatedAt": "2026-08-29T07:32:13.211Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Fleurus": {
+    "updatedAt": "2026-08-29T07:32:26.495Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Florennes": {
+    "updatedAt": "2026-08-29T07:32:40.345Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Florenville": {
+    "updatedAt": "2026-08-29T07:32:52.694Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Fontaine-l'Evêque": {
+    "updatedAt": "2026-08-29T07:33:06.658Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Frameries": {
+    "updatedAt": "2026-08-29T07:33:20.699Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Frasnes-lez-Anvaing": {
+    "updatedAt": "2026-08-29T07:33:22.136Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Froidchapelle": {
+    "updatedAt": "2026-08-29T07:33:37.273Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Geer": {
+    "updatedAt": "2026-08-29T07:33:50.756Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Gembloux": {
+    "updatedAt": "2026-08-29T07:34:04.715Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Genappe": {
+    "updatedAt": "2026-08-29T07:34:18.024Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Gerpinnes": {
+    "updatedAt": "2026-08-29T07:34:33.113Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Grâce-Hollogne": {
+    "updatedAt": "2026-08-29T07:34:46.193Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Grez-Doiceau": {
+    "updatedAt": "2026-08-29T07:35:00.058Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Habay": {
+    "updatedAt": "2026-08-29T07:35:13.106Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Ham-sur-Heure-Nalinnes": {
+    "updatedAt": "2026-08-29T07:35:26.169Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Hamoir": {
+    "updatedAt": "2026-08-29T07:35:40.021Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Hamois": {
+    "updatedAt": "2026-08-29T07:35:53.883Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Hannut": {
+    "updatedAt": "2026-08-29T07:36:08.858Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Havelange": {
+    "updatedAt": "2026-08-29T07:36:22.376Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Hélécine": {
+    "updatedAt": "2026-08-29T07:36:35.736Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Hensies": {
+    "updatedAt": "2026-08-29T07:36:49.915Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Héron": {
+    "updatedAt": "2026-08-29T07:37:02.984Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Herstal": {
+    "updatedAt": "2026-08-29T07:37:34.315Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Honnelles": {
+    "updatedAt": "2026-08-29T07:38:09.222Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Houffalize": {
+    "updatedAt": "2026-08-29T07:38:48.715Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Houyet": {
+    "updatedAt": "2026-08-29T07:39:12.396Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Huy": {
+    "updatedAt": "2026-08-29T07:39:54.816Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Incourt": {
+    "updatedAt": "2026-08-29T07:40:24.351Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Ittre": {
+    "updatedAt": "2026-08-29T07:40:44.132Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Jalhay": {
+    "updatedAt": "2026-08-29T07:41:14.057Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Jemeppe-sur-Sambre": {
+    "updatedAt": "2026-08-29T07:41:15.631Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Juprelle": {
+    "updatedAt": "2026-08-29T07:41:28.389Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Jurbise": {
+    "updatedAt": "2026-08-29T07:41:40.571Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "La Bruyère": {
+    "updatedAt": "2026-08-29T07:41:53.490Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "La Hulpe": {
+    "updatedAt": "2026-08-29T07:42:07.515Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "La Louvière": {
+    "updatedAt": "2026-08-29T07:42:21.789Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "La Roche-en-Ardenne": {
+    "updatedAt": "2026-08-29T07:42:35.249Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Lasne": {
+    "updatedAt": "2026-08-29T07:42:47.776Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Le Roeulx": {
+    "updatedAt": "2026-08-29T07:43:00.204Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Léglise": {
+    "updatedAt": "2026-08-29T07:43:13.597Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Lens": {
+    "updatedAt": "2026-08-29T07:43:25.357Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Les Bons Villers": {
+    "updatedAt": "2026-08-29T07:43:36.609Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Lessines": {
+    "updatedAt": "2026-08-29T07:43:49.171Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Libin": {
+    "updatedAt": "2026-08-29T07:44:04.863Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Libramont-Chevigny": {
+    "updatedAt": "2026-08-29T07:44:18.467Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Liège": {
+    "updatedAt": "2026-08-29T07:44:31.006Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Lierneux": {
+    "updatedAt": "2026-08-29T07:44:43.113Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Limbourg": {
+    "updatedAt": "2026-08-29T07:44:56.993Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Lincent": {
+    "updatedAt": "2026-08-29T07:45:09.843Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Lobbes": {
+    "updatedAt": "2026-08-29T07:45:23.631Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Malmedy": {
+    "updatedAt": "2026-08-29T07:45:36.983Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Manage": {
+    "updatedAt": "2026-08-29T07:45:52.176Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Manhay": {
+    "updatedAt": "2026-08-29T07:46:05.320Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Marche-en-Famenne": {
+    "updatedAt": "2026-08-29T07:46:18.121Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Marchin": {
+    "updatedAt": "2026-08-29T07:46:30.161Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Martelange": {
+    "updatedAt": "2026-08-29T07:46:43.205Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Meix-devant-Virton": {
+    "updatedAt": "2026-08-29T07:46:55.470Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Merbes-le-Château": {
+    "updatedAt": "2026-08-29T07:47:08.422Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Mettet": {
+    "updatedAt": "2026-08-29T07:47:20.650Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Momignies": {
+    "updatedAt": "2026-08-29T07:47:34.130Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Mons": {
+    "updatedAt": "2026-08-29T07:47:49.802Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Mont-de-l'Enclus": {
+    "updatedAt": "2026-08-29T07:48:01.688Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Mont-Saint-Guibert": {
+    "updatedAt": "2026-08-29T07:48:14.498Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Montigny-le-Tilleul": {
+    "updatedAt": "2026-08-29T07:48:26.692Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Morlanwelz": {
+    "updatedAt": "2026-08-29T07:48:40.121Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Mouscron": {
+    "updatedAt": "2026-08-29T07:48:54.406Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Namur": {
+    "updatedAt": "2026-08-29T07:49:06.580Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Nandrin": {
+    "updatedAt": "2026-08-29T07:49:17.950Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Nassogne": {
+    "updatedAt": "2026-08-29T07:49:30.902Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Nivelles": {
+    "updatedAt": "2026-08-29T07:49:44.165Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Ohey": {
+    "updatedAt": "2026-08-29T07:49:58.664Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Olne": {
+    "updatedAt": "2026-08-29T07:50:11.716Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Onhaye": {
+    "updatedAt": "2026-08-29T07:50:25.498Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Oreye": {
+    "updatedAt": "2026-08-29T07:50:38.096Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Ottignies-Louvain-la-Neuve": {
+    "updatedAt": "2026-08-29T07:50:56.069Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Règlement établissant une redevance sur certains services scolaires - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/20-avril-2026-20-15/reglement-etablissant-une-redevance-sur-certains-services-scolaires-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Logement & Énergie",
+        "date": "2026-04-20T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une redevance relative à la descente de la Dyle en kayak prévue les 28 et 29 mars 2026 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/02-mars-2026-20-15/reglement-etablissant-une-redevance-relative-a-la-descente-de-la-dyle-en-kayak-prevue-les-28-et-29-mars-2026-pour-approbation",
+        "matiere": "Patrimoine",
+        "date": "2026-03-02T00:00:00.000Z"
+      },
+      {
+        "titre": "Révision du règlement établissant une redevance sur certains services scolaires – Exercices 2025 à 2031",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/02-mars-2026-20-15/revision-du-reglement-etablissant-une-redevance-sur-certains-services-scolaires-exercices-2025-a-2031",
+        "matiere": "Politique générale",
+        "date": "2026-03-02T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement relatif aux centimes additionnels au précompte immobilier - Exercice 2026 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/15-decembre-2025-20-15/reglement-relatif-aux-centimes-additionnels-au-precompte-immobilier-exercice-2026-pour-approbation",
+        "matiere": "Administration générale",
+        "date": "2025-12-15T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe additionnelle à l'impôt des personnes physiques - Exercice 2026 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/15-decembre-2025-20-15/reglement-etablissant-une-taxe-additionnelle-a-limpot-des-personnes-physiques-exercice-2026-pour-approbation",
+        "matiere": "Administration générale",
+        "date": "2025-12-15T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une redevance sur les services dispensés dans le cadre des plaines de vacances - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/17-novembre-2025-20-15/reglement-etablissant-une-redevance-sur-les-services-dispenses-dans-le-cadre-des-plaines-de-vacances-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Administration générale",
+        "date": "2025-11-17T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une redevance sur le stationnement et la délivrance des cartes de stationnement - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-redevance-sur-le-stationnement-et-la-delivrance-des-cartes-de-stationnement-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Finances",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une redevance sur la location, auprès de l'ASBL PRO VELO, d'un box individuel, à vélo ou cyclomoteur - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-redevance-sur-la-location-aupres-de-lasbl-pro-velo-dun-box-individuel-a-velo-ou-cyclomoteur-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Finances",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement communal fixant les conditions et établissant une redevance sur l'occupation de box à vélos collectifs sur le territoire de la Ville d'Ottignies-Louvain-la-Neuve - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-communal-fixant-les-conditions-et-etablissant-une-redevance-sur-loccupation-de-box-a-velos-collectifs-sur-le-territoire-de-la-ville-dottignies-louvain-la-neuve-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Finances",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur la collecte et le traitement des déchets ménagers et assimilés - Exercice 2026 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-la-collecte-et-le-traitement-des-dechets-menagers-et-assimiles-exercice-2026-pour-approbation",
+        "matiere": "Finances",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une redevance sur la délivrance de sacs réglementaires destinés à la collecte des déchets organiques ainsi que sur le ramassage des conteneurs - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-redevance-sur-la-delivrance-de-sacs-reglementaires-destines-a-la-collecte-des-dechets-organiques-ainsi-que-sur-le-ramassage-des-conteneurs-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Finances",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une redevance sur la délivrance de sacs poubelles réglementaires destinés à la collecte des déchets ménagers et y assimilés, ainsi que sur le ramassage des conteneurs - Exercices 2026 à 2031 -  Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-redevance-sur-la-delivrance-de-sacs-poubelles-reglementaires-destines-a-la-collecte-des-dechets-menagers-et-y-assimiles-ainsi-que-sur-le-ramassage-des-conteneurs-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Finances",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur les piscines privées - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-les-piscines-privees-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Finances",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur les locaux affectés à usage de bureau - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-les-locaux-affectes-a-usage-de-bureau-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Finances",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur la mise en location ou la mise à disposition de logements à des personnes non-domiciliées sur le territoire - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-la-mise-en-location-ou-la-mise-a-disposition-de-logements-a-des-personnes-non-domiciliees-sur-le-territoire-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Finances",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe de séjour dans les hébergements touristiques - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-de-sejour-dans-les-hebergements-touristiques-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Finances",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur les immeubles bâtis inoccupés - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-les-immeubles-batis-inoccupes-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Finances",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une redevance sur le raccordement aux cabines électriques communales dans le cadre d’évènements organisés sur son territoire - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-redevance-sur-le-raccordement-aux-cabines-electriques-communales-dans-le-cadre-devenements-organises-sur-son-territoire-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Finances",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur les terrains de golf - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-les-terrains-de-golf-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur les implantations commerciales - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-les-implantations-commerciales-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur les commerces de nuit - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-les-commerces-de-nuit-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur les dancings - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-les-dancings-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur les agences bancaires - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-les-agences-bancaires-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur les véhicules isolés abandonnés - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-les-vehicules-isoles-abandonnes-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur l'exploitation des parkings payants ouverts au public - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-lexploitation-des-parkings-payants-ouverts-au-public-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur les spectacles cinématographiques - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-les-spectacles-cinematographiques-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur la distribution gratuite d'écrits publicitaires ou d'échantillons publicitaires non adressés et de support de presse régionale gratuite - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-la-distribution-gratuite-decrits-publicitaires-ou-dechantillons-publicitaires-non-adresses-et-de-support-de-presse-regionale-gratuite-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une redevance due pour le traitement et la demande de délivrance de documents ou de renseignements urbanistiques et/ou environnementaux, ainsi que sur les demandes de permis et autorisations urbanistiques et/ou environnementaux - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-redevance-due-pour-le-traitement-et-la-demande-de-delivrance-de-documents-ou-de-renseignements-urbanistiques-et-ou-environnementaux-ainsi-que-sur-les-demandes-de-permis-et-autorisations-urbanistiques-et-ou-environnementaux",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur les constructions et reconstructions - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-les-constructions-et-reconstructions-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur l'absence ou l'insuffisance d'emplacement de parcage - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-labsence-ou-linsuffisance-demplacement-de-parcage-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe pour la demande de raccordement des immeubles au réseau d’égouts communaux - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-pour-la-demande-de-raccordement-des-immeubles-au-reseau-degouts-communaux-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une redevance sur les prestations relatives aux célébrations civiles de mariage le samedi - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-redevance-sur-les-prestations-relatives-aux-celebrations-civiles-de-mariage-le-samedi-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une redevance  sur les opérations d'exhumations de confort et sur le rassemblement de restes mortels - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-redevance-sur-les-operations-dexhumations-de-confort-et-sur-le-rassemblement-de-restes-mortels-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une redevance sur l’enregistrement d’une demande de changement de prénom - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-redevance-sur-lenregistrement-dune-demande-de-changement-de-prenom-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur les demandes de changement de nom - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-les-demandes-de-changement-de-nom-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une redevance pour renseignements généalogiques et historiques provenant des archives conservées par la Ville et fournitures de copies nécessaires dans le cadre du traitement de la demande - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-redevance-pour-renseignements-genealogiques-et-historiques-provenant-des-archives-conservees-par-la-ville-et-fournitures-de-copies-necessaires-dans-le-cadre-du-traitement-de-la-demande-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une redevance sur la recherche et la délivrance de documents et renseignements administratifs - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-redevance-sur-la-recherche-et-la-delivrance-de-documents-et-renseignements-administratifs-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une taxe sur les inhumations, dispersions des cendres, mises en columbarium et mises en cavurne en sépulture non concédée - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-taxe-sur-les-inhumations-dispersions-des-cendres-mises-en-columbarium-et-mises-en-cavurne-en-sepulture-non-concedee-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une redevance sur l'octroi, la modification et le renouvellement de concession de sépulture et de signe de sépulture ainsi que pour la vente de caveaux et de cavurnes - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-redevance-sur-loctroi-la-modification-et-le-renouvellement-de-concession-de-sepulture-et-de-signe-de-sepulture-ainsi-que-pour-la-vente-de-caveaux-et-de-cavurnes-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une redevance sur l'occupation du domaine public - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-redevance-sur-loccupation-du-domaine-public-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement établissant une redevance sur l'occupation d'un emplacement et le raccordement à la cabine électrique communale sur les marchés - Exercices 2026 à 2031 - Pour approbation",
+        "url": "https://www.deliberations.be/ottignies-louvain-la-neuve/decisions/03-novembre-2025-20-15/reglement-etablissant-une-redevance-sur-loccupation-dun-emplacement-et-le-raccordement-a-la-cabine-electrique-communale-sur-les-marches-exercices-2026-a-2031-pour-approbation",
+        "matiere": "Politique générale",
+        "date": "2025-11-03T00:00:00.000Z"
+      }
+    ],
+    "prochainesTaxes": []
+  },
+  "Oupeye": {
+    "updatedAt": "2026-08-29T07:51:07.963Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Paliseul": {
+    "updatedAt": "2026-08-29T07:51:21.509Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Pepinster": {
+    "updatedAt": "2026-08-29T07:51:34.357Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Péruwelz": {
+    "updatedAt": "2026-08-29T07:51:45.668Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Perwez": {
+    "updatedAt": "2026-08-29T07:52:00.672Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Philippeville": {
+    "updatedAt": "2026-08-29T07:52:12.907Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Pont-à-Celles": {
+    "updatedAt": "2026-08-29T07:52:28.127Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Profondeville": {
+    "updatedAt": "2026-08-29T07:52:41.664Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Quaregnon": {
+    "updatedAt": "2026-08-29T07:52:54.942Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Quévy": {
+    "updatedAt": "2026-08-29T07:53:06.508Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Quiévrain": {
+    "updatedAt": "2026-08-29T07:53:18.857Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Ramillies": {
+    "updatedAt": "2026-08-29T07:53:32.338Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Rebecq": {
+    "updatedAt": "2026-08-29T07:53:47.214Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Remicourt": {
+    "updatedAt": "2026-08-29T07:54:02.190Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Rendeux": {
+    "updatedAt": "2026-08-29T07:54:13.691Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Rixensart": {
+    "updatedAt": "2026-08-29T07:54:25.349Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Rochefort": {
+    "updatedAt": "2026-08-29T07:54:37.982Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Rouvroy": {
+    "updatedAt": "2026-08-29T07:54:50.792Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Saint-Georges-sur-Meuse": {
+    "updatedAt": "2026-08-29T07:55:02.524Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Saint-Ghislain": {
+    "updatedAt": "2026-08-29T07:55:15.177Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Saint-Hubert": {
+    "updatedAt": "2026-08-29T07:55:26.936Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Saint-Léger": {
+    "updatedAt": "2026-08-29T07:55:39.846Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Saint-Nicolas": {
+    "updatedAt": "2026-08-29T07:55:53.352Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Sainte-Ode": {
+    "updatedAt": "2026-08-29T07:56:05.063Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Sambreville": {
+    "updatedAt": "2026-08-29T07:56:17.969Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Seneffe": {
+    "updatedAt": "2026-08-29T07:56:32.637Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Seraing": {
+    "updatedAt": "2026-08-29T07:56:45.024Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Sivry-Rance": {
+    "updatedAt": "2026-08-29T07:56:56.516Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Soignies": {
+    "updatedAt": "2026-08-29T07:57:07.737Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Sombreffe": {
+    "updatedAt": "2026-08-29T07:57:20.434Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Somme-Leuze": {
+    "updatedAt": "2026-08-29T07:57:33.966Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Spa": {
+    "updatedAt": "2026-08-29T07:57:46.326Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Sprimont": {
+    "updatedAt": "2026-08-29T07:57:57.699Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Stavelot": {
+    "updatedAt": "2026-08-29T07:58:09.874Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Stoumont": {
+    "updatedAt": "2026-08-29T07:58:22.521Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Tellin": {
+    "updatedAt": "2026-08-29T07:58:37.405Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Theux": {
+    "updatedAt": "2026-08-29T07:58:48.978Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Thimister-Clermont": {
+    "updatedAt": "2026-08-29T07:59:02.047Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Thuin": {
+    "updatedAt": "2026-08-29T07:59:16.001Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Tinlot": {
+    "updatedAt": "2026-08-29T07:59:27.390Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Tournai": {
+    "updatedAt": "2026-08-29T07:59:28.806Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Trois-Ponts": {
+    "updatedAt": "2026-08-29T07:59:42.117Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Tubize": {
+    "updatedAt": "2026-08-29T07:59:54.850Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Verviers": {
+    "updatedAt": "2026-08-29T08:00:13.598Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Vielsalm": {
+    "updatedAt": "2026-08-29T08:00:29.271Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Villers-la-Ville": {
+    "updatedAt": "2026-08-29T08:00:43.495Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Viroinval": {
+    "updatedAt": "2026-08-29T08:00:57.142Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Virton": {
+    "updatedAt": "2026-08-29T08:01:10.333Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Vresse-sur-Semois": {
+    "updatedAt": "2026-08-29T08:01:24.220Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Waimes": {
+    "updatedAt": "2026-08-29T08:01:36.508Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Walcourt": {
+    "updatedAt": "2026-08-29T08:01:49.543Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Walhain": {
+    "updatedAt": "2026-08-29T08:02:02.917Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Wanze": {
+    "updatedAt": "2026-08-29T08:02:16.648Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Waremme": {
+    "updatedAt": "2026-08-29T08:02:30.771Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Wasseiges": {
+    "updatedAt": "2026-08-29T08:02:43.418Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Wavre": {
+    "updatedAt": "2026-08-29T08:03:06.439Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Pôle finances - Règlement-redevance sur certains services offerts au sein des écoles communales 2026-2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/16-juin-2026-19-00/pole-finances-reglement-redevance-sur-certains-services-offerts-au-sein-des-ecoles-communales-2026-2031-inclus",
+        "matiere": "Finances",
+        "date": "2026-06-16T00:00:00.000Z"
+      },
+      {
+        "titre": "Urgence pour le tissu associatif wavrien - Mesures transitoires immédiates de redevance pour l'occupation des locaux communaux (Proposition du groupe LB)",
+        "url": "https://www.deliberations.be/wavre/decisions/19-mai-2026-19-00/urgence-pour-le-tissu-associatif-wavrien-mesures-transitoires-immediates-de-redevance-pour-loccupation-des-locaux-communaux-proposition-du-groupe-lb",
+        "matiere": "Administration générale",
+        "date": "2026-05-19T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Cadre de vie - Service Environnement - Descente de la Dyle 2026 - Règlement- Redevance établissant une redevance relative à la descente de la Dyle en kayak prévue les 28 et 29 mars 2026",
+        "url": "https://www.deliberations.be/wavre/decisions/17-mars-2026-19-00/pole-cadre-de-vie-service-environnement-descente-de-la-dyle-2026-reglement-redevance-etablissant-une-redevance-relative-a-la-descente-de-la-dyle-en-kayak-prevue-les-28-et-29-mars-2026",
+        "matiere": "Zone de police",
+        "date": "2026-03-17T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Règlement-redevance sur le stationnement payant et la carte de riverain 2026 à 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/16-decembre-2025-19-00/pole-finances-reglement-redevance-sur-le-stationnement-payant-et-la-carte-de-riverain-2026-a-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-12-16T00:00:00.000Z"
+      },
+      {
+        "titre": "Service des Finances - Budget 2026 - Prévision des recettes de taxes additionnelles à l'impôt des personnes physiques",
+        "url": "https://www.deliberations.be/wavre/decisions/16-decembre-2025-19-00/service-des-finances-budget-2026-prevision-des-recettes-de-taxes-additionnelles-a-limpot-des-personnes-physiques",
+        "matiere": "Finances",
+        "date": "2025-12-16T00:00:00.000Z"
+      },
+      {
+        "titre": "Service des Finances - Budget 2026 - Prévision des recettes de taxes additionnelles au PRI",
+        "url": "https://www.deliberations.be/wavre/decisions/16-decembre-2025-19-00/service-des-finances-budget-2026-prevision-des-recettes-de-taxes-additionnelles-au-pri",
+        "matiere": "Finances",
+        "date": "2025-12-16T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle finances - Règlement-redevance communale sur les demandes d'autorisations, de permis, de documents et de travaux urbanistiques 2026 à 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/18-novembre-2025-19-00/pole-finances-reglement-redevance-communale-sur-les-demandes-dautorisations-de-permis-de-documents-et-de-travaux-urbanistiques-2026-a-2031-inclus",
+        "matiere": "Affaires immobilières",
+        "date": "2025-11-18T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Règlement-taxe sur l'enlèvement, le traitement, la mise en décharge et la gestion des immondices 2026",
+        "url": "https://www.deliberations.be/wavre/decisions/18-novembre-2025-19-00/pole-finances-reglement-taxe-sur-lenlevement-le-traitement-la-mise-en-decharge-et-la-gestion-des-immondices-2026",
+        "matiere": "Affaires immobilières",
+        "date": "2025-11-18T00:00:00.000Z"
+      },
+      {
+        "titre": "Service des Finances - Règlement-taxe sur la vente de sacs poubelles réglementaires destinés à la collecte périodique des déchets ménagers  et de sacs amiante 2026 à 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/18-novembre-2025-19-00/service-des-finances-reglement-taxe-sur-la-vente-de-sacs-poubelles-reglementaires-destines-a-la-collecte-periodique-des-dechets-menagers-et-de-sacs-amiante-2026-a-2031-inclus",
+        "matiere": "Affaires immobilières",
+        "date": "2025-11-18T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Règlement-redevance sur le stationnement payant et la carte communale de riverain 2026 à 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/18-novembre-2025-19-00/pole-finances-reglement-redevance-sur-le-stationnement-payant-et-la-carte-communale-de-riverain-2026-a-2031-inclus",
+        "matiere": "Affaires immobilières",
+        "date": "2025-11-18T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle finances - Service des Finances - Règlement-redevance sur certains services offerts au sein des écoles communales 2026-2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/18-novembre-2025-19-00/pole-finances-service-des-finances-reglement-redevance-sur-certains-services-offerts-au-sein-des-ecoles-communales-2026-2031-inclus",
+        "matiere": "Affaires immobilières",
+        "date": "2025-11-18T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des finances - Règlement-redevance communale due en cas d’occupation de locaux communaux et sur les frais y relatifs - Dès l'entrée en vigueur jusqu'en 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-redevance-communale-due-en-cas-doccupation-de-locaux-communaux-et-sur-les-frais-y-relatifs-des-lentree-en-vigueur-jusquen-2031-inclus",
+        "matiere": "Affaires immobilières",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-taxe de séjour 2026 à 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-taxe-de-sejour-2026-a-2031-inclus",
+        "matiere": "Affaires immobilières",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement taxes sur les agences de paris sur les courses de chevaux 2026 à 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-taxes-sur-les-agences-de-paris-sur-les-courses-de-chevaux-2026-a-2031-inclus",
+        "matiere": "Affaires immobilières",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-taxe communale annuelle sur les secondes résidences 2026 à 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-taxe-communale-annuelle-sur-les-secondes-residences-2026-a-2031-inclus",
+        "matiere": "Affaires immobilières",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle des Finances - Service des Finances - Règlement-taxe sur la délivrance de documents administratifs par la commune 2026 - 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-des-finances-service-des-finances-reglement-taxe-sur-la-delivrance-de-documents-administratifs-par-la-commune-2026-2031-inclus",
+        "matiere": "Affaires immobilières",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-redevance pour l'enregistrement d'une demande de changement de prénom 2026 - 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-redevance-pour-lenregistrement-dune-demande-de-changement-de-prenom-2026-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-redevance communale sur les opérations d’exhumations de confort et de rassemblement de restes mortels exécutées ou non par la commune 2026 -  2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-redevance-communale-sur-les-operations-dexhumations-de-confort-et-de-rassemblement-de-restes-mortels-executees-ou-non-par-la-commune-2026-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-redevance communale pour toute ouverture de caveaux ou de concessions pleine terre pour cercueil dans les cimetières communaux 2026 à 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-redevance-communale-pour-toute-ouverture-de-caveaux-ou-de-concessions-pleine-terre-pour-cercueil-dans-les-cimetieres-communaux-2026-a-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-taxe sur l’inhumation ou la dispersion des restes mortels 2026 à 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-taxe-sur-linhumation-ou-la-dispersion-des-restes-mortels-2026-a-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-redevance communale pour les concessions de terrain pour sépultures, les urnes, les cellules de columbarium, les plaquettes et les caveaux dans les cimetières communaux 2026 à 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-redevance-communale-pour-les-concessions-de-terrain-pour-sepultures-les-urnes-les-cellules-de-columbarium-les-plaquettes-et-les-caveaux-dans-les-cimetieres-communaux-2026-a-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-taxe communale sur les clubs privés 2026 à 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-taxe-communale-sur-les-clubs-prives-2026-a-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-redevance pour les prestations communales techniques en général - 2026 à 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-redevance-pour-les-prestations-communales-techniques-en-general-2026-a-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-redevance communale sur l'enlèvement des versages sauvages 2026 - 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-redevance-communale-sur-lenlevement-des-versages-sauvages-2026-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-taxe communale sur l’absence d’emplacement de parcage 2026 à 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-taxe-communale-sur-labsence-demplacement-de-parcage-2026-a-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-taxe communale indirecte sur la distribution gratuite d'écrits et Règlement de la taxe communale sur la diffusion publicitaire sur la voie publique 2026 à 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-taxe-communale-indirecte-sur-la-distribution-gratuite-decrits-et-reglement-de-la-taxe-communale-sur-la-diffusion-publicitaire-sur-la-voie-publique-2026-a-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-taxe communale indirecte sur la distribution gratuite d'écrits et d’échantillons non adressés qu’ils soient publicitaires ou émanant de la presse régionale gratuite 2026 à 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-taxe-communale-indirecte-sur-la-distribution-gratuite-decrits-et-dechantillons-non-adresses-quils-soient-publicitaires-ou-emanant-de-la-presse-regionale-gratuite-2026-a-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-taxe sur les enseignes et publicités assimilées obsolètes 2026 - 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-taxe-sur-les-enseignes-et-publicites-assimilees-obsoletes-2026-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-taxe sur l'exploitation d'une loge foraine 2026 - 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-taxe-sur-lexploitation-dune-loge-foraine-2026-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-taxe communale sur les immeubles bâtis inoccupés ou délabrés ou les deux 2026 - 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-taxe-communale-sur-les-immeubles-batis-inoccupes-ou-delabres-ou-les-deux-2026-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-redevance pour l'occupation du domaine public par le placement de terrasses, de tables et de chaises sur des emplacements de stationnement de la zone réglementée payante en voirie et en zone payante munie de barrières d’accès 2026-2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-redevance-pour-loccupation-du-domaine-public-par-le-placement-de-terrasses-de-tables-et-de-chaises-sur-des-emplacements-de-stationnement-de-la-zone-reglementee-payante-en-voirie-et-en-zone-payante-munie-de",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-redevance communale sur l’occupation du domaine public lors de travaux de construction, démolition, reconstruction, aménagement ou transformation d’un bien immobilier 2026 - 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-redevance-communale-sur-loccupation-du-domaine-public-lors-de-travaux-de-construction-demolition-reconstruction-amenagement-ou-transformation-dun-bien-immobilier-2026-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances -  Service des Finances - Règlement-redevance sur certains services offerts au sein des accueillantes d’enfants conventionnées 2026-2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-redevance-sur-certains-services-offerts-au-sein-des-accueillantes-denfants-conventionnees-2026-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-redevance sur certains services offerts au sein des crèches communales 2026-2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-redevance-sur-certains-services-offerts-au-sein-des-creches-communales-2026-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-redevance pour le placement de miroirs directionnels à utilisation individuelle 2026 à 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-redevance-pour-le-placement-de-miroirs-directionnels-a-utilisation-individuelle-2026-a-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-redevance communale sur l'occupation privative du domaine public par un commerce de frites 2026-2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-redevance-communale-sur-loccupation-privative-du-domaine-public-par-un-commerce-de-frites-2026-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-redevance communale sur l'occupation du domaine public à l'occasion des marchés communaux 2026 - 2031",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-redevance-communale-sur-loccupation-du-domaine-public-a-loccasion-des-marches-communaux-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Service des Finances - Règlement-taxes sur les spectacles et divertissements 2026 - 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-finances-service-des-finances-reglement-taxes-sur-les-spectacles-et-divertissements-2026-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle des finances - Règlement redevance sur les célébrations de mariage exercices 2026-2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/04-novembre-2025-20-00/pole-des-finances-reglement-redevance-sur-les-celebrations-de-mariage-exercices-2026-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-11-04T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Règlement de la taxe annuelle sur les véhicules affectés à l’exploitation d’un service de taxis dès sa date d'entrée en vigueur jusqu'à fin 2031",
+        "url": "https://www.deliberations.be/wavre/decisions/20-mai-2025-19-00/pole-finances-reglement-de-la-taxe-annuelle-sur-les-vehicules-affectes-a-lexploitation-dun-service-de-taxis-des-sa-date-dentree-en-vigueur-jusqua-fin-2031",
+        "matiere": "Culture",
+        "date": "2025-05-20T00:00:00.000Z"
+      },
+      {
+        "titre": "Service des Finances - Règlement-taxe communale sur l'utilisation des conteneurs enterrés dès son entrée en vigueur jusque fin 2031",
+        "url": "https://www.deliberations.be/wavre/decisions/18-mars-2025-19-00/service-des-finances-reglement-taxe-communale-sur-lutilisation-des-conteneurs-enterres-des-son-entree-en-vigueur-jusque-fin-2031",
+        "matiere": "Finances",
+        "date": "2025-03-18T00:00:00.000Z"
+      },
+      {
+        "titre": "Pôle Finances - Règlement-redevance sur la location d'un box à vélos - Dès son entrée en vigueur et jusqu'au 2031 inclus",
+        "url": "https://www.deliberations.be/wavre/decisions/18-mars-2025-19-00/pole-finances-reglement-redevance-sur-la-location-dun-box-a-velos-des-son-entree-en-vigueur-et-jusquau-2031-inclus",
+        "matiere": "Finances",
+        "date": "2025-03-18T00:00:00.000Z"
+      }
+    ],
+    "prochainesTaxes": []
+  },
+  "Welkenraedt": {
+    "updatedAt": "2026-08-29T08:03:26.302Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Redevance sur les prestations administratives des services de l'urbanisme et de l'environnement - Exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/27-aout-2026-20-00/redevance-sur-les-prestations-administratives-des-services-de-lurbanisme-et-de-lenvironnement-exercices-2026-2031",
+        "matiere": "Administration générale",
+        "date": "2026-08-27T00:00:00.000Z"
+      },
+      {
+        "titre": "Redevance sur les exhumations de confort et sur le rassemblement des restes mortels - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/18-decembre-2025-20-00/redevance-sur-les-exhumations-de-confort-et-sur-le-rassemblement-des-restes-mortels-exercices-2026-2031",
+        "matiere": "Propreté & Environnement",
+        "date": "2025-12-18T00:00:00.000Z"
+      },
+      {
+        "titre": "Redevance pour l'intervention des services communaux en matière de propreté publique - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/18-decembre-2025-20-00/redevance-pour-lintervention-des-services-communaux-en-matiere-de-proprete-publique-exercices-2026-2031",
+        "matiere": "Propreté & Environnement",
+        "date": "2025-12-18T00:00:00.000Z"
+      },
+      {
+        "titre": "Redevance pour l'accès et l'utilisation de la patinoire - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/20-novembre-2025-20-00/redevance-pour-lacces-et-lutilisation-de-la-patinoire-exercices-2026-2031",
+        "matiere": "Administration générale",
+        "date": "2025-11-20T00:00:00.000Z"
+      },
+      {
+        "titre": "Redevance pour les repas scolaires",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/20-novembre-2025-20-00/redevance-pour-les-repas-scolaires",
+        "matiere": "Administration générale",
+        "date": "2025-11-20T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe sur la collecte et le traitement des déchets ménagers et assimilés. Règlement 2026.",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-sur-la-collecte-et-le-traitement-des-dechets-menagers-et-assimiles-reglement-2026",
+        "matiere": "Administration générale",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe additionnelle à l'impôt des personnes physiques (IPP) — EXERCICES 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-additionnelle-a-limpot-des-personnes-physiques-ipp-exercices-2026-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "CENTIMES ADDITIONNELS AU PRÉCOMPTE IMMOBILIER - EXERCICES 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/centimes-additionnels-au-precompte-immobilier-exercices-2026-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe sur les terrains de golf - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-sur-les-terrains-de-golf-exercices-2026-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe sur l'absence d'emplacements de parcage - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-sur-labsence-demplacements-de-parcage-exercices-2026-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe sur les parcelles non bâties situées dans un périmètre d'urbanisation non périmé - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-sur-les-parcelles-non-baties-situees-dans-un-perimetre-durbanisation-non-perime-exercices-2026-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe sur le stationnement infractionnel en zones bleues - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-sur-le-stationnement-infractionnel-en-zones-bleues-exercices-2026-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe sur les établissements où l'on danse habituellement - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-sur-les-etablissements-ou-lon-danse-habituellement-exercices-2026-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe sur les agences bancaires - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-sur-les-agences-bancaires-exercices-2026-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe sur les dépôts de mitraille et/ou de véhicules hors d'usage - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-sur-les-depots-de-mitraille-et-ou-de-vehicules-hors-dusage-exercices-2026-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe de séjour - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-de-sejour-exercices-2026-2031",
+        "matiere": "Administration générale",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe indirecte sur la distribution gratuite d'écrits ou d'échantillons publicitaires non adressés et de supports de presse régionale gratuite - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-indirecte-sur-la-distribution-gratuite-decrits-ou-dechantillons-publicitaires-non-adresses-et-de-supports-de-presse-regionale-gratuite-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe sur les panneaux d'affichage - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-sur-les-panneaux-daffichage-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe sur les enseignes et publicités assimilées obsolètes - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-sur-les-enseignes-et-publicites-assimilees-obsoletes-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe sur les débits de boissons - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-sur-les-debits-de-boissons-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe communale sur la force motrice - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-communale-sur-la-force-motrice-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe sur les inhumations, dispersions des cendres et mises en columbarium - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-sur-les-inhumations-dispersions-des-cendres-et-mises-en-columbarium-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe sur l'entretien des égouts - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-sur-lentretien-des-egouts-et-des-canalisations-deaux-epurees-et-ou-diverses-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe sur les immeubles inoccupés et/ou délabrés et/ou inachevés ou les trois - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-sur-les-immeubles-inoccupes-et-ou-delabres-et-ou-inacheves-ou-les-trois-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Taxe sur la délivrance de documents administratifs - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/taxe-sur-la-delivrance-de-documents-administratifs-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Redevance pour la recherche et la délivrance de renseignements administratifs - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/redevance-pour-la-recherche-et-la-delivrance-de-renseignements-administratifs-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Redevance pour l'occupation du domaine public à l'occasion des marchés - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/redevance-pour-loccupation-du-domaine-public-a-loccasion-des-marches-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Redevance pour l'enlèvement d'objets encombrants - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/redevance-pour-lenlevement-dobjets-encombrants-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Redevance pour l'utilisation de la morgue ou du dépôt mortuaire - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/redevance-pour-lutilisation-de-la-morgue-ou-du-depot-mortuaire-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Redevance sur les exhumations - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/redevance-sur-les-exhumations-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Redevance pour l'enregistrement d'une demande de changement de prénom - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/redevance-pour-lenregistrement-dune-demande-de-changement-de-prenom-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Redevance pour l’accueil extrascolaire - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/redevance-pour-laccueil-extrascolaire-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Redevance pour la  participation aux centres de vacances - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/redevance-pour-la-participation-aux-centres-de-vacances-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Redevance pour l'occupation du domaine public par les commerces ambulants  - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/redevance-pour-loccupation-du-domaine-public-par-les-commerces-ambulants-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Redevance pour l'occupation du domaine public et la mise à disposition des chalets - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/redevance-pour-loccupation-du-domaine-public-et-la-mise-a-disposition-des-chalets-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Redevance relative aux concessions des sépultures dans les cimetières communaux - exercices 2026-2031",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/30-octobre-2025-20-00/redevance-relative-aux-concessions-des-sepultures-dans-les-cimetieres-communaux-exercices-2026-2031",
+        "matiere": "Finances",
+        "date": "2025-10-30T00:00:00.000Z"
+      },
+      {
+        "titre": "Règlement redevance sur l’utilisation des bornes communales de rechargement pour véhicules électriques",
+        "url": "https://www.deliberations.be/welkenraedt/decisions/20-fevrier-2025-20-00/reglement-redevance-sur-lutilisation-des-bornes-communales-de-rechargement-pour-vehicules-electriques",
+        "matiere": "Cultes",
+        "date": "2025-02-20T00:00:00.000Z"
+      }
+    ],
+    "prochainesTaxes": []
+  },
+  "Wellin": {
+    "updatedAt": "2026-08-29T08:03:38.507Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  },
+  "Yvoir": {
+    "updatedAt": "2026-08-29T08:03:50.071Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": []
+  }
+}
