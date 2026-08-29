@@ -27,18 +27,45 @@ export interface ReglementVigueur {
 }
 
 export interface CommuneFiscalData {
-  commune: string;
+  name: string;
   region: string;
-  echevin_finances: EchevinFinances;
-  taux_additionnels: TauxAdditionnels;
-  discussions_prochaines: DiscussionProchaine[];
-  reglements_en_vigueur: ReglementVigueur[];
+  province: string;
+  ipp: number;
+  pri: number;
+  taxCount: number;
+  financeOfficer: string;
+  email: string;
+  phone: string;
+  website: string;
+  regulations: ReglementVigueur[];
+  discussions: DiscussionProchaine[];
 }
 
 export interface BaseCommune {
   name: string;
   region: 'Wallonie' | 'Bruxelles';
+  province: string;
   ipp: number;
   pri: number;
   taxCount: number;
+}
+
+export interface ReglementTaxe {
+  titre: string;
+  url: string;
+  matiere: string | null;
+  date: string | null;
+}
+
+export interface ProchaineTaxe {
+  titre: string;
+  url: string;
+  matiere: string | null;
+}
+
+export interface CommuneReglementsData {
+  updatedAt: string;
+  reglementsEnVigueur: ReglementTaxe[];
+  prochainesTaxes: ProchaineTaxe[];
+  error?: string;
 }
