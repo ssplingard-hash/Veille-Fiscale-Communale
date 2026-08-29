@@ -1,0 +1,105 @@
+[
+  {
+    "name": "Anderlecht",
+    "url": "https://www.anderlecht.be/fr/reglements-et-formulaires-a-telecharger",
+    "confidence": "high"
+  },
+  {
+    "name": "Auderghem",
+    "url": "https://www.auderghem.be/reglements-taxe",
+    "confidence": "high"
+  },
+  {
+    "name": "Berchem-Sainte-Agathe",
+    "url": "https://berchem.brussels/fr/publications/taxes-redevances/",
+    "confidence": "high"
+  },
+  {
+    "name": "Ville de Bruxelles",
+    "url": "https://www.bruxelles.be/taxes-communales",
+    "confidence": "high"
+  },
+  {
+    "name": "Etterbeek",
+    "url": "https://etterbeek.brussels/fr/themes/emploi-et-commerce/taxes-communales",
+    "confidence": "medium",
+    "note": "Page trouvée sous une rubrique 'emploi et commerce' inhabituelle : à vérifier que c'est bien la bonne page."
+  },
+  {
+    "name": "Evere",
+    "url": "https://evere.brussels/fr/actualite/finances-taxes-communales",
+    "confidence": "medium",
+    "note": "Page trouvée sous 'actualité' : pourrait être une brève plutôt que la liste complète des règlements."
+  },
+  {
+    "name": "Forest",
+    "url": "https://www.forest.brussels/fr/services-communaux/finances-communales/reglements-taxes",
+    "confidence": "high"
+  },
+  {
+    "name": "Ganshoren",
+    "url": "https://www.ganshoren.be/finances/",
+    "confidence": "low",
+    "note": "Pas trouvé de page dédiée 'règlements-taxes' ; be.brussels renvoie vers publi.irisnet.be (non scrapable, cf. notes précédentes) pour cette commune."
+  },
+  {
+    "name": "Ixelles",
+    "url": "https://www.ixelles.be/site/20-Taxes-redevances-et-impots",
+    "confidence": "high"
+  },
+  {
+    "name": "Jette",
+    "url": "https://jette.irisnet.be/",
+    "confidence": "low",
+    "note": "Pas trouvé de sous-page 'taxes' précise ; page d'accueil seulement, à affiner."
+  },
+  {
+    "name": "Koekelberg",
+    "url": null,
+    "confidence": "none",
+    "note": "Le site officiel indique explicitement que les règlements ne sont consultables que sur rendez-vous au secrétariat communal (pas de publication en ligne). Aucune URL exploitable trouvée."
+  },
+  {
+    "name": "Molenbeek-Saint-Jean",
+    "url": "https://www.molenbeek.irisnet.be/fr/je-vis/taxes-et-recettes",
+    "confidence": "high"
+  },
+  {
+    "name": "Saint-Gilles",
+    "url": "https://stgilles.brussels/services/finances/liste-des-taxes/",
+    "confidence": "high"
+  },
+  {
+    "name": "Saint-Josse-ten-Noode",
+    "url": "https://sjtn.brussels/fr/la-commune/reglements-taxes",
+    "confidence": "low",
+    "note": "URL FR devinée par analogie avec la version anglaise (sjtn.brussels/en/municipality/regulations-taxes) : à vérifier."
+  },
+  {
+    "name": "Schaerbeek",
+    "url": "https://www.1030.be/fr/taxes-communales",
+    "confidence": "high"
+  },
+  {
+    "name": "Uccle",
+    "url": "https://uccleadm.irisnet.be/fr/administration/taxes",
+    "confidence": "medium",
+    "note": "Page qui semblait mélanger actualités et infos taxes lors de la recherche : à vérifier qu'elle contient bien la liste des règlements."
+  },
+  {
+    "name": "Watermael-Boitsfort",
+    "url": "https://www.watermael-boitsfort.be/fr/vivre-a-watermael-boitsfort/taxes-et-reglements/taxes",
+    "confidence": "high"
+  },
+  {
+    "name": "Woluwe-Saint-Lambert",
+    "url": "https://www.woluwe1200.be/competences/taxes-communales/",
+    "confidence": "medium",
+    "note": "Page trouvée mais contenu non vérifié en détail (site nécessitait peut-être un rendu JS lors de la recherche)."
+  },
+  {
+    "name": "Woluwe-Saint-Pierre",
+    "url": "https://www.woluwe1150.be/services-communaux/taxesfr/",
+    "confidence": "high"
+  }
+]
