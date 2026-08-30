@@ -40,7 +40,10 @@ const COMMUNES_FILE = path.join(__dirname, 'communes-bruxelles.json');
 const OUTPUT_FILE = path.join(__dirname, '../src/data/reglements-taxes.json');
 
 const USER_AGENT = 'VeilleFiscaleCommunale-bot/1.0 (+contact: voir depot GitHub)';
-const TAX_KEYWORDS = /(taxe|r[eè]glement|redevance|impot|impôt|pr[eé]compte|ipp)/i;
+// IMPORTANT : ne PAS inclure "règlement" seul ici — ce mot apparaît sur quasiment
+// toutes les pages de règlements communaux (police, urbanisme, ordre intérieur...),
+// pas seulement les taxes. Ça noyait les résultats bruxellois dans du bruit.
+const TAX_KEYWORDS = /(taxe|redevance|impot|impôt|pr[eé]compte|centimes additionnels)/i;
 const DELAY_MS = 500;
 
 function sleep(ms) {
@@ -76,6 +79,17 @@ async function scrapeCommune(url) {
     const hrefRaw = $(el).attr('href') || '';
     const text = $(el).text().trim().replace(/\s+/g, ' ');
     if (!text && !hrefRaw) return;
+
+    // Ignore les liens non pertinents : email, réseaux sociaux, ancres pures
+    if (/^mailto:/i.test(hrefRaw)) return;
+    if (/^(tel|javascript):/i.test(hrefRaw)) return;
+    if (/^#/.test(hrefRaw)) return;
+    if (/(facebook|twitter|bsky\.app|instagram|linkedin|youtube)\.com/i.test(hrefRaw)) return;
+
+    // Garde-fou anti-contenu aberrant : un vrai titre de règlement ne dépasse pas ~200
+    // caractères. Un texte plus long est presque toujours une fuite de contenu binaire/
+    // encodé capturé par erreur (ex: script ou ressource compressée mal isolée par le DOM).
+    if (text.length > 200) return;
 
     const isTaxRelated = TAX_KEYWORDS.test(text) || TAX_KEYWORDS.test(hrefRaw);
     if (!isTaxRelated) return;
