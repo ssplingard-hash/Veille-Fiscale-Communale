@@ -46,7 +46,9 @@ const TAX_KEYWORDS = /(taxe|precompte|pr%C3%A9compte|impot|imp%C3%B4t|ipp|redeva
 const MAX_AGE_YEARS = 4;
 const MAX_PAGES_PER_COMMUNE = 20; // garde-fou anti-boucle infinie
 const PAGE_SIZE = 20; // pagination Plone par défaut (b_start:int)
-const DELAY_MS = 350; // pause polie entre deux requêtes HTTP
+const DELAY_MS = 900; // pause polie entre deux requêtes HTTP (augmentée pour éviter le rate-limiting)
+const RETRY_DELAY_MS = 4000; // pause avant une nouvelle tentative après un échec réseau
+const MAX_RETRIES = 2;
 
 const MONTHS_FR = {
   'janvier': 0, 'fevrier': 1, 'février': 1, 'mars': 2, 'avril': 3, 'mai': 4, 'juin': 5,
@@ -57,8 +59,16 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function fetchHtml(url) {
+/** Fetch avec retry : distingue une vraie erreur réseau/rate-limit d'une absence légitime de contenu. */
+async function fetchHtml(url, attempt = 0) {
   const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT, 'Accept-Language': 'fr' } });
+  if (res.status === 429 || res.status === 503) {
+    if (attempt < MAX_RETRIES) {
+      await sleep(RETRY_DELAY_MS * (attempt + 1));
+      return fetchHtml(url, attempt + 1);
+    }
+    throw new Error(`RATE_LIMITED (HTTP ${res.status}) pour ${url}`);
+  }
   if (!res.ok) {
     throw new Error(`HTTP ${res.status} pour ${url}`);
   }
@@ -101,7 +111,15 @@ async function scrapeSection(slug, type) {
     try {
       html = await fetchHtml(url);
     } catch (err) {
-      // Section absente pour cette commune (toutes ne publient pas les deux onglets) -> on arrête sans planter.
+      if (page === 0) {
+        // Échec dès la première page : soit la section n'existe vraiment pas pour cette
+        // commune (404 attendu), soit c'est un vrai problème réseau/rate-limit (à distinguer
+        // par le message). On remonte l'erreur pour qu'elle soit visible dans la sortie
+        // plutôt que de la confondre silencieusement avec "aucun règlement".
+        if (/^HTTP 404/.test(err.message)) break; // section absente, légitime
+        throw err; // rate-limit ou autre échec réseau : à signaler
+      }
+      // Échec au-delà de la première page : on garde ce qu'on a déjà trouvé.
       break;
     }
 
@@ -193,10 +211,9 @@ async function main() {
   for (const { slug, name } of communes) {
     console.log(`→ ${name} (${slug})`);
     try {
-      const [decisions, publications] = await Promise.all([
-        scrapeSection(slug, 'decisions'),
-        scrapeSection(slug, 'publications'),
-      ]);
+      const decisions = await scrapeSection(slug, 'decisions');
+      await sleep(DELAY_MS);
+      const publications = await scrapeSection(slug, 'publications');
 
       output[name] = {
         updatedAt: new Date().toISOString(),
@@ -228,4 +245,3 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
-
