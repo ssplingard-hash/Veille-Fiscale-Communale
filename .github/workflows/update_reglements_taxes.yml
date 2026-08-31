@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   scrape-and-commit:
@@ -33,13 +34,26 @@ jobs:
         run: node scripts/scrape-reglements-taxes-bruxelles.mjs
 
       - name: Commit updated data (if changed)
+        id: commit
         run: |
           git config user.name "reglements-taxes-bot"
           git config user.email "actions@github.com"
           git add src/data/reglements-taxes.json
           if git diff --cached --quiet; then
             echo "Aucun changement détecté."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "Mise à jour quotidienne des règlements-taxes (Wallonie + Bruxelles)"
             git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Déclencher le rebuild et déploiement du site
+        # Un commit fait par un bot avec le GITHUB_TOKEN par défaut ne déclenche PAS
+        # automatiquement les autres workflows (règle anti-boucle infinie de GitHub).
+        # On force donc explicitement l'exécution du workflow de déploiement ici,
+        # sans attendre son prochain cron quotidien.
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run update_data.yml --ref main
