@@ -1,281 +1,666 @@
 {
   "Aiseau-Presles": {
-    "updatedAt": "2026-09-01T08:55:27.468Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:13:53.477Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Aiseau-Presles",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Aiseau-Presles",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:13:53.477Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Amay": {
-    "updatedAt": "2026-09-01T08:56:40.800Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:15:08.994Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Amay",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Amay",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:15:08.993Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Andenne": {
-    "updatedAt": "2026-09-01T08:57:51.987Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:16:21.582Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Andenne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Andenne",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:16:21.582Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Anderlues": {
-    "updatedAt": "2026-09-01T08:59:01.146Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:17:34.750Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Anderlues",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Anderlues",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:17:34.750Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Ans": {
-    "updatedAt": "2026-09-01T09:00:13.812Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:18:48.749Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Ans",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ans",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:18:48.749Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Anthisnes": {
-    "updatedAt": "2026-09-01T09:01:30.210Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:20:08.171Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Anthisnes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Anthisnes",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:20:08.171Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Arlon": {
-    "updatedAt": "2026-09-01T09:02:53.725Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:21:30.775Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Arlon",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Arlon",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:21:30.775Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Assesse": {
-    "updatedAt": "2026-09-01T09:04:05.788Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:23:02.386Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Assesse",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Assesse",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:23:02.386Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Ath": {
-    "updatedAt": "2026-09-01T09:05:24.019Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:24:30.415Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Ath",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ath",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:24:30.415Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Attert": {
-    "updatedAt": "2026-09-01T09:06:39.194Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:25:55.796Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Attert",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Attert",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:25:55.795Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Aubel": {
-    "updatedAt": "2026-09-01T09:07:51.366Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:27:12.509Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Aubel",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Aubel",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:27:12.508Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Awans": {
-    "updatedAt": "2026-09-01T09:09:00.265Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:28:32.157Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Awans",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Awans",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:28:32.157Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Baelen": {
-    "updatedAt": "2026-09-01T09:10:15.579Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:29:54.479Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Baelen",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Baelen",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:29:54.479Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Bastogne": {
-    "updatedAt": "2026-09-01T09:11:31.927Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:31:14.945Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Bastogne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Bastogne",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:31:14.945Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Beaumont": {
-    "updatedAt": "2026-09-01T09:12:43.739Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:32:32.660Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Beaumont",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Beaumont",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:32:32.660Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Beauraing": {
-    "updatedAt": "2026-09-01T09:13:56.622Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:33:47.726Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Beauraing",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Beauraing",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:33:47.726Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Belœil": {
-    "updatedAt": "2026-09-01T09:15:14.083Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:35:03.637Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Belœil",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Bel%C5%93il",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:35:03.637Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Berloz": {
-    "updatedAt": "2026-09-01T09:16:35.454Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:36:17.649Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Berloz",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Berloz",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:36:17.649Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Bertrix": {
-    "updatedAt": "2026-09-01T09:17:50.971Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:37:55.455Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Bertrix",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Bertrix",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:37:55.455Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Beyne-Heusay": {
-    "updatedAt": "2026-09-01T09:19:07.614Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:40:54.039Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Beyne-Heusay",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Beyne-Heusay",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:40:54.039Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Binche": {
-    "updatedAt": "2026-09-01T09:20:20.391Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:42:07.972Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Binche",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Binche",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:42:07.972Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Blegny": {
-    "updatedAt": "2026-09-01T09:21:34.273Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:43:21.760Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Blegny",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Blegny",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:43:21.760Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Bouillon": {
-    "updatedAt": "2026-09-01T09:22:52.118Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:44:38.213Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Bouillon",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Bouillon",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:44:38.213Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Boussu": {
-    "updatedAt": "2026-09-01T09:22:55.386Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:44:41.915Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Boussu",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Boussu",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:44:41.915Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Braine-l'Alleud": {
-    "updatedAt": "2026-09-01T09:24:11.101Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:45:58.274Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Braine-l'Alleud",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Braine-l'Alleud",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:45:58.274Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Braine-le-Château": {
-    "updatedAt": "2026-09-01T09:25:28.318Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:47:13.288Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Braine-le-Château",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Braine-le-Ch%C3%A2teau",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:47:13.288Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Braine-le-Comte": {
-    "updatedAt": "2026-09-01T09:26:46.178Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:48:29.266Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Braine-le-Comte",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Braine-le-Comte",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:48:29.266Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Braives": {
-    "updatedAt": "2026-09-01T09:27:58.456Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:49:42.918Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Braives",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Braives",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:49:42.917Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Brunehaut": {
-    "updatedAt": "2026-09-01T09:29:13.453Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:50:55.894Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Brunehaut",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Brunehaut",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:50:55.894Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Celles": {
-    "updatedAt": "2026-09-01T09:30:28.445Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:52:09.135Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Celles",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Celles",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:52:09.135Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Cerfontaine": {
-    "updatedAt": "2026-09-01T09:31:40.769Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:53:21.041Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Cerfontaine",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Cerfontaine",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:53:21.041Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Chapelle-lez-Herlaimont": {
-    "updatedAt": "2026-09-01T09:32:51.412Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:54:32.178Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Chapelle-lez-Herlaimont",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Chapelle-lez-Herlaimont",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:54:32.178Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Charleroi": {
-    "updatedAt": "2026-09-01T09:34:04.063Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:55:44.528Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Charleroi",
+        "url": "https://www.charleroi.be/ma-commune/finances/taxes-communales",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:55:44.528Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Chastre": {
-    "updatedAt": "2026-09-01T09:35:21.854Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:56:58.548Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Chastre",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Chastre",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:56:58.548Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Châtelet": {
-    "updatedAt": "2026-09-01T09:36:33.580Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:58:25.684Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Châtelet",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ch%C3%A2telet",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:58:25.684Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Chaumont-Gistoux": {
-    "updatedAt": "2026-09-01T09:38:06.349Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:59:54.007Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Chaumont-Gistoux",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Chaumont-Gistoux",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:59:54.007Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Chièvres": {
-    "updatedAt": "2026-09-01T09:38:37.021Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T14:59:57.794Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Chièvres",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Chi%C3%A8vres",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T14:59:57.794Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Chimay": {
-    "updatedAt": "2026-09-01T09:40:26.370Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:01:28.992Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Chimay",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Chimay",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:01:28.992Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Chiny": {
-    "updatedAt": "2026-09-01T09:45:27.405Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:02:50.845Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Chiny",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Chiny",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:02:50.845Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Ciney": {
-    "updatedAt": "2026-09-01T09:46:55.792Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:04:20.208Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Ciney",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ciney",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:04:20.208Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Clavier": {
-    "updatedAt": "2026-09-01T09:49:26.008Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:05:44.670Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Clavier",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Clavier",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:05:44.670Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Colfontaine": {
-    "updatedAt": "2026-09-01T09:50:57.611Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:07:03.819Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Colfontaine",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Colfontaine",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:07:03.819Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Comblain-au-Pont": {
-    "updatedAt": "2026-09-01T09:52:11.913Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:08:29.069Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Comblain-au-Pont",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Comblain-au-Pont",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:08:29.069Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Comines-Warneton": {
-    "updatedAt": "2026-09-01T09:54:07.381Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:09:50.246Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Comines-Warneton",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Comines-Warneton",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:09:50.246Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Courcelles": {
-    "updatedAt": "2026-09-01T09:55:24.885Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:11:13.750Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Courcelles",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Courcelles",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:11:13.750Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Court-Saint-Étienne": {
-    "updatedAt": "2026-09-01T09:57:29.835Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:12:33.329Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Court-Saint-Étienne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Court-Saint-%C3%89tienne",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:12:33.329Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Couvin": {
-    "updatedAt": "2026-09-01T09:59:14.471Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:13:55.878Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Couvin",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Couvin",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:13:55.878Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Dalhem": {
-    "updatedAt": "2026-09-01T10:00:35.374Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:15:17.737Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Dalhem",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Dalhem",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:15:17.737Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Daverdisse": {
-    "updatedAt": "2026-09-01T10:02:21.137Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:16:38.357Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Daverdisse",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Daverdisse",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:16:38.357Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Dinant": {
-    "updatedAt": "2026-09-01T10:03:31.521Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:17:59.391Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Dinant",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Dinant",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:17:59.391Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Dison": {
-    "updatedAt": "2026-09-01T10:04:39.788Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:19:18.052Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Dison",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Dison",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:19:18.052Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Doische": {
-    "updatedAt": "2026-09-01T10:05:52.848Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:20:30.256Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Doische",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Doische",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:20:30.256Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Donceel": {
-    "updatedAt": "2026-09-01T10:05:55.861Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:20:33.641Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Donceel",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Donceel",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:20:33.641Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Dour": {
-    "updatedAt": "2026-09-01T10:07:07.955Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:21:44.453Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Dour",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Dour",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:21:44.453Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Durbuy": {
-    "updatedAt": "2026-09-01T10:08:20.765Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:22:56.483Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Durbuy",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Durbuy",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:22:56.483Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Écaussinnes": {
-    "updatedAt": "2026-09-01T10:11:02.705Z",
+    "updatedAt": "2026-09-01T15:25:31.207Z",
     "reglementsEnVigueur": [
       {
         "titre": "NOTIFICATION DE LA TUTELLE - Taxe communale annuelle sur les moteurs - Exercices 2026 à 2031",
@@ -557,457 +942,1087 @@
     "prochainesTaxes": []
   },
   "Éghezée": {
-    "updatedAt": "2026-09-01T10:12:14.614Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:26:45.132Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Éghezée",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+%C3%89ghez%C3%A9e",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:26:45.132Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Ellezelles": {
-    "updatedAt": "2026-09-01T10:12:17.834Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:26:48.600Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Ellezelles",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ellezelles",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:26:48.600Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Enghien": {
-    "updatedAt": "2026-09-01T10:13:30.136Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:28:01.752Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Enghien",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Enghien",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:28:01.752Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Engis": {
-    "updatedAt": "2026-09-01T10:14:44.173Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:29:14.509Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Engis",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Engis",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:29:14.509Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Érezée": {
-    "updatedAt": "2026-09-01T10:15:58.318Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:30:28.398Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Érezée",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+%C3%89rez%C3%A9e",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:30:28.398Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Erquelinnes": {
-    "updatedAt": "2026-09-01T10:17:11.143Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:31:43.350Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Erquelinnes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Erquelinnes",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:31:43.350Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Estaimpuis": {
-    "updatedAt": "2026-09-01T10:17:14.144Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:31:47.007Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Estaimpuis",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Estaimpuis",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:31:47.007Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Estinnes": {
-    "updatedAt": "2026-09-01T10:18:25.150Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:33:00.846Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Estinnes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Estinnes",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:33:00.846Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Étalle": {
-    "updatedAt": "2026-09-01T10:19:38.513Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:34:15.019Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Étalle",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+%C3%89talle",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:34:15.019Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Faimes": {
-    "updatedAt": "2026-09-01T10:20:49.000Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:35:27.615Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Faimes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Faimes",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:35:27.615Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Farciennes": {
-    "updatedAt": "2026-09-01T10:21:59.317Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:36:45.336Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Farciennes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Farciennes",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:36:45.336Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Fauvillers": {
-    "updatedAt": "2026-09-01T10:23:10.603Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:39:06.042Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Fauvillers",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Fauvillers",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:39:06.042Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Ferrières": {
-    "updatedAt": "2026-09-01T10:24:23.354Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:40:25.623Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Ferrières",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ferri%C3%A8res",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:40:25.623Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Fexhe-le-Haut-Clocher": {
-    "updatedAt": "2026-09-01T10:25:33.467Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:41:43.271Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Fexhe-le-Haut-Clocher",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Fexhe-le-Haut-Clocher",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:41:43.270Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Flémalle": {
-    "updatedAt": "2026-09-01T10:26:48.046Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:42:58.007Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Flémalle",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Fl%C3%A9malle",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:42:58.007Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Fléron": {
-    "updatedAt": "2026-09-01T10:28:04.311Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:44:08.960Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Fléron",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Fl%C3%A9ron",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:44:08.960Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Fleurus": {
-    "updatedAt": "2026-09-01T10:29:15.533Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:45:24.998Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Fleurus",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Fleurus",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:45:24.998Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Florennes": {
-    "updatedAt": "2026-09-01T10:30:32.416Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:46:39.313Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Florennes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Florennes",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:46:39.313Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Florenville": {
-    "updatedAt": "2026-09-01T10:31:45.498Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:47:53.680Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Florenville",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Florenville",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:47:53.680Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Fontaine-l'Evêque": {
-    "updatedAt": "2026-09-01T10:32:58.843Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:49:07.083Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Fontaine-l'Evêque",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Fontaine-l'Ev%C3%AAque",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:49:07.083Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Frameries": {
-    "updatedAt": "2026-09-01T10:34:11.862Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:50:18.700Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Frameries",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Frameries",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:50:18.700Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Frasnes-lez-Anvaing": {
-    "updatedAt": "2026-09-01T10:34:15.222Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:50:23.097Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Frasnes-lez-Anvaing",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Frasnes-lez-Anvaing",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:50:23.097Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Froidchapelle": {
-    "updatedAt": "2026-09-01T10:35:28.153Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:51:36.396Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Froidchapelle",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Froidchapelle",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:51:36.396Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Geer": {
-    "updatedAt": "2026-09-01T10:36:40.177Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:52:51.495Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Geer",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Geer",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:52:51.495Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Gembloux": {
-    "updatedAt": "2026-09-01T10:38:55.664Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:54:03.621Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Gembloux",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Gembloux",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:54:03.621Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Genappe": {
-    "updatedAt": "2026-09-01T10:40:20.450Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:55:16.467Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Genappe",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Genappe",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:55:16.467Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Gerpinnes": {
-    "updatedAt": "2026-09-01T10:41:33.780Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:56:29.217Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Gerpinnes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Gerpinnes",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:56:29.217Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Grâce-Hollogne": {
-    "updatedAt": "2026-09-01T10:42:47.378Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:57:50.941Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Grâce-Hollogne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Gr%C3%A2ce-Hollogne",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:57:50.941Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Grez-Doiceau": {
-    "updatedAt": "2026-09-01T10:44:02.291Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T15:59:05.370Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Grez-Doiceau",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Grez-Doiceau",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T15:59:05.370Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Habay": {
-    "updatedAt": "2026-09-01T10:45:14.167Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:00:23.744Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Habay",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Habay",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:00:23.743Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Ham-sur-Heure-Nalinnes": {
-    "updatedAt": "2026-09-01T10:46:25.754Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:01:40.473Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Ham-sur-Heure-Nalinnes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ham-sur-Heure-Nalinnes",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:01:40.473Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Hamoir": {
-    "updatedAt": "2026-09-01T10:47:39.791Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:02:54.538Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Hamoir",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Hamoir",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:02:54.538Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Hamois": {
-    "updatedAt": "2026-09-01T10:48:51.248Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:04:09.417Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Hamois",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Hamois",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:04:09.417Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Hannut": {
-    "updatedAt": "2026-09-01T10:50:04.979Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:05:23.869Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Hannut",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Hannut",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:05:23.869Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Havelange": {
-    "updatedAt": "2026-09-01T10:51:19.888Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:06:37.761Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Havelange",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Havelange",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:06:37.761Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Hélécine": {
-    "updatedAt": "2026-09-01T10:52:34.356Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:07:51.366Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Hélécine",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+H%C3%A9l%C3%A9cine",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:07:51.366Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Hensies": {
-    "updatedAt": "2026-09-01T10:53:50.347Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:09:03.704Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Hensies",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Hensies",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:09:03.704Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Héron": {
-    "updatedAt": "2026-09-01T10:55:03.239Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:10:15.587Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Héron",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+H%C3%A9ron",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:10:15.587Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Herstal": {
-    "updatedAt": "2026-09-01T10:56:14.442Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:11:29.007Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Herstal",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Herstal",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:11:29.007Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Honnelles": {
-    "updatedAt": "2026-09-01T10:57:27.880Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:12:41.100Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Honnelles",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Honnelles",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:12:41.100Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Houffalize": {
-    "updatedAt": "2026-09-01T10:58:42.696Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:13:56.625Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Houffalize",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Houffalize",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:13:56.625Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Houyet": {
-    "updatedAt": "2026-09-01T10:59:54.609Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:15:17.522Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Houyet",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Houyet",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:15:17.522Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Huy": {
-    "updatedAt": "2026-09-01T11:01:10.613Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:16:35.742Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Huy",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Huy",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:16:35.742Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Incourt": {
-    "updatedAt": "2026-09-01T11:02:22.920Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:17:49.578Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Incourt",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Incourt",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:17:49.578Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Ittre": {
-    "updatedAt": "2026-09-01T11:03:37.365Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:19:15.621Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Ittre",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ittre",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:19:15.621Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Jalhay": {
-    "updatedAt": "2026-09-01T11:04:48.988Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:20:33.963Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Jalhay",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Jalhay",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:20:33.963Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Jemeppe-sur-Sambre": {
-    "updatedAt": "2026-09-01T11:04:52.351Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:20:37.680Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Jemeppe-sur-Sambre",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Jemeppe-sur-Sambre",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:20:37.680Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Juprelle": {
-    "updatedAt": "2026-09-01T11:06:06.977Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:21:51.108Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Juprelle",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Juprelle",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:21:51.108Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Jurbise": {
-    "updatedAt": "2026-09-01T11:07:20.438Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:23:02.846Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Jurbise",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Jurbise",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:23:02.846Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "La Bruyère": {
-    "updatedAt": "2026-09-01T11:08:31.395Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:24:14.334Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - La Bruyère",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+La%20Bruy%C3%A8re",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:24:14.334Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "La Hulpe": {
-    "updatedAt": "2026-09-01T11:09:47.105Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:25:27.762Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - La Hulpe",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+La%20Hulpe",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:25:27.762Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "La Louvière": {
-    "updatedAt": "2026-09-01T11:11:00.714Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:26:42.438Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - La Louvière",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+La%20Louvi%C3%A8re",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:26:42.437Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "La Roche-en-Ardenne": {
-    "updatedAt": "2026-09-01T11:12:14.027Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:27:54.633Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - La Roche-en-Ardenne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+La%20Roche-en-Ardenne",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:27:54.633Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Lasne": {
-    "updatedAt": "2026-09-01T11:13:25.010Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:29:09.548Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Lasne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Lasne",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:29:09.548Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Le Rœulx": {
-    "updatedAt": "2026-09-01T11:14:37.099Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:30:25.380Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Le Rœulx",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Le%20R%C5%93ulx",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:30:25.379Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Léglise": {
-    "updatedAt": "2026-09-01T11:15:15.251Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:31:46.574Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Léglise",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+L%C3%A9glise",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:31:46.574Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Lens": {
-    "updatedAt": "2026-09-01T11:16:30.196Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:33:04.289Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Lens",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Lens",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:33:04.289Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Les Bons Villers": {
-    "updatedAt": "2026-09-01T11:17:43.486Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:34:16.485Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Les Bons Villers",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Les%20Bons%20Villers",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:34:16.485Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Lessines": {
-    "updatedAt": "2026-09-01T11:18:56.021Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:35:29.293Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Lessines",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Lessines",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:35:29.293Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Libin": {
-    "updatedAt": "2026-09-01T11:20:10.352Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:36:45.060Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Libin",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Libin",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:36:45.060Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Libramont-Chevigny": {
-    "updatedAt": "2026-09-01T11:21:25.123Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:39:32.929Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Libramont-Chevigny",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Libramont-Chevigny",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:39:32.929Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Liège": {
-    "updatedAt": "2026-09-01T11:22:40.681Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:42:03.361Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Liège",
+        "url": "https://www.liege.be/fr/vie-communale/finances-et-taxes/taxes-communales",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:42:03.361Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Lierneux": {
-    "updatedAt": "2026-09-01T11:24:02.023Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:43:16.154Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Lierneux",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Lierneux",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:43:16.154Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Limbourg": {
-    "updatedAt": "2026-09-01T11:25:24.636Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:44:31.049Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Limbourg",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Limbourg",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:44:31.049Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Lincent": {
-    "updatedAt": "2026-09-01T11:26:47.111Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:45:48.391Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Lincent",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Lincent",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:45:48.391Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Lobbes": {
-    "updatedAt": "2026-09-01T11:28:09.018Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:47:03.399Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Lobbes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Lobbes",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:47:03.399Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Malmedy": {
-    "updatedAt": "2026-09-01T11:29:29.283Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:48:15.476Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Malmedy",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Malmedy",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:48:15.476Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Manage": {
-    "updatedAt": "2026-09-01T11:30:45.691Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:49:27.141Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Manage",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Manage",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:49:27.141Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Manhay": {
-    "updatedAt": "2026-09-01T11:31:58.354Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:50:41.777Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Manhay",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Manhay",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:50:41.777Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Marche-en-Famenne": {
-    "updatedAt": "2026-09-01T11:33:13.186Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:51:56.404Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Marche-en-Famenne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Marche-en-Famenne",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:51:56.404Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Marchin": {
-    "updatedAt": "2026-09-01T11:34:28.712Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:53:08.079Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Marchin",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Marchin",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:53:08.079Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Martelange": {
-    "updatedAt": "2026-09-01T11:35:46.210Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:54:21.576Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Martelange",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Martelange",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:54:21.576Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Meix-devant-Virton": {
-    "updatedAt": "2026-09-01T11:37:00.354Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:55:36.133Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Meix-devant-Virton",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Meix-devant-Virton",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:55:36.133Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Merbes-le-Château": {
-    "updatedAt": "2026-09-01T11:40:26.005Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:56:47.747Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Merbes-le-Château",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Merbes-le-Ch%C3%A2teau",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:56:47.747Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Mettet": {
-    "updatedAt": "2026-09-01T11:42:42.621Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:57:59.103Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Mettet",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Mettet",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:57:59.103Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Momignies": {
-    "updatedAt": "2026-09-01T11:43:53.764Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T16:59:10.074Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Momignies",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Momignies",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T16:59:10.074Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Mons": {
-    "updatedAt": "2026-09-01T11:45:03.981Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:00:24.348Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Mons",
+        "url": "https://www.mons.be/vivre-a-mons/finances/taxes-communales",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:00:24.348Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Mont-de-l'Enclus": {
-    "updatedAt": "2026-09-01T11:46:18.882Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:01:39.309Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Mont-de-l'Enclus",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Mont-de-l'Enclus",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:01:39.309Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Mont-Saint-Guibert": {
-    "updatedAt": "2026-09-01T11:47:30.476Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:02:51.294Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Mont-Saint-Guibert",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Mont-Saint-Guibert",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:02:51.294Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Montigny-le-Tilleul": {
-    "updatedAt": "2026-09-01T11:48:42.687Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:04:03.655Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Montigny-le-Tilleul",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Montigny-le-Tilleul",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:04:03.655Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Morlanwelz": {
-    "updatedAt": "2026-09-01T11:49:56.760Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:05:17.046Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Morlanwelz",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Morlanwelz",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:05:17.046Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Mouscron": {
-    "updatedAt": "2026-09-01T11:51:10.139Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:06:30.921Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Mouscron",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Mouscron",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:06:30.921Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Namur": {
-    "updatedAt": "2026-09-01T11:52:23.712Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:07:47.086Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Namur",
+        "url": "https://www.namur.be/fr/ma-ville/finances/taxes",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:07:47.086Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Nandrin": {
-    "updatedAt": "2026-09-01T11:53:35.256Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:09:02.131Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Nandrin",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Nandrin",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:09:02.131Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Nassogne": {
-    "updatedAt": "2026-09-01T11:54:48.548Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:10:18.842Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Nassogne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Nassogne",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:10:18.842Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Nivelles": {
-    "updatedAt": "2026-09-01T11:56:02.552Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:11:33.028Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Nivelles",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Nivelles",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:11:33.028Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Ohey": {
-    "updatedAt": "2026-09-01T11:57:15.104Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:12:49.359Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Ohey",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ohey",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:12:49.359Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Olne": {
-    "updatedAt": "2026-09-01T11:58:27.545Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:14:05.131Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Olne",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Olne",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:14:05.131Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Onhaye": {
-    "updatedAt": "2026-09-01T11:59:40.748Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:15:22.241Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Onhaye",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Onhaye",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:15:22.241Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Oreye": {
-    "updatedAt": "2026-09-01T12:00:56.073Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:16:38.995Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Oreye",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Oreye",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:16:38.995Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Ottignies-Louvain-la-Neuve": {
-    "updatedAt": "2026-09-01T12:03:39.184Z",
+    "updatedAt": "2026-09-01T17:19:18.445Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlement établissant une redevance sur certains services scolaires - Exercices 2026 à 2031 - Pour approbation",
@@ -1331,282 +2346,667 @@
     "prochainesTaxes": []
   },
   "Oupeye": {
-    "updatedAt": "2026-09-01T12:04:53.028Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:20:34.015Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Oupeye",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Oupeye",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:20:34.015Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Paliseul": {
-    "updatedAt": "2026-09-01T12:06:07.318Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:21:48.955Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Paliseul",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Paliseul",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:21:48.955Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Pepinster": {
-    "updatedAt": "2026-09-01T12:07:21.606Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:23:04.568Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Pepinster",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Pepinster",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:23:04.568Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Péruwelz": {
-    "updatedAt": "2026-09-01T12:08:37.308Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:24:22.487Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Péruwelz",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+P%C3%A9ruwelz",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:24:22.487Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Perwez": {
-    "updatedAt": "2026-09-01T12:09:51.661Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:25:38.296Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Perwez",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Perwez",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:25:38.296Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Philippeville": {
-    "updatedAt": "2026-09-01T12:11:05.482Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:26:53.994Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Philippeville",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Philippeville",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:26:53.994Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Pont-à-Celles": {
-    "updatedAt": "2026-09-01T12:12:16.501Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:28:07.212Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Pont-à-Celles",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Pont-%C3%A0-Celles",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:28:07.212Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Profondeville": {
-    "updatedAt": "2026-09-01T12:13:30.751Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:29:21.034Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Profondeville",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Profondeville",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:29:21.034Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Quaregnon": {
-    "updatedAt": "2026-09-01T12:14:48.719Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:30:37.238Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Quaregnon",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Quaregnon",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:30:37.238Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Quévy": {
-    "updatedAt": "2026-09-01T12:16:06.508Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:31:51.099Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Quévy",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Qu%C3%A9vy",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:31:51.099Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Quiévrain": {
-    "updatedAt": "2026-09-01T12:17:23.717Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:33:06.200Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Quiévrain",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Qui%C3%A9vrain",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:33:06.200Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Ramillies": {
-    "updatedAt": "2026-09-01T12:18:41.178Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:34:17.461Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Ramillies",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Ramillies",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:34:17.461Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Rebecq": {
-    "updatedAt": "2026-09-01T12:19:59.222Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:35:30.757Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Rebecq",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Rebecq",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:35:30.757Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Remicourt": {
-    "updatedAt": "2026-09-01T12:21:09.939Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:36:40.983Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Remicourt",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Remicourt",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:36:40.983Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Rendeux": {
-    "updatedAt": "2026-09-01T12:22:24.055Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:38:56.069Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Rendeux",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Rendeux",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:38:56.069Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Rixensart": {
-    "updatedAt": "2026-09-01T12:23:35.749Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:42:01.917Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Rixensart",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Rixensart",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:42:01.917Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Rochefort": {
-    "updatedAt": "2026-09-01T12:24:46.954Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:43:16.536Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Rochefort",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Rochefort",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:43:16.536Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Rouvroy": {
-    "updatedAt": "2026-09-01T12:26:01.361Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:44:26.485Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Rouvroy",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Rouvroy",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:44:26.485Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Saint-Georges-sur-Meuse": {
-    "updatedAt": "2026-09-01T12:27:11.801Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:45:42.199Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Saint-Georges-sur-Meuse",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Saint-Georges-sur-Meuse",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:45:42.199Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Saint-Ghislain": {
-    "updatedAt": "2026-09-01T12:28:24.780Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:46:54.871Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Saint-Ghislain",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Saint-Ghislain",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:46:54.871Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Saint-Hubert": {
-    "updatedAt": "2026-09-01T12:29:39.033Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:48:08.650Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Saint-Hubert",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Saint-Hubert",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:48:08.650Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Saint-Léger": {
-    "updatedAt": "2026-09-01T12:30:54.944Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:49:19.714Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Saint-Léger",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Saint-L%C3%A9ger",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:49:19.714Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Saint-Nicolas": {
-    "updatedAt": "2026-09-01T12:32:05.618Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:50:32.389Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Saint-Nicolas",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Saint-Nicolas",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:50:32.389Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Sainte-Ode": {
-    "updatedAt": "2026-09-01T12:33:19.975Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:51:46.465Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Sainte-Ode",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Sainte-Ode",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:51:46.465Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Sambreville": {
-    "updatedAt": "2026-09-01T12:34:33.443Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:52:58.217Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Sambreville",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Sambreville",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:52:58.217Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Seneffe": {
-    "updatedAt": "2026-09-01T12:35:47.525Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:54:11.642Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Seneffe",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Seneffe",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:54:11.642Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Seraing": {
-    "updatedAt": "2026-09-01T12:37:00.319Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:55:23.791Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Seraing",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Seraing",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:55:23.791Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Sivry-Rance": {
-    "updatedAt": "2026-09-01T12:38:55.194Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:56:34.765Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Sivry-Rance",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Sivry-Rance",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:56:34.765Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Soignies": {
-    "updatedAt": "2026-09-01T12:40:43.808Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:57:45.408Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Soignies",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Soignies",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:57:45.408Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Sombreffe": {
-    "updatedAt": "2026-09-01T12:41:56.470Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T17:59:00.743Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Sombreffe",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Sombreffe",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T17:59:00.743Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Somme-Leuze": {
-    "updatedAt": "2026-09-01T12:43:09.243Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:00:15.442Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Somme-Leuze",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Somme-Leuze",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:00:15.442Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Spa": {
-    "updatedAt": "2026-09-01T12:44:27.695Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:01:33.802Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Spa",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Spa",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:01:33.802Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Sprimont": {
-    "updatedAt": "2026-09-01T12:45:43.602Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:02:47.159Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Sprimont",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Sprimont",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:02:47.159Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Stavelot": {
-    "updatedAt": "2026-09-01T12:46:56.538Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:03:58.770Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Stavelot",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Stavelot",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:03:58.770Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Stoumont": {
-    "updatedAt": "2026-09-01T12:48:07.606Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:05:11.333Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Stoumont",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Stoumont",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:05:11.333Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Tellin": {
-    "updatedAt": "2026-09-01T12:49:34.974Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:07:02.679Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Tellin",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Tellin",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:07:02.679Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Theux": {
-    "updatedAt": "2026-09-01T12:50:49.469Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:08:13.809Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Theux",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Theux",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:08:13.809Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Thimister-Clermont": {
-    "updatedAt": "2026-09-01T12:52:04.301Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:09:22.721Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Thimister-Clermont",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Thimister-Clermont",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:09:22.721Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Thuin": {
-    "updatedAt": "2026-09-01T12:53:16.826Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:10:34.888Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Thuin",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Thuin",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:10:34.888Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Tinlot": {
-    "updatedAt": "2026-09-01T12:54:30.811Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:11:49.770Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Tinlot",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Tinlot",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:11:49.770Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Tournai": {
-    "updatedAt": "2026-09-01T12:54:34.098Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:11:53.445Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Tournai",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Tournai",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:11:53.445Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Trois-Ponts": {
-    "updatedAt": "2026-09-01T12:55:45.254Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:13:03.711Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Trois-Ponts",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Trois-Ponts",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:13:03.710Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Tubize": {
-    "updatedAt": "2026-09-01T12:56:55.835Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:14:16.165Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Tubize",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Tubize",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:14:16.165Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Verviers": {
-    "updatedAt": "2026-09-01T12:58:07.348Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:15:32.013Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Verviers",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Verviers",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:15:32.013Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Vielsalm": {
-    "updatedAt": "2026-09-01T12:59:21.172Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:16:51.668Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Vielsalm",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Vielsalm",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:16:51.668Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Villers-la-Ville": {
-    "updatedAt": "2026-09-01T13:00:39.627Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:18:05.904Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Villers-la-Ville",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Villers-la-Ville",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:18:05.904Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Viroinval": {
-    "updatedAt": "2026-09-01T13:02:33.423Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:19:21.313Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Viroinval",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Viroinval",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:19:21.313Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Virton": {
-    "updatedAt": "2026-09-01T13:03:46.127Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:20:33.567Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Virton",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Virton",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:20:33.567Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Vresse-sur-Semois": {
-    "updatedAt": "2026-09-01T13:04:58.976Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:21:44.732Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Vresse-sur-Semois",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Vresse-sur-Semois",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:21:44.732Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Waimes": {
-    "updatedAt": "2026-09-01T13:06:14.702Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:22:59.823Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Waimes",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Waimes",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:22:59.823Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Walcourt": {
-    "updatedAt": "2026-09-01T13:07:27.075Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:24:53.123Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Walcourt",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Walcourt",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:24:53.123Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Walhain": {
-    "updatedAt": "2026-09-01T13:08:39.412Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:26:10.192Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Walhain",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Walhain",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:26:10.192Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Wanze": {
-    "updatedAt": "2026-09-01T13:09:54.123Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:27:22.255Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Wanze",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Wanze",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:27:22.255Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Waremme": {
-    "updatedAt": "2026-09-01T13:11:08.653Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:28:34.578Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Waremme",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Waremme",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:28:34.578Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Wasseiges": {
-    "updatedAt": "2026-09-01T13:12:25.136Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:29:48.366Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Wasseiges",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Wasseiges",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:29:48.366Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Wavre": {
-    "updatedAt": "2026-09-01T13:15:25.507Z",
+    "updatedAt": "2026-09-01T18:32:35.588Z",
     "reglementsEnVigueur": [
       {
         "titre": "Pôle finances - Règlement-redevance sur certains services offerts au sein des écoles communales 2026-2031 inclus",
@@ -2002,7 +3402,7 @@
     "prochainesTaxes": []
   },
   "Welkenraedt": {
-    "updatedAt": "2026-09-01T13:17:31.008Z",
+    "updatedAt": "2026-09-01T18:34:32.319Z",
     "reglementsEnVigueur": [
       {
         "titre": "Redevance sur les prestations administratives des services de l'urbanisme et de l'environnement - Exercices 2026-2031",
@@ -2398,17 +3798,31 @@
     "prochainesTaxes": []
   },
   "Wellin": {
-    "updatedAt": "2026-09-01T13:18:52.045Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:35:44.948Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Wellin",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Wellin",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:35:44.948Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Yvoir": {
-    "updatedAt": "2026-09-01T13:20:09.097Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-09-01T18:36:59.459Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Portail & recueil officiel des règlements-taxes - Yvoir",
+        "url": "https://e-services.wallonie.be/e-legalite/search?q=taxe+Yvoir",
+        "matiere": "Fiscalité locale & délibérations officielles",
+        "date": "2026-09-01T18:36:59.459Z"
+      }
+    ],
     "prochainesTaxes": []
   },
   "Anderlecht": {
-    "updatedAt": "2026-09-01T13:20:11.157Z",
+    "updatedAt": "2026-09-01T18:37:01.573Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlement-taxe sur les agences de paris aux courses de chevaux",
@@ -2900,7 +4314,7 @@
     "prochainesTaxes": []
   },
   "Auderghem": {
-    "updatedAt": "2026-09-01T13:20:13.069Z",
+    "updatedAt": "2026-09-01T18:37:03.231Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
@@ -3254,7 +4668,7 @@
     "prochainesTaxes": []
   },
   "Berchem-Sainte-Agathe": {
-    "updatedAt": "2026-09-01T13:20:15.447Z",
+    "updatedAt": "2026-09-01T18:37:06.494Z",
     "reglementsEnVigueur": [
       {
         "titre": "Commerce : règlements, primes, taxes et redevances",
@@ -3962,7 +5376,7 @@
     "prochainesTaxes": []
   },
   "Ville de Bruxelles": {
-    "updatedAt": "2026-09-01T13:20:17.498Z",
+    "updatedAt": "2026-09-01T18:37:08.084Z",
     "reglementsEnVigueur": [
       {
         "titre": "Centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique pour l'exercice 2027 - principe",
@@ -5042,27 +6456,27 @@
     "prochainesTaxes": []
   },
   "Etterbeek": {
-    "updatedAt": "2026-09-01T13:20:18.730Z",
+    "updatedAt": "2026-09-01T18:37:09.958Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous une rubrique 'emploi et commerce' inhabituelle : à vérifier que c'est bien la bonne page."
   },
   "Evere": {
-    "updatedAt": "2026-09-01T13:20:22.984Z",
+    "updatedAt": "2026-09-01T18:37:14.056Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous 'actualité' : pourrait être une brève plutôt que la liste complète des règlements."
   },
   "Forest": {
-    "updatedAt": "2026-09-01T13:20:26.030Z",
+    "updatedAt": "2026-09-01T18:37:17.896Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "HTTP 404 pour https://www.forest.brussels/fr/services-communaux/finances-communales/reglements-taxes"
   },
   "Ganshoren": {
-    "updatedAt": "2026-09-01T13:20:28.013Z",
+    "updatedAt": "2026-09-01T18:37:19.920Z",
     "reglementsEnVigueur": [
       {
         "titre": "Téléchargez les documents Taxes, redevances et impôts",
@@ -5076,7 +6490,7 @@
     "note": "Pas trouvé de page dédiée 'règlements-taxes' ; be.brussels renvoie vers publi.irisnet.be (non scrapable, cf. notes précédentes) pour cette commune."
   },
   "Ixelles": {
-    "updatedAt": "2026-09-01T13:20:29.394Z",
+    "updatedAt": "2026-09-01T18:37:21.507Z",
     "reglementsEnVigueur": [
       {
         "titre": "Ordonnance relative à l'établissement, au recouvrement et au contentieux en matière des taxes communales",
@@ -5370,20 +6784,20 @@
     "prochainesTaxes": []
   },
   "Jette": {
-    "updatedAt": "2026-09-01T13:20:30.867Z",
+    "updatedAt": "2026-09-01T18:37:23.220Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "low",
     "note": "Pas trouvé de sous-page 'taxes' précise ; page d'accueil seulement, à affiner."
   },
   "Koekelberg": {
-    "updatedAt": "2026-09-01T13:20:31.368Z",
+    "updatedAt": "2026-09-01T18:37:23.720Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "Le site officiel indique explicitement que les règlements ne sont consultables que sur rendez-vous au secrétariat communal (pas de publication en ligne). Aucune URL exploitable trouvée."
   },
   "Molenbeek-Saint-Jean": {
-    "updatedAt": "2026-09-01T13:20:33.444Z",
+    "updatedAt": "2026-09-01T18:37:27.237Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes et recettes",
@@ -5395,7 +6809,7 @@
     "prochainesTaxes": []
   },
   "Saint-Gilles": {
-    "updatedAt": "2026-09-01T13:20:35.946Z",
+    "updatedAt": "2026-09-01T18:37:30.036Z",
     "reglementsEnVigueur": [
       {
         "titre": "Liste des taxes",
@@ -5629,7 +7043,7 @@
     "prochainesTaxes": []
   },
   "Saint-Josse-ten-Noode": {
-    "updatedAt": "2026-09-01T13:20:37.197Z",
+    "updatedAt": "2026-09-01T18:37:31.156Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements & Taxes",
@@ -5865,7 +7279,7 @@
     "note": "URL FR devinée par analogie avec la version anglaise (sjtn.brussels/en/municipality/regulations-taxes) : à vérifier."
   },
   "Schaerbeek": {
-    "updatedAt": "2026-09-01T13:20:38.653Z",
+    "updatedAt": "2026-09-01T18:37:32.670Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes & Redevances",
@@ -5883,13 +7297,13 @@
     "prochainesTaxes": []
   },
   "Uccle": {
-    "updatedAt": "2026-09-01T13:20:39.705Z",
+    "updatedAt": "2026-09-01T18:37:34.221Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "fetch failed"
   },
   "Watermael-Boitsfort": {
-    "updatedAt": "2026-09-01T13:20:41.602Z",
+    "updatedAt": "2026-09-01T18:37:36.270Z",
     "reglementsEnVigueur": [
       {
         "titre": "Impôts et taxes",
@@ -6189,7 +7603,7 @@
     "prochainesTaxes": []
   },
   "Woluwe-Saint-Lambert": {
-    "updatedAt": "2026-09-01T13:20:42.942Z",
+    "updatedAt": "2026-09-01T18:37:38.158Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements, primes et taxes",
@@ -6203,7 +7617,7 @@
     "note": "Page trouvée mais contenu non vérifié en détail (site nécessitait peut-être un rendu JS lors de la recherche)."
   },
   "Woluwe-Saint-Pierre": {
-    "updatedAt": "2026-09-01T13:20:44.690Z",
+    "updatedAt": "2026-09-01T18:37:40.530Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
