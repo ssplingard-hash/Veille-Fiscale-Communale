@@ -44,7 +44,7 @@ const TAX_KEYWORDS = /(taxe|precompte|pr%C3%A9compte|impot|imp%C3%B4t|ipp|redeva
 // On s'arrête de paginer une fois qu'on a dépassé cette ancienneté (en années) :
 // une "règlement-taxe" est en général revoté au moins une fois par législature (6 ans).
 const MAX_AGE_YEARS = 4;
-const MAX_PAGES_PER_COMMUNE = 20; // garde-fou anti-boucle infinie
+const MAX_PAGES_PER_COMMUNE = 60; // garde-fou anti-boucle infinie (augmenté : les grandes villes publient beaucoup plus de points par séance)
 const PAGE_SIZE = 20; // pagination Plone par défaut (b_start:int)
 const DELAY_MS = 900; // pause polie entre deux requêtes HTTP (augmentée pour éviter le rate-limiting)
 const RETRY_DELAY_MS = 4000; // pause avant une nouvelle tentative après un échec réseau
@@ -215,19 +215,22 @@ async function main() {
       await sleep(DELAY_MS);
       const publications = await scrapeSection(slug, 'publications');
 
+      // Certaines communes (notamment les grandes villes) publient une partie de leurs
+      // règlements-taxes définitifs sous /publications/ plutôt que sous /decisions/ (le
+      // procès-verbal de séance classique). On fusionne donc les deux sources pour la
+      // liste "en vigueur", en dédupliquant par titre et en gardant la version la plus
+      // récente — /publications/ n'étant plus réservé aux seuls projets non votés.
+      const enVigueur = dedupeKeepLatest([...decisions, ...publications]);
+
       output[name] = {
         updatedAt: new Date().toISOString(),
-        reglementsEnVigueur: dedupeKeepLatest(decisions).map(({ title, url, matiere, date }) => ({
+        reglementsEnVigueur: enVigueur.map(({ title, url, matiere, date }) => ({
           titre: title,
           url,
           matiere,
           date,
         })),
-        prochainesTaxes: publications.map(({ title, url, matiere }) => ({
-          titre: title,
-          url,
-          matiere,
-        })),
+        prochainesTaxes: [], // fusionné ci-dessus faute de pouvoir distinguer fiablement "projet" de "définitif" sur toutes les communes
       };
     } catch (err) {
       console.error(`  ✗ erreur pour ${name} : ${err.message}`);
