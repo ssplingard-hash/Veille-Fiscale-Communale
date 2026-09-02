@@ -1,7 +1,42 @@
 /**
- * Scraper quotidien : règlements-taxes en vigueur
- * Analyse deliberations.be et applique un fallback automatique (portail officiel / e-légalité / transparence.brussels)
- * pour TOUTES les communes qui ne renvoient aucun résultat direct.
+ * Scraper quotidien : règlements-taxes en vigueur pour les communes wallonnes
+ * référencées sur https://www.deliberations.be
+ *
+ * IMPORTANT — limites connues :
+ * - deliberations.be ne couvre QUE les communes wallonnes qui ont adopté la
+ *   plateforme iMio (décret du 18/05/2022). Une commune wallonne peut légitimement
+ *   n'y figurer sous aucune forme (ex: Waterloo, Chaudfontaine, Eupen...). Dans ce
+ *   cas, l'absence de résultat est correcte et ne doit JAMAIS être remplacée par
+ *   un lien fabriqué ou une donnée inventée — mieux vaut une liste vide honnête
+ *   qu'une fausse information qui a l'air réelle.
+ * - Le filtrage repose sur le slug de l'URL et le texte des liens (regex /taxe/i,
+ *   /précompte/i, /IPP/i, /redevance/i). Robuste aux changements de mise en page,
+ *   mais peut inclure de faux positifs ou rater un règlement au titre atypique.
+ * - Pour les grandes villes (Liège, Charleroi, Namur...), une partie des
+ *   règlements officiellement en vigueur est publiée sous /publications/ plutôt
+ *   que /decisions/ (procès-verbal de séance classique) — on fusionne donc les
+ *   deux sources pour la liste "en vigueur".
+ * - Pagination limitée à 60 pages (1200 points) par commune et par section pour
+ *   couvrir les grandes villes à fort volume, avec repli automatique dès qu'on
+ *   dépasse 4 ans d'ancienneté sur les décisions datées.
+ * - Erreurs réseau/rate-limit (HTTP 429/503) : 2 tentatives avec pause avant
+ *   d'abandonner et de le signaler explicitement dans le champ "error" — jamais
+ *   confondu silencieusement avec "cette commune n'a rien".
+ *
+ * Sortie : src/data/reglements-taxes.json
+ *   {
+ *     "<Nom commune>": {
+ *       "updatedAt": "...",
+ *       "reglementsEnVigueur": [ { titre, url, date, matiere } ],
+ *       "prochainesTaxes": []   // voir note plus bas
+ *     },
+ *     ...
+ *   }
+ *
+ * Note sur "prochainesTaxes" : deliberations.be ne permet pas de distinguer
+ * fiablement un projet non-voté d'un règlement définitif sur /publications/
+ * pour toutes les communes. Ce champ reste donc vide pour l'instant plutôt que
+ * de risquer d'étiqueter incorrectement un règlement en vigueur comme "projet".
  */
 
 import fs from 'node:fs/promises';
@@ -16,7 +51,6 @@ const OUTPUT_FILE = path.join(__dirname, '../src/data/reglements-taxes.json');
 const BASE = 'https://www.deliberations.be';
 const USER_AGENT = 'VeilleFiscaleCommunale-bot/1.0 (+contact: voir depot GitHub)';
 
-// Mots-clés utilisés pour repérer un point "fiscal"
 const TAX_KEYWORDS = /(taxe|precompte|pr%C3%A9compte|impot|imp%C3%B4t|ipp|redevance)/i;
 
 const MAX_AGE_YEARS = 4;
@@ -31,19 +65,11 @@ const MONTHS_FR = {
   'juillet': 6, 'aout': 7, 'août': 7, 'septembre': 8, 'octobre': 9, 'novembre': 10, 'decembre': 11, 'décembre': 11,
 };
 
-// Liens spécifiques vers les portails officiels des grandes villes
-const SPECIFIC_PORTALS = {
-  'liège': 'https://www.liege.be/fr/vie-communale/finances-et-taxes/taxes-communales',
-  'liege': 'https://www.liege.be/fr/vie-communale/finances-et-taxes/taxes-communales',
-  'charleroi': 'https://www.charleroi.be/ma-commune/finances/taxes-communales',
-  'namur': 'https://www.namur.be/fr/ma-ville/finances/taxes',
-  'mons': 'https://www.mons.be/vivre-a-mons/finances/taxes-communales'
-};
-
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+/** Fetch avec retry : distingue une vraie erreur réseau/rate-limit d'une absence légitime de contenu. */
 async function fetchHtml(url, attempt = 0) {
   const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT, 'Accept-Language': 'fr' } });
   if (res.status === 429 || res.status === 503) {
@@ -59,6 +85,7 @@ async function fetchHtml(url, attempt = 0) {
   return res.text();
 }
 
+/** Extrait une date approximative à partir d'un slug du type "20-octobre-2025-20-00". */
 function parseDateFromSlug(slug) {
   const m = slug.match(/(\d{1,2})-([a-zéû]+)-(\d{4})/i);
   if (!m) return null;
@@ -69,6 +96,7 @@ function parseDateFromSlug(slug) {
   return isNaN(d.getTime()) ? null : d;
 }
 
+/** Nettoie un titre de règlement pour permettre la déduplication. */
 function normalizeTitle(title) {
   return title
     .toLowerCase()
@@ -78,6 +106,9 @@ function normalizeTitle(title) {
     .trim();
 }
 
+/**
+ * Scrape une section (decisions ou publications) d'une commune.
+ */
 async function scrapeSection(slug, type) {
   const results = [];
   let bStart = 0;
@@ -90,8 +121,8 @@ async function scrapeSection(slug, type) {
       html = await fetchHtml(url);
     } catch (err) {
       if (page === 0) {
-        if (/^HTTP 404/.test(err.message)) break;
-        throw err;
+        if (/^HTTP 404/.test(err.message)) break; // section absente, légitime
+        throw err; // rate-limit ou autre échec réseau : à signaler
       }
       break;
     }
@@ -154,6 +185,7 @@ async function scrapeSection(slug, type) {
   return results;
 }
 
+/** Garde uniquement la version la plus récente de chaque règlement (par titre normalisé). */
 function dedupeKeepLatest(items) {
   const byKey = new Map();
   for (const item of items) {
@@ -174,62 +206,35 @@ async function main() {
   const communes = JSON.parse(await fs.readFile(COMMUNES_FILE, 'utf-8'));
   const output = {};
 
-  for (const { slug, name, region } of communes) {
-    console.log(`→ Processing ${name} (${slug})`);
-    let enVigueur = [];
-
+  for (const { slug, name } of communes) {
+    console.log(`→ ${name} (${slug})`);
     try {
       const decisions = await scrapeSection(slug, 'decisions');
       await sleep(DELAY_MS);
       const publications = await scrapeSection(slug, 'publications');
 
-      enVigueur = dedupeKeepLatest([...decisions, ...publications]);
+      const enVigueur = dedupeKeepLatest([...decisions, ...publications]);
+
+      output[name] = {
+        updatedAt: new Date().toISOString(),
+        reglementsEnVigueur: enVigueur.map(({ title, url, matiere, date }) => ({
+          titre: title,
+          url,
+          matiere,
+          date,
+        })),
+        prochainesTaxes: [],
+      };
     } catch (err) {
-      console.error(`  ✗ Erreur/Absence sur deliberations.be pour ${name} : ${err.message}`);
+      console.error(`  ✗ erreur pour ${name} : ${err.message}`);
+      output[name] = { updatedAt: new Date().toISOString(), reglementsEnVigueur: [], prochainesTaxes: [], error: err.message };
     }
-
-    // --- FALLBACK AUTOMATIQUE POUR TOUTES LES COMMUNES A 0 RÈGLEMENT ---
-    if (enVigueur.length === 0) {
-      console.log(`  ℹ Génération du lien de secours officiel pour ${name}`);
-
-      const cleanName = name.toLowerCase().trim();
-      let fallbackUrl = '';
-
-      if (SPECIFIC_PORTALS[cleanName]) {
-        fallbackUrl = SPECIFIC_PORTALS[cleanName];
-      } else if (region === 'Bruxelles-Capitale') {
-        fallbackUrl = `https://transparence.brussels/actes?q=taxe+${encodeURIComponent(name)}`;
-      } else {
-        fallbackUrl = `https://e-services.wallonie.be/e-legalite/search?q=taxe+${encodeURIComponent(name)}`;
-      }
-
-      enVigueur = [
-        {
-          title: `Portail & recueil officiel des règlements-taxes - ${name}`,
-          url: fallbackUrl,
-          matiere: 'Fiscalité locale & délibérations officielles',
-          date: new Date().toISOString()
-        }
-      ];
-    }
-
-    output[name] = {
-      updatedAt: new Date().toISOString(),
-      reglementsEnVigueur: enVigueur.map(({ title, url, matiere, date }) => ({
-        titre: title,
-        url,
-        matiere,
-        date,
-      })),
-      prochainesTaxes: [],
-    };
-
     await sleep(DELAY_MS);
   }
 
   await fs.mkdir(path.dirname(OUTPUT_FILE), { recursive: true });
   await fs.writeFile(OUTPUT_FILE, JSON.stringify(output, null, 2), 'utf-8');
-  console.log(`\nTerminé. Données écrites dans ${OUTPUT_FILE}`);
+  console.log(`\nTerminé. Écrit dans ${OUTPUT_FILE}`);
 }
 
 main().catch((err) => {
