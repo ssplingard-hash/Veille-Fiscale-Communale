@@ -25,12 +25,18 @@ async function fetchHtml(url) {
 async function diagnose(slug) {
   console.log(`\n========== ${slug} ==========`);
 
-  for (const bStart of [0, 20]) {
-    const url = `https://www.deliberations.be/${slug}/decisions${bStart ? `?b_start:int=${bStart}` : ''}`;
+  const testUrls = [
+    { label: 'page 0 (sans param)', url: `https://www.deliberations.be/${slug}/decisions` },
+    { label: 'page 2 (b_start=20)', url: `https://www.deliberations.be/${slug}/decisions?b_start:int=20` },
+    { label: 'avec SearchableText factice', url: `https://www.deliberations.be/${slug}/decisions?SearchableText=x` },
+    { label: 'avec paramètre Année', url: `https://www.deliberations.be/${slug}/decisions?getVenteYear=2026` },
+  ];
+
+  for (const { label, url } of testUrls) {
     const html = await fetchHtml(url);
     const $ = cheerio.load(html);
 
-    console.log(`  Taille du HTML reçu : ${html.length} caractères`);
+    console.log(`  [${label}] Taille du HTML reçu : ${html.length} caractères`);
 
     const pointLinkRegex = new RegExp(`/${slug}/decisions/[^/]+/[^/"?#]+`, 'i');
     const allLinks = [];
@@ -39,23 +45,9 @@ async function diagnose(slug) {
       if (pointLinkRegex.test(href)) allLinks.push(href);
     });
 
-    console.log(`  Liens de décision trouvés (regex pointLinkRegex) : ${allLinks.length}`);
+    console.log(`  [${label}] Liens de décision trouvés : ${allLinks.length}`);
     if (allLinks.length > 0) {
-      console.log(`  3 premiers exemples :`);
-      allLinks.slice(0, 3).forEach((h) => console.log(`    - ${h}`));
-      const taxMatches = allLinks.filter((h) => TAX_KEYWORDS.test(h));
-      console.log(`  Dont correspondant au mot-clé "taxe" etc. : ${taxMatches.length}`);
-    } else {
-      // Aucun lien trouvé : on regarde s'il y a des indices de rendu JS (balises <script> volumineuses,
-      // ou une structure "form"/"filtre" comme celle vue manuellement) pour confirmer l'hypothèse.
-      const hasForm = $('form').length > 0;
-      const scriptTags = $('script').length;
-      console.log(`  Aucun lien de décision trouvé sur cette page.`);
-      console.log(`  Présence d'un <form> : ${hasForm} | Nombre de balises <script> : ${scriptTags}`);
-      console.log(`  Aperçu des 500 premiers caractères du HTML :`);
-      console.log('  ---');
-      console.log('  ' + html.slice(0, 500).replace(/\n/g, '\n  '));
-      console.log('  ---');
+      allLinks.slice(0, 2).forEach((h) => console.log(`    - ${h}`));
     }
   }
 }
