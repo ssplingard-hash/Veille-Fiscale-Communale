@@ -1,18 +1,132 @@
 {
   "Liège": {
-    "updatedAt": "2026-09-07T13:46:36.714Z",
+    "updatedAt": "2026-09-07T13:59:09.734Z",
     "reglementsEnVigueur": [
       {
-        "titre": "Limitation de la vitesse à 30km/h, boulevard Léon Philippet à 4000 LIÈGE.",
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, voie du Herdier à 4020 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 121",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/voie-du-herdier-mise-en-zone-30km-h-quartier-pilzen-fagnes",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 121",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, voie des Bouviers à 4020 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 122",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/voie-des-bouviers-mise-en-zone-30km-h-quartier-pilzen-fagnes",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 122",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, rue Edmond Jacquemotte à 4020 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 123",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/rue-edmond-jacquemotte-mise-en-zone-30km-h-quartier-pilzen-fagnes",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 123",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, boulevard Léon Philippet à 4000 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 124",
         "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/boulevard-leon-philippet-mise-en-zone-30km-h-quartier-sainte-walburge",
-        "matiere": "Sécurité & Prévention",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 124",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, Corniche Saint-Jacques à 4031 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 125",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/corniche-saint-jacques-mise-en-zone-30km-h-quartier-sart-tilman",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 125",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, Drève des Aulnes à 4031 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 126",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/dreve-des-aulnes-mise-en-zone-30km-h-quartier-sart-tilman",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 126",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, impasse de Thiernesse à 4031 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 127",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/impasse-de-thiernesse-mise-en-zone-30km-h-quartier-renory",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 127",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, rue de Sordeye à 4031 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 128",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/rue-de-sordeye-mise-en-zone-30km-h-quartier-sart-tilman",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 128",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, rue de la Belle Jardinière à 4031 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 129",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/rue-de-la-belle-jardiniere-mise-en-zone-30km-h-quartier-sart-tilman",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 129",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, rue des Neuves Brassines à 4000 LIEGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 130",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/rue-des-neuves-brassines-mise-en-zone-30km-h-quartier-sainte-walburge",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 130",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, rue Charles Davin à 4031 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 131",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/rue-charles-davin-mise-en-zone-30km-h-quartier-sart-tilman",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 131",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, rue Triolet, dans son tronçon en voie sans issue partant de la rue Belle Jardinière à 4031 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 132",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/rue-triolet-dans-son-troncon-en-voie-sans-issue-partant-de-la-rue-belle-jardiniere-mise-en-zone-30km-h-quartier-sart-tilman",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 132",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, rue du Beau Hêtre à 4031 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 133",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/rue-du-beau-hetre-mise-en-zone-30km-h-quartier-sart-tilman",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 133",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, rue des Genêts à 4000 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 134",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/rue-des-genets-mise-en-zone-30km-h-quartier-sainte-walburge",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 134",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, rue du Chêne à 4031 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 135",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/rue-du-chene-mise-en-zone-30km-h-quartier-renory",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 135",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, rue de Renory à 4031 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 136",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/rue-de-renory-mise-en-zone-30km-h-quartier-renory",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 136",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, rue Crahay à 4020 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 137",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/rue-crahay-mise-en-zone-30km-h-quartier-pilzen-fagnes",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 137",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, rue de la Chapelle à 4020 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 138",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/rue-de-la-chapelle-mise-en-zone-30km-h-quartier-pilzen-fagnes",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 138",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, rue de Pilzen à 4020 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 139",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/rue-de-pilzen-mise-en-zone-30km-h-quartier-pilzen-fagnes",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 139",
+        "date": "2026-09-07T00:00:00.000Z"
+      },
+      {
+        "titre": "Projet de décision Limitation de la vitesse à 30km/h, rue des Fagnes à 4020 LIÈGE. Matière Sécurité & Prévention Mandataire M. le Bourgmestre 140",
+        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/rue-des-fagnes-mise-en-zone-30km-h-quartier-pilzen-fagnes",
+        "matiere": "Sécurité & Prévention Mandataire M. le Bourgmestre 140",
         "date": "2026-09-07T00:00:00.000Z"
       }
     ],
     "prochainesTaxes": []
   },
   "Anderlecht": {
-    "updatedAt": "2026-09-07T13:46:38.689Z",
+    "updatedAt": "2026-09-07T13:59:11.959Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlement-taxe sur les agences de paris aux courses de chevaux",
@@ -504,7 +618,7 @@
     "prochainesTaxes": []
   },
   "Auderghem": {
-    "updatedAt": "2026-09-07T13:46:40.536Z",
+    "updatedAt": "2026-09-07T13:59:13.693Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
@@ -858,7 +972,7 @@
     "prochainesTaxes": []
   },
   "Berchem-Sainte-Agathe": {
-    "updatedAt": "2026-09-07T13:46:43.741Z",
+    "updatedAt": "2026-09-07T13:59:16.699Z",
     "reglementsEnVigueur": [
       {
         "titre": "Commerce : règlements, primes, taxes et redevances",
@@ -1566,7 +1680,7 @@
     "prochainesTaxes": []
   },
   "Ville de Bruxelles": {
-    "updatedAt": "2026-09-07T13:46:44.925Z",
+    "updatedAt": "2026-09-07T13:59:18.320Z",
     "reglementsEnVigueur": [
       {
         "titre": "Centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique pour l'exercice 2027 - principe",
@@ -2646,27 +2760,27 @@
     "prochainesTaxes": []
   },
   "Etterbeek": {
-    "updatedAt": "2026-09-07T13:46:46.141Z",
+    "updatedAt": "2026-09-07T13:59:19.885Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous une rubrique 'emploi et commerce' inhabituelle : à vérifier que c'est bien la bonne page."
   },
   "Evere": {
-    "updatedAt": "2026-09-07T13:46:50.268Z",
+    "updatedAt": "2026-09-07T13:59:24.677Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous 'actualité' : pourrait être une brève plutôt que la liste complète des règlements."
   },
   "Forest": {
-    "updatedAt": "2026-09-07T13:46:54.380Z",
+    "updatedAt": "2026-09-07T13:59:29.194Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "HTTP 404 pour https://www.forest.brussels/fr/services-communaux/finances-communales/reglements-taxes"
   },
   "Ganshoren": {
-    "updatedAt": "2026-09-07T13:46:56.267Z",
+    "updatedAt": "2026-09-07T13:59:31.399Z",
     "reglementsEnVigueur": [
       {
         "titre": "Téléchargez les documents Taxes, redevances et impôts",
@@ -2680,7 +2794,7 @@
     "note": "Pas trouvé de page dédiée 'règlements-taxes' ; be.brussels renvoie vers publi.irisnet.be (non scrapable, cf. notes précédentes) pour cette commune."
   },
   "Ixelles": {
-    "updatedAt": "2026-09-07T13:46:57.956Z",
+    "updatedAt": "2026-09-07T13:59:33.272Z",
     "reglementsEnVigueur": [
       {
         "titre": "Ordonnance relative à l'établissement, au recouvrement et au contentieux en matière des taxes communales",
@@ -2974,20 +3088,20 @@
     "prochainesTaxes": []
   },
   "Jette": {
-    "updatedAt": "2026-09-07T13:46:59.923Z",
+    "updatedAt": "2026-09-07T13:59:35.285Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "low",
     "note": "Pas trouvé de sous-page 'taxes' précise ; page d'accueil seulement, à affiner."
   },
   "Koekelberg": {
-    "updatedAt": "2026-09-07T13:47:00.423Z",
+    "updatedAt": "2026-09-07T13:59:35.785Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "Le site officiel indique explicitement que les règlements ne sont consultables que sur rendez-vous au secrétariat communal (pas de publication en ligne). Aucune URL exploitable trouvée."
   },
   "Molenbeek-Saint-Jean": {
-    "updatedAt": "2026-09-07T13:47:03.061Z",
+    "updatedAt": "2026-09-07T13:59:39.647Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes et recettes",
@@ -2999,7 +3113,7 @@
     "prochainesTaxes": []
   },
   "Saint-Gilles": {
-    "updatedAt": "2026-09-07T13:47:08.336Z",
+    "updatedAt": "2026-09-07T13:59:43.915Z",
     "reglementsEnVigueur": [
       {
         "titre": "Liste des taxes",
@@ -3233,7 +3347,7 @@
     "prochainesTaxes": []
   },
   "Saint-Josse-ten-Noode": {
-    "updatedAt": "2026-09-07T13:47:10.381Z",
+    "updatedAt": "2026-09-07T13:59:45.203Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements & Taxes",
@@ -3475,7 +3589,7 @@
     "note": "URL FR devinée par analogie avec la version anglaise (sjtn.brussels/en/municipality/regulations-taxes) : à vérifier."
   },
   "Schaerbeek": {
-    "updatedAt": "2026-09-07T13:47:13.796Z",
+    "updatedAt": "2026-09-07T13:59:48.908Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes & Redevances",
@@ -3493,13 +3607,13 @@
     "prochainesTaxes": []
   },
   "Uccle": {
-    "updatedAt": "2026-09-07T13:47:15.101Z",
+    "updatedAt": "2026-09-07T13:59:50.162Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "fetch failed"
   },
   "Watermael-Boitsfort": {
-    "updatedAt": "2026-09-07T13:47:17.266Z",
+    "updatedAt": "2026-09-07T13:59:52.080Z",
     "reglementsEnVigueur": [
       {
         "titre": "Impôts et taxes",
@@ -3799,7 +3913,7 @@
     "prochainesTaxes": []
   },
   "Woluwe-Saint-Lambert": {
-    "updatedAt": "2026-09-07T13:47:19.285Z",
+    "updatedAt": "2026-09-07T13:59:54.335Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements, primes et taxes",
@@ -3813,7 +3927,7 @@
     "note": "Page trouvée mais contenu non vérifié en détail (site nécessitait peut-être un rendu JS lors de la recherche)."
   },
   "Woluwe-Saint-Pierre": {
-    "updatedAt": "2026-09-07T13:47:20.649Z",
+    "updatedAt": "2026-09-07T13:59:55.777Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
