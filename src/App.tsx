@@ -7,3 +7,19 @@ import Discussions from './pages/Discussions';
 import Adoptions from './pages/Adoptions';
 
 export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="commune/:name" element={<MunicipalityDetail />} />
+          <Route path="annuaire" element={<Directory />} />
+          <Route path="discussions" element={<Discussions />} />
+          <Route path="adoptions" element={<Adoptions />} />
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
