@@ -1,64 +1,125 @@
-/**
- * Script de DIAGNOSTIC uniquement (pas le scraper de production).
- * Teste 3 communes (une qui échoue, une qui réussit, une grande ville) et affiche
- * en détail ce que le fetch reçoit réellement, pour comprendre pourquoi certaines
- * communes ne donnent aucun résultat alors qu'elles ont clairement des règlements-
- * taxes publiés.
- *
- * Usage : node scripts/debug-scraper.mjs
- * Ne modifie AUCUN fichier — affiche seulement des informations dans les logs.
- */
-
 import * as cheerio from 'cheerio';
+import puppeteer from 'puppeteer';
 
-const USER_AGENT = 'VeilleFiscaleCommunale-bot/1.0 (+contact: voir depot GitHub)';
-const TAX_KEYWORDS = /(taxe|precompte|pr%C3%A9compte|impot|imp%C3%B4t|ipp|redevance)/i;
+const USER_AGENT =
+  'VeilleFiscaleCommunale-bot/1.0 (+contact: voir depot GitHub)';
 
-const TEST_COMMUNES = ['aiseau-presles', 'ecaussinnes', 'liege'];
+const TEST_COMMUNES = [
+  'aiseau-presles',
+  'ecaussinnes',
+  'liege',
+];
 
-async function fetchHtml(url) {
-  const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT, 'Accept-Language': 'fr' } });
-  console.log(`  [HTTP ${res.status}] ${url}`);
-  return res.text();
-}
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-async function diagnose(slug) {
+async function diagnose(browser, slug) {
   console.log(`\n========== ${slug} ==========`);
 
-  const testUrls = [
-    { label: 'page 0 (sans param)', url: `https://www.deliberations.be/${slug}/decisions` },
-    { label: 'page 2 (b_start=20)', url: `https://www.deliberations.be/${slug}/decisions?b_start:int=20` },
-    { label: 'avec SearchableText factice', url: `https://www.deliberations.be/${slug}/decisions?SearchableText=x` },
-    { label: 'avec paramètre Année', url: `https://www.deliberations.be/${slug}/decisions?getVenteYear=2026` },
-  ];
+  const page = await browser.newPage();
 
-  for (const { label, url } of testUrls) {
-    const html = await fetchHtml(url);
-    const $ = cheerio.load(html);
+  await page.setUserAgent(USER_AGENT);
 
-    console.log(`  [${label}] Taille du HTML reçu : ${html.length} caractères`);
+  await page.setExtraHTTPHeaders({
+    'Accept-Language': 'fr',
+  });
 
-    const pointLinkRegex = new RegExp(`/${slug}/decisions/[^/]+/[^/"?#]+`, 'i');
-    const allLinks = [];
-    $('a[href]').each((_, el) => {
-      const href = $(el).attr('href') || '';
-      if (pointLinkRegex.test(href)) allLinks.push(href);
+  try {
+    const url = `https://www.deliberations.be/${slug}/decisions`;
+
+    console.log(`Ouverture : ${url}`);
+
+    const response = await page.goto(url, {
+      waitUntil: 'networkidle2',
+      timeout: 30000,
     });
 
-    console.log(`  [${label}] Liens de décision trouvés : ${allLinks.length}`);
-    if (allLinks.length > 0) {
-      allLinks.slice(0, 2).forEach((h) => console.log(`    - ${h}`));
-    }
+    console.log(
+      `HTTP : ${response ? response.status() : 'inconnu'}`
+    );
+
+    console.log('Attente du chargement JavaScript...');
+
+    await sleep(5000);
+
+    const html = await page.content();
+
+    console.log(
+      `HTML après JavaScript : ${html.length} caractères`
+    );
+
+    const $ = cheerio.load(html);
+
+    const links = [];
+
+    $('a[href]').each((_, el) => {
+      const href = $(el).attr('href') || '';
+
+      if (
+        href.includes(`/${slug}/decisions/`)
+      ) {
+        const title = $(el).text().trim();
+
+        links.push({
+          href,
+          title,
+        });
+      }
+    });
+
+    console.log(
+      `Liens de décisions trouvés après JavaScript : ${links.length}`
+    );
+
+    links.slice(0, 10).forEach((link, index) => {
+      console.log(
+        `  ${index + 1}. ${link.title || '(sans titre)'}`
+      );
+      console.log(`     ${link.href}`);
+    });
+
+    const bodyText = await page.evaluate(() => document.body.innerText);
+
+    console.log(
+      `\nTexte visible dans la page : ${bodyText.length} caractères`
+    );
+
+    console.log(
+      bodyText.substring(0, 3000)
+    );
+  } catch (error) {
+    console.error(
+      `ERREUR pour ${slug} :`,
+      error.message
+    );
+  } finally {
+    await page.close();
   }
 }
 
 async function main() {
-  for (const slug of TEST_COMMUNES) {
-    await diagnose(slug);
+  console.log('Lancement de Chromium...');
+
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+    ],
+  });
+
+  try {
+    for (const slug of TEST_COMMUNES) {
+      await diagnose(browser, slug);
+    }
+  } finally {
+    await browser.close();
   }
+
+  console.log('\nDiagnostic terminé.');
 }
 
-main().catch((err) => {
-  console.error(err);
+main().catch((error) => {
+  console.error(error);
   process.exit(1);
 });
