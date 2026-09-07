@@ -498,8 +498,12 @@ async function main() {
     ],
   });
 
-  try {
-    for (const { slug, name } of communes) {
+   try {
+    const communesATester = communes.filter(
+      ({ slug }) => slug === 'liege'
+    );
+
+    for (const { slug, name } of communesATester) {
       console.log(`\n→ ${name} (${slug})`);
 
       try {
