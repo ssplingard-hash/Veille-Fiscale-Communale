@@ -15,6 +15,7 @@ permissions:
 jobs:
   scrape-and-commit:
     runs-on: ubuntu-latest
+    timeout-minutes: 150
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,10 +25,10 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install scraper dependency (cheerio)
-        run: npm install --no-save --legacy-peer-deps cheerio
+      - name: Install scraper dependencies (cheerio + puppeteer)
+        run: npm install --no-save --legacy-peer-deps cheerio puppeteer
 
-      - name: Run scraper (communes wallonnes - deliberations.be)
+      - name: Run scraper (communes wallonnes - deliberations.be, via navigateur headless)
         run: node scripts/scrape-reglements-taxes.mjs
 
       - name: Run scraper (communes bruxelloises - sites officiels)
@@ -43,6 +44,16 @@ jobs:
             echo "Aucun changement détecté."
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
+            # Le job peut durer plusieurs heures : si main a été modifié entre-temps
+            # (ex: une correction manuelle sur GitHub), on se resynchronise d'abord
+            # avec origin/main, puis on réapplique systématiquement le résultat
+            # fraîchement scrapé par-dessus — il doit toujours l'emporter, cette
+            # donnée étant plus récente et plus fiable que tout état intermédiaire.
+            cp src/data/reglements-taxes.json /tmp/reglements-taxes-fresh.json
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/reglements-taxes-fresh.json src/data/reglements-taxes.json
+            git add src/data/reglements-taxes.json
             git commit -m "Mise à jour quotidienne des règlements-taxes (Wallonie + Bruxelles)"
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
