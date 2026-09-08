@@ -1,11 +1,11 @@
 {
   "Liège": {
-    "updatedAt": "2026-09-08T06:38:45.066Z",
+    "updatedAt": "2026-09-08T06:54:05.024Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": []
   },
   "Anderlecht": {
-    "updatedAt": "2026-09-08T06:38:46.290Z",
+    "updatedAt": "2026-09-08T06:54:06.225Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlement-taxe sur les agences de paris aux courses de chevaux",
@@ -497,7 +497,7 @@
     "prochainesTaxes": []
   },
   "Auderghem": {
-    "updatedAt": "2026-09-08T06:38:48.077Z",
+    "updatedAt": "2026-09-08T06:54:07.647Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
@@ -851,7 +851,7 @@
     "prochainesTaxes": []
   },
   "Berchem-Sainte-Agathe": {
-    "updatedAt": "2026-09-08T06:38:50.680Z",
+    "updatedAt": "2026-09-08T06:54:10.129Z",
     "reglementsEnVigueur": [
       {
         "titre": "Commerce : règlements, primes, taxes et redevances",
@@ -1559,7 +1559,7 @@
     "prochainesTaxes": []
   },
   "Ville de Bruxelles": {
-    "updatedAt": "2026-09-08T06:38:54.028Z",
+    "updatedAt": "2026-09-08T06:54:12.162Z",
     "reglementsEnVigueur": [
       {
         "titre": "Centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique pour l'exercice 2027 - principe",
@@ -2639,27 +2639,27 @@
     "prochainesTaxes": []
   },
   "Etterbeek": {
-    "updatedAt": "2026-09-08T06:38:55.121Z",
+    "updatedAt": "2026-09-08T06:54:13.320Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous une rubrique 'emploi et commerce' inhabituelle : à vérifier que c'est bien la bonne page."
   },
   "Evere": {
-    "updatedAt": "2026-09-08T06:38:59.115Z",
+    "updatedAt": "2026-09-08T06:54:17.127Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous 'actualité' : pourrait être une brève plutôt que la liste complète des règlements."
   },
   "Forest": {
-    "updatedAt": "2026-09-08T06:39:02.691Z",
+    "updatedAt": "2026-09-08T06:54:20.411Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "HTTP 404 pour https://www.forest.brussels/fr/services-communaux/finances-communales/reglements-taxes"
   },
   "Ganshoren": {
-    "updatedAt": "2026-09-08T06:39:04.257Z",
+    "updatedAt": "2026-09-08T06:54:21.756Z",
     "reglementsEnVigueur": [
       {
         "titre": "Téléchargez les documents Taxes, redevances et impôts",
@@ -2673,7 +2673,7 @@
     "note": "Pas trouvé de page dédiée 'règlements-taxes' ; be.brussels renvoie vers publi.irisnet.be (non scrapable, cf. notes précédentes) pour cette commune."
   },
   "Ixelles": {
-    "updatedAt": "2026-09-08T06:39:05.596Z",
+    "updatedAt": "2026-09-08T06:54:23.180Z",
     "reglementsEnVigueur": [
       {
         "titre": "Ordonnance relative à l'établissement, au recouvrement et au contentieux en matière des taxes communales",
@@ -2967,20 +2967,20 @@
     "prochainesTaxes": []
   },
   "Jette": {
-    "updatedAt": "2026-09-08T06:39:07.171Z",
+    "updatedAt": "2026-09-08T06:54:24.987Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "low",
     "note": "Pas trouvé de sous-page 'taxes' précise ; page d'accueil seulement, à affiner."
   },
   "Koekelberg": {
-    "updatedAt": "2026-09-08T06:39:07.671Z",
+    "updatedAt": "2026-09-08T06:54:25.488Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "Le site officiel indique explicitement que les règlements ne sont consultables que sur rendez-vous au secrétariat communal (pas de publication en ligne). Aucune URL exploitable trouvée."
   },
   "Molenbeek-Saint-Jean": {
-    "updatedAt": "2026-09-08T06:39:09.944Z",
+    "updatedAt": "2026-09-08T06:54:27.732Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes et recettes",
@@ -2992,7 +2992,7 @@
     "prochainesTaxes": []
   },
   "Saint-Gilles": {
-    "updatedAt": "2026-09-08T06:39:12.179Z",
+    "updatedAt": "2026-09-08T06:54:30.262Z",
     "reglementsEnVigueur": [
       {
         "titre": "Liste des taxes",
@@ -3226,7 +3226,7 @@
     "prochainesTaxes": []
   },
   "Saint-Josse-ten-Noode": {
-    "updatedAt": "2026-09-08T06:39:13.159Z",
+    "updatedAt": "2026-09-08T06:54:31.885Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements & Taxes",
@@ -3468,7 +3468,7 @@
     "note": "URL FR devinée par analogie avec la version anglaise (sjtn.brussels/en/municipality/regulations-taxes) : à vérifier."
   },
   "Schaerbeek": {
-    "updatedAt": "2026-09-08T06:39:14.396Z",
+    "updatedAt": "2026-09-08T06:54:33.088Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes & Redevances",
@@ -3486,13 +3486,13 @@
     "prochainesTaxes": []
   },
   "Uccle": {
-    "updatedAt": "2026-09-08T06:39:15.378Z",
+    "updatedAt": "2026-09-08T06:54:34.236Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "fetch failed"
   },
   "Watermael-Boitsfort": {
-    "updatedAt": "2026-09-08T06:39:17.602Z",
+    "updatedAt": "2026-09-08T06:54:35.704Z",
     "reglementsEnVigueur": [
       {
         "titre": "Impôts et taxes",
@@ -3792,7 +3792,7 @@
     "prochainesTaxes": []
   },
   "Woluwe-Saint-Lambert": {
-    "updatedAt": "2026-09-08T06:39:18.854Z",
+    "updatedAt": "2026-09-08T06:54:37.049Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements, primes et taxes",
@@ -3806,7 +3806,7 @@
     "note": "Page trouvée mais contenu non vérifié en détail (site nécessitait peut-être un rendu JS lors de la recherche)."
   },
   "Woluwe-Saint-Pierre": {
-    "updatedAt": "2026-09-08T06:39:19.914Z",
+    "updatedAt": "2026-09-08T06:54:38.100Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
