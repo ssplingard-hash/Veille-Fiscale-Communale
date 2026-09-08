@@ -8,46 +8,42 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const TARGET_YEAR = 2026;
-
-// ============================================================
-// TEST : UNIQUEMENT LIEGE
-// ============================================================
-const COMMUNE_TEST = {
+const COMMUNE = {
   slug: 'liege',
   name: 'Liège'
 };
 
+const BASE_URL = 'https://www.deliberations.be';
+
 // ============================================================
 // MOTS-CLES FISCAUX
 // ============================================================
+
 const TAX_PATTERNS = [
   /\btaxe\b/i,
   /\btaxes\b/i,
-  /\br[eè]glement[- ]taxe\b/i,
-  /\br[eè]glement[- ]taxes\b/i,
-  /\br[eè]glement[- ]redevance\b/i,
-  /\br[eè]glement[- ]redevances\b/i,
+  /\breglement[- ]taxe\b/i,
+  /\breglement[- ]taxes\b/i,
+  /\breglement[- ]redevance\b/i,
+  /\breglement[- ]redevances\b/i,
   /\bredevance\b/i,
   /\bredevances\b/i,
   /\bprecompte\b/i,
-  /\bimp[oô]t\b/i,
-  /\bimp[oô]ts\b/i,
+  /\bimpot\b/i,
+  /\bimpots\b/i,
   /\badditionnel\b/i,
   /\badditionnels\b/i,
   /\bcentimes additionnels\b/i,
   /\bfiscal\b/i,
   /\bfiscale\b/i,
   /\bfiscaux\b/i,
-  /\bfiscalit[eé]\b/i,
+  /\bfiscalite\b/i,
   /\bimposition\b/i,
   /\bimpositions\b/i,
   /\bipp\b/i,
   /\bforce motrice\b/i
 ];
 
-// ============================================================
-// EXCLUSIONS CLAIRES
-// ============================================================
 const EXCLUDED_PATTERNS = [
   /\bsubvention\b/i,
   /\bsubventions\b/i,
@@ -58,17 +54,18 @@ const EXCLUDED_PATTERNS = [
   /\bpersonnel\b/i,
   /\brecrutement\b/i,
   /\bzone de stationnement\b/i,
-  /\bstationnement r[eé]serv[eé]\b/i,
-  /\binterdiction d.acc[eè]s\b/i,
+  /\bstationnement reserve\b/i,
+  /\binterdiction d.acces\b/i,
   /\bbail commercial\b/i,
   /\bconvention de bail\b/i,
   /\bemplacement de stationnement\b/i,
-  /\bjourn[eé]es europ[eé]ennes du patrimoine\b/i
+  /\bjournees europeennes du patrimoine\b/i
 ];
 
 // ============================================================
 // UTILITAIRES
 // ============================================================
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -80,7 +77,14 @@ function normalizeText(value = '') {
     .trim();
 }
 
-function parseDateFromSlug(url) {
+function normalizeForSearch(value = '') {
+  return normalizeText(value)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+}
+
+function parseDateFromUrl(url) {
   const match = url.match(
     /\/(\d{1,2})-([a-zéûîôàèù]+)-(\d{4})-/i
   );
@@ -105,34 +109,43 @@ function parseDateFromSlug(url) {
     décembre: 11
   };
 
-  const day = Number(match[1]);
   const month = months[match[2].toLowerCase()];
-  const year = Number(match[3]);
 
   if (month === undefined) return null;
 
-  return new Date(Date.UTC(year, month, day));
+  return new Date(
+    Date.UTC(
+      Number(match[3]),
+      month,
+      Number(match[1])
+    )
+  );
 }
 
-function isTargetYear(url) {
-  const date = parseDateFromSlug(url);
-  return date && date.getUTCFullYear() === TARGET_YEAR;
+function is2026(url) {
+  const date = parseDateFromUrl(url);
+
+  return (
+    date &&
+    date.getUTCFullYear() === TARGET_YEAR
+  );
 }
 
 function formatDate(date) {
-  if (!date) return null;
-
-  return date.toISOString().slice(0, 10);
+  return date
+    ? date.toISOString().slice(0, 10)
+    : null;
 }
 
 // ============================================================
-// EXTRACTION DES LIENS DEPUIS UNE PAGE DE LISTE
+// EXTRAIRE LES DECISIONS D'UNE PAGE
 // ============================================================
+
 async function extractDecisionLinks(page) {
   const html = await page.content();
   const $ = cheerio.load(html);
 
-  const decisions = [];
+  const results = [];
   const seen = new Set();
 
   $('a[href]').each((_, element) => {
@@ -140,165 +153,149 @@ async function extractDecisionLinks(page) {
 
     if (!href) return;
 
-    let absoluteUrl;
+    let url;
 
     try {
-      absoluteUrl = new URL(href, page.url()).href;
+      url = new URL(href, page.url()).href;
     } catch {
       return;
     }
 
-    // Une décision Liège ressemble à :
-    // /liege/decisions/07-septembre-2026-18-00/...
-    if (!absoluteUrl.includes('/liege/decisions/')) {
+    if (!url.includes('/liege/decisions/')) {
       return;
     }
 
-    if (!isTargetYear(absoluteUrl)) {
+    if (!is2026(url)) {
       return;
     }
 
-    if (seen.has(absoluteUrl)) {
+    if (seen.has(url)) {
       return;
     }
 
-    seen.add(absoluteUrl);
+    seen.add(url);
 
-    const date = parseDateFromSlug(absoluteUrl);
+    const date = parseDateFromUrl(url);
 
-    decisions.push({
-      url: absoluteUrl,
+    results.push({
+      url,
       date: formatDate(date)
     });
   });
 
-  return decisions;
+  return results;
 }
 
 // ============================================================
-// TROUVER LA PAGE SUIVANTE
+// PAGINATION : OFFSETS DIRECTS
 // ============================================================
-async function findNextPage(page) {
-  const html = await page.content();
-  const $ = cheerio.load(html);
 
-  let nextUrl = null;
+async function collectAllDecisions(page) {
+  const all = [];
+  const seen = new Set();
 
-  $('a[href]').each((_, element) => {
-    if (nextUrl) return;
+  const PAGE_SIZE = 20;
+  const MAX_OFFSET = 1000;
 
-    const href = $(element).attr('href');
-    const text = normalizeText($(element).text()).toLowerCase();
+  for (
+    let offset = 0;
+    offset <= MAX_OFFSET;
+    offset += PAGE_SIZE
+  ) {
+    let url;
 
-    if (!href) return;
-
-    if (
-      text.includes('suivant') ||
-      text.includes('next') ||
-      href.includes('b_start:int=')
-    ) {
-      try {
-        const absoluteUrl = new URL(href, page.url()).href;
-
-        if (
-          absoluteUrl.includes('/liege/decisions/') &&
-          absoluteUrl.includes('b_start:int=')
-        ) {
-          nextUrl = absoluteUrl;
-        }
-      } catch {
-        // rien
-      }
+    if (offset === 0) {
+      url = `${BASE_URL}/${COMMUNE.slug}/decisions`;
+    } else {
+      url =
+        `${BASE_URL}/${COMMUNE.slug}/decisions/@@faceted_query` +
+        `?b_start:int=${offset}`;
     }
-  });
 
-  return nextUrl;
-}
-
-// ============================================================
-// RECUPERATION DE TOUTES LES DECISIONS 2026
-// ============================================================
-async function collectAllDecisions(page, commune) {
-  const allDecisions = [];
-  const seenUrls = new Set();
-
-  let currentUrl =
-    `https://www.deliberations.be/${commune.slug}/decisions`;
-
-  let pageNumber = 1;
-
-  while (currentUrl) {
     console.log('');
-    console.log(`Page ${pageNumber}`);
-    console.log(`  → ${currentUrl}`);
+    console.log(`Page offset ${offset}`);
+    console.log(`  → ${url}`);
 
     try {
-      await page.goto(currentUrl, {
+      await page.goto(url, {
         waitUntil: 'networkidle2',
         timeout: 30000
       });
 
-      await sleep(1000);
+      await sleep(800);
     } catch (error) {
-      console.log(`  ⚠️ Erreur chargement : ${error.message}`);
-      break;
+      console.log(
+        `  ⚠️ Erreur : ${error.message}`
+      );
+
+      // On tente la page suivante au lieu d'abandonner
+      continue;
     }
 
-    const decisions = await extractDecisionLinks(page);
+    const decisions =
+      await extractDecisionLinks(page);
 
     console.log(
       `  ${decisions.length} décision(s) 2026 trouvée(s)`
     );
 
-    let newCount = 0;
+    let added = 0;
 
     for (const decision of decisions) {
-      if (!seenUrls.has(decision.url)) {
-        seenUrls.add(decision.url);
-        allDecisions.push(decision);
-        newCount++;
+      if (!seen.has(decision.url)) {
+        seen.add(decision.url);
+        all.push(decision);
+        added++;
       }
     }
 
-    console.log(`  ${newCount} nouvelle(s) décision(s)`);
+    console.log(
+      `  ${added} nouvelle(s) décision(s)`
+    );
 
-    const nextUrl = await findNextPage(page);
-
-    if (!nextUrl || nextUrl === currentUrl) {
-      console.log('  Fin de la pagination.');
+    /*
+     * Si aucune décision 2026 n'est trouvée,
+     * nous sommes arrivés après la fin des données.
+     */
+    if (decisions.length === 0) {
+      console.log(
+        '  Plus aucune décision 2026.'
+      );
       break;
     }
 
-    currentUrl = nextUrl;
-    pageNumber++;
-
-    // Sécurité
-    if (pageNumber > 100) {
-      console.log('  ⚠️ Arrêt de sécurité : trop de pages.');
+    /*
+     * Si la page ne contient plus 20 nouvelles décisions,
+     * nous sommes probablement sur la dernière page.
+     */
+    if (added < PAGE_SIZE) {
+      console.log(
+        '  Dernière page atteinte.'
+      );
       break;
     }
   }
 
-  return allDecisions;
+  return all;
 }
 
 // ============================================================
-// EXTRACTION DU TITRE SUR LA PAGE INDIVIDUELLE
+// EXTRACTION TITRE / MATIERE
 // ============================================================
+
 function extractTitle($) {
-  // 1. H1
-  const h1 = normalizeText($('h1').first().text());
+  const h1 = normalizeText(
+    $('h1').first().text()
+  );
 
   if (
     h1 &&
     h1.length > 10 &&
-    !/^d[eé]cision$/i.test(h1) &&
-    !/^projet de d[eé]cision$/i.test(h1)
+    !/^decision$/i.test(h1)
   ) {
     return h1;
   }
 
-  // 2. OpenGraph
   const ogTitle = normalizeText(
     $('meta[property="og:title"]').attr('content') || ''
   );
@@ -306,45 +303,53 @@ function extractTitle($) {
   if (
     ogTitle &&
     ogTitle.length > 10 &&
-    !/^d[eé]cision$/i.test(ogTitle)
+    !/^decision$/i.test(ogTitle)
   ) {
     return ogTitle;
   }
 
-  // 3. Balise title
-  const pageTitle = normalizeText($('title').text());
+  const title = normalizeText(
+    $('title').text()
+  );
 
   if (
-    pageTitle &&
-    pageTitle.length > 10 &&
-    !/^d[eé]cision$/i.test(pageTitle)
+    title &&
+    title.length > 10 &&
+    !/^decision$/i.test(title)
   ) {
-    return pageTitle;
+    return title;
   }
 
-  // 4. Recherche d'une ligne "Projet de décision"
+  return '';
+}
+
+function extractMatiere($) {
   const lines = $('body')
     .text()
     .split('\n')
     .map(normalizeText)
     .filter(Boolean);
 
-  const candidate = lines.find(line =>
-    /projet de d[eé]cision/i.test(line)
+  for (const line of lines) {
+    if (/^mati[eè]re\b/i.test(line)) {
+      let value = line.replace(
+        /^mati[eè]re\s*/i,
+        ''
+      );
+
+      value = value.split(
+        /\bmandataire\b/i
+      )[0];
+
+      return normalizeText(value);
+    }
+  }
+
+  const body = normalizeText(
+    $('body').text()
   );
 
-  return candidate || '';
-}
-
-// ============================================================
-// EXTRACTION DE LA MATIERE
-// ============================================================
-function extractMatiere($) {
-  const bodyText = normalizeText($('body').text());
-
-  // Cas normal :
-  // Matière Finances Mandataire ...
-  const match = bodyText.match(
+  const match = body.match(
     /Mati[eè]re\s+(.+?)(?=\s+Mandataire\b)/i
   );
 
@@ -352,51 +357,45 @@ function extractMatiere($) {
     return normalizeText(match[1]);
   }
 
-  // Deuxième méthode : chercher une ligne
-  const lines = $('body')
-    .text()
-    .split('\n')
-    .map(normalizeText)
-    .filter(Boolean);
-
-  const line = lines.find(l =>
-    /^Mati[eè]re\b/i.test(l)
-  );
-
-  if (line) {
-    return normalizeText(
-      line
-        .replace(/^Mati[eè]re\s*/i, '')
-        .split(/Mandataire\b/i)[0]
-    );
-  }
-
   return '';
 }
 
 // ============================================================
-// CLASSIFICATION FISCALE
+// CLASSIFICATION
 // ============================================================
-function isTaxRelated(title, matiere, url) {
-  const titleText = normalizeText(title);
-  const matiereText = normalizeText(matiere);
-  const urlText = normalizeText(url);
 
-  // PRIORITE ABSOLUE AU TITRE
-  const titleIsFiscal = TAX_PATTERNS.some(pattern =>
-    pattern.test(titleText)
+function containsTaxPattern(text) {
+  const normalized = normalizeForSearch(text);
+
+  return TAX_PATTERNS.some(pattern =>
+    pattern.test(normalized)
   );
+}
 
-  if (titleIsFiscal) {
-    // Une exclusion ne doit pas supprimer un véritable
-    // règlement-taxe explicite.
+function containsExcludedPattern(text) {
+  const normalized = normalizeForSearch(text);
+
+  return EXCLUDED_PATTERNS.some(pattern =>
+    pattern.test(normalized)
+  );
+}
+
+function isTaxRelated(title, matiere, url) {
+  const titleSearch = normalizeForSearch(title);
+  const matiereSearch = normalizeForSearch(matiere);
+  const urlSearch = normalizeForSearch(url);
+
+  // Le titre est le critère principal.
+  if (containsTaxPattern(titleSearch)) {
+    // Les exclusions restent prioritaires,
+    // sauf règlement-taxe explicite.
     const explicitTax =
-      /\br[eè]glement[- ]taxe/i.test(titleText) ||
-      /\br[eè]glement[- ]taxes/i.test(titleText);
+      /\breglement[- ]taxe\b/i.test(titleSearch) ||
+      /\breglement[- ]taxes\b/i.test(titleSearch);
 
     if (
       !explicitTax &&
-      EXCLUDED_PATTERNS.some(pattern => pattern.test(titleText))
+      containsExcludedPattern(titleSearch)
     ) {
       return false;
     }
@@ -404,26 +403,25 @@ function isTaxRelated(title, matiere, url) {
     return true;
   }
 
-  // MATIERE :
-  // On ne considère PAS "Finances" comme fiscal à lui seul.
-  const matterIsFiscal = TAX_PATTERNS.some(pattern =>
-    pattern.test(matiereText)
-  );
-
-  if (matterIsFiscal) {
+  // La matière peut confirmer une décision fiscale.
+  // "Finances" seul n'est PAS suffisant.
+  if (
+    matiereSearch &&
+    matiereSearch !== 'finances' &&
+    containsTaxPattern(matiereSearch)
+  ) {
     return true;
   }
 
-  // URL : uniquement les termes fiscaux explicites.
-  const urlIsFiscal =
-    /\btaxe\b/i.test(urlText) ||
-    /\btaxes\b/i.test(urlText) ||
-    /\bredevance\b/i.test(urlText) ||
-    /\bprecompte\b/i.test(urlText) ||
-    /\bfiscal/i.test(urlText) ||
-    /\bimpot/i.test(urlText);
-
-  if (urlIsFiscal) {
+  // L'URL peut confirmer uniquement des termes fiscaux explicites.
+  if (
+    /\btaxe\b/i.test(urlSearch) ||
+    /\btaxes\b/i.test(urlSearch) ||
+    /\bredevance\b/i.test(urlSearch) ||
+    /\bprecompte\b/i.test(urlSearch) ||
+    /\bfiscal/i.test(urlSearch) ||
+    /\bimpot/i.test(urlSearch)
+  ) {
     return true;
   }
 
@@ -431,10 +429,18 @@ function isTaxRelated(title, matiere, url) {
 }
 
 // ============================================================
-// ANALYSE D'UNE DECISION INDIVIDUELLE
+// ANALYSE D'UNE DECISION
 // ============================================================
-async function analyseDecision(page, decision, index, total) {
-  console.log(`Analyse ${index}/${total}`);
+
+async function analyseDecision(
+  page,
+  decision,
+  index,
+  total
+) {
+  console.log(
+    `Analyse ${index}/${total}`
+  );
 
   try {
     await page.goto(decision.url, {
@@ -442,8 +448,7 @@ async function analyseDecision(page, decision, index, total) {
       timeout: 30000
     });
 
-    // Laisser le Javascript de deliberations.be finir de charger.
-    await sleep(1000);
+    await sleep(700);
 
     const html = await page.content();
     const $ = cheerio.load(html);
@@ -457,20 +462,33 @@ async function analyseDecision(page, decision, index, total) {
       decision.url
     );
 
-    // Affichage UNIQUEMENT des décisions fiscales détectées.
+    /*
+     * IMPORTANT :
+     * on affiche maintenant les informations
+     * réellement extraites de la page.
+     */
+
+    console.log(
+      `  TITRE   : ${title || '[VIDE]'}`
+    );
+
+    console.log(
+      `  MATIERE : ${matiere || '[VIDE]'}`
+    );
+
+    console.log(
+      `  FISCAL  : ${fiscal ? 'OUI' : 'NON'}`
+    );
+
     if (fiscal) {
-      console.log('');
-      console.log('  ★ DECISION FISCALE DETECTEE');
-      console.log(`    Date    : ${decision.date}`);
-      console.log(`    Titre   : ${title}`);
-      console.log(`    Matière : ${matiere}`);
-      console.log(`    URL     : ${decision.url}`);
-      console.log('');
+      console.log(
+        `  ★ DECISION FISCALE : ${decision.url}`
+      );
     }
 
     return {
       date: decision.date,
-      title,
+      titre: title,
       matiere,
       url: decision.url,
       fiscal
@@ -478,12 +496,12 @@ async function analyseDecision(page, decision, index, total) {
 
   } catch (error) {
     console.log(
-      `  ⚠️ Erreur analyse décision : ${error.message}`
+      `  ⚠️ Erreur : ${error.message}`
     );
 
     return {
       date: decision.date,
-      title: '',
+      titre: '',
       matiere: '',
       url: decision.url,
       fiscal: false
@@ -492,32 +510,21 @@ async function analyseDecision(page, decision, index, total) {
 }
 
 // ============================================================
-// SUPPRESSION DES DOUBLONS
+// MAIN
 // ============================================================
-function dedupe(items) {
-  const map = new Map();
 
-  for (const item of items) {
-    if (!item.url) continue;
-
-    map.set(item.url, item);
-  }
-
-  return Array.from(map.values());
-}
-
-// ============================================================
-// PROGRAMME PRINCIPAL
-// ============================================================
 async function main() {
   console.log(
     `Lancement du scraper fiscal - année ${TARGET_YEAR}`
   );
 
-  console.log('TEST UNIQUEMENT : liege');
+  console.log(
+    'TEST UNIQUEMENT : Liège'
+  );
 
   const browser = await puppeteer.launch({
     headless: true,
+
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
@@ -533,72 +540,89 @@ async function main() {
     height: 1000
   });
 
-  const output = {};
-
   console.log('');
-  console.log('========================================');
-  console.log(`→ ${COMMUNE_TEST.name} (${COMMUNE_TEST.slug})`);
-  console.log('========================================');
-
-  // ----------------------------------------------------------
-  // 1. RECUPERATION DES URLS
-  // ----------------------------------------------------------
-  const decisions = await collectAllDecisions(
-    page,
-    COMMUNE_TEST
+  console.log(
+    '========================================'
   );
+  console.log(
+    '→ Liège (liege)'
+  );
+  console.log(
+    '========================================'
+  );
+
+  // 1. Récupérer toutes les décisions 2026
+  const decisions =
+    await collectAllDecisions(page);
 
   console.log('');
   console.log(
-    `TOTAL : ${decisions.length} décision(s) ${TARGET_YEAR} récupérée(s).`
+    `TOTAL : ${decisions.length} décision(s) 2026 récupérée(s).`
   );
 
-  // ----------------------------------------------------------
-  // 2. ANALYSE INDIVIDUELLE
-  // ----------------------------------------------------------
+  // 2. Analyser les décisions
   const analysed = [];
 
   for (let i = 0; i < decisions.length; i++) {
-    const result = await analyseDecision(
-      page,
-      decisions[i],
-      i + 1,
-      decisions.length
-    );
+    const result =
+      await analyseDecision(
+        page,
+        decisions[i],
+        i + 1,
+        decisions.length
+      );
 
     analysed.push(result);
   }
 
-  // ----------------------------------------------------------
-  // 3. CONSERVATION DES DECISIONS FISCALES
-  // ----------------------------------------------------------
-  const fiscalItems = dedupe(
-    analysed.filter(item => item.fiscal)
-  );
+  // 3. Garder les fiscales
+  const fiscalItems =
+    analysed.filter(item => item.fiscal);
 
   console.log('');
-  console.log('----------------------------------------');
   console.log(
-    `${fiscalItems.length} élément(s) fiscal(aux) conservé(s) pour Liège`
+    '========================================'
   );
-  console.log('----------------------------------------');
+  console.log(
+    `${fiscalItems.length} décision(s) fiscale(s) détectée(s)`
+  );
+  console.log(
+    '========================================'
+  );
 
-  output[COMMUNE_TEST.name] = {
-    updatedAt: new Date().toISOString(),
+  for (const item of fiscalItems) {
+    console.log('');
+    console.log(
+      `DATE    : ${item.date}`
+    );
+    console.log(
+      `TITRE   : ${item.titre}`
+    );
+    console.log(
+      `MATIERE : ${item.matiere}`
+    );
+    console.log(
+      `URL     : ${item.url}`
+    );
+  }
 
-    reglementsEnVigueur: fiscalItems.map(item => ({
-      titre: item.title,
-      url: item.url,
-      matiere: item.matiere,
-      date: item.date
-    })),
+  // 4. Ecriture du JSON
+  const output = {
+    [COMMUNE.name]: {
+      updatedAt: new Date().toISOString(),
 
-    prochainesTaxes: []
+      reglementsEnVigueur:
+        fiscalItems.map(item => ({
+          titre: item.titre,
+          url: item.url,
+          matiere: item.matiere,
+          date: item.date
+        })),
+
+      prochainesTaxes: []
+    }
   };
 
-  // ----------------------------------------------------------
-  // 4. ECRITURE DU JSON
-  // ----------------------------------------------------------
   const outputPath = path.resolve(
     __dirname,
     '../src/data/reglements-taxes.json'
@@ -618,12 +642,17 @@ async function main() {
   await browser.close();
 
   console.log('');
-  console.log('✓ Scraping terminé.');
+  console.log(
+    '✓ Scraping terminé.'
+  );
 }
 
 main().catch(error => {
   console.error('');
-  console.error('❌ ERREUR FATALE');
+  console.error(
+    '❌ ERREUR FATALE'
+  );
   console.error(error);
+
   process.exit(1);
 });
