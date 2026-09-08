@@ -7,10 +7,13 @@ const BASE_URL = 'https://www.deliberations.be';
 const TARGET_YEAR = 2026;
 
 // ============================================================
-// PARAMÈTRE DE TEST
+// TEST UNIQUEMENT SUR LIÈGE
 // ============================================================
-// On ne teste QUE Liège pour le moment.
+
 const COMMUNE_A_TESTER = 'liege';
+
+// Nombre de décisions affichées par page sur deliberations.be
+const PAGE_SIZE = 20;
 
 // ============================================================
 // MOTS-CLÉS FISCAUX
@@ -40,7 +43,7 @@ const TAX_PATTERNS = [
 ];
 
 // ============================================================
-// MOTS-CLÉS QUI NE DOIVENT PAS SUFFIRE À CLASSER FISCAL
+// EXCLUSIONS
 // ============================================================
 
 const EXCLUDED_PATTERNS = [
@@ -59,7 +62,6 @@ const EXCLUDED_PATTERNS = [
   /\bmarches publics\b/i,
   /\bpersonnel\b/i,
   /\brecrutement\b/i,
-  /\bjournees europeennes du patrimoine\b/i,
 ];
 
 // ============================================================
@@ -88,7 +90,7 @@ function normalizeForSearch(value = '') {
 
 function parseDateFromSlug(url) {
   const match = url.match(
-    /\/decisions\/(\d{1,2})-([a-z]+)-(\d{4})/i
+    /\/decisions\/(\d{1,2})-([a-zéèêàûùôîï]+)-(\d{4})/i
   );
 
   if (!match) {
@@ -151,36 +153,32 @@ function isTaxRelated(title, matiere, url) {
   const matiereText = normalizeForSearch(matiere);
   const urlText = normalizeForSearch(url);
 
-  // Le titre est la source principale.
   const titleHasTax = TAX_PATTERNS.some(pattern =>
     pattern.test(titleText)
   );
 
-  // La matière peut confirmer uniquement si elle contient
-  // elle-même un terme fiscal explicite.
   const matiereHasTax = TAX_PATTERNS.some(pattern =>
     pattern.test(matiereText)
   );
 
-  // L'URL peut confirmer une décision explicitement fiscale.
   const urlHasTax = TAX_PATTERNS.some(pattern =>
     pattern.test(urlText)
   );
 
-  // IMPORTANT :
-  // "Matière Finances" ne suffit PAS.
+  // "Matière Finances" ne suffit jamais.
   if (
-    normalizeForSearch(matiereText) === 'finances' &&
+    matiereText === 'finances' &&
     !titleHasTax &&
     !urlHasTax
   ) {
     return false;
   }
 
-  // Les exclusions ne doivent pas écraser un vrai
-  // "règlement-taxe".
+  // Éviter les faux positifs évidents.
   const excluded =
-    EXCLUDED_PATTERNS.some(pattern => pattern.test(titleText)) &&
+    EXCLUDED_PATTERNS.some(pattern =>
+      pattern.test(titleText)
+    ) &&
     !/\breglement[- ]taxe\b/i.test(titleText) &&
     !/\breglement[- ]taxes\b/i.test(titleText);
 
@@ -192,7 +190,7 @@ function isTaxRelated(title, matiere, url) {
 }
 
 // ============================================================
-// EXTRACTION DES LIENS DE LA PAGE DE LISTE
+// EXTRACTION DES LIENS D'UNE PAGE
 // ============================================================
 
 function extractDecisionLinks($) {
@@ -214,8 +212,12 @@ function extractDecisionLinks($) {
       return;
     }
 
-    // On ne garde que les pages individuelles de décisions.
-    if (!/\/decisions\/\d{1,2}-[a-z]+-\d{4}-/i.test(absoluteUrl)) {
+    // Une décision individuelle a cette structure d'URL.
+    if (
+      !/\/decisions\/\d{1,2}-[a-zéèêàûùôîï]+-\d{4}-/i.test(
+        absoluteUrl
+      )
+    ) {
       return;
     }
 
@@ -225,7 +227,11 @@ function extractDecisionLinks($) {
 
     const date = parseDateFromSlug(absoluteUrl);
 
-    if (!date || date.getFullYear() !== TARGET_YEAR) {
+    if (!date) {
+      return;
+    }
+
+    if (date.getFullYear() !== TARGET_YEAR) {
       return;
     }
 
@@ -241,74 +247,22 @@ function extractDecisionLinks($) {
 }
 
 // ============================================================
-// PAGINATION
-// ============================================================
-
-function findNextPageUrl($, currentUrl) {
-  const candidates = [];
-
-  $('a[href]').each((_, element) => {
-    const href = $(element).attr('href');
-    const text = normalizeText($(element).text());
-
-    if (!href) {
-      return;
-    }
-
-    if (
-      /page suivante|suivante|next|>|»/i.test(text)
-    ) {
-      try {
-        candidates.push(
-          new URL(href, currentUrl).href
-        );
-      } catch {}
-    }
-  });
-
-  // Si le site n'a pas de lien "suivant" explicite,
-  // on cherche la pagination avec b_start.
-  $('a[href*="b_start"]').each((_, element) => {
-    const href = $(element).attr('href');
-
-    if (!href) {
-      return;
-    }
-
-    try {
-      candidates.push(
-        new URL(href, currentUrl).href
-      );
-    } catch {}
-  });
-
-  const unique = [...new Set(candidates)];
-
-  // On évite les liens qui ramènent à la même page.
-  for (const url of unique) {
-    if (url !== currentUrl) {
-      return url;
-    }
-  }
-
-  return null;
-}
-
-// ============================================================
-// SCRAPING DES PAGES DE LISTE
+// PAGINATION CORRIGÉE
 // ============================================================
 
 async function collectAll2026DecisionLinks(page, slug) {
   const allDecisions = [];
   const seenUrls = new Set();
 
-  let currentUrl =
-    `${BASE_URL}/${slug}/decisions`;
+  let offset = 0;
 
-  let pageNumber = 1;
+  while (true) {
+    const currentUrl =
+      offset === 0
+        ? `${BASE_URL}/${slug}/decisions`
+        : `${BASE_URL}/${slug}/decisions/@@faceted_query?b_start:int=${offset}`;
 
-  while (currentUrl) {
-    console.log(`\nPage décisions ${pageNumber}`);
+    console.log(`\nPage avec offset ${offset}`);
     console.log(`  → ${currentUrl}`);
 
     try {
@@ -341,26 +295,28 @@ async function collectAll2026DecisionLinks(page, slug) {
     }
 
     console.log(
-      `  ${decisions.length} décision(s) de 2026 trouvée(s)`
+      `  ${decisions.length} décision(s) 2026 trouvée(s)`
     );
+
     console.log(
       `  ${newCount} nouvelle(s) décision(s)`
     );
 
-    const nextUrl = findNextPageUrl($, currentUrl);
-
-    if (!nextUrl || nextUrl === currentUrl) {
-      console.log('  Plus de page disponible.');
+    // Si aucune nouvelle décision 2026 n'est trouvée,
+    // nous avons atteint la fin des décisions 2026.
+    if (newCount === 0) {
+      console.log(
+        '  → Aucune nouvelle décision : fin de la pagination.'
+      );
       break;
     }
 
-    currentUrl = nextUrl;
-    pageNumber++;
+    offset += PAGE_SIZE;
 
-    // Sécurité
-    if (pageNumber > 100) {
+    // Sécurité absolue.
+    if (offset > 10000) {
       console.log(
-        '  ⚠️ Limite de sécurité de 100 pages atteinte.'
+        '  ⚠️ Limite de sécurité atteinte.'
       );
       break;
     }
@@ -380,19 +336,20 @@ async function scrapeIndividualDecision(page, decision) {
       timeout: 60000,
     });
 
-    // Laisser le JavaScript du site terminer son rendu.
-    await sleep(1000);
+    await sleep(1200);
 
     const html = await page.content();
     const $ = cheerio.load(html);
 
-    // --------------------------------------------------------
-    // TEXTE DE LA PAGE INDIVIDUELLE
-    // --------------------------------------------------------
-
     const bodyText = normalizeText(
       $('body').text()
     );
+
+    const lines = $('body')
+      .text()
+      .split(/\n+/)
+      .map(normalizeText)
+      .filter(Boolean);
 
     // --------------------------------------------------------
     // TITRE
@@ -400,44 +357,39 @@ async function scrapeIndividualDecision(page, decision) {
 
     let title = '';
 
+    // 1. H1
     const h1 = normalizeText(
       $('h1').first().text()
     );
 
-    if (h1) {
+    if (
+      h1 &&
+      !/^d[eé]cision$/i.test(h1) &&
+      !/^projet$/i.test(h1)
+    ) {
       title = h1;
     }
 
+    // 2. Meta og:title
     if (!title) {
-      const ogTitle = normalizeText(
+      title = normalizeText(
         $('meta[property="og:title"]').attr('content') || ''
       );
-
-      title = ogTitle;
     }
 
+    // 3. <title>
     if (!title) {
       title = normalizeText(
         $('title').text()
       );
     }
 
-    // Recherche d'une ligne contenant "Projet de décision"
-    // si le H1 n'est pas suffisamment précis.
-    const lines = $('body')
-      .text()
-      .split(/\n+/)
-      .map(normalizeText)
-      .filter(Boolean);
-
+    // 4. Recherche d'une ligne "Projet de décision"
     const projectLine = lines.find(line =>
-      /projet de décision|decision/i.test(line)
+      /projet de décision/i.test(line)
     );
 
-    if (
-      projectLine &&
-      projectLine.length > title.length
-    ) {
+    if (projectLine) {
       title = projectLine;
     }
 
@@ -457,20 +409,53 @@ async function scrapeIndividualDecision(page, decision) {
       );
     }
 
+    // Recherche ligne par ligne si la regex précédente
+    // ne fonctionne pas.
+    if (!matiere) {
+      const matterLine = lines.find(line =>
+        /^Mati[eè]re\b/i.test(line)
+      );
+
+      if (matterLine) {
+        matiere = normalizeText(
+          matterLine
+            .replace(/^Mati[eè]re\s*/i, '')
+            .split(/Mandataire/i)[0]
+        );
+      }
+    }
+
     // --------------------------------------------------------
-    // NETTOYAGE DU TITRE
+    // FALLBACK DU TITRE AVEC LE SLUG
     // --------------------------------------------------------
+
+    if (
+      !title ||
+      /^deliberations/i.test(title) ||
+      /^d[eé]cision/i.test(title)
+    ) {
+      try {
+        const urlObject = new URL(
+          decision.url
+        );
+
+        const parts =
+          urlObject.pathname.split('/');
+
+        const slugTitle =
+          parts[parts.length - 1];
+
+        if (slugTitle) {
+          title = slugTitle
+            .replace(/-/g, ' ')
+            .replace(/\b\w/g, char =>
+              char.toUpperCase()
+            );
+        }
+      } catch {}
+    }
 
     title = normalizeText(title);
-
-    // Certains titres peuvent contenir la matière
-    // et le mandataire à la suite.
-    title = title
-      .replace(
-        /\s+Mati[eè]re\s+.+$/i,
-        ''
-      )
-      .trim();
 
     return {
       ...decision,
@@ -480,10 +465,7 @@ async function scrapeIndividualDecision(page, decision) {
 
   } catch (error) {
     console.log(
-      `  ⚠️ Impossible d'analyser ${decision.url}`
-    );
-    console.log(
-      `     ${error.message}`
+      `  ⚠️ Erreur décision : ${error.message}`
     );
 
     return {
@@ -515,7 +497,7 @@ function dedupeItems(items) {
 }
 
 // ============================================================
-// CHARGEMENT DES COMMUNES
+// COMMUNES
 // ============================================================
 
 function loadCommunes() {
@@ -584,12 +566,12 @@ async function main() {
       name,
     } = commune;
 
-    console.log(`\n========================================`);
+    console.log('\n========================================');
     console.log(`→ ${name} (${slug})`);
-    console.log(`========================================`);
+    console.log('========================================');
 
     // --------------------------------------------------------
-    // ÉTAPE 1 : récupérer toutes les décisions 2026
+    // 1. RÉCUPÉRER TOUTES LES DÉCISIONS 2026
     // --------------------------------------------------------
 
     const decisions =
@@ -599,11 +581,11 @@ async function main() {
       );
 
     console.log(
-      `\n${decisions.length} décision(s) 2026 à analyser individuellement.`
+      `\nTOTAL : ${decisions.length} décision(s) 2026 récupérée(s).`
     );
 
     // --------------------------------------------------------
-    // ÉTAPE 2 : ouvrir CHAQUE décision individuellement
+    // 2. ANALYSER CHAQUE DÉCISION INDIVIDUELLEMENT
     // --------------------------------------------------------
 
     const fiscalDecisions = [];
@@ -616,7 +598,7 @@ async function main() {
       const decision = decisions[i];
 
       console.log(
-        `\nAnalyse ${i + 1}/${decisions.length}`
+        `Analyse ${i + 1}/${decisions.length}`
       );
 
       const detail =
@@ -632,16 +614,22 @@ async function main() {
       );
 
       if (fiscal) {
-        console.log('  >>> FISCAL : OUI');
         console.log(
-          `  TITRE : ${detail.title}`
+          '  >>> FISCAL : OUI'
         );
-        console.log(
-          `  MATIÈRE : ${detail.matiere}`
-        );
+
         console.log(
           `  DATE : ${detail.date}`
         );
+
+        console.log(
+          `  TITRE : ${detail.title}`
+        );
+
+        console.log(
+          `  MATIÈRE : ${detail.matiere}`
+        );
+
         console.log(
           `  URL : ${detail.url}`
         );
@@ -653,38 +641,45 @@ async function main() {
           url: detail.url,
         });
       }
-
-      // Petite pause pour éviter de bombarder le site.
-      await sleep(250);
     }
 
+    // --------------------------------------------------------
+    // 3. DÉDOUBLONNAGE
+    // --------------------------------------------------------
+
     const finalItems =
-      dedupeItems(fiscalDecisions);
+      dedupeItems(
+        fiscalDecisions
+      );
 
     output[name] = {
-      updatedAt: new Date().toISOString(),
-      reglementsEnVigueur: finalItems.map(
-        item => ({
+      updatedAt:
+        new Date().toISOString(),
+
+      reglementsEnVigueur:
+        finalItems.map(item => ({
           titre: item.title,
           url: item.url,
           matiere: item.matiere,
           date: item.date,
-        })
-      ),
+        })),
+
       prochainesTaxes: [],
     };
 
-    console.log(`\n----------------------------------------`);
+    console.log('\n----------------------------------------');
+
     console.log(
       `${finalItems.length} élément(s) fiscal(aux) conservé(s) pour ${name}`
     );
-    console.log(`----------------------------------------`);
+
+    console.log('----------------------------------------');
   }
 
   await browser.close();
 
   // ----------------------------------------------------------
-  // SAUVEGARDE
+  // 4. SAUVEGARDE
   // ----------------------------------------------------------
 
   const outputPath = path.join(
@@ -696,7 +691,11 @@ async function main() {
 
   fs.writeFileSync(
     outputPath,
-    JSON.stringify(output, null, 2),
+    JSON.stringify(
+      output,
+      null,
+      2
+    ),
     'utf8'
   );
 
@@ -704,7 +703,9 @@ async function main() {
     `\n✓ Fichier mis à jour : ${outputPath}`
   );
 
-  console.log('\n✓ Scraping terminé.');
+  console.log(
+    '\n✓ Scraping terminé.'
+  );
 }
 
 main().catch(error => {
