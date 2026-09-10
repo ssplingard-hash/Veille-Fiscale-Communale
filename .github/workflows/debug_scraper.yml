@@ -1,11 +1,12 @@
-name: Debug scraper (diagnostic rapide)
+name: Debug scraper Liège
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
 
 jobs:
   debug:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -15,8 +16,25 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install cheerio
-        run: npm install --no-save --legacy-peer-deps cheerio
+      - name: Installer les dépendances
+        run: |
+          npm install --no-save --legacy-peer-deps cheerio puppeteer
 
-      - name: Run diagnostic
-        run: node scripts/debug-scraper.mjs
+      - name: Vérifier le scraper
+        run: |
+          echo "========================================"
+          echo "TEST DU SCRAPER LIÈGE"
+          echo "========================================"
+          node scripts/scrape-reglements-taxes.mjs
+
+      - name: Afficher le résultat Liège
+        run: |
+          echo ""
+          echo "========================================"
+          echo "CONTENU DE REGLEMENTS-TAXES.JSON"
+          echo "========================================"
+          node -e "
+          const fs = require('fs');
+          const data = JSON.parse(fs.readFileSync('src/data/reglements-taxes.json', 'utf8'));
+          console.log(JSON.stringify(data['Liège'], null, 2));
+          "
