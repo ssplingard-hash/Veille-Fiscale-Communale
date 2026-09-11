@@ -2,21 +2,23 @@ import fs from 'fs';
 import path from 'path';
 import puppeteer from 'puppeteer';
 
-const TARGET_YEAR = 2026;
 const BASE_URL = 'https://www.deliberations.be';
+const START_URL = `${BASE_URL}/liege/decisions`;
+const TARGET_YEAR = 2026;
+const PAGE_SIZE = 20;
+
+function cleanText(value = '') {
+  return value
+    .replace(/\u00a0/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
 
 function normalizeText(value = '') {
   return value
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-function cleanText(value = '') {
-  return value
-    .replace(/\u00a0/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -60,11 +62,14 @@ function parseDateFromSlug(url) {
 }
 
 /*
- * IMPORTANT :
- * On récupère d'abord TOUS les liens /decisions/ présents
- * dans le HTML rendu par Chromium.
+ * Extrait les vraies décisions présentes dans la page.
  *
- * On ne tente PAS encore de déterminer la matière ici.
+ * On exclut volontairement :
+ * - Ordre du jour
+ * - Bulletin
+ * - Addendum
+ *
+ * car ce ne sont pas des décisions individuelles.
  */
 async function extractDecisionLinks(page) {
   return await page.evaluate(() => {
@@ -98,6 +103,19 @@ async function extractDecisionLinks(page) {
         continue;
       }
 
+      const normalized = text
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
+
+      if (
+        normalized.includes('ordre du jour') ||
+        normalized.includes('bulletin des questions') ||
+        normalized.includes('addendum du conseil')
+      ) {
+        continue;
+      }
+
       results.push({
         url: href,
         text
@@ -121,10 +139,11 @@ function dedupe(items) {
 }
 
 /*
- * Classification volontairement très stricte.
+ * Classification fiscale volontairement stricte.
  *
- * On ne regarde QUE le titre de la décision.
- * On ne regarde surtout pas toute la page.
+ * On ne regarde QUE le titre.
+ * Aucun texte voisin ou contenu général de la page
+ * n'est utilisé.
  */
 const FISCAL_PATTERNS = [
   /\breglement[- ]taxe\b/,
@@ -162,8 +181,7 @@ const FISCAL_PATTERNS = [
 
 const EXCLUDED_PATTERNS = [
   /\bbail commercial\b/,
-  /\bbail-type\b/,
-  /\bbail type\b/,
+  /\bbail[- ]type\b/,
   /\bconvention de bail\b/,
   /\bemplacement de stationnement\b/,
   /\bstationnement non securise\b/,
@@ -184,8 +202,7 @@ const EXCLUDED_PATTERNS = [
 
   /\bcirculation\b/,
   /\blimitation de la vitesse\b/,
-  /\bzone 30\b/,
-  /\bvoie du\b/
+  /\bzone 30\b/
 ];
 
 function classifyFiscal(title) {
@@ -205,33 +222,38 @@ function classifyFiscal(title) {
 async function scrapeLiege(browser) {
   const page = await browser.newPage();
 
-  await page.setViewport({
-    width: 1440,
-    height: 1000
-  });
-
   page.setDefaultNavigationTimeout(90000);
 
-  const firstUrl =
-    `${BASE_URL}/liege/decisions`;
-
-  const queue = [firstUrl];
-  const visited = new Set();
-
   const allDecisions = [];
+  const seenUrls = new Set();
 
-  while (queue.length > 0) {
-    const url = queue.shift();
+  /*
+   * IMPORTANT :
+   * On n'utilise plus @@faceted_query.
+   *
+   * On force directement :
+   *
+   * /liege/decisions?b_start:int=0
+   * /liege/decisions?b_start:int=20
+   * /liege/decisions?b_start:int=40
+   * etc.
+   */
 
-    if (visited.has(url)) {
-      continue;
-    }
-
-    visited.add(url);
+  for (
+    let offset = 0;
+    offset <= 10000;
+    offset += PAGE_SIZE
+  ) {
+    const url =
+      offset === 0
+        ? START_URL
+        : `${START_URL}?b_start:int=${offset}`;
 
     console.log('');
-    console.log(`PAGE ${visited.size}`);
+    console.log('========================================');
+    console.log(`OFFSET ${offset}`);
     console.log(`URL : ${url}`);
+    console.log('========================================');
 
     try {
       await page.goto(url, {
@@ -239,40 +261,12 @@ async function scrapeLiege(browser) {
         timeout: 90000
       });
 
-      /*
-       * Le site charge une partie du contenu en JS.
-       * On attend suffisamment longtemps avant extraction.
-       */
       await new Promise(resolve =>
         setTimeout(resolve, 2000)
       );
 
-      /*
-       * On attend explicitement que des liens /decisions/
-       * existent dans le DOM.
-       */
-      try {
-        await page.waitForFunction(
-          () =>
-            document.querySelectorAll(
-              'a[href*="/decisions/"]'
-            ).length > 0,
-          {
-            timeout: 30000
-          }
-        );
-      } catch {
-        console.log(
-          '  ⚠ Aucun lien de décision détecté après attente'
-        );
-      }
-
       const links =
         await extractDecisionLinks(page);
-
-      console.log(
-        `  ${links.length} lien(s) de décision`
-      );
 
       const yearLinks = links.filter(item => {
         const date =
@@ -285,78 +279,65 @@ async function scrapeLiege(browser) {
       });
 
       console.log(
-        `  ${yearLinks.length} décision(s) ${TARGET_YEAR}`
+        `Liens de décisions : ${links.length}`
       );
-
-      for (const item of yearLinks) {
-        console.log(
-          `    - ${item.text.substring(0, 180)}`
-        );
-      }
-
-      allDecisions.push(...yearLinks);
-
-      /*
-       * Pagination :
-       * on récupère toutes les URLs faceted_query
-       * réellement présentes sur la page.
-       */
-      const pagination =
-        await page.evaluate(() => {
-          return [
-            ...new Set(
-              Array.from(
-                document.querySelectorAll(
-                  'a[href*="@@faceted_query"]'
-                )
-              )
-                .map(a => a.href)
-                .filter(Boolean)
-            )
-          ];
-        });
 
       console.log(
-        `  ${pagination.length} lien(s) de pagination`
+        `Décisions ${TARGET_YEAR} : ${yearLinks.length}`
       );
 
-      for (const nextUrl of pagination) {
-        if (!visited.has(nextUrl)) {
-          queue.push(nextUrl);
+      let newOnPage = 0;
+
+      for (const item of yearLinks) {
+        if (!seenUrls.has(item.url)) {
+          seenUrls.add(item.url);
+          allDecisions.push(item);
+          newOnPage++;
+
+          console.log(
+            `  + ${item.text.substring(0, 180)}`
+          );
         }
+      }
+
+      console.log(
+        `Nouvelles décisions : ${newOnPage}`
+      );
+
+      /*
+       * Si aucune nouvelle décision n'est trouvée,
+       * nous sommes arrivés au bout.
+       */
+      if (offset > 0 && newOnPage === 0) {
+        console.log('');
+        console.log(
+          'Aucune nouvelle décision : fin de pagination.'
+        );
+        break;
       }
 
     } catch (error) {
       console.log(
-        `  ⚠ ERREUR : ${error.message}`
+        `⚠ Erreur offset ${offset} : ${error.message}`
       );
     }
   }
 
   await page.close();
 
-  return dedupe(allDecisions);
+  return allDecisions;
 }
 
 async function main() {
   console.log('');
-  console.log(
-    '========================================'
-  );
-  console.log(
-    'SCRAPER FISCAL - LIÈGE UNIQUEMENT'
-  );
-  console.log(
-    `ANNÉE : ${TARGET_YEAR}`
-  );
-  console.log(
-    '========================================'
-  );
+  console.log('========================================');
+  console.log('SCRAPER FISCAL - LIÈGE');
+  console.log(`ANNÉE : ${TARGET_YEAR}`);
+  console.log('========================================');
 
   const browser =
     await puppeteer.launch({
       headless: true,
-
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
@@ -370,34 +351,27 @@ async function main() {
       await scrapeLiege(browser);
 
     console.log('');
-    console.log(
-      '========================================'
-    );
+    console.log('========================================');
     console.log(
       `TOTAL UNIQUE : ${decisions.length} décisions ${TARGET_YEAR}`
     );
-    console.log(
-      '========================================'
-    );
+    console.log('========================================');
 
     /*
-     * PROTECTION :
-     * si nous n'avons pas retrouvé un volume
-     * raisonnable de décisions, on ne touche pas
-     * au fichier existant.
+     * Protection.
+     *
+     * On ne modifie pas le JSON si le scraper
+     * ne retrouve pas un volume cohérent.
      */
     if (decisions.length < 100) {
       console.log('');
-      console.log(
-        '⚠️ PROTECTION ACTIVÉE'
-      );
+      console.log('⚠️ PROTECTION ACTIVÉE');
       console.log(
         'Moins de 100 décisions 2026 récupérées.'
       );
       console.log(
-        'Aucune modification du fichier JSON.'
+        'Le fichier JSON existant reste inchangé.'
       );
-
       return;
     }
 
@@ -425,15 +399,11 @@ async function main() {
     }
 
     console.log('');
-    console.log(
-      '========================================'
-    );
+    console.log('========================================');
     console.log(
       `DÉCISIONS FISCALES : ${fiscalDecisions.length}`
     );
-    console.log(
-      '========================================'
-    );
+    console.log('========================================');
 
     for (const item of fiscalDecisions) {
       console.log('');
@@ -442,9 +412,6 @@ async function main() {
       console.log(`URL   : ${item.url}`);
     }
 
-    /*
-     * Lecture du fichier existant.
-     */
     const outputPath =
       path.join(
         process.cwd(),
@@ -467,10 +434,6 @@ async function main() {
       existingData = {};
     }
 
-    /*
-     * On remplace uniquement Liège.
-     * Les autres communes restent intactes.
-     */
     existingData['Liège'] = {
       updatedAt:
         new Date().toISOString(),
@@ -493,7 +456,7 @@ async function main() {
 
     console.log('');
     console.log(
-      `✓ Fichier mis à jour : ${outputPath}`
+      '✓ Liège enregistré dans reglements-taxes.json'
     );
 
   } finally {
@@ -501,16 +464,12 @@ async function main() {
   }
 
   console.log('');
-  console.log(
-    '✓ TEST TERMINÉ'
-  );
+  console.log('✓ TEST TERMINÉ');
 }
 
 main().catch(error => {
   console.error('');
-  console.error(
-    '❌ ERREUR FATALE'
-  );
+  console.error('❌ ERREUR FATALE');
   console.error(error);
   process.exit(1);
 });
