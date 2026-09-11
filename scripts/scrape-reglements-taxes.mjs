@@ -3,8 +3,16 @@ import path from 'path';
 import puppeteer from 'puppeteer';
 
 const BASE_URL = 'https://www.deliberations.be';
-const START_URL = `${BASE_URL}/liege/decisions`;
 const TARGET_YEAR = 2026;
+
+/*
+ * IDENTIFIANT DE LA SÉANCE DE LIÈGE
+ *
+ * C'est cet identifiant qui permet au site de retourner
+ * les véritables pages de décisions.
+ */
+const SEANCE_ID = '2de1042e723745489c3a379e48becbe1';
+
 const PAGE_SIZE = 20;
 
 function cleanText(value = '') {
@@ -62,14 +70,22 @@ function parseDateFromSlug(url) {
 }
 
 /*
- * Extrait les vraies décisions présentes dans la page.
+ * URL DE PAGINATION CORRECTE POUR LIÈGE
+ */
+function buildPageUrl(offset) {
+  return (
+    `${BASE_URL}/liege/decisions/@@faceted_query` +
+    `?b_start:int=${offset}` +
+    `&seance%5B%5D=${SEANCE_ID}`
+  );
+}
+
+/*
+ * Extraction des décisions.
  *
- * On exclut volontairement :
- * - Ordre du jour
- * - Bulletin
- * - Addendum
- *
- * car ce ne sont pas des décisions individuelles.
+ * IMPORTANT :
+ * On récupère uniquement les liens dont l'URL
+ * correspond à une véritable décision individuelle.
  */
 async function extractDecisionLinks(page) {
   return await page.evaluate(() => {
@@ -108,10 +124,14 @@ async function extractDecisionLinks(page) {
         .replace(/[\u0300-\u036f]/g, '')
         .toLowerCase();
 
+      /*
+       * Ces liens sont des documents de séance,
+       * pas des décisions individuelles.
+       */
       if (
         normalized.includes('ordre du jour') ||
         normalized.includes('bulletin des questions') ||
-        normalized.includes('addendum du conseil')
+        normalized.includes('addendum')
       ) {
         continue;
       }
@@ -139,11 +159,9 @@ function dedupe(items) {
 }
 
 /*
- * Classification fiscale volontairement stricte.
+ * MOTIFS FISCAUX
  *
- * On ne regarde QUE le titre.
- * Aucun texte voisin ou contenu général de la page
- * n'est utilisé.
+ * Pour l'instant on reste volontairement strict.
  */
 const FISCAL_PATTERNS = [
   /\breglement[- ]taxe\b/,
@@ -179,6 +197,9 @@ const FISCAL_PATTERNS = [
   /\bredevance communale\b/
 ];
 
+/*
+ * FAUX POSITIFS CONNUS
+ */
 const EXCLUDED_PATTERNS = [
   /\bbail commercial\b/,
   /\bbail[- ]type\b/,
@@ -228,30 +249,26 @@ async function scrapeLiege(browser) {
   const seenUrls = new Set();
 
   /*
-   * IMPORTANT :
-   * On n'utilise plus @@faceted_query.
+   * On teste successivement :
    *
-   * On force directement :
+   * offset 0
+   * offset 20
+   * offset 40
+   * offset 60
+   * ...
    *
-   * /liege/decisions?b_start:int=0
-   * /liege/decisions?b_start:int=20
-   * /liege/decisions?b_start:int=40
-   * etc.
+   * avec LA BONNE URL faceted_query.
    */
-
   for (
     let offset = 0;
     offset <= 10000;
     offset += PAGE_SIZE
   ) {
-    const url =
-      offset === 0
-        ? START_URL
-        : `${START_URL}?b_start:int=${offset}`;
+    const url = buildPageUrl(offset);
 
     console.log('');
     console.log('========================================');
-    console.log(`OFFSET ${offset}`);
+    console.log(`OFFSET : ${offset}`);
     console.log(`URL : ${url}`);
     console.log('========================================');
 
@@ -262,11 +279,15 @@ async function scrapeLiege(browser) {
       });
 
       await new Promise(resolve =>
-        setTimeout(resolve, 2000)
+        setTimeout(resolve, 1500)
       );
 
       const links =
         await extractDecisionLinks(page);
+
+      console.log(
+        `Liens de décisions : ${links.length}`
+      );
 
       const yearLinks = links.filter(item => {
         const date =
@@ -279,25 +300,23 @@ async function scrapeLiege(browser) {
       });
 
       console.log(
-        `Liens de décisions : ${links.length}`
-      );
-
-      console.log(
         `Décisions ${TARGET_YEAR} : ${yearLinks.length}`
       );
 
       let newOnPage = 0;
 
       for (const item of yearLinks) {
-        if (!seenUrls.has(item.url)) {
-          seenUrls.add(item.url);
-          allDecisions.push(item);
-          newOnPage++;
-
-          console.log(
-            `  + ${item.text.substring(0, 180)}`
-          );
+        if (seenUrls.has(item.url)) {
+          continue;
         }
+
+        seenUrls.add(item.url);
+        allDecisions.push(item);
+        newOnPage++;
+
+        console.log(
+          `  + ${item.text.substring(0, 180)}`
+        );
       }
 
       console.log(
@@ -305,13 +324,13 @@ async function scrapeLiege(browser) {
       );
 
       /*
-       * Si aucune nouvelle décision n'est trouvée,
-       * nous sommes arrivés au bout.
+       * Si une page ne contient plus aucune nouvelle
+       * décision, nous sommes arrivés à la fin.
        */
       if (offset > 0 && newOnPage === 0) {
         console.log('');
         console.log(
-          'Aucune nouvelle décision : fin de pagination.'
+          'Fin de la liste : aucune nouvelle décision.'
         );
         break;
       }
@@ -325,7 +344,7 @@ async function scrapeLiege(browser) {
 
   await page.close();
 
-  return allDecisions;
+  return dedupe(allDecisions);
 }
 
 async function main() {
@@ -334,10 +353,12 @@ async function main() {
   console.log('SCRAPER FISCAL - LIÈGE');
   console.log(`ANNÉE : ${TARGET_YEAR}`);
   console.log('========================================');
+  console.log('');
 
   const browser =
     await puppeteer.launch({
       headless: true,
+
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
@@ -358,10 +379,7 @@ async function main() {
     console.log('========================================');
 
     /*
-     * Protection.
-     *
-     * On ne modifie pas le JSON si le scraper
-     * ne retrouve pas un volume cohérent.
+     * PROTECTION
      */
     if (decisions.length < 100) {
       console.log('');
@@ -370,11 +388,15 @@ async function main() {
         'Moins de 100 décisions 2026 récupérées.'
       );
       console.log(
-        'Le fichier JSON existant reste inchangé.'
+        'Le JSON existant reste inchangé.'
       );
+
       return;
     }
 
+    /*
+     * CLASSIFICATION
+     */
     const fiscalDecisions = [];
 
     for (const decision of decisions) {
@@ -412,6 +434,9 @@ async function main() {
       console.log(`URL   : ${item.url}`);
     }
 
+    /*
+     * Écriture JSON
+     */
     const outputPath =
       path.join(
         process.cwd(),
