@@ -1,9 +1,4 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const BASE_URL = 'https://www.deliberations.be';
 const LIEGE_URL = `${BASE_URL}/liege/decisions`;
@@ -18,7 +13,9 @@ function sleep(ms) {
 }
 
 function normalizeText(text) {
-  return (text || '').replace(/\s+/g, ' ').trim();
+  return (text || '')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 function normalizeForSearch(text) {
@@ -101,6 +98,12 @@ function parseDateFromSlug(url) {
   );
 }
 
+/*
+ * =========================================================
+ * EXTRACTION D'UNE PAGE DE LISTE
+ * =========================================================
+ */
+
 async function extractPage(page) {
   return await page.evaluate(() => {
     const links = [];
@@ -158,6 +161,20 @@ async function extractPage(page) {
   });
 }
 
+/*
+ * =========================================================
+ * EXTRACTION DU CONTENU COMPLET D'UNE DÉCISION
+ * =========================================================
+ *
+ * On ne regarde plus uniquement "Matière".
+ *
+ * On récupère :
+ * - titre visible
+ * - matière
+ * - texte complet de la page
+ * - liens vers documents éventuels
+ */
+
 async function extractDecisionDetails(page, url) {
   try {
     await page.goto(url, {
@@ -165,9 +182,15 @@ async function extractDecisionDetails(page, url) {
       timeout: PAGE_TIMEOUT_MS
     });
 
-    await sleep(500);
+    await sleep(700);
 
     return await page.evaluate(() => {
+      const bodyText = (
+        document.body?.innerText ||
+        document.body?.textContent ||
+        ''
+      ).replace(/\s+/g, ' ').trim();
+
       let matiere = '';
 
       const elements = [
@@ -229,142 +252,364 @@ async function extractDecisionDetails(page, url) {
         }
       }
 
+      const documentLinks = [];
+
+      for (const a of document.querySelectorAll('a[href]')) {
+        const href = a.href || '';
+
+        if (!href) continue;
+
+        const text = (
+          a.innerText ||
+          a.textContent ||
+          ''
+        ).replace(/\s+/g, ' ').trim();
+
+        const lowerHref = href.toLowerCase();
+
+        if (
+          lowerHref.includes('.pdf') ||
+          lowerHref.includes('document') ||
+          lowerHref.includes('annexe') ||
+          lowerHref.includes('download') ||
+          lowerHref.includes('file')
+        ) {
+          documentLinks.push({
+            href,
+            text
+          });
+        }
+      }
+
       return {
-        matiere
+        matiere,
+        bodyText,
+        documentLinks
       };
     });
+
   } catch (error) {
     console.log(`⚠️ Impossible de lire : ${url}`);
 
     return {
-      matiere: ''
+      matiere: '',
+      bodyText: '',
+      documentLinks: []
     };
   }
 }
 
-function getFiscalSignals(title, matiere) {
+/*
+ * =========================================================
+ * RECHERCHE DES INDICES FISCAUX
+ * =========================================================
+ *
+ * IMPORTANT :
+ *
+ * STATIONNEMENT et ZONE PAYANTE ne sont PAS considérés
+ * comme des indices fiscaux.
+ *
+ * Nous voulons détecter :
+ * - taxes
+ * - redevances
+ * - impôts
+ * - précompte
+ * - centimes additionnels
+ * - force motrice
+ * - IPP
+ * - règlement-taxe
+ * - etc.
+ */
+
+function getFiscalSignals(title, matiere, bodyText) {
   const t = normalizeForSearch(title);
   const m = normalizeForSearch(matiere);
+  const b = normalizeForSearch(bodyText);
 
   const signals = [];
 
-  // Signaux directement fiscaux
-  if (/\btaxe\b/.test(t) || /\btaxes\b/.test(t)) {
-    signals.push('TAXE');
+  function add(signal) {
+    if (!signals.includes(signal)) {
+      signals.push(signal);
+    }
+  }
+
+  /*
+   * ---------------------------------------------------------
+   * TITRE
+   * ---------------------------------------------------------
+   */
+
+  if (/\btaxe\b|\btaxes\b/.test(t)) {
+    add('TITRE_TAXE');
   }
 
   if (
-    /\bredevance\b/.test(t) ||
-    /\bredevances\b/.test(t)
+    /\bredevance\b|\bredevances\b/.test(t)
   ) {
-    signals.push('REDEVANCE');
+    add('TITRE_REDEVANCE');
   }
 
   if (
-    /\btarif\b/.test(t) ||
-    /\btarifs\b/.test(t)
+    /\btarif\b|\btarifs\b|\btarification\b/.test(t)
   ) {
-    signals.push('TARIF');
-  }
-
-  if (/\btarification\b/.test(t)) {
-    signals.push('TARIFICATION');
+    add('TITRE_TARIF');
   }
 
   if (/\bprecompte\b/.test(t)) {
-    signals.push('PRECOMPTE');
+    add('TITRE_PRECOMPTE');
   }
 
   if (
-    /\bimpot\b/.test(t) ||
-    /\bimpots\b/.test(t)
+    /\bimpot\b|\bimpots\b/.test(t)
   ) {
-    signals.push('IMPOT');
+    add('TITRE_IMPOT');
   }
 
   if (/\bipp\b/.test(t)) {
-    signals.push('IPP');
+    add('TITRE_IPP');
   }
 
-  if (/\bcentimes additionnels\b/.test(t)) {
-    signals.push('CENTIMES_ADDITIONNELS');
-  }
-
-  if (/\badditionnels\b/.test(t)) {
-    signals.push('ADDITIONNELS');
+  if (
+    /\bcentimes additionnels\b/.test(t)
+  ) {
+    add('TITRE_CENTIMES_ADDITIONNELS');
   }
 
   if (/\bforce motrice\b/.test(t)) {
-    signals.push('FORCE_MOTRICE');
+    add('TITRE_FORCE_MOTRICE');
   }
 
   if (
     /\breglement\b/.test(t) &&
     (
       /\btaxe\b/.test(t) ||
-      /\bredevance\b/.test(t) ||
-      /\btarif\b/.test(t)
+      /\bredevance\b/.test(t)
     )
   ) {
-    signals.push('REGLEMENT_FISCAL');
+    add('TITRE_REGLEMENT_FISCAL');
   }
 
-  // Signaux liés au stationnement
-  if (/\bstationnement\b/.test(t)) {
-    signals.push('STATIONNEMENT');
+  /*
+   * ---------------------------------------------------------
+   * MATIÈRE
+   * ---------------------------------------------------------
+   */
+
+  if (/\btaxe\b|\btaxes\b/.test(m)) {
+    add('MATIERE_TAXE');
   }
 
-  if (/\bzone payante\b/.test(t)) {
-    signals.push('ZONE_PAYANTE');
+  if (
+    /\bredevance\b|\bredevances\b/.test(m)
+  ) {
+    add('MATIERE_REDEVANCE');
   }
 
-  // Signaux provenant de la matière
-  if (m) {
-    if (
-      /\btaxe\b/.test(m) ||
-      /\btaxes\b/.test(m)
-    ) {
-      signals.push('MATIERE_TAXE');
-    }
-
-    if (
-      /\bredevance\b/.test(m) ||
-      /\bredevances\b/.test(m)
-    ) {
-      signals.push('MATIERE_REDEVANCE');
-    }
-
-    if (/\bfiscal/.test(m)) {
-      signals.push('MATIERE_FISCALITE');
-    }
-
-    if (/\bprecompte\b/.test(m)) {
-      signals.push('MATIERE_PRECOMPTE');
-    }
-
-    if (
-      /\bimpot\b/.test(m) ||
-      /\bimpots\b/.test(m)
-    ) {
-      signals.push('MATIERE_IMPOT');
-    }
-
-    if (/\bipp\b/.test(m)) {
-      signals.push('MATIERE_IPP');
-    }
-
-    if (/\bforce motrice\b/.test(m)) {
-      signals.push('MATIERE_FORCE_MOTRICE');
-    }
+  if (/\bfiscal/.test(m)) {
+    add('MATIERE_FISCALITE');
   }
 
-  return [...new Set(signals)];
+  if (/\bprecompte\b/.test(m)) {
+    add('MATIERE_PRECOMPTE');
+  }
+
+  if (
+    /\bimpot\b|\bimpots\b/.test(m)
+  ) {
+    add('MATIERE_IMPOT');
+  }
+
+  if (/\bipp\b/.test(m)) {
+    add('MATIERE_IPP');
+  }
+
+  if (/\bforce motrice\b/.test(m)) {
+    add('MATIERE_FORCE_MOTRICE');
+  }
+
+  /*
+   * ---------------------------------------------------------
+   * CONTENU COMPLET DE LA DÉCISION
+   * ---------------------------------------------------------
+   */
+
+  if (/\btaxe\b|\btaxes\b/.test(b)) {
+    add('CONTENU_TAXE');
+  }
+
+  if (
+    /\bredevance\b|\bredevances\b/.test(b)
+  ) {
+    add('CONTENU_REDEVANCE');
+  }
+
+  if (
+    /\bprecompte immobilier\b/.test(b)
+  ) {
+    add('CONTENU_PRECOMPTE_IMMOBILIER');
+  }
+
+  if (
+    /\bprecompte\b/.test(b)
+  ) {
+    add('CONTENU_PRECOMPTE');
+  }
+
+  if (
+    /\bimpot\b|\bimpots\b/.test(b)
+  ) {
+    add('CONTENU_IMPOT');
+  }
+
+  if (
+    /\bipp\b/.test(b)
+  ) {
+    add('CONTENU_IPP');
+  }
+
+  if (
+    /\bcentimes additionnels\b/.test(b)
+  ) {
+    add('CONTENU_CENTIMES_ADDITIONNELS');
+  }
+
+  if (
+    /\badditionnels\b/.test(b)
+  ) {
+    add('CONTENU_ADDITIONNELS');
+  }
+
+  if (
+    /\bforce motrice\b/.test(b)
+  ) {
+    add('CONTENU_FORCE_MOTRICE');
+  }
+
+  if (
+    /\breglement[- ]taxe\b/.test(b)
+  ) {
+    add('CONTENU_REGLEMENT_TAXE');
+  }
+
+  if (
+    /\breglement[- ]redevance\b/.test(b)
+  ) {
+    add('CONTENU_REGLEMENT_REDEVANCE');
+  }
+
+  /*
+   * Termes particulièrement utiles pour la fiscalité
+   * communale belge.
+   */
+
+  if (
+    /\btaxe communale\b/.test(b)
+  ) {
+    add('CONTENU_TAXE_COMMUNALE');
+  }
+
+  if (
+    /\btaxe additionnelle\b/.test(b)
+  ) {
+    add('CONTENU_TAXE_ADDITIONNELLE');
+  }
+
+  if (
+    /\btaxe sur\b/.test(b)
+  ) {
+    add('CONTENU_TAXE_SUR');
+  }
+
+  if (
+    /\btaxe de\b/.test(b)
+  ) {
+    add('CONTENU_TAXE_DE');
+  }
+
+  if (
+    /\btaxe directe\b/.test(b)
+  ) {
+    add('CONTENU_TAXE_DIRECTE');
+  }
+
+  return signals;
 }
+
+/*
+ * =========================================================
+ * EXTRACTION DE CONTEXTE AUTOUR DES MOTS FISCAUX
+ * =========================================================
+ *
+ * Cela nous permettra de comprendre pourquoi une décision
+ * est détectée.
+ */
+
+function extractFiscalContexts(text) {
+  const normalized = normalizeText(text);
+
+  const lower = normalizeForSearch(normalized);
+
+  const keywords = [
+    'taxe',
+    'taxes',
+    'redevance',
+    'redevances',
+    'precompte',
+    'impot',
+    'impots',
+    'ipp',
+    'centimes additionnels',
+    'force motrice',
+    'reglement-taxe',
+    'reglement taxe',
+    'reglement-redevance',
+    'reglement redevance'
+  ];
+
+  const contexts = [];
+
+  for (const keyword of keywords) {
+    let startIndex = 0;
+
+    while (true) {
+      const index = lower.indexOf(keyword, startIndex);
+
+      if (index === -1) {
+        break;
+      }
+
+      const start = Math.max(0, index - 180);
+      const end = Math.min(
+        normalized.length,
+        index + keyword.length + 300
+      );
+
+      contexts.push(
+        normalized.slice(start, end)
+      );
+
+      startIndex = index + keyword.length;
+
+      if (contexts.length >= 8) {
+        return contexts;
+      }
+    }
+  }
+
+  return contexts;
+}
+
+/*
+ * =========================================================
+ * PROGRAMME PRINCIPAL
+ * =========================================================
+ */
 
 async function main() {
   console.log('');
   console.log('========================================');
-  console.log('DIAGNOSTIC FISCAL — LIÈGE');
+  console.log('DIAGNOSTIC FISCAL APPROFONDI — LIÈGE');
   console.log(`ANNÉE : ${TARGET_YEAR}`);
   console.log(
     'MODE : DIAGNOSTIC — AUCUNE ÉCRITURE JSON'
@@ -391,7 +636,7 @@ async function main() {
   try {
     /*
      * =====================================================
-     * ÉTAPE 1 — RÉCUPÉRATION DES DÉCISIONS
+     * 1. RÉCUPÉRATION DES 261 DÉCISIONS
      * =====================================================
      */
 
@@ -442,7 +687,11 @@ async function main() {
                 link.href
               ),
               url: link.href,
-              matiere: ''
+              matiere: '',
+              bodyText: '',
+              documentLinks: [],
+              signals: [],
+              contexts: []
             });
 
             decisions2026ThisPage++;
@@ -467,13 +716,6 @@ async function main() {
         console.log('Fin de 2026 détectée.');
         break;
       }
-
-      /*
-       * On récupère les vrais liens de pagination
-       * générés par deliberations.be.
-       *
-       * On ne reconstruit PAS nous-mêmes les URLs.
-       */
 
       const paginationCandidates = [];
 
@@ -519,24 +761,12 @@ async function main() {
       currentUrl = nextCandidates[0].href;
     }
 
-    /*
-     * =====================================================
-     * ÉTAPE 2 — CONTRÔLE DU NOMBRE DE DÉCISIONS
-     * =====================================================
-     */
-
     console.log('');
     console.log('========================================');
     console.log(
       `TOTAL UNIQUE : ${allDecisions.size} décisions 2026`
     );
     console.log('========================================');
-
-    /*
-     * Sécurité :
-     * si le scraper récupère anormalement peu de décisions,
-     * on arrête le diagnostic.
-     */
 
     if (allDecisions.size < 100) {
       console.log('');
@@ -551,16 +781,17 @@ async function main() {
 
     /*
      * =====================================================
-     * ÉTAPE 3 — ANALYSE DES DÉCISIONS
+     * 2. ANALYSE APPROFONDIE
      * =====================================================
      */
 
     console.log('');
     console.log('========================================');
     console.log(
-      'ANALYSE DES DÉCISIONS'
+      'ANALYSE DU CONTENU DES 261 DÉCISIONS'
     );
     console.log('========================================');
+    console.log('');
 
     let counter = 0;
 
@@ -576,19 +807,25 @@ async function main() {
       decision.matiere =
         normalizeText(details.matiere);
 
-      const signals =
+      decision.bodyText =
+        normalizeText(details.bodyText);
+
+      decision.documentLinks =
+        details.documentLinks || [];
+
+      decision.signals =
         getFiscalSignals(
           decision.titre,
-          decision.matiere
+          decision.matiere,
+          decision.bodyText
         );
 
-      decision.signals = signals;
+      if (decision.signals.length > 0) {
+        decision.contexts =
+          extractFiscalContexts(
+            decision.bodyText
+          );
 
-      /*
-       * On affiche uniquement les candidats.
-       */
-
-      if (signals.length > 0) {
         console.log('');
         console.log(
           '----------------------------------------'
@@ -613,9 +850,25 @@ async function main() {
         );
 
         console.log(
-          `INDICES  : ${signals.join(', ')}`
+          `INDICES  : ${decision.signals.join(', ')}`
         );
 
+        console.log(
+          `DOCUMENTS : ${decision.documentLinks.length}`
+        );
+
+        if (decision.contexts.length > 0) {
+          console.log('');
+          console.log('CONTEXTE :');
+
+          for (const context of decision.contexts) {
+            console.log(
+              `  → ${context}`
+            );
+          }
+        }
+
+        console.log('');
         console.log(
           `URL      : ${decision.url}`
         );
@@ -633,7 +886,7 @@ async function main() {
 
     /*
      * =====================================================
-     * ÉTAPE 4 — RÉSUMÉ
+     * 3. RÉSUMÉ
      * =====================================================
      */
 
@@ -653,7 +906,7 @@ async function main() {
     console.log('');
     console.log('========================================');
     console.log(
-      'RÉSUMÉ DU DIAGNOSTIC'
+      'RÉSUMÉ DU DIAGNOSTIC APPROFONDI'
     );
     console.log('========================================');
 
@@ -667,33 +920,71 @@ async function main() {
 
     /*
      * =====================================================
-     * ÉTAPE 5 — LISTE COMPLÈTE DES CANDIDATS
+     * 4. STATISTIQUES DES INDICES
+     * =====================================================
+     */
+
+    const signalCounts = new Map();
+
+    for (const decision of candidates) {
+      for (const signal of decision.signals) {
+        signalCounts.set(
+          signal,
+          (signalCounts.get(signal) || 0) + 1
+        );
+      }
+    }
+
+    console.log('');
+    console.log('INDICES DÉTECTÉS :');
+
+    for (
+      const [signal, count]
+      of [...signalCounts.entries()]
+        .sort((a, b) => b[1] - a[1])
+    ) {
+      console.log(
+        `  ${signal} : ${count}`
+      );
+    }
+
+    /*
+     * =====================================================
+     * 5. LISTE DES CANDIDATS
      * =====================================================
      */
 
     console.log('');
     console.log('========================================');
     console.log(
-      'LISTE COMPLÈTE DES CANDIDATS'
+      'LISTE DES CANDIDATS'
     );
     console.log('========================================');
 
     for (const decision of candidates) {
+      console.log('');
       console.log(
-        `${decision.date} | ` +
-        `${decision.titre} | ` +
-        `${decision.matiere || '(matière inconnue)'} | ` +
-        `${decision.signals.join(', ')}`
+        `${decision.date} | ${decision.titre}`
       );
 
       console.log(
-        `URL: ${decision.url}`
+        `MATIÈRE : ${
+          decision.matiere || '(inconnue)'
+        }`
+      );
+
+      console.log(
+        `INDICES : ${decision.signals.join(', ')}`
+      );
+
+      console.log(
+        `URL : ${decision.url}`
       );
     }
 
     /*
      * =====================================================
-     * FIN
+     * 6. FIN
      * =====================================================
      */
 
