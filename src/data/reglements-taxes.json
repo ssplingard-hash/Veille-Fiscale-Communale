@@ -1,6 +1,6 @@
 {
   "Liège": {
-    "updatedAt": "2026-09-17T06:05:40.366Z",
+    "updatedAt": "2026-09-18T06:03:49.460Z",
     "reglementsEnVigueur": [
       {
         "date": "2026-09-07",
@@ -18,7 +18,7 @@
     "prochainesTaxes": []
   },
   "Anderlecht": {
-    "updatedAt": "2026-09-17T06:05:41.513Z",
+    "updatedAt": "2026-09-18T06:03:51.504Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlement-taxe sur les agences de paris aux courses de chevaux",
@@ -510,7 +510,7 @@
     "prochainesTaxes": []
   },
   "Auderghem": {
-    "updatedAt": "2026-09-17T06:05:42.985Z",
+    "updatedAt": "2026-09-18T06:03:53.009Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
@@ -864,7 +864,7 @@
     "prochainesTaxes": []
   },
   "Berchem-Sainte-Agathe": {
-    "updatedAt": "2026-09-17T06:05:46.100Z",
+    "updatedAt": "2026-09-18T06:03:55.940Z",
     "reglementsEnVigueur": [
       {
         "titre": "Commerce : règlements, primes, taxes et redevances",
@@ -1572,7 +1572,7 @@
     "prochainesTaxes": []
   },
   "Ville de Bruxelles": {
-    "updatedAt": "2026-09-17T06:05:47.278Z",
+    "updatedAt": "2026-09-18T06:03:57.170Z",
     "reglementsEnVigueur": [
       {
         "titre": "Centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique pour l'exercice 2027 - principe",
@@ -2652,27 +2652,27 @@
     "prochainesTaxes": []
   },
   "Etterbeek": {
-    "updatedAt": "2026-09-17T06:05:48.908Z",
+    "updatedAt": "2026-09-18T06:03:58.599Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous une rubrique 'emploi et commerce' inhabituelle : à vérifier que c'est bien la bonne page."
   },
   "Evere": {
-    "updatedAt": "2026-09-17T06:05:52.354Z",
+    "updatedAt": "2026-09-18T06:04:02.264Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous 'actualité' : pourrait être une brève plutôt que la liste complète des règlements."
   },
   "Forest": {
-    "updatedAt": "2026-09-17T06:05:55.125Z",
+    "updatedAt": "2026-09-18T06:04:13.257Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
-    "error": "HTTP 404 pour https://www.forest.brussels/fr/services-communaux/finances-communales/reglements-taxes"
+    "error": "fetch failed"
   },
   "Ganshoren": {
-    "updatedAt": "2026-09-17T06:05:56.689Z",
+    "updatedAt": "2026-09-18T06:04:14.775Z",
     "reglementsEnVigueur": [
       {
         "titre": "Téléchargez les documents Taxes, redevances et impôts",
@@ -2686,560 +2686,38 @@
     "note": "Pas trouvé de page dédiée 'règlements-taxes' ; be.brussels renvoie vers publi.irisnet.be (non scrapable, cf. notes précédentes) pour cette commune."
   },
   "Ixelles": {
-    "updatedAt": "2026-09-17T06:05:58.040Z",
-    "reglementsEnVigueur": [
-      {
-        "titre": "Ordonnance relative à l'établissement, au recouvrement et au contentieux en matière des taxes communales",
-        "url": "https://www.ixelles.be/site/downloads/taxes/ordonnance.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "montant indexé de chaque taxe ici",
-        "url": "https://www.ixelles.be/uploads/misc/taxes-index-fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Actes et travaux soumis à permis d'urbanisme",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T460-travaux-permis-urbanisme-batisses.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Agences de paris aux courses de chevaux ou succursales de ces agences autorisées",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/paris.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Antennes relais de GSM ou mobilophonie, de télécommunications, d'émission de signaux et d'échange d'informations par la voie hertzienne",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T477-antennes-gsm.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Établissements bancaires, organismes financiers et assimilés ainsi que leurs succursales et agences, pour autant qu'ils soient accessibles au public",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/banques.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Pose et enlèvement, ainsi que mise à disposition par la Commune de dispositifs de protection afin de garantir la sécurité du passage sur la voie publique",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/pose-enlevement-barrieres-securite.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Surfaces de bureaux",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T475-bureaux.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Formulaire de déclaration",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/formulaires/T475-T490-bureaux-parcage.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Cercles privés",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T410-cercles-prives.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Activités de colportage et de commerce ambulant soumises à la loi du 25 juin 1993 sur l'exercice et l'organisation des activités ambulantes et foraines",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T404-commerce-ambulant.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Exploitation, à des fins commerciales, d'un service de cyclopartage en flotte libre",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/cyclopartage.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Dispositifs publicitaires placés sur, au-dessus, le long de la voie publique ou sur un bien privé et visibles depuis la voie publique",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T364-dispositifs-publicitaires.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Dispositifs publicitaires ayant pour fonction principale le financement d'un service public reconnu par le législateur, situés dans l'espace public ou visibles depuis l'espace public",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/dispositifs-publicitaires-sp.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Distribution à domicile d'imprimés ou de produits publicitaires non adressés nominativement et distribution d'écrits ou de produits publicitaires sur le domaine public",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/distribution-toutes-boites.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Publicités sur bâches de chantier",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T366-dispositifs-publicitaires-chantiers.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Enseignes non lumineuses, enseignes lumineuses et enseignes lumineuses clignotantes ou animées",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T414-enseignes.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Établissements de restauration rapide utilisant des bornes de commandes automatisées",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/fastfood.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Guichets automatiques",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T440-guichets-auto.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Immeubles ou parties d'immeubles qui sont restés inoccupés pendant une période minimale de 180 jours",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T470-immeubles-inoccupes.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Logements meublés",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T420-logements-meubles.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Formulaire de déclaration",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/formulaires/T421-logements-meubles.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Logements insalubres ou inhabitables",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/logements-insalubres.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Occupation temporaire de la voie publique à l'occasion de travaux de construction, de démolition, de reconstruction, de transformation, ou d'entretien d'immeubles",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T062-otvp-travaux.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Formulaire de demande",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/formulaires/T062-otvp-travaux.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Emplacements de parcage",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T490-emplacements-parcage.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Établissements au sein desquels exerce du personnel de bar",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T400-bars.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Distributeurs de carburant et bornes de recharge pour véhicules électriques",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T436-pompes-carburant.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Réservation à des fins privées de zones de l'espace public habituellement destinées au stationnement de véhicules automobiles",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T063-otvp-prive.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Formulaire de demande",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/formulaires/T063-otvp-prive.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Occupation d'une résidence pour laquelle l'occupant n'est pas inscrit dans les registres de la population",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T468-residences-secondaires.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Formulaire de déclaration",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/formulaires/T468-residences-secondaires.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Placement de tables, chaises, bancs, comptoirs et autres mobiliers de terrasses sur la voie publique",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T432-terrasses.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Spectacles et divertissements qui requièrent le paiement d'un droit d'entrée",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/spectacles.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Placement, à des fins commerciales, d'objets et/ou de marchandises sur la voie publique",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T430-commerce-voie-publique.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Utilisation de la voie publique à l'occasion d'un événement publicitaire, promotionnel et/ou commercial",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/T431-voie-publique-evenement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Occupation du domaine public dans le cadre des brocantes et des braderies",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/brocantes.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Concessions au cimetière, transports funèbres, prestations du personnel du service des inhumations et des exhumations, séjour dans le dépôt mortuaire, location et ouverture de caveaux",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/cimetiere.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Délivrance de documents, prestation de service et constitution de dossiers administratifs, dans le cadre d'une activité commerciale",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/documents-admin-commerce.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Délivrance de documents, prestation de service et constitution de dossiers administratifs, en matière de population et d'état civil",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/documents-admin-pop.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Délivrance de documents, prestation de service et constitution de dossiers administratifs, en matière d'urbanisme",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/documents-admin-urba.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Occupation d'un emplacement sur les fêtes foraines publiques ainsi que sur la consommation d'eau qui y est liée",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2025/foires.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Mise à disposition de jeux par les ludothèques communales",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/ludotheques.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Stationnement des véhicules à moteur sur la voie publique",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/stationnement-vehicules-moteur-voie-publique.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Additionnel à l'impôt des personnes physiques",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/ipp.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Additionnels au précompte immobilier",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/precompte-immo.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Additionnels à la taxe régionale sur les hébergements touristiques",
-        "url": "https://www.ixelles.be/site/fr/download/taxes/2026/hebergements-touristiques.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxes, redevances et impôts - Exercices antérieurs",
-        "url": "https://www.ixelles.be/site/874-Taxes-redevances-et-impots-Exercices-anterieurs",
-        "matiere": null,
-        "date": null
-      }
-    ],
-    "prochainesTaxes": []
+    "updatedAt": "2026-09-18T06:04:25.769Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": [],
+    "error": "fetch failed"
   },
   "Jette": {
-    "updatedAt": "2026-09-17T06:05:59.669Z",
+    "updatedAt": "2026-09-18T06:04:27.328Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "low",
     "note": "Pas trouvé de sous-page 'taxes' précise ; page d'accueil seulement, à affiner."
   },
   "Koekelberg": {
-    "updatedAt": "2026-09-17T06:06:00.169Z",
+    "updatedAt": "2026-09-18T06:04:27.828Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "Le site officiel indique explicitement que les règlements ne sont consultables que sur rendez-vous au secrétariat communal (pas de publication en ligne). Aucune URL exploitable trouvée."
   },
   "Molenbeek-Saint-Jean": {
-    "updatedAt": "2026-09-17T06:06:02.475Z",
-    "reglementsEnVigueur": [
-      {
-        "titre": "Taxes et recettes",
-        "url": "https://www.molenbeek.brussels/fr/je-vis/taxes-et-recettes/taxes-et-recettes",
-        "matiere": null,
-        "date": null
-      }
-    ],
-    "prochainesTaxes": []
+    "updatedAt": "2026-09-18T06:04:38.823Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": [],
+    "error": "fetch failed"
   },
   "Saint-Gilles": {
-    "updatedAt": "2026-09-17T06:06:04.769Z",
-    "reglementsEnVigueur": [
-      {
-        "titre": "Liste des taxes",
-        "url": "https://stgilles.brussels/services/finances/liste-des-taxes/",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Formulaire de contestation de taxes",
-        "url": "https://stgilles.brussels/services/finances/formulaire-de-contestation-de-taxes/",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d’impôts",
-        "url": "https://stgilles.brussels/services/finances/declaration-dimpots/",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement général relatif aux impôts communaux",
-        "url": "https://stgilles.brussels/wp-content/uploads/2017/12/REGLEMENT_GENERAL_DE_TAXE_CC30042015_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Ordonnance relative à l’établissement, au recouvrement et au contentieux en matière de taxes communales",
-        "url": "https://stgilles.brussels/wp-content/uploads/2017/12/20140403_Ordonnance_en_matiere_de_taxes_communales.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la délivrance de documents administratifs – Département démographie",
-        "url": "https://stgilles.brussels/wp-content/uploads/2022/07/Delivrance-docs-admin-FR-1.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Redevances dues pour services administratifs",
-        "url": "https://stgillis.brussels/wp-content/uploads/2025/02/ReglementFR1.pdf.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les salissures de l’espace public ou visibles depuis l’espace public",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/05/SALISSURES.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les surfaces de bureau",
-        "url": "https://stgilles.brussels/wp-content/uploads/2026/05/BU-INDIVIDUAL_NOTIFICATION_fr_98865.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les serveuses et serveurs de bar (Applicable pour les exercices d’imposition 2026 à 2030)",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/12/INDIVIDUAL_NOTIFICATION_fr_96008.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les agences de paris aux courses de chevaux et leurs succursales",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/05/AGENCES-DE-PARIS.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les clubs privés",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/01/clubs-prives-FR-INDIVIDUAL_NOTIFICATION_fr_88735.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur la mise à disposition d’appareils de télécommunication contre rétribution (Applicable pour les exercices d’imposition 2026 à 2030)",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/12/INDIVIDUAL_NOTIFICATION_fr_96012.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les établissements bancaires, les organismes financiers et sur les appareils distributeurs automatiques de billets de banque ou de courrier",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/05/BANQUES-BILLETS-DE-BANQUE.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les locaux où sont organisés des spectacles de charme (Applicable pour les exercices d’imposition 2026 à 2030)",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/12/INDIVIDUAL_NOTIFICATION_fr_96010.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les appareils distributeurs de carburants, de lubrifiants, sur les bornes de recharge pour véhicules électrique et autres appareils automatiques",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/05/APPAREIL-DISTRIBUTEUR-DE-CARBURANT.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les emplacements de parking (Applicable pour les exercices d’imposition 2026 à 2030)",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/12/INDIVIDUAL_NOTIFICATION_fr_96017.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur l’exposition de véhicules d’occasion en vue de la vente",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/12/INDIVIDUAL_NOTIFICATION_fr_96009.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les magasins de nuit (Applicable pour les exercices d’imposition 2026 à 2030)",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/12/INDIVIDUAL_NOTIFICATION_fr_96016.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les débits de boisson ouverts après 1h (Applicable pour les exercices d’imposition 2026 à 2030)",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/12/INDIVIDUAL_NOTIFICATION_fr_96013.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les enseignes lumineuses et non lumineuses",
-        "url": "https://stgilles.brussels/wp-content/uploads/2026/06/INDIVIDUAL_NOTIFICATION_fr_96014-1.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement relatif à la taxe sur le placement de tables, chaises, bancs, comptoirs et autres mobiliers de terrasses sur la voie publique",
-        "url": "https://stgilles.brussels/wp-content/uploads/2026/05/TE-INDIVIDUAL_NOTIFICATION_fr_98864.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe relatif à l’instruction des permis et certificats en matière d’urbanisme",
-        "url": "https://stgilles.brussels/wp-content/uploads/2019/03/Conseil-communal-28.02.19-Renouvellement-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les actes et travaux soumis à permis d’urbanisme",
-        "url": "https://stgilles.brussels/wp-content/uploads/2023/01/RT_actes_urbanisme_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les logements meublés",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/05/LOGEMENT-MEUBLE.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les façades délabrées",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/12/INDIVIDUAL_NOTIFICATION_fr_96015.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les immeubles déclarés insalubres ou inhabitables ou ne satisfaisant pas aux exigences élémentaires de sécurité et de salubrité",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/05/IMMEUBLES-INSALUBRES.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les immeubles inoccupés et les terrains laissés à l’abandon.",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/05/IMMEUBLES-INOCCUPES.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les résidences non principales",
-        "url": "https://stgilles.brussels/wp-content/uploads/2026/05/RNP-INDIVIDUAL_NOTIFICATION_fr_98868.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur l’occupation privative de l’espace public",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/05/OCCUPATION-ESPACE-PUBLIC.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur l’étalage de marchandises, meubles ou objets quelconques sur la voie publique",
-        "url": "https://stgillis.brussels/wp-content/uploads/2025/12/ETALAGES.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les antennes relais de GSM ou mobilophonie, de télécommunication, d’émission de signaux et d’échange d’informations par voie hertzienne",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/05/ANTENNES-RELAIS.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-redevance relatif aux prestations pour tiers",
-        "url": "https://stgillis.brussels/wp-content/uploads/2025/01/INDIVIDUAL_NOTIFICATION_fr_89320-1.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les dispositifs publicitaires dans l’espace public ou visibles depuis l’espace public",
-        "url": "https://stgilles.brussels/wp-content/uploads/2025/05/DISPOSITIFS-PUBLICITAIRES.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement taxes et redevances relatif aux concessions, dispersions des cendres, inhumations, exhumations, utilisation de la morgue, surveillance de la mise en bière et plaquettes du souvenir",
-        "url": "https://stgilles.brussels/wp-content/uploads/2026/01/INDIVIDUAL_NOTIFICATION_fr_96662.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement relatif à la perception des centimes additionnels au précompte immobilier",
-        "url": "https://stgillis.brussels/wp-content/uploads/2026/01/INDIVIDUAL_NOTIFICATION_fr_96605.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement relatif aux additionnels à l’impôt des personnes physiques",
-        "url": "https://stgillis.brussels/wp-content/uploads/2026/01/INDIVIDUAL_NOTIFICATION_fr_96602.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement relatif aux centimes additionnels à la taxe régionale sur les établissements d’hébergement touristique",
-        "url": "https://stgillis.brussels/wp-content/uploads/2026/01/INDIVIDUAL_NOTIFICATION_fr_96603.pdf",
-        "matiere": null,
-        "date": null
-      }
-    ],
-    "prochainesTaxes": []
+    "updatedAt": "2026-09-18T06:04:49.818Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": [],
+    "error": "fetch failed"
   },
   "Saint-Josse-ten-Noode": {
-    "updatedAt": "2026-09-17T06:06:06.027Z",
+    "updatedAt": "2026-09-18T06:04:51.354Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements & Taxes",
@@ -3481,7 +2959,7 @@
     "note": "URL FR devinée par analogie avec la version anglaise (sjtn.brussels/en/municipality/regulations-taxes) : à vérifier."
   },
   "Schaerbeek": {
-    "updatedAt": "2026-09-17T06:06:07.614Z",
+    "updatedAt": "2026-09-18T06:04:52.900Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes & Redevances",
@@ -3499,313 +2977,19 @@
     "prochainesTaxes": []
   },
   "Uccle": {
-    "updatedAt": "2026-09-17T06:06:18.610Z",
+    "updatedAt": "2026-09-18T06:05:03.894Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "fetch failed"
   },
   "Watermael-Boitsfort": {
-    "updatedAt": "2026-09-17T06:06:20.585Z",
-    "reglementsEnVigueur": [
-      {
-        "titre": "Impôts et taxes",
-        "url": "https://www.watermael-boitsfort.be/fr/je-trouve/impots-et-taxes#c0=nv4t0og0l",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxes, primes, redevances et règlements",
-        "url": "https://www.watermael-boitsfort.be/fr/vivre-a-watermael-boitsfort/taxes-et-reglements",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxes",
-        "url": "https://www.watermael-boitsfort.be/fr/vivre-a-watermael-boitsfort/taxes-et-reglements/taxes",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Primes",
-        "url": "https://www.watermael-boitsfort.be/fr/vivre-a-watermael-boitsfort/taxes-et-reglements/primes",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Redevances",
-        "url": "https://www.watermael-boitsfort.be/fr/vivre-a-watermael-boitsfort/taxes-et-reglements/redevances",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlements",
-        "url": "https://www.watermael-boitsfort.be/fr/vivre-a-watermael-boitsfort/taxes-et-reglements/reglements",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les bornes de recharge pour véhicules électriques accessibles au public – Règlement",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2026-06-16-taxe-sur-les-bornes-de-recharge-pour-vehicules-electriques-accessibles-au-public-2013-reglement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les surfaces commerciales inoccupées – Règlement - Modification",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2026-06-16-taxe-sur-les-surfaces-commerciales-inoccupees-2013-reglement-modification.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les agences de paris aux courses de chevaux - Règlement - Modification",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2026-06-16-taxe-sur-les-agences-de-paris-aux-courses-de-chevaux-reglement-modification.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les immeubles ayant une affectation de bureaux",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-les-immeubles-ayant-une-affectation-de-bureaux-reglement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les établissements bancaires et financiers",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-les-etablissements-bancaires-et-financiers-reglement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les distributeurs automatiques de billets",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-les-distributeurs-automatiques-de-billets-reglement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les antennes de télécommunications, d’émissions de signaux et d’échanges d’informations par voie hertzienne",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-les-antennes-de-telecommunications-d2019emissions-de-signaux-et-d2019echanges-d2019informations-par-voie-hertzienne-reglement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les distributeurs de carburants liquides ou gazeux",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-les-distributeurs-de-carburants-liquides-ou-gazeux-reglement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les bornes de recharge pour véhicules électriques en voirie",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-les-bornes-de-recharge-pour-vehicules-electriques-en-voirie-2013-reglement-modification.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les parkings",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-les-parkings-2013-reglement-modification.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les agences de paris aux courses de chevaux",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-les-agences-de-paris-aux-courses-de-chevaux-reglement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur le colportage",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-le-colportage-reglement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la distribution à domicile de feuilles et de cartes publicitaires ainsi que de catalogues et journaux contenant de la publicité lorsque ces imprimés sont non-adressés",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-la-distribution-a-domicile-de-feuilles-et-de-cartes-publicitaires-2013-reglement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur le mobilier urbain à caractère publicitaire",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-le-mobilier-urbain-a-caractere-publicitaire-reglement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les panneaux fixes",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-les-panneaux-fixes-reglement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur le placement de matériaux, conteneurs, cabines, matériel et objets divers sur la voie publique",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-le-placement-de-materiaux-conteneurs-cabines-materiel-et-objets-divers-sur-la-voie-publique-reglement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les secondes résidences",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-les-secondes-residences-reglement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les surfaces commerciales inoccupées",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-les-surfaces-commerciales-inoccupees-2013-reglement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la construction, la reconstruction et la transformation de bâtiments",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-la-construction-la-reconstruction-et-la-transformation-de-batiments-reglement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la délivrance de documents administratifs",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-la-delivrance-de-documents-administratifs-reglement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les services funèbres",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-les-services-funebres-reglement.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les bornes de recharge pour véhicules électriques en voirie",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-09-23-reglement-taxe-sur-les-bornes-de-recharge-pour-vehicules-electriques-en-voirie.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-taxe sur les parkings",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-09-23-reglement-taxe-sur-les-parkings.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Centimes additionnels à la taxe régionale sur les établissements d’hébergement touristique – Exercice 2025.",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/cc-2024-12-16-centimes-additionnels-a-la-taxe-regionale-sur-les-etablissements-d2019hebergement-touristique-2013-exercice-2025.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement relatif à la taxe additionnelle à l'impôt des personnes physiques - Exercice 2025 - Fixation du taux.",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/reglements/fiscalite/cc-2024-12-16-reglement-relatif-a-la-taxe-additionnelle-a-limpot-des-personnes-physiques-exercice-2025-fixation-du-taux.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les antennes de télécommunications, d’émissions de signaux et d’échanges d’informations par voie hertzienne - Règlement - Modification.",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/cc-2024-12-16-taxe-sur-les-antennes-de-telecommunications-d2019emissions-de-signaux-et-d2019echanges-d2019informations-par-voie-hertzienne-reglement-modification.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la délivrance de documents administratifs",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/cc-2023-12-19-taxe-sur-la-delivrance-de-documents-administratifs.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les antennes de télécommunications, d’émissions de signaux et d’échanges d’informations par voie hertzienne",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/cc-2023-12-19-taxe-sur-les-antennes-de-telecommunications-d2019emissions-de-signaux-et-d2019echanges-d2019informations-par-voie-hertzienne-signe.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur le placement de matériaux, conteneurs, cabines, matériel et objets divers sur la voie publique",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/cc-2023-10-17-taxe-sur-le-placement-de-materiaux-conteneurs-cabines-materiel-et-objets-divers-sur-la-voie-publique.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les incivilités en matière de propreté publique",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/18-taxe-sur-les-incivilites-en-matiere-de-proprete-publique.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les surfaces commerciales inoccupées",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/17-taxes-surfaces-commerciales-inoccupees.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxes sur le mobilier urbain à caractère publicitaire",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/9-taxes-sur-le-mobilier-urbain-a-caractere-publicitaire.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les secondes résidences",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/7-taxe-sur-les-secondes-residence.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les immeubles ayant une affectation de bureaux",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2-taxe-sur-les-immeubles-ayant-une-affectation-de-bureaux.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les établissements bancaires et financiers",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/4-taxe-sur-les-etablissements-bancaires-et-financiers.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les distributeurs de carburants liquides ou gazeux",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/3-taxe-sur-les-distributeurs-de-carburants-liquides-ou-gazeux.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les distributeurs automatiques de billets",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/5-taxe-sur-les-distributeurs-automatiques-de-billets.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les agences de paris aux courses de chevaux",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/10-taxe-sur-les-agences-de-paris-aux-courses-de-chevaux.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur le colportage",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/15-taxe-sur-le-colportage.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les services funèbres",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/16-taxe-sur-les-services-funebres.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les panneaux fixes",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/6-taxe-sur-les-panneaux-fixes.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la distribution à domicile de feuilles et de cartes publicitaires non-adressés",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/8-taxe-sur-la-distribution-a-domicile-de-feuilles-et-de-cartes-publicitaires-ainsi-que-de-catalogues-et-journaux-contenant-de-la-publicite-lorsque-ces-imprimes-sont-non-adresses.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la construction, la reconstruction et la transformation de bâtiments",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/11-taxe-sur-la-construction-la-reconstruction-et-la-transformation-de-batiments.pdf",
-        "matiere": null,
-        "date": null
-      }
-    ],
-    "prochainesTaxes": []
+    "updatedAt": "2026-09-18T06:05:14.888Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": [],
+    "error": "fetch failed"
   },
   "Woluwe-Saint-Lambert": {
-    "updatedAt": "2026-09-17T06:06:22.264Z",
+    "updatedAt": "2026-09-18T06:05:16.119Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements, primes et taxes",
@@ -3819,7 +3003,7 @@
     "note": "Page trouvée mais contenu non vérifié en détail (site nécessitait peut-être un rendu JS lors de la recherche)."
   },
   "Woluwe-Saint-Pierre": {
-    "updatedAt": "2026-09-17T06:06:24.103Z",
+    "updatedAt": "2026-09-18T06:05:18.011Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
