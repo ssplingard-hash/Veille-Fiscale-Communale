@@ -9,11 +9,9 @@ const PAGE_TIMEOUT_MS = 30000;
 const RENDER_WAIT_MS = 1800;
 const MAX_PAGES = 30;
 
-/*
- * =========================================================
- * OUTILS
- * =========================================================
- */
+// ------------------------------------------------------------
+// OUTILS GÉNÉRAUX
+// ------------------------------------------------------------
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -32,21 +30,18 @@ function normalizeForSearch(text) {
     .replace(/[\u0300-\u036f]/g, '');
 }
 
-/*
- * =========================================================
- * TITRE DEPUIS L'URL
- * =========================================================
- */
+// ------------------------------------------------------------
+// EXTRACTION DU TITRE
+// ------------------------------------------------------------
 
 function titleFromUrl(url) {
   try {
     const pathname = new URL(url).pathname;
 
-    const slug =
-      pathname
-        .split('/')
-        .filter(Boolean)
-        .pop();
+    const slug = pathname
+      .split('/')
+      .filter(Boolean)
+      .pop();
 
     if (!slug) {
       return '';
@@ -61,17 +56,9 @@ function titleFromUrl(url) {
   }
 }
 
-/*
- * =========================================================
- * VRAI TITRE
- * =========================================================
- */
-
 function getRealTitle(linkTitle, url) {
   const title = normalizeText(linkTitle);
-
-  const normalized =
-    normalizeForSearch(title);
+  const normalized = normalizeForSearch(title);
 
   const genericTitles = [
     '',
@@ -86,36 +73,25 @@ function getRealTitle(linkTitle, url) {
     return title;
   }
 
-  return (
-    titleFromUrl(url) ||
-    'Décision'
-  );
+  return titleFromUrl(url) || 'Décision';
 }
 
-/*
- * =========================================================
- * DATE DEPUIS L'URL
- * =========================================================
- */
+// ------------------------------------------------------------
+// DATE
+// ------------------------------------------------------------
 
 function parseDateFromSlug(url) {
-  const match =
-    url.match(
-      /\/(\d{1,2})-([a-zéûàâîôùç]+)-(\d{4})/i
-    );
+  const match = url.match(
+    /\/(\d{1,2})-([a-zéûàâîôùç]+)-(\d{4})/i
+  );
 
   if (!match) {
     return null;
   }
 
-  const day =
-    Number(match[1]);
-
-  const monthName =
-    match[2].toLowerCase();
-
-  const year =
-    Number(match[3]);
+  const day = Number(match[1]);
+  const monthName = match[2].toLowerCase();
+  const year = Number(match[3]);
 
   const months = {
     janvier: 0,
@@ -135,9 +111,7 @@ function parseDateFromSlug(url) {
     décembre: 11
   };
 
-  if (
-    months[monthName] === undefined
-  ) {
+  if (months[monthName] === undefined) {
     return null;
   }
 
@@ -150,50 +124,30 @@ function parseDateFromSlug(url) {
   );
 }
 
-/*
- * =========================================================
- * EXTRACTION PAGE LISTE
- * =========================================================
- */
+// ------------------------------------------------------------
+// EXTRACTION DES LISTES / PAGINATION
+// ------------------------------------------------------------
 
 async function extractPage(page) {
-
   return await page.evaluate(() => {
-
     const links = [];
 
-    for (
-      const a of document.querySelectorAll(
-        'a[href]'
-      )
-    ) {
+    for (const a of document.querySelectorAll('a[href]')) {
+      const href = a.href || '';
 
-      const href =
-        a.href || '';
-
-      if (
-        !href.includes(
-          '/liege/decisions/'
-        )
-      ) {
+      if (!href.includes('/liege/decisions/')) {
         continue;
       }
 
-      if (
-        href.includes(
-          '@@faceted_query'
-        )
-      ) {
+      if (href.includes('@@faceted_query')) {
         continue;
       }
 
-      const pathname =
-        new URL(href).pathname;
+      const pathname = new URL(href).pathname;
 
-      const parts =
-        pathname
-          .split('/')
-          .filter(Boolean);
+      const parts = pathname
+        .split('/')
+        .filter(Boolean);
 
       if (parts.length < 4) {
         continue;
@@ -201,7 +155,6 @@ async function extractPage(page) {
 
       links.push({
         href,
-
         title: (
           a.innerText ||
           a.textContent ||
@@ -214,26 +167,15 @@ async function extractPage(page) {
 
     const paginationLinks = [];
 
-    for (
-      const a of document.querySelectorAll(
-        'a[href]'
-      )
-    ) {
+    for (const a of document.querySelectorAll('a[href]')) {
+      const href = a.href || '';
 
-      const href =
-        a.href || '';
-
-      if (
-        !href.includes(
-          '@@faceted_query'
-        )
-      ) {
+      if (!href.includes('@@faceted_query')) {
         continue;
       }
 
       paginationLinks.push({
         href,
-
         text: (
           a.innerText ||
           a.textContent ||
@@ -251,19 +193,12 @@ async function extractPage(page) {
   });
 }
 
-/*
- * =========================================================
- * EXTRACTION D'UNE DÉCISION
- * =========================================================
- */
+// ------------------------------------------------------------
+// EXTRACTION DÉTAILLÉE D'UNE DÉCISION
+// ------------------------------------------------------------
 
-async function extractDecisionDetails(
-  page,
-  url
-) {
-
+async function extractDecisionDetails(page, url) {
   try {
-
     await page.goto(
       url,
       {
@@ -275,15 +210,13 @@ async function extractDecisionDetails(
     await sleep(700);
 
     return await page.evaluate(() => {
-
-      const bodyText =
-        (
-          document.body?.innerText ||
-          document.body?.textContent ||
-          ''
-        )
-          .replace(/\s+/g, ' ')
-          .trim();
+      const bodyText = (
+        document.body?.innerText ||
+        document.body?.textContent ||
+        ''
+      )
+        .replace(/\s+/g, ' ')
+        .trim();
 
       let matiere = '';
 
@@ -293,83 +226,60 @@ async function extractDecisionDetails(
         )
       ];
 
-      for (
-        const element of elements
-      ) {
+      for (const element of elements) {
+        const text = (
+          element.innerText ||
+          element.textContent ||
+          ''
+        )
+          .replace(/\s+/g, ' ')
+          .trim();
 
-        const text =
-          (
-            element.innerText ||
-            element.textContent ||
+        if (!/^mati[eè]re\s*:?\s*$/i.test(text)) {
+          continue;
+        }
+
+        const next = element.nextElementSibling;
+
+        if (next) {
+          const nextText = (
+            next.innerText ||
+            next.textContent ||
             ''
           )
             .replace(/\s+/g, ' ')
             .trim();
 
-        if (
-          !/^mati[eè]re\s*:?\s*$/i.test(
-            text
-          )
-        ) {
-          continue;
-        }
-
-        const next =
-          element.nextElementSibling;
-
-        if (next) {
-
-          const nextText =
-            (
-              next.innerText ||
-              next.textContent ||
-              ''
-            )
-              .replace(/\s+/g, ' ')
-              .trim();
-
           if (
             nextText &&
-            !/^mati[eè]re/i.test(
-              nextText
-            )
+            !/^mati[eè]re/i.test(nextText)
           ) {
-
-            matiere =
-              nextText;
-
+            matiere = nextText;
             break;
           }
         }
 
-        const parent =
-          element.parentElement;
+        const parent = element.parentElement;
 
         if (parent) {
+          const parentText = (
+            parent.innerText ||
+            parent.textContent ||
+            ''
+          )
+            .replace(/\s+/g, ' ')
+            .trim();
 
-          const parentText =
-            (
-              parent.innerText ||
-              parent.textContent ||
-              ''
-            )
-              .replace(/\s+/g, ' ')
-              .trim();
-
-          const match =
-            parentText.match(
-              /^mati[eè]re\s*:?\s*(.+)$/i
-            );
+          const match = parentText.match(
+            /^mati[eè]re\s*:?\s*(.+)$/i
+          );
 
           if (
             match &&
             match[1] &&
             match[1].trim()
           ) {
-
-            matiere =
-              match[1].trim();
-
+            matiere = match[1].trim();
             break;
           }
         }
@@ -382,7 +292,6 @@ async function extractDecisionDetails(
     });
 
   } catch (error) {
-
     console.log(
       `⚠️ Impossible de lire : ${url}`
     );
@@ -394,551 +303,398 @@ async function extractDecisionDetails(
   }
 }
 
-/*
- * =========================================================
- * DÉTECTION DU CONTEXTE FISCAL
- * =========================================================
- *
- * On ne cherche PAS simplement "taxe".
- *
- * On recherche des combinaisons beaucoup plus précises.
- * =========================================================
- */
+// ------------------------------------------------------------
+// V4 — DÉTECTION LARGE DES INDICES FISCAUX
+//
+// IMPORTANT :
+// Cette fonction ne dit PAS encore "c'est une décision fiscale".
+//
+// Elle identifie les décisions qui méritent d'être examinées.
+// Le but de V4 est de comprendre les formulations réellement
+// utilisées par Liège avant de construire le filtre définitif.
+// ------------------------------------------------------------
 
-function analyseFiscalite(
+function analyseIndicesFiscaux(
   titre,
   matiere,
   bodyText
 ) {
+  const t = normalizeForSearch(titre);
+  const m = normalizeForSearch(matiere);
+  const b = normalizeForSearch(bodyText);
 
-  const t =
-    normalizeForSearch(titre);
+  const indices = [];
+  const exclusions = [];
 
-  const m =
-    normalizeForSearch(matiere);
+  // ----------------------------------------------------------
+  // 1. INDICES FISCAUX DIRECTS DANS LE TITRE
+  // ----------------------------------------------------------
 
-  const b =
-    normalizeForSearch(bodyText);
+  const titrePatterns = [
+    {
+      pattern: /\btaxe\b|\btaxes\b/,
+      label: 'TITRE_TAXE'
+    },
+    {
+      pattern: /\bredevance\b|\bredevances\b/,
+      label: 'TITRE_REDEVANCE'
+    },
+    {
+      pattern: /\bimpot\b|\bimpots\b/,
+      label: 'TITRE_IMPOT'
+    },
+    {
+      pattern: /\bprecompte immobilier\b/,
+      label: 'TITRE_PRECOMPTE_IMMOBILIER'
+    },
+    {
+      pattern: /\bcentimes additionnels\b/,
+      label: 'TITRE_CENTIMES_ADDITIONNELS'
+    },
+    {
+      pattern: /\badditionnels\b/,
+      label: 'TITRE_ADDITIONNELS'
+    },
+    {
+      pattern: /\bforce motrice\b/,
+      label: 'TITRE_FORCE_MOTRICE'
+    },
+    {
+      pattern: /\bipp\b/,
+      label: 'TITRE_IPP'
+    },
+    {
+      pattern: /\bfiscal\b|\bfiscale\b|\bfiscalite\b/,
+      label: 'TITRE_FISCALITE'
+    }
+  ];
 
-  const raisons = [];
+  for (const item of titrePatterns) {
+    if (item.pattern.test(t)) {
+      indices.push(item.label);
+    }
+  }
 
-  /*
-   * -------------------------------------------------------
-   * 1. TITRE — TRÈS IMPORTANT
-   * -------------------------------------------------------
-   */
+  // ----------------------------------------------------------
+  // 2. FORMULATIONS DE RÈGLEMENTS
+  // ----------------------------------------------------------
 
   if (
     /\breglement\b/.test(t) &&
     (
       /\btaxe\b/.test(t) ||
-      /\bredevance\b/.test(t)
-    )
-  ) {
-
-    raisons.push(
-      'TITRE_REGLEMENT_TAXE_REDEVANCE'
-    );
-  }
-
-  if (
-    /\breglement[- ]taxe\b/.test(t)
-  ) {
-
-    raisons.push(
-      'TITRE_REGLEMENT_TAXE'
-    );
-  }
-
-  if (
-    /\breglement[- ]redevance\b/.test(t)
-  ) {
-
-    raisons.push(
-      'TITRE_REGLEMENT_REDEVANCE'
-    );
-  }
-
-  if (
-    /\btaxe communale\b/.test(t)
-  ) {
-
-    raisons.push(
-      'TITRE_TAXE_COMMUNALE'
-    );
-  }
-
-  if (
-    /\btaxe sur\b/.test(t)
-  ) {
-
-    raisons.push(
-      'TITRE_TAXE_SUR'
-    );
-  }
-
-  if (
-    /\btaxe de\b/.test(t)
-  ) {
-
-    raisons.push(
-      'TITRE_TAXE_DE'
-    );
-  }
-
-  if (
-    /\bredevance communale\b/.test(t)
-  ) {
-
-    raisons.push(
-      'TITRE_REDEVANCE_COMMUNALE'
-    );
-  }
-
-  if (
-    /\bprecompte immobilier\b/.test(t)
-  ) {
-
-    raisons.push(
-      'TITRE_PRECOMPTE_IMMOBILIER'
-    );
-  }
-
-  if (
-    /\bforce motrice\b/.test(t)
-  ) {
-
-    raisons.push(
-      'TITRE_FORCE_MOTRICE'
-    );
-  }
-
-  if (
-    /\bcentimes additionnels\b/.test(t)
-  ) {
-
-    raisons.push(
-      'TITRE_CENTIMES_ADDITIONNELS'
-    );
-  }
-
-  if (
-    /\badditionnels\b/.test(t) &&
-    (
-      /\bipp\b/.test(t) ||
-      /\bprecompte\b/.test(t) ||
-      /\bimmobilier\b/.test(t)
-    )
-  ) {
-
-    raisons.push(
-      'TITRE_ADDITIONNELS_FISCAL'
-    );
-  }
-
-  /*
-   * -------------------------------------------------------
-   * 2. MATIÈRE
-   * -------------------------------------------------------
-   */
-
-  if (
-    /\bfiscal/.test(m) &&
-    (
-      /\btaxe\b/.test(t) ||
       /\bredevance\b/.test(t) ||
       /\bimpot\b/.test(t) ||
-      /\bprecompte\b/.test(t)
+      /\bfiscal/.test(t)
     )
   ) {
-
-    raisons.push(
-      'MATIERE_FISCALITE'
+    indices.push(
+      'TITRE_REGLEMENT_FISCAL'
     );
   }
 
-  /*
-   * -------------------------------------------------------
-   * 3. CONTENU :
-   * combinaisons fortes uniquement
-   * -------------------------------------------------------
-   */
+  // ----------------------------------------------------------
+  // 3. INDICES DANS LA MATIÈRE
+  // ----------------------------------------------------------
 
-  const hasReglement =
-    /\breglement\b/.test(b);
+  const matierePatterns = [
+    {
+      pattern: /\btaxe\b|\btaxes\b/,
+      label: 'MATIERE_TAXE'
+    },
+    {
+      pattern: /\bredevance\b|\bredevances\b/,
+      label: 'MATIERE_REDEVANCE'
+    },
+    {
+      pattern: /\bimpot\b|\bimpots\b/,
+      label: 'MATIERE_IMPOT'
+    },
+    {
+      pattern: /\bfiscal/,
+      label: 'MATIERE_FISCALITE'
+    },
+    {
+      pattern: /\bfinanc/,
+      label: 'MATIERE_FINANCES'
+    }
+  ];
 
-  const hasTaxe =
-    /\btaxe\b|\btaxes\b/.test(b);
-
-  const hasRedevance =
-    /\bredevance\b|\bredevances\b/.test(b);
-
-  const hasAdditionnels =
-    /\bcentimes additionnels\b/.test(b);
-
-  const hasPrecompteImmobilier =
-    /\bprecompte immobilier\b/.test(b);
-
-  const hasForceMotrice =
-    /\bforce motrice\b/.test(b);
-
-  const hasImpots =
-    /\bimpot communal\b/.test(b) ||
-    /\bimpots communaux\b/.test(b);
-
-  /*
-   * Règlement + taxe
-   */
-
-  if (
-    hasReglement &&
-    hasTaxe &&
-    (
-      /\badoption\b/.test(b) ||
-      /\bmodification\b/.test(b) ||
-      /\bfixation\b/.test(b) ||
-      /\btaux\b/.test(b) ||
-      /\bmontant\b/.test(b)
-    )
-  ) {
-
-    raisons.push(
-      'CONTENU_REGLEMENT_TAXE'
-    );
-  }
-
-  /*
-   * Règlement + redevance
-   */
-
-  if (
-    hasReglement &&
-    hasRedevance &&
-    (
-      /\badoption\b/.test(b) ||
-      /\bmodification\b/.test(b) ||
-      /\bfixation\b/.test(b) ||
-      /\btaux\b/.test(b) ||
-      /\bmontant\b/.test(b)
-    )
-  ) {
-
-    raisons.push(
-      'CONTENU_REGLEMENT_REDEVANCE'
-    );
-  }
-
-  /*
-   * Centimes additionnels
-   */
-
-  if (
-    hasAdditionnels &&
-    (
-      /\bprecompte immobilier\b/.test(b) ||
-      /\bimpot des personnes physiques\b/.test(b) ||
-      /\bipp\b/.test(b)
-    )
-  ) {
-
-    raisons.push(
-      'CONTENU_CENTIMES_ADDITIONNELS'
-    );
-  }
-
-  /*
-   * Précompte immobilier
-   *
-   * Mais uniquement si le texte parle réellement
-   * de fixation/adoption/modification.
-   */
-
-  if (
-    hasPrecompteImmobilier &&
-    (
-      /\btaux\b/.test(b) ||
-      /\bcentimes\b/.test(b) ||
-      /\breglement\b/.test(b) ||
-      /\badoption\b/.test(b) ||
-      /\bmodification\b/.test(b)
-    )
-  ) {
-
-    raisons.push(
-      'CONTENU_PRECOMPTE_IMMOBILIER'
-    );
-  }
-
-  /*
-   * Force motrice
-   */
-
-  if (
-    hasForceMotrice &&
-    (
-      /\btaux\b/.test(b) ||
-      /\breglement\b/.test(b) ||
-      /\btaxe\b/.test(b) ||
-      /\bmontant\b/.test(b)
-    )
-  ) {
-
-    raisons.push(
-      'CONTENU_FORCE_MOTRICE'
-    );
-  }
-
-  /*
-   * Impôts communaux
-   */
-
-  if (
-    hasImpots &&
-    (
-      /\btaux\b/.test(b) ||
-      /\breglement\b/.test(b) ||
-      /\bcentimes\b/.test(b)
-    )
-  ) {
-
-    raisons.push(
-      'CONTENU_IMPOTS_COMMUNAUX'
-    );
-  }
-
-  /*
-   * -------------------------------------------------------
-   * 4. EXCLUSIONS EXPLICITES
-   * -------------------------------------------------------
-   */
-
-  const exclusions = [];
-
-  /*
-   * Marchés publics
-   */
-
-  if (
-    /\bmarches publics\b/.test(t) ||
-    /\bmarches publics\b/.test(b)
-  ) {
-
-    if (
-      !raisons.some(
-        r =>
-          r.includes('REGLEMENT_TAXE') ||
-          r.includes('REGLEMENT_REDEVANCE')
-      )
-    ) {
-
-      exclusions.push(
-        'MARCHES_PUBLICS'
-      );
+  for (const item of matierePatterns) {
+    if (item.pattern.test(m)) {
+      indices.push(item.label);
     }
   }
 
-  /*
-   * Bail
-   */
+  // ----------------------------------------------------------
+  // 4. INDICES DANS LE CONTENU
+  //
+  // On les garde volontairement larges.
+  // ----------------------------------------------------------
+
+  const bodyPatterns = [
+    {
+      pattern: /\bprecompte immobilier\b/,
+      label: 'CONTENU_PRECOMPTE_IMMOBILIER'
+    },
+    {
+      pattern: /\bcentimes additionnels\b/,
+      label: 'CONTENU_CENTIMES_ADDITIONNELS'
+    },
+    {
+      pattern: /\bforce motrice\b/,
+      label: 'CONTENU_FORCE_MOTRICE'
+    },
+    {
+      pattern: /\bimpot des personnes physiques\b/,
+      label: 'CONTENU_IPP'
+    },
+    {
+      pattern: /\bimpots communaux\b/,
+      label: 'CONTENU_IMPOTS_COMMUNAUX'
+    },
+    {
+      pattern: /\btaxe communale\b/,
+      label: 'CONTENU_TAXE_COMMUNALE'
+    },
+    {
+      pattern: /\bredevance communale\b/,
+      label: 'CONTENU_REDEVANCE_COMMUNALE'
+    }
+  ];
+
+  for (const item of bodyPatterns) {
+    if (item.pattern.test(b)) {
+      indices.push(item.label);
+    }
+  }
+
+  // ----------------------------------------------------------
+  // 5. TERMES QUI PEUVENT ÊTRE FISCAUX MAIS QUI DEMANDENT
+  //    DU CONTEXTE
+  // ----------------------------------------------------------
+
+  const contextualTerms = [
+    {
+      pattern: /\bpublicite\b/,
+      label: 'CONTEXTE_PUBLICITE'
+    },
+    {
+      pattern: /\benseigne\b|\benseignes\b/,
+      label: 'CONTEXTE_ENSEIGNE'
+    },
+    {
+      pattern: /\bterrasse\b|\bterrasses\b/,
+      label: 'CONTEXTE_TERRASSE'
+    },
+    {
+      pattern: /\boccupation du domaine public\b/,
+      label: 'CONTEXTE_DOMAINE_PUBLIC'
+    },
+    {
+      pattern: /\bdechets\b|\bdechet\b/,
+      label: 'CONTEXTE_DECHETS'
+    },
+    {
+      pattern: /\bimmondices\b/,
+      label: 'CONTEXTE_IMMONDICES'
+    },
+    {
+      pattern: /\bmarche\b|\bmarches\b/,
+      label: 'CONTEXTE_MARCHE'
+    },
+    {
+      pattern: /\bstationnement\b/,
+      label: 'CONTEXTE_STATIONNEMENT'
+    },
+    {
+      pattern: /\bparking\b/,
+      label: 'CONTEXTE_PARKING'
+    }
+  ];
+
+  for (const item of contextualTerms) {
+    if (item.pattern.test(t)) {
+      indices.push(item.label);
+    }
+  }
+
+  // ----------------------------------------------------------
+  // 6. EXCLUSIONS ÉVIDENTES
+  //
+  // Elles ne suppriment pas nécessairement la décision si elle
+  // possède un indice fiscal direct : elles servent surtout
+  // à signaler les cas ambigus.
+  // ----------------------------------------------------------
 
   if (
     /\bbail\b/.test(t) ||
-    /\bbail commercial\b/.test(t)
+    /\blocatif\b/.test(t) ||
+    /\blocative\b/.test(t)
   ) {
-
-    exclusions.push(
-      'BAIL'
-    );
+    exclusions.push('BAIL_LOCATION');
   }
-
-  /*
-   * Stationnement / voirie
-   */
 
   if (
     /\bzone payante\b/.test(t) ||
-    /\bstationnement\b/.test(t) ||
-    /\bemplacement handicape\b/.test(t) ||
-    /\bzone 30\b/.test(t) ||
-    /\bvoirie\b/.test(t)
+    /\bzone bleue\b/.test(t) ||
+    /\bzone rouge\b/.test(t)
   ) {
-
-    exclusions.push(
-      'VOIRIE_STATIONNEMENT'
-    );
+    exclusions.push('ZONE_STATIONNEMENT');
   }
-
-  /*
-   * TVA seule
-   */
 
   if (
-    /\btaxe sur la valeur ajoutee\b/.test(b) &&
-    !hasTaxe &&
-    !hasRedevance
+    /\bstationnement\b/.test(t) &&
+    !/\btaxe\b|\bredevance\b/.test(t)
   ) {
-
-    exclusions.push(
-      'TVA'
-    );
+    exclusions.push('STATIONNEMENT_SANS_TAXE');
   }
-
-  /*
-   * "Additionnels" tout seul :
-   * ce n'est PAS suffisant.
-   */
 
   if (
-    raisons.length === 0 &&
-    /\badditionnels\b/.test(b)
+    /\bvoirie\b/.test(t) &&
+    !/\btaxe\b|\bredevance\b/.test(t)
   ) {
-
-    exclusions.push(
-      'ADDITIONNELS_INSUFFISANTS'
-    );
+    exclusions.push('VOIRIE_SANS_TAXE');
   }
-
-  /*
-   * -------------------------------------------------------
-   * 5. SCORE
-   * -------------------------------------------------------
-   */
-
-  let score = 0;
-
-  for (
-    const raison of raisons
-  ) {
-
-    if (
-      raison.startsWith('TITRE_')
-    ) {
-
-      score += 5;
-
-    } else if (
-      raison.startsWith('MATIERE_')
-    ) {
-
-      score += 4;
-
-    } else {
-
-      score += 2;
-    }
-  }
-
-  /*
-   * Les exclusions ne suppriment pas automatiquement
-   * une vraie décision fiscale identifiée par le titre.
-   */
-
-  const titreFiscal =
-    raisons.some(
-      r => r.startsWith('TITRE_')
-    );
 
   if (
-    exclusions.length > 0 &&
-    !titreFiscal
+    /\bmarches publics\b/.test(t)
   ) {
-
-    score = 0;
+    exclusions.push('MARCHES_PUBLICS');
   }
 
-  /*
-   * Une décision n'est candidate que si elle possède
-   * un indice suffisamment fort.
-   */
+  // ----------------------------------------------------------
+  // 7. NIVEAU DE PRIORITÉ
+  //
+  // Ce n'est PAS un score de "caractère fiscal".
+  // Il sert uniquement à organiser l'examen manuel.
+  // ----------------------------------------------------------
 
-  const candidate =
-    score >= 4;
+  let priorite = 'FAIBLE';
+
+  const indiceFiscalDirect =
+    indices.some(index =>
+      [
+        'TITRE_TAXE',
+        'TITRE_REDEVANCE',
+        'TITRE_IMPOT',
+        'TITRE_PRECOMPTE_IMMOBILIER',
+        'TITRE_CENTIMES_ADDITIONNELS',
+        'TITRE_ADDITIONNELS',
+        'TITRE_FORCE_MOTRICE',
+        'TITRE_IPP',
+        'TITRE_FISCALITE',
+        'TITRE_REGLEMENT_FISCAL'
+      ].includes(index)
+    );
+
+  const indiceFiscalContenu =
+    indices.some(index =>
+      index.startsWith('CONTENU_')
+    );
+
+  const indiceContextuel =
+    indices.some(index =>
+      index.startsWith('CONTEXTE_')
+    );
+
+  if (indiceFiscalDirect) {
+    priorite = 'HAUTE';
+  } else if (indiceFiscalContenu) {
+    priorite = 'HAUTE';
+  } else if (indiceContextuel) {
+    priorite = 'MOYENNE';
+  }
+
+  // ----------------------------------------------------------
+  // 8. DÉCISION À AFFICHER
+  //
+  // On ne cherche volontairement PAS à éliminer les faux
+  // positifs à ce stade.
+  // ----------------------------------------------------------
+
+  const aExaminer =
+    indiceFiscalDirect ||
+    indiceFiscalContenu ||
+    indiceContextuel;
 
   return {
-    candidate,
-    score,
-    raisons,
-    exclusions
+    aExaminer,
+    priorite,
+    indices: [...new Set(indices)],
+    exclusions: [...new Set(exclusions)]
   };
 }
 
-/*
- * =========================================================
- * EXTRACTION DU CONTEXTE
- * =========================================================
- */
+// ------------------------------------------------------------
+// EXTRACTION DE CONTEXTES AUTOUR DES MOTS-CLÉS
+// ------------------------------------------------------------
 
-function extractContexts(
-  text
-) {
-
-  const normalized =
-    normalizeText(text);
-
-  const lower =
-    normalizeForSearch(normalized);
+function extractContexts(text) {
+  const normalized = normalizeText(text);
+  const lower = normalizeForSearch(normalized);
 
   const keywords = [
-    'reglement taxe',
-    'reglement-taxe',
+    'taxe',
+    'taxes',
     'redevance',
+    'impot',
+    'impots',
     'precompte immobilier',
     'centimes additionnels',
     'force motrice',
-    'taxe communale',
-    'impot communal'
+    'fiscal',
+    'fiscalite',
+    'ipp',
+    'publicite',
+    'enseigne',
+    'dechets',
+    'immondices',
+    'stationnement',
+    'terrasse'
   ];
 
   const contexts = [];
 
-  for (
-    const keyword of keywords
-  ) {
-
+  for (const keyword of keywords) {
     let start = 0;
 
     while (true) {
+      const index = lower.indexOf(
+        keyword,
+        start
+      );
 
-      const index =
-        lower.indexOf(
-          keyword,
-          start
-        );
-
-      if (
-        index === -1
-      ) {
+      if (index === -1) {
         break;
       }
 
-      const contextStart =
-        Math.max(
-          0,
-          index - 250
-        );
-
-      const contextEnd =
-        Math.min(
-          normalized.length,
-          index +
-            keyword.length +
-            450
-        );
-
-      contexts.push(
-        normalized.slice(
-          contextStart,
-          contextEnd
-        )
+      const contextStart = Math.max(
+        0,
+        index - 220
       );
+
+      const contextEnd = Math.min(
+        normalized.length,
+        index +
+          keyword.length +
+          420
+      );
+
+      const context = normalized.slice(
+        contextStart,
+        contextEnd
+      );
+
+      if (!contexts.includes(context)) {
+        contexts.push(context);
+      }
 
       start =
         index +
         keyword.length;
 
-      if (
-        contexts.length >= 6
-      ) {
+      if (contexts.length >= 8) {
         return contexts;
       }
     }
@@ -947,11 +703,77 @@ function extractContexts(
   return contexts;
 }
 
-/*
- * =========================================================
- * PROGRAMME PRINCIPAL
- * =========================================================
- */
+// ------------------------------------------------------------
+// AFFICHAGE D'UNE DÉCISION À EXAMINER
+// ------------------------------------------------------------
+
+function printCandidate(decision, index) {
+  console.log('');
+  console.log(
+    '----------------------------------------'
+  );
+
+  console.log(
+    `CANDIDAT V4 [${index}]`
+  );
+
+  console.log(
+    `DATE     : ${decision.date}`
+  );
+
+  console.log(
+    `TITRE    : ${decision.titre}`
+  );
+
+  console.log(
+    `MATIÈRE  : ${
+      decision.matiere ||
+      '(inconnue)'
+    }`
+  );
+
+  console.log(
+    `PRIORITÉ : ${decision.analyse.priorite}`
+  );
+
+  console.log(
+    `INDICES  : ${
+      decision.analyse.indices.join(', ')
+    }`
+  );
+
+  if (
+    decision.analyse.exclusions.length > 0
+  ) {
+    console.log(
+      `EXCLUSIONS : ${
+        decision.analyse.exclusions.join(', ')
+      }`
+    );
+  }
+
+  if (
+    decision.contexts.length > 0
+  ) {
+    console.log('');
+    console.log('CONTEXTES :');
+
+    for (const context of decision.contexts) {
+      console.log(
+        `  → ${context}`
+      );
+    }
+  }
+
+  console.log('');
+  console.log(
+    `URL      : ${decision.url}`
+  );
+}
+
+// ------------------------------------------------------------
+// PROGRAMME PRINCIPAL
+// ------------------------------------------------------------
 
 async function main() {
 
@@ -960,7 +782,7 @@ async function main() {
     '========================================'
   );
   console.log(
-    'DIAGNOSTIC FISCAL V3 — LIÈGE'
+    'DIAGNOSTIC FISCAL V4 — LIÈGE'
   );
   console.log(
     `ANNÉE : ${TARGET_YEAR}`
@@ -973,35 +795,28 @@ async function main() {
   );
   console.log('');
 
-  const browser =
-    await puppeteer.launch({
-      headless: true,
+  const browser = await puppeteer.launch({
+    headless: true,
 
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage'
-      ]
-    });
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage'
+    ]
+  });
 
-  const page =
-    await browser.newPage();
+  const page = await browser.newPage();
 
-  const allDecisions =
-    new Map();
+  const allDecisions = new Map();
 
-  let currentUrl =
-    LIEGE_URL;
-
+  let currentUrl = LIEGE_URL;
   let pageNumber = 0;
 
   try {
 
-    /*
-     * =====================================================
-     * 1. RÉCUPÉRATION DES DÉCISIONS
-     * =====================================================
-     */
+    // --------------------------------------------------------
+    // ÉTAPE 1 — RÉCUPÉRATION DES 261 DÉCISIONS
+    // --------------------------------------------------------
 
     while (
       pageNumber < MAX_PAGES
@@ -1039,9 +854,7 @@ async function main() {
       );
 
       const result =
-        await extractPage(
-          page
-        );
+        await extractPage(page);
 
       console.log(
         `Liens de décisions détectés : ${result.links.length}`
@@ -1053,9 +866,7 @@ async function main() {
 
       let newDecisions = 0;
 
-      for (
-        const link of result.links
-      ) {
+      for (const link of result.links) {
 
         const date =
           parseDateFromSlug(
@@ -1117,12 +928,11 @@ async function main() {
         `Total unique 2026 : ${allDecisions.size}`
       );
 
-      /*
-       * Pagination
-       */
+      // ------------------------------------------------------
+      // PAGINATION
+      // ------------------------------------------------------
 
-      const paginationCandidates =
-        [];
+      const paginationCandidates = [];
 
       for (
         const pagination
@@ -1187,11 +997,9 @@ async function main() {
         nextCandidates[0].href;
     }
 
-    /*
-     * =====================================================
-     * 2. CONTRÔLE
-     * =====================================================
-     */
+    // --------------------------------------------------------
+    // PROTECTION
+    // --------------------------------------------------------
 
     console.log('');
     console.log(
@@ -1222,11 +1030,9 @@ async function main() {
       return;
     }
 
-    /*
-     * =====================================================
-     * 3. ANALYSE
-     * =====================================================
-     */
+    // --------------------------------------------------------
+    // ÉTAPE 2 — EXTRACTION DES DÉTAILS
+    // --------------------------------------------------------
 
     console.log('');
     console.log(
@@ -1234,7 +1040,7 @@ async function main() {
     );
 
     console.log(
-      'ANALYSE FISCALE V3'
+      'EXTRACTION DES DÉTAILS V4'
     );
 
     console.log(
@@ -1267,102 +1073,26 @@ async function main() {
         );
 
       decision.analyse =
-        analyseFiscalite(
+        analyseIndicesFiscaux(
           decision.titre,
           decision.matiere,
           decision.bodyText
         );
 
       if (
-        decision.analyse.candidate
+        decision.analyse.aExaminer
       ) {
 
         decision.contexts =
           extractContexts(
             decision.bodyText
           );
-
-        console.log('');
-        console.log(
-          '----------------------------------------'
-        );
-
-        console.log(
-          `CANDIDAT [${counter}/${allDecisions.size}]`
-        );
-
-        console.log(
-          `DATE     : ${decision.date}`
-        );
-
-        console.log(
-          `TITRE    : ${decision.titre}`
-        );
-
-        console.log(
-          `MATIÈRE  : ${
-            decision.matiere ||
-            '(inconnue)'
-          }`
-        );
-
-        console.log(
-          `SCORE    : ${decision.analyse.score}`
-        );
-
-        console.log(
-          `RAISONS  : ${
-            decision.analyse.raisons.join(
-              ', '
-            )
-          }`
-        );
-
-        if (
-          decision.analyse.exclusions.length > 0
-        ) {
-
-          console.log(
-            `EXCLUSIONS : ${
-              decision.analyse.exclusions.join(
-                ', '
-              )
-            }`
-          );
-        }
-
-        if (
-          decision.contexts.length > 0
-        ) {
-
-          console.log('');
-          console.log(
-            'CONTEXTE :'
-          );
-
-          for (
-            const context
-            of decision.contexts
-          ) {
-
-            console.log(
-              `  → ${context}`
-            );
-          }
-        }
-
-        console.log('');
-
-        console.log(
-          `URL      : ${decision.url}`
-        );
       }
 
       if (
         counter % 25 === 0
       ) {
 
-        console.log('');
         console.log(
           `Progression : ${counter}/${allDecisions.size}`
         );
@@ -1371,20 +1101,21 @@ async function main() {
       await sleep(100);
     }
 
-    /*
-     * =====================================================
-     * 4. RÉSUMÉ
-     * =====================================================
-     */
+    // --------------------------------------------------------
+    // ÉTAPE 3 — CONSTRUCTION DES LISTES
+    // --------------------------------------------------------
 
-    const candidates =
+    const decisions =
       [
         ...allDecisions.values()
-      ]
+      ];
+
+    const candidates =
+      decisions
         .filter(
           decision =>
             decision.analyse &&
-            decision.analyse.candidate
+            decision.analyse.aExaminer
         )
         .sort(
           (a, b) =>
@@ -1393,87 +1124,101 @@ async function main() {
             )
         );
 
+    const highPriority =
+      candidates.filter(
+        decision =>
+          decision.analyse.priorite === 'HAUTE'
+      );
+
+    const mediumPriority =
+      candidates.filter(
+        decision =>
+          decision.analyse.priorite === 'MOYENNE'
+      );
+
+    // --------------------------------------------------------
+    // RÉSUMÉ
+    // --------------------------------------------------------
+
     console.log('');
-    console.log('');
-    console.log(
-      '========================================'
-    );
-
-    console.log(
-      'RÉSUMÉ DU DIAGNOSTIC V3'
-    );
-
-    console.log(
-      '========================================'
-    );
-
-    console.log(
-      `Décisions analysées : ${allDecisions.size}`
-    );
-
-    console.log(
-      `Candidats fiscaux : ${candidates.length}`
-    );
-
-    /*
-     * =====================================================
-     * 5. LISTE FINALE
-     * =====================================================
-     */
-
     console.log('');
     console.log(
       '========================================'
     );
 
     console.log(
-      'LISTE DES CANDIDATS FISCAUX'
+      'RÉSUMÉ DU DIAGNOSTIC V4'
     );
 
     console.log(
       '========================================'
     );
 
-    for (
-      const decision
-      of candidates
+    console.log(
+      `Décisions analysées : ${decisions.length}`
+    );
+
+    console.log(
+      `Candidats à examiner : ${candidates.length}`
+    );
+
+    console.log(
+      `Priorité HAUTE : ${highPriority.length}`
+    );
+
+    console.log(
+      `Priorité MOYENNE : ${mediumPriority.length}`
+    );
+
+    console.log(
+      `Priorité FAIBLE : ${
+        candidates.filter(
+          decision =>
+            decision.analyse.priorite === 'FAIBLE'
+        ).length
+      }`
+    );
+
+    // --------------------------------------------------------
+    // LISTE HAUTE PRIORITÉ
+    // --------------------------------------------------------
+
+    console.log('');
+    console.log(
+      '========================================'
+    );
+
+    console.log(
+      'CANDIDATS — PRIORITÉ HAUTE'
+    );
+
+    console.log(
+      '========================================'
+    );
+
+    if (
+      highPriority.length === 0
     ) {
 
-      console.log('');
-
       console.log(
-        `${decision.date} | ${decision.titre}`
+        'Aucun candidat.'
       );
 
-      console.log(
-        `MATIÈRE : ${
-          decision.matiere ||
-          '(inconnue)'
-        }`
-      );
+    } else {
 
-      console.log(
-        `SCORE : ${decision.analyse.score}`
-      );
-
-      console.log(
-        `RAISONS : ${
-          decision.analyse.raisons.join(
-            ', '
-          )
-        }`
-      );
-
-      console.log(
-        `URL : ${decision.url}`
+      highPriority.forEach(
+        (decision, index) => {
+          printCandidate(
+            decision,
+            index + 1
+          );
+        }
       );
     }
 
-    /*
-     * =====================================================
-     * FIN
-     * =====================================================
-     */
+    // --------------------------------------------------------
+    // LISTE MOYENNE PRIORITÉ
+    // --------------------------------------------------------
 
     console.log('');
     console.log(
@@ -1481,7 +1226,79 @@ async function main() {
     );
 
     console.log(
-      'FIN DU DIAGNOSTIC V3'
+      'CANDIDATS — PRIORITÉ MOYENNE'
+    );
+
+    console.log(
+      '========================================'
+    );
+
+    if (
+      mediumPriority.length === 0
+    ) {
+
+      console.log(
+        'Aucun candidat.'
+      );
+
+    } else {
+
+      mediumPriority.forEach(
+        (decision, index) => {
+          printCandidate(
+            decision,
+            index + 1
+          );
+        }
+      );
+    }
+
+    // --------------------------------------------------------
+    // LISTE COMPLÈTE DES TITRES
+    //
+    // Très importante pour construire le filtre définitif.
+    // --------------------------------------------------------
+
+    console.log('');
+    console.log(
+      '========================================'
+    );
+
+    console.log(
+      'LISTE COMPLÈTE DES 261 TITRES'
+    );
+
+    console.log(
+      '========================================'
+    );
+
+    decisions
+      .sort(
+        (a, b) =>
+          a.date.localeCompare(
+            b.date
+          )
+      )
+      .forEach(
+        (decision, index) => {
+
+          console.log(
+            `${String(index + 1).padStart(3, '0')} | ${decision.date} | ${decision.titre}`
+          );
+        }
+      );
+
+    // --------------------------------------------------------
+    // FIN
+    // --------------------------------------------------------
+
+    console.log('');
+    console.log(
+      '========================================'
+    );
+
+    console.log(
+      'FIN DU DIAGNOSTIC V4'
     );
 
     console.log(
@@ -1492,6 +1309,14 @@ async function main() {
 
     console.log(
       "IMPORTANT : aucun fichier JSON n'a été modifié."
+    );
+
+    console.log(
+      "IMPORTANT : ce diagnostic ne déclare aucune décision comme définitivement fiscale."
+    );
+
+    console.log(
+      "La liste sert à construire le filtre fiscal définitif à partir des décisions réelles de Liège."
     );
 
   } finally {
