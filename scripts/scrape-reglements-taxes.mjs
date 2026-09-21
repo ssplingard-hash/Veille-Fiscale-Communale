@@ -1,6 +1,5 @@
 import fs from "fs";
 import path from "path";
-import * as cheerio from "cheerio";
 import puppeteer from "puppeteer";
 
 const BASE_URL = "https://www.deliberations.be/liege/decisions";
@@ -11,18 +10,26 @@ const OUTPUT_FILE = path.resolve(
 );
 
 // ------------------------------------------------------------
-// PARAMÈTRES DE SÉCURITÉ
+// PARAMÈTRES
 // ------------------------------------------------------------
 
+const PAGE_SIZE = 20;
+const MAX_OFFSET = 2000;
+
+// On reste volontairement prudent.
+// Le site avait déjà permis de récupérer 761 décisions 2026.
 const MIN_EXPECTED_DECISIONS = 500;
 const MIN_EXPECTED_FISCAL = 1;
 
-const PAGE_SIZE = 20;
-const MAX_OFFSET = 5000;
-const CONCURRENCY = 5;
+// 3 pages simultanées : suffisamment rapide mais plus stable
+// que 5 ou davantage sur deliberations.be.
+const CONCURRENCY = 3;
+
+// Nombre de tentatives par décision
+const MAX_RETRIES = 3;
 
 // ------------------------------------------------------------
-// OUTILS
+// NORMALISATION
 // ------------------------------------------------------------
 
 function normalizeText(text = "") {
@@ -41,29 +48,47 @@ function cleanText(text = "") {
     .trim();
 }
 
-function absoluteUrl(url) {
-  if (!url) return null;
+// ------------------------------------------------------------
+// IDENTIFICATION D'UNE URL DE DÉCISION 2026
+// ------------------------------------------------------------
+//
+// Les URL de deliberations.be ont une structure du type :
+//
+// /decisions/29-juin-2026-17-00/...
+//
+// On vérifie donc l'année dans le SEGMENT DE DATE,
+// et non simplement la présence de "2026" dans l'URL.
+// ------------------------------------------------------------
 
-  try {
-    return new URL(url, BASE_URL).href;
-  } catch {
-    return null;
-  }
+function isDecision2026(url) {
+  if (!url) return false;
+
+  const pattern =
+    /\/decisions\/\d{1,2}-[a-zàâäéèêëîïôöùûüÿç]+-2026-\d{1,2}-\d{2}\//i;
+
+  return pattern.test(url);
 }
 
 // ------------------------------------------------------------
-// RÉCUPÉRATION DES DÉCISIONS
+// RÉCUPÉRATION DES LIENS
 // ------------------------------------------------------------
 
 async function getDecisionLinks(page) {
   const allLinks = new Set();
 
-  for (let offset = 0; offset <= MAX_OFFSET; offset += PAGE_SIZE) {
+  let emptyCurrentYearPages = 0;
+
+  for (
+    let offset = 0;
+    offset <= MAX_OFFSET;
+    offset += PAGE_SIZE
+  ) {
     const url =
       offset === 0
         ? BASE_URL
         : `${BASE_URL}/@@faceted_query?b_start:int=${offset}`;
 
+    console.log("");
     console.log(`   → ${url}`);
 
     try {
@@ -72,48 +97,73 @@ async function getDecisionLinks(page) {
         timeout: 120000
       });
 
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 700));
 
       const links = await page.evaluate(() => {
         return Array.from(document.querySelectorAll("a"))
           .map(a => ({
-            href: a.href,
+            href: a.href || "",
             text: a.innerText?.trim() || ""
           }))
-          .filter(item =>
-            item.href &&
-            item.href.includes("/liege/decisions/")
-          );
+          .filter(item => item.href);
       });
+
+      // ------------------------------------------------------
+      // UNIQUEMENT LES URL DE DÉCISIONS 2026
+      // ------------------------------------------------------
+
+      const yearLinks = links.filter(link =>
+        /\/decisions\/\d{1,2}-[a-zàâäéèêëîïôöùûüÿç]+-2026-\d{1,2}-\d{2}\//i.test(
+          link.href
+        )
+      );
 
       const before = allLinks.size;
 
-      for (const link of links) {
-        if (
-          link.href.includes("/@@faceted_query") ||
-          link.href.endsWith("/decisions") ||
-          link.href.includes("#")
-        ) {
-          continue;
-        }
-
+      for (const link of yearLinks) {
         allLinks.add(link.href);
       }
 
       const added = allLinks.size - before;
 
       console.log(
-        `      ${links.length} liens trouvés → ${added} nouveaux → total ${allLinks.size}`
+        `      ${links.length} liens trouvés`
       );
 
-      // Si une page ne rapporte plus aucune nouvelle décision,
-      // on peut arrêter après avoir vérifié plusieurs pages.
-      if (added === 0 && offset > 100) {
-        console.log("      Aucun nouveau lien détecté.");
+      console.log(
+        `      ${yearLinks.length} décisions 2026`
+      );
+
+      console.log(
+        `      ${added} nouvelles → total 2026 : ${allLinks.size}`
+      );
+
+      // ------------------------------------------------------
+      // ARRÊT AUTOMATIQUE
+      // ------------------------------------------------------
+
+      if (yearLinks.length === 0) {
+        emptyCurrentYearPages++;
+
+        console.log(
+          `      Aucune décision 2026 sur cette page (${emptyCurrentYearPages}/2)`
+        );
+
+        // Une page vide peut exceptionnellement arriver.
+        // Deux pages consécutives sans décision 2026 =
+        // on considère que les décisions 2026 sont terminées.
+        if (emptyCurrentYearPages >= 2) {
+          console.log(
+            "      Fin de la série 2026 détectée."
+          );
+          break;
+        }
+      } else {
+        emptyCurrentYearPages = 0;
       }
     } catch (error) {
       console.log(
-        `      ERREUR offset ${offset}: ${error.message}`
+        `      ERREUR page ${offset} : ${error.message}`
       );
     }
   }
@@ -126,49 +176,72 @@ async function getDecisionLinks(page) {
 // ------------------------------------------------------------
 
 async function extractDecision(page, url) {
-  try {
-    await page.goto(url, {
-      waitUntil: "networkidle2",
-      timeout: 120000
-    });
+  for (
+    let attempt = 1;
+    attempt <= MAX_RETRIES;
+    attempt++
+  ) {
+    try {
+      await page.goto(url, {
+        waitUntil: "networkidle2",
+        timeout: 120000
+      });
 
-    await new Promise(resolve => setTimeout(resolve, 500));
+      await new Promise(resolve => setTimeout(resolve, 500));
 
-    const result = await page.evaluate(() => {
-      const bodyText = document.body?.innerText || "";
+      const result = await page.evaluate(() => {
+        const bodyText =
+          document.body?.innerText || "";
 
-      const title =
-        document.querySelector("h1")?.innerText?.trim() ||
-        document.querySelector("title")?.innerText?.trim() ||
-        "";
+        const title =
+          document.querySelector("h1")?.innerText?.trim() ||
+          document.querySelector("title")?.innerText?.trim() ||
+          "";
 
-      const links = Array.from(document.querySelectorAll("a"))
-        .map(a => ({
-          text: a.innerText?.trim() || "",
-          href: a.href || ""
-        }))
-        .filter(x => x.href);
+        const links = Array.from(
+          document.querySelectorAll("a")
+        )
+          .map(a => ({
+            text: a.innerText?.trim() || "",
+            href: a.href || ""
+          }))
+          .filter(x => x.href);
+
+        return {
+          title,
+          bodyText,
+          links
+        };
+      });
 
       return {
-        title,
-        bodyText,
-        links
+        url,
+        title: cleanText(result.title),
+        text: cleanText(result.bodyText),
+        links: result.links
       };
-    });
+    } catch (error) {
+      console.log(
+        `      Tentative ${attempt}/${MAX_RETRIES} échouée`
+      );
 
-    return {
-      url,
-      title: cleanText(result.title),
-      text: cleanText(result.bodyText),
-      links: result.links
-    };
-  } catch (error) {
-    console.log(
-      `   ERREUR décision ${url}: ${error.message}`
-    );
+      console.log(
+        `      ${error.message}`
+      );
 
-    return null;
+      if (attempt < MAX_RETRIES) {
+        await new Promise(resolve =>
+          setTimeout(resolve, 1000 * attempt)
+        );
+      }
+    }
   }
+
+  console.log(
+    `      ÉCHEC DÉFINITIF : ${url}`
+  );
+
+  return null;
 }
 
 // ------------------------------------------------------------
@@ -180,7 +253,7 @@ function classifyFiscalDecision(decision) {
   const text = normalizeText(decision.text);
 
   // ----------------------------------------------------------
-  // EXCLUSIONS FORTES
+  // EXCLUSIONS
   // ----------------------------------------------------------
 
   const exclusionPatterns = [
@@ -197,8 +270,8 @@ function classifyFiscalDecision(decision) {
     /\bstationnement\b/,
     /\bzone payante\b/,
     /\bterrasse\b/,
-    /\bdomaine public\b.*\bambulant\b/,
     /\bactivites ambulantes\b/,
+    /\bactivite ambulante\b/,
     /\bcommerce ambulant\b/,
     /\bcreashop\b/,
     /\bpatrimoine\b/,
@@ -206,11 +279,11 @@ function classifyFiscalDecision(decision) {
     /\bpersonnes physiques\b/
   ];
 
-  const excluded = exclusionPatterns.some(pattern => {
-    return pattern.test(title);
-  });
-
-  if (excluded) {
+  if (
+    exclusionPatterns.some(pattern =>
+      pattern.test(title)
+    )
+  ) {
     return {
       isFiscal: false,
       confidence: "EXCLU",
@@ -238,21 +311,20 @@ function classifyFiscalDecision(decision) {
     "impots des personnes physiques",
     "ipp communal",
     "taxe sur les secondes residences",
-    "taxe sur les secondes residences",
     "taxe sur les immeubles",
     "taxe sur les bureaux",
     "taxe sur les enseignes",
     "taxe sur les pylones",
-    "taxe sur les pylônes",
-    "taxe sur les residences",
     "taxe sur les logements",
     "taxe sur les commerces",
-    "taxe sur les commerces et entreprises"
+    "taxe sur les entreprises",
+    "taxe sur les surfaces commerciales"
   ];
 
-  const strongTitleMatches = strongTitleSignals.filter(signal =>
-    title.includes(signal)
-  );
+  const strongTitleMatches =
+    strongTitleSignals.filter(signal =>
+      title.includes(signal)
+    );
 
   if (strongTitleMatches.length > 0) {
     return {
@@ -263,7 +335,7 @@ function classifyFiscalDecision(decision) {
   }
 
   // ----------------------------------------------------------
-  // SIGNAUX FISCAUX DANS LE CONTENU
+  // OBJETS FISCAUX EXPLICITES DANS LE CONTENU
   // ----------------------------------------------------------
 
   const fiscalObjects = [
@@ -288,9 +360,10 @@ function classifyFiscalDecision(decision) {
     "redevances communales"
   ];
 
-  const fiscalObjectMatches = fiscalObjects.filter(signal =>
-    text.includes(signal)
-  );
+  const fiscalObjectMatches =
+    fiscalObjects.filter(signal =>
+      text.includes(signal)
+    );
 
   // ----------------------------------------------------------
   // RÈGLEMENT FISCAL EXPLICITE
@@ -315,8 +388,7 @@ function classifyFiscalDecision(decision) {
     text.includes("ville de liege");
 
   // ----------------------------------------------------------
-  // CAS TRÈS FORT :
-  // règlement + taxe/redevance + objet fiscal précis
+  // CAS FISCAL FORT
   // ----------------------------------------------------------
 
   if (
@@ -336,7 +408,7 @@ function classifyFiscalDecision(decision) {
   }
 
   // ----------------------------------------------------------
-  // OBJET FISCAL TRÈS CLAIR
+  // OBJETS FISCAUX PARTICULIÈREMENT SIGNIFICATIFS
   // ----------------------------------------------------------
 
   const veryStrongObjects = [
@@ -347,9 +419,10 @@ function classifyFiscalDecision(decision) {
     "impots des personnes physiques"
   ];
 
-  const veryStrongMatches = veryStrongObjects.filter(signal =>
-    text.includes(signal)
-  );
+  const veryStrongMatches =
+    veryStrongObjects.filter(signal =>
+      text.includes(signal)
+    );
 
   if (veryStrongMatches.length > 0) {
     return {
@@ -360,12 +433,13 @@ function classifyFiscalDecision(decision) {
   }
 
   // ----------------------------------------------------------
-  // TAXE / REDEVANCE SEULE = INSUFFISANT
+  // IMPORTANT :
   //
-  // C'est volontaire.
+  // "redevance" seule
+  // "tarif" seul
+  // "taxe" seule
   //
-  // Une simple mention de "redevance", "tarif" ou "taxe"
-  // ne suffit PAS à considérer une décision comme fiscale.
+  // NE SUFFISENT PAS.
   // ----------------------------------------------------------
 
   return {
@@ -395,71 +469,93 @@ function determineMatter(decision) {
     return "Fiscalité communale";
   }
 
-  if (
-    text.includes("urbanisme") ||
-    text.includes("amenagement du territoire")
-  ) {
-    return "Urbanisme";
-  }
-
-  if (
-    text.includes("mobilite") ||
-    text.includes("stationnement") ||
-    text.includes("parking")
-  ) {
-    return "Mobilité";
-  }
-
-  if (
-    text.includes("commerce") ||
-    text.includes("commercial") ||
-    text.includes("entreprise")
-  ) {
-    return "Développement économique & commercial";
-  }
-
-  if (
-    text.includes("patrimoine") ||
-    text.includes("batiment") ||
-    text.includes("immeuble")
-  ) {
-    return "Patrimoine";
-  }
-
-  return "Autre";
+  return "Fiscalité communale";
 }
 
 // ------------------------------------------------------------
-// TRAITEMENT PAR LOTS
+// TRAITEMENT DES DÉCISIONS
 // ------------------------------------------------------------
 
-async function processInBatches(items, batchSize, processor) {
-  const results = [];
+async function processDecisions(
+  browser,
+  decisionLinks
+) {
+  let cursor = 0;
 
-  for (let i = 0; i < items.length; i += batchSize) {
-    const batch = items.slice(i, i + batchSize);
+  const allResults = [];
 
-    console.log(
-      `\n   Lot ${Math.floor(i / batchSize) + 1} / ${Math.ceil(
-        items.length / batchSize
-      )} (${batch.length} décisions)`
-    );
+  async function worker(workerId) {
+    const page = await browser.newPage();
 
-    const batchResults = await Promise.all(
-      batch.map(item => processor(item))
-    );
+    try {
+      while (true) {
+        const index = cursor++;
 
-    results.push(...batchResults);
+        if (index >= decisionLinks.length) {
+          break;
+        }
 
-    console.log(
-      `   Progression : ${Math.min(
-        i + batch.length,
-        items.length
-      )} / ${items.length}`
-    );
+        const url = decisionLinks[index];
+
+        console.log(
+          `   [${index + 1}/${decisionLinks.length}]`
+        );
+
+        const decision =
+          await extractDecision(page, url);
+
+        if (!decision) {
+          continue;
+        }
+
+        const classification =
+          classifyFiscalDecision(decision);
+
+        if (classification.isFiscal) {
+          const matter =
+            determineMatter(decision);
+
+          console.log("");
+          console.log(
+            "   >>> CANDIDAT FISCAL"
+          );
+          console.log(
+            `       ${decision.title}`
+          );
+          console.log(
+            `       Confiance : ${classification.confidence}`
+          );
+          console.log(
+            `       Matière : ${matter}`
+          );
+          console.log(
+            `       Raisons : ${classification.reasons.join(", ")}`
+          );
+          console.log("");
+
+          allResults.push({
+            date: YEAR,
+            title: decision.title,
+            url: decision.url,
+            matter,
+            confidence: classification.confidence,
+            reasons: classification.reasons
+          });
+        }
+      }
+    } finally {
+      await page.close();
+    }
   }
 
-  return results;
+  await Promise.all(
+    Array.from(
+      { length: CONCURRENCY },
+      (_, index) => worker(index + 1)
+    )
+  );
+
+  return allResults;
 }
 
 // ------------------------------------------------------------
@@ -467,9 +563,16 @@ async function processInBatches(items, batchSize, processor) {
 // ------------------------------------------------------------
 
 async function main() {
-  console.log("===============================================");
-  console.log("SCRAPER FISCALITÉ COMMUNALE — LIÈGE");
-  console.log("===============================================");
+  console.log(
+    "==============================================="
+  );
+  console.log(
+    "SCRAPER FISCALITÉ COMMUNALE — LIÈGE"
+  );
+  console.log(
+    "==============================================="
+  );
+
   console.log(`Année : ${YEAR}`);
   console.log(`Concurrence : ${CONCURRENCY}`);
   console.log("");
@@ -485,183 +588,154 @@ async function main() {
 
   try {
     // --------------------------------------------------------
-    // ÉTAPE 1 : RÉCUPÉRER LES LIENS
+    // 1. RÉCUPÉRATION DES LIENS
     // --------------------------------------------------------
 
-    console.log("1. RÉCUPÉRATION DES DÉCISIONS");
-    console.log("-----------------------------------------------");
+    console.log(
+      "1. RÉCUPÉRATION DES DÉCISIONS 2026"
+    );
 
-    const listingPage = await browser.newPage();
+    console.log(
+      "-----------------------------------------------"
+    );
 
-    const decisionLinks = await getDecisionLinks(listingPage);
+    const listingPage =
+      await browser.newPage();
+
+    const decisionLinks =
+      await getDecisionLinks(listingPage);
 
     await listingPage.close();
 
     console.log("");
     console.log(
-      `TOTAL : ${decisionLinks.length} décisions trouvées`
+      `TOTAL DÉCISIONS 2026 : ${decisionLinks.length}`
     );
 
-    if (decisionLinks.length < MIN_EXPECTED_DECISIONS) {
+    // --------------------------------------------------------
+    // SÉCURITÉ
+    // --------------------------------------------------------
+
+    if (
+      decisionLinks.length <
+      MIN_EXPECTED_DECISIONS
+    ) {
       throw new Error(
-        `SÉCURITÉ : seulement ${decisionLinks.length} décisions trouvées. ` +
+        `SÉCURITÉ : seulement ${decisionLinks.length} ` +
+        `décisions 2026 trouvées. ` +
         `Minimum attendu : ${MIN_EXPECTED_DECISIONS}. ` +
-        `Le fichier existant ne sera PAS modifié.`
+        `Le fichier JSON existant ne sera PAS modifié.`
       );
     }
 
     // --------------------------------------------------------
-    // ÉTAPE 2 : ANALYSER TOUTES LES DÉCISIONS
+    // 2. ANALYSE
     // --------------------------------------------------------
 
     console.log("");
-    console.log("2. ANALYSE DES DÉCISIONS");
-    console.log("-----------------------------------------------");
-
-    const pages = [];
-
-    for (let i = 0; i < CONCURRENCY; i++) {
-      pages.push(await browser.newPage());
-    }
-
-    let cursor = 0;
-
-    async function worker(page) {
-      const results = [];
-
-      while (true) {
-        const index = cursor++;
-
-        if (index >= decisionLinks.length) {
-          break;
-        }
-
-        const url = decisionLinks[index];
-
-        console.log(
-          `   [${index + 1}/${decisionLinks.length}] ${url}`
-        );
-
-        const decision = await extractDecision(page, url);
-
-        if (!decision) {
-          continue;
-        }
-
-        const classification =
-          classifyFiscalDecision(decision);
-
-        if (classification.isFiscal) {
-          const matter = determineMatter(decision);
-
-          console.log("");
-          console.log(
-            `   >>> CANDIDAT FISCAL : ${decision.title}`
-          );
-          console.log(
-            `       Confiance : ${classification.confidence}`
-          );
-          console.log(
-            `       Matière : ${matter}`
-          );
-          console.log(
-            `       Raisons : ${classification.reasons.join(", ")}`
-          );
-          console.log("");
-
-          results.push({
-            date: YEAR,
-            title: decision.title,
-            url: decision.url,
-            matter,
-            confidence: classification.confidence,
-            reasons: classification.reasons
-          });
-        }
-      }
-
-      return results;
-    }
-
-    const workerResults = await Promise.all(
-      pages.map(page => worker(page))
+    console.log(
+      "2. ANALYSE DES DÉCISIONS 2026"
     );
 
-    for (const page of pages) {
-      await page.close();
-    }
+    console.log(
+      "-----------------------------------------------"
+    );
 
-    const fiscalDecisions = workerResults.flat();
+    const fiscalDecisions =
+      await processDecisions(
+        browser,
+        decisionLinks
+      );
 
     // --------------------------------------------------------
-    // ÉTAPE 3 : RÉSULTATS
+    // 3. RÉSULTATS
     // --------------------------------------------------------
 
     console.log("");
-    console.log("===============================================");
+    console.log(
+      "==============================================="
+    );
+
     console.log("RÉSULTATS");
-    console.log("===============================================");
 
     console.log(
-      `Décisions analysées : ${decisionLinks.length}`
+      "==============================================="
+    );
+
+    console.log(
+      `Décisions 2026 récupérées : ${decisionLinks.length}`
     );
 
     console.log(
       `Décisions fiscales retenues : ${fiscalDecisions.length}`
     );
 
-    const certain = fiscalDecisions.filter(
-      d => d.confidence === "FISCAL_CERTAIN"
-    );
+    const certain =
+      fiscalDecisions.filter(
+        d => d.confidence === "FISCAL_CERTAIN"
+      );
 
-    const probable = fiscalDecisions.filter(
-      d => d.confidence === "FISCAL_PROBABLE"
+    const probable =
+      fiscalDecisions.filter(
+        d => d.confidence === "FISCAL_PROBABLE"
+      );
+
+    console.log(
+      `FISCAL_CERTAIN : ${certain.length}`
     );
 
     console.log(
-      `   FISCAL_CERTAIN : ${certain.length}`
-    );
-
-    console.log(
-      `   FISCAL_PROBABLE : ${probable.length}`
+      `FISCAL_PROBABLE : ${probable.length}`
     );
 
     // --------------------------------------------------------
-    // AFFICHAGE DÉTAILLÉ
+    // LISTE DES DÉCISIONS RETENUES
     // --------------------------------------------------------
 
     if (fiscalDecisions.length > 0) {
       console.log("");
-      console.log("DÉCISIONS FISCALES :");
+      console.log(
+        "DÉCISIONS FISCALES RETENUES :"
+      );
 
-      fiscalDecisions.forEach((decision, index) => {
-        console.log("");
-        console.log(`${index + 1}. ${decision.title}`);
-        console.log(`   URL : ${decision.url}`);
-        console.log(`   Matière : ${decision.matter}`);
-        console.log(
-          `   Confiance : ${decision.confidence}`
-        );
-        console.log(
-          `   Raisons : ${decision.reasons.join(", ")}`
-        );
-      });
-    }
+      fiscalDecisions.forEach(
+        (decision, index) => {
+          console.log("");
+          console.log(
+            `${index + 1}. ${decision.title}`
+          );
 
-    // --------------------------------------------------------
-    // SÉCURITÉ : NE PAS ÉCRASER LE JSON AVEC DU VIDE
-    // --------------------------------------------------------
+          console.log(
+            `   URL : ${decision.url}`
+          );
 
-    if (fiscalDecisions.length < MIN_EXPECTED_FISCAL) {
-      throw new Error(
-        `SÉCURITÉ : aucune décision fiscale suffisamment ` +
-        `identifiée. Le fichier ${OUTPUT_FILE} ` +
-        `ne sera PAS modifié.`
+          console.log(
+            `   Confiance : ${decision.confidence}`
+          );
+
+          console.log(
+            `   Raisons : ${decision.reasons.join(", ")}`
+          );
+        }
       );
     }
 
     // --------------------------------------------------------
-    // ÉCRITURE DU JSON
+    // SÉCURITÉ JSON
+    // --------------------------------------------------------
+
+    if (
+      fiscalDecisions.length <
+      MIN_EXPECTED_FISCAL
+    ) {
+      throw new Error(
+        "SÉCURITÉ : aucune décision fiscale suffisamment " +
+        "identifiée. Le fichier JSON existant ne sera PAS modifié."
+      );
+    }
+
+    // --------------------------------------------------------
+    // 4. ÉCRITURE JSON
     // --------------------------------------------------------
 
     const output = {
@@ -680,7 +754,11 @@ async function main() {
 
     fs.writeFileSync(
       OUTPUT_FILE,
-      JSON.stringify(output, null, 2),
+      JSON.stringify(
+        output,
+        null,
+        2
+      ),
       "utf8"
     );
 
@@ -690,19 +768,39 @@ async function main() {
     );
 
     console.log("");
-    console.log("===============================================");
-    console.log("SCRAPING TERMINÉ AVEC SUCCÈS");
-    console.log("===============================================");
+    console.log(
+      "==============================================="
+    );
+
+    console.log(
+      "SCRAPING TERMINÉ AVEC SUCCÈS"
+    );
+
+    console.log(
+      "==============================================="
+    );
   } finally {
     await browser.close();
   }
 }
 
+// ------------------------------------------------------------
+// GESTION DES ERREURS
+// ------------------------------------------------------------
+
 main().catch(error => {
   console.error("");
-  console.error("===============================================");
-  console.error("ERREUR DU SCRAPER");
-  console.error("===============================================");
+  console.error(
+    "==============================================="
+  );
+  console.error(
+    "ERREUR DU SCRAPER"
+  );
+  console.error(
+    "==============================================="
+  );
+
   console.error(error);
+
   process.exit(1);
 });
