@@ -1,24 +1,73 @@
 {
-  "Liège": {
-    "updatedAt": "2026-09-18T06:03:49.460Z",
-    "reglementsEnVigueur": [
-      {
-        "date": "2026-09-07",
-        "titre": "Décision",
-        "matiere": "Urbanisme & Aménagement du territoire",
-        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/bail-commercial-type-creashop"
-      },
-      {
-        "date": "2026-09-07",
-        "titre": "Décision",
-        "matiere": "Urbanisme & Aménagement du territoire",
-        "url": "https://www.deliberations.be/liege/decisions/07-septembre-2026-18-00/convention-de-bail-type-emplacements-de-stationnement-non-securises"
-      }
-    ],
-    "prochainesTaxes": []
-  },
+  "commune": "Liège",
+  "annee": 2026,
+  "updatedAt": "2026-09-22T06:08:37.127Z",
+  "source": "https://www.deliberations.be/liege/decisions",
+  "count": 5,
+  "decisions": [
+    {
+      "date": 2026,
+      "title": "Abrogation de sa délibération du 15 décembre 2025 - arrêt de la liste actualisée des fonctionnaires délégués en matière des marchés publics imputables au budget de l'ordinaire dont la dépense est inférieure à 1.500,00 EUR hors T.V.A.",
+      "url": "https://www.deliberations.be/liege/decisions/29-juin-2026-18-00/delegation-de-competence-marches-publics-passes-par-bons-de-commande-aux-fonctionnaires",
+      "matter": "Fiscalité communale",
+      "confidence": "FISCAL_PROBABLE",
+      "reasons": [
+        "REGLEMENT_FISCAL",
+        "TAXE",
+        "OBJET_FISCAL"
+      ]
+    },
+    {
+      "date": 2026,
+      "title": "Adoption du règlement de police relatif à la propreté publique et à la lutte contre les petites incivilités urbaines qui y portent atteinte.",
+      "url": "https://www.deliberations.be/liege/decisions/29-juin-2026-18-00/gep-2026-082-o-b-adoption-du-reglement-de-police-relatif-a-la-proprete-publique-et-a-la-lutte-contre-les-petites-incivilites-urbaines-qui-y-portent-atteinte",
+      "matter": "Fiscalité communale",
+      "confidence": "FISCAL_PROBABLE",
+      "reasons": [
+        "REGLEMENT_FISCAL",
+        "TAXE",
+        "OBJET_FISCAL"
+      ]
+    },
+    {
+      "date": 2026,
+      "title": "Adoption du contrat n°26/096 relatif à la communication de données à caractère personnel par la Banque Carrefour de la sécurité sociale à la Ville en vue de l'octroi automatique de droits supplémentaires, en application de la loi du 15 janvier 1990 relative à l’institution et à l’organisation d’une Banque-carrefour de la sécurité sociale, le Règlement européen sur la protection des données (le Règlement UE 2016/679 du Parlement européen et du Conseil du 27 avril 2016 relatif à la protection des personnes physiques à l’égard du traitement des données à caractère personnel et à la libre circulation de ces données, et abrogeant la directive 95/46/CE, leurs arrêtés d’exécution et toute autre réglementation relative à la protection de la vie privée.",
+      "url": "https://www.deliberations.be/liege/decisions/18-mai-2026-18-00/adoption-du-contrat-relatif-a-la-communication-de-donnees-a-caractere-personnel-par-la-banque-carrefour-de-la-securite-sociale-a-la-ville-de-liege-en-vue-de-loctroi-automatique-de-droits-supplementaires",
+      "matter": "Fiscalité communale",
+      "confidence": "FISCAL_PROBABLE",
+      "reasons": [
+        "REGLEMENT_FISCAL",
+        "TAXE",
+        "OBJET_FISCAL"
+      ]
+    },
+    {
+      "date": 2026,
+      "title": "Modification du Règlement général de police et de gestion patrimoniale relatif à l’occupation de la voie publique.",
+      "url": "https://www.deliberations.be/liege/decisions/20-avril-2026-18-00/modification-reglement-general-de-police-et-de-gestion-patrimoniale-relatif-a-loccupation-de-la-voie-publique",
+      "matter": "Fiscalité communale",
+      "confidence": "FISCAL_PROBABLE",
+      "reasons": [
+        "REGLEMENT_FISCAL",
+        "REDEVANCE",
+        "OBJET_FISCAL"
+      ]
+    },
+    {
+      "date": 2026,
+      "title": "Adoption du nouveau règlement particulier de police et de gestion patrimoniale relatif à l’occupation de la voie publique lors des fêtes du XV Août en Outremeuse.",
+      "url": "https://www.deliberations.be/liege/decisions/30-mars-2026-18-00/abrogation-du-reglement-particulier-de-police-et-de-gestion-patrimoniale-relatif-a-loccupation-de-la-voie-publique-lors-des-fetes-du-xv-aout-en-outremeuse-du-26-avril-2005-adoption-du-nouveau-reglement",
+      "matter": "Fiscalité communale",
+      "confidence": "FISCAL_PROBABLE",
+      "reasons": [
+        "REGLEMENT_FISCAL",
+        "REDEVANCE",
+        "OBJET_FISCAL"
+      ]
+    }
+  ],
   "Anderlecht": {
-    "updatedAt": "2026-09-21T06:07:01.950Z",
+    "updatedAt": "2026-09-22T06:08:39.005Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlement-taxe sur les agences de paris aux courses de chevaux",
@@ -510,7 +559,7 @@
     "prochainesTaxes": []
   },
   "Auderghem": {
-    "updatedAt": "2026-09-21T06:07:03.793Z",
+    "updatedAt": "2026-09-22T06:08:41.078Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
@@ -864,7 +913,7 @@
     "prochainesTaxes": []
   },
   "Berchem-Sainte-Agathe": {
-    "updatedAt": "2026-09-21T06:07:07.135Z",
+    "updatedAt": "2026-09-22T06:08:44.623Z",
     "reglementsEnVigueur": [
       {
         "titre": "Commerce : règlements, primes, taxes et redevances",
@@ -1572,7 +1621,7 @@
     "prochainesTaxes": []
   },
   "Ville de Bruxelles": {
-    "updatedAt": "2026-09-21T06:07:08.372Z",
+    "updatedAt": "2026-09-22T06:08:46.169Z",
     "reglementsEnVigueur": [
       {
         "titre": "Centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique pour l'exercice 2027 - principe",
@@ -2652,27 +2701,27 @@
     "prochainesTaxes": []
   },
   "Etterbeek": {
-    "updatedAt": "2026-09-21T06:07:10.118Z",
+    "updatedAt": "2026-09-22T06:08:47.974Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous une rubrique 'emploi et commerce' inhabituelle : à vérifier que c'est bien la bonne page."
   },
   "Evere": {
-    "updatedAt": "2026-09-21T06:07:14.353Z",
+    "updatedAt": "2026-09-22T06:08:52.434Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous 'actualité' : pourrait être une brève plutôt que la liste complète des règlements."
   },
   "Forest": {
-    "updatedAt": "2026-09-21T06:07:17.598Z",
+    "updatedAt": "2026-09-22T06:08:56.340Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "HTTP 404 pour https://www.forest.brussels/fr/services-communaux/finances-communales/reglements-taxes"
   },
   "Ganshoren": {
-    "updatedAt": "2026-09-21T06:07:19.465Z",
+    "updatedAt": "2026-09-22T06:08:58.292Z",
     "reglementsEnVigueur": [
       {
         "titre": "Téléchargez les documents Taxes, redevances et impôts",
@@ -2686,7 +2735,7 @@
     "note": "Pas trouvé de page dédiée 'règlements-taxes' ; be.brussels renvoie vers publi.irisnet.be (non scrapable, cf. notes précédentes) pour cette commune."
   },
   "Ixelles": {
-    "updatedAt": "2026-09-21T06:07:20.916Z",
+    "updatedAt": "2026-09-22T06:08:59.956Z",
     "reglementsEnVigueur": [
       {
         "titre": "Ordonnance relative à l'établissement, au recouvrement et au contentieux en matière des taxes communales",
@@ -2980,20 +3029,20 @@
     "prochainesTaxes": []
   },
   "Jette": {
-    "updatedAt": "2026-09-21T06:07:22.589Z",
+    "updatedAt": "2026-09-22T06:09:01.911Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "low",
     "note": "Pas trouvé de sous-page 'taxes' précise ; page d'accueil seulement, à affiner."
   },
   "Koekelberg": {
-    "updatedAt": "2026-09-21T06:07:23.089Z",
+    "updatedAt": "2026-09-22T06:09:02.411Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "Le site officiel indique explicitement que les règlements ne sont consultables que sur rendez-vous au secrétariat communal (pas de publication en ligne). Aucune URL exploitable trouvée."
   },
   "Molenbeek-Saint-Jean": {
-    "updatedAt": "2026-09-21T06:07:25.471Z",
+    "updatedAt": "2026-09-22T06:09:05.297Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes et recettes",
@@ -3005,7 +3054,7 @@
     "prochainesTaxes": []
   },
   "Saint-Gilles": {
-    "updatedAt": "2026-09-21T06:07:27.972Z",
+    "updatedAt": "2026-09-22T06:09:08.322Z",
     "reglementsEnVigueur": [
       {
         "titre": "Liste des taxes",
@@ -3239,7 +3288,7 @@
     "prochainesTaxes": []
   },
   "Saint-Josse-ten-Noode": {
-    "updatedAt": "2026-09-21T06:07:29.354Z",
+    "updatedAt": "2026-09-22T06:09:09.490Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements & Taxes",
@@ -3481,7 +3530,7 @@
     "note": "URL FR devinée par analogie avec la version anglaise (sjtn.brussels/en/municipality/regulations-taxes) : à vérifier."
   },
   "Schaerbeek": {
-    "updatedAt": "2026-09-21T06:07:31.168Z",
+    "updatedAt": "2026-09-22T06:09:11.419Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes & Redevances",
@@ -3499,13 +3548,13 @@
     "prochainesTaxes": []
   },
   "Uccle": {
-    "updatedAt": "2026-09-21T06:07:42.163Z",
+    "updatedAt": "2026-09-22T06:09:22.412Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "fetch failed"
   },
   "Watermael-Boitsfort": {
-    "updatedAt": "2026-09-21T06:07:44.516Z",
+    "updatedAt": "2026-09-22T06:09:24.561Z",
     "reglementsEnVigueur": [
       {
         "titre": "Impôts et taxes",
@@ -3805,7 +3854,7 @@
     "prochainesTaxes": []
   },
   "Woluwe-Saint-Lambert": {
-    "updatedAt": "2026-09-21T06:07:46.401Z",
+    "updatedAt": "2026-09-22T06:09:26.026Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements, primes et taxes",
@@ -3819,7 +3868,7 @@
     "note": "Page trouvée mais contenu non vérifié en détail (site nécessitait peut-être un rendu JS lors de la recherche)."
   },
   "Woluwe-Saint-Pierre": {
-    "updatedAt": "2026-09-21T06:07:51.862Z",
+    "updatedAt": "2026-09-22T06:09:28.654Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
