@@ -10,14 +10,16 @@ const BASE_URL = "https://www.deliberations.be/liege/decisions";
 const YEAR = 2026;
 
 const OUTPUT_DIR = path.resolve("tmp");
-const RAW_FILE = path.join(OUTPUT_DIR, "liege-2026-analysis.json");
+const RAW_FILE = path.join(
+  OUTPUT_DIR,
+  "liege-2026-analysis.json"
+);
 
-const MAX_PAGES = 150;
-const PAGE_DELAY = 300;
-const DECISION_DELAY = 150;
-const CONCURRENCY = 3;
-const MAX_DOCUMENTS_PER_DECISION = 8;
-const MAX_PDF_SIZE = 15 * 1024 * 1024;
+const MIN_EXPECTED_DECISIONS = 500;
+const MAX_PAGES = 100;
+
+const DECISION_URL_REGEX =
+  /\/decisions\/\d{1,2}-[a-zàâäéèêëîïôöùûüÿç]+-2026-\d{1,2}-\d{2}\//i;
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -45,14 +47,8 @@ function absoluteUrl(url) {
   }
 }
 
-function isDecision2026(url) {
-  return /\/decisions\/\d{1,2}-[a-zàâäéèêëîïôöùûüÿç]+-2026-\d{1,2}-\d{2}\//i.test(
-    url || ""
-  );
-}
-
 function getDateFromUrl(url) {
-  const match = (url || "").match(
+  const match = url.match(
     /\/decisions\/(\d{1,2})-([a-zàâäéèêëîïôöùûüÿç]+)-2026-\d{1,2}-\d{2}\//i
   );
 
@@ -76,18 +72,26 @@ function getDateFromUrl(url) {
     décembre: "12"
   };
 
-  const month = months[normalizeText(match[2])];
+  const month =
+    months[normalizeText(match[2])];
 
   if (!month) return null;
 
-  return `2026-${month}-${String(match[1]).padStart(2, "0")}`;
+  return `2026-${month}-${String(
+    match[1]
+  ).padStart(2, "0")}`;
 }
 
 function getTitleFromUrl(url) {
   try {
-    const pathname = new URL(url).pathname;
-    const parts = pathname.split("/").filter(Boolean);
-    const slug = parts[parts.length - 1] || "";
+    const pathname =
+      new URL(url).pathname;
+
+    const parts =
+      pathname.split("/").filter(Boolean);
+
+    const slug =
+      parts[parts.length - 1] || "";
 
     return decodeURIComponent(slug)
       .replace(/[-_]+/g, " ")
@@ -98,41 +102,25 @@ function getTitleFromUrl(url) {
   }
 }
 
-function looksLikeDocument(link) {
-  const href = normalizeText(link.href);
-  const text = normalizeText(link.text);
+function extractOffset(url) {
+  const match =
+    url.match(/[?&]b_start(?::int)?=(\d+)/i);
 
-  if (!href) return false;
+  return match
+    ? Number(match[1])
+    : 0;
+}
 
-  const documentPatterns = [
-    /\.pdf(?:$|\?)/i,
-    /\.docx?(?:$|\?)/i,
-    /\.odt(?:$|\?)/i,
-    /\.rtf(?:$|\?)/i,
-    /\/download(?:\/|$|\?)/i,
-    /\/document(?:\/|$|\?)/i,
-    /\/documents?(?:\/|$|\?)/i,
-    /\/file(?:\/|$|\?)/i,
-    /\/files?(?:\/|$|\?)/i,
-    /\/attachment(?:\/|$|\?)/i,
-    /\/annexe(?:\/|$|\?)/i,
-    /\/annexes(?:\/|$|\?)/i,
-    /pdf/i
-  ];
-
-  const textPatterns = [
-    "pdf",
-    "document",
-    "annexe",
-    "piece jointe",
-    "telecharger",
-    "télécharger",
-    "download"
-  ];
-
+function buildPaginationUrl(
+  offset,
+  seanceId
+) {
   return (
-    documentPatterns.some(pattern => pattern.test(href)) ||
-    textPatterns.some(pattern => text.includes(pattern))
+    `${BASE_URL}/@@faceted_query` +
+    `?b_start:int=${offset}` +
+    `&seance%5B%5D=${encodeURIComponent(
+      seanceId
+    )}`
   );
 }
 
@@ -144,219 +132,393 @@ async function discoverSeanceId(page) {
 
   await sleep(1000);
 
-  const currentUrl = page.url();
+  const html =
+    await page.content();
 
-  const match =
-    currentUrl.match(/seance(?:%5B%5D|\[\])=([a-z0-9]+)/i) ||
-    currentUrl.match(/seance=([a-z0-9]+)/i);
+  const patterns = [
+    /seance(?:%5B%5D|\[\])=([a-z0-9]+)/i,
+    /seance=([a-z0-9]+)/i
+  ];
 
-  if (match) {
-    return match[1];
+  for (const pattern of patterns) {
+    const match =
+      html.match(pattern);
+
+    if (match) {
+      return match[1];
+    }
   }
 
-  const html = await page.content();
+  const currentUrl =
+    page.url();
 
-  const htmlMatch =
-    html.match(/seance(?:%5B%5D|\[\])=([a-z0-9]+)/i) ||
-    html.match(/seance=([a-z0-9]+)/i);
+  for (const pattern of patterns) {
+    const match =
+      currentUrl.match(pattern);
 
-  if (htmlMatch) {
-    return htmlMatch[1];
+    if (match) {
+      return match[1];
+    }
   }
 
   throw new Error(
-    "Impossible de récupérer automatiquement l'identifiant de séance de Liège."
+    "Impossible de récupérer l'identifiant de séance."
   );
 }
 
-async function extractListingPage(page, url) {
+async function extractDecisionLinks(page, url) {
   await page.goto(url, {
     waitUntil: "networkidle2",
     timeout: 120000
   });
 
-  await sleep(PAGE_DELAY);
+  await sleep(500);
 
-  return await page.evaluate(() => {
-    const links = Array.from(document.querySelectorAll("a"))
-      .map(a => ({
-        href: a.href || "",
-        text: a.innerText?.trim() || ""
-      }))
-      .filter(x => x.href);
+  return await page.evaluate(
+    decisionRegexSource => {
+      const regex =
+        new RegExp(
+          decisionRegexSource,
+          "i"
+        );
 
-    const paginationLinks = links
-      .map(x => x.href)
-      .filter(href =>
-        /@@faceted_query\?/i.test(href)
-      );
-
-    const decisionLinks = links
-      .filter(x =>
-        /\/decisions\/\d{1,2}-[a-zàâäéèêëîïôöùûüÿç]+-2026-\d{1,2}-\d{2}\//i.test(
-          x.href
-        )
+      return Array.from(
+        document.querySelectorAll("a")
       )
-      .map(x => ({
-        url: x.href,
-        linkText: x.text
-      }));
-
-    return {
-      decisionLinks,
-      paginationLinks
-    };
-  });
+        .map(a => ({
+          href: a.href || "",
+          text:
+            a.innerText?.trim() || ""
+        }))
+        .filter(x =>
+          regex.test(x.href)
+        );
+    },
+    DECISION_URL_REGEX.source
+  );
 }
 
-async function collectAllDecisionLinks(browser) {
-  const page = await browser.newPage();
+async function collectAllDecisionLinks(
+  browser
+) {
+  const page =
+    await browser.newPage();
 
   try {
-    console.log("Recherche de l'identifiant de séance...");
+    console.log(
+      "Recherche de l'identifiant de séance..."
+    );
 
-    const seanceId = await discoverSeanceId(page);
+    const seanceId =
+      await discoverSeanceId(
+        page
+      );
 
-    console.log(`Séance détectée : ${seanceId}`);
+    console.log(
+      `Séance détectée : ${seanceId}`
+    );
 
-    const queue = [
-      `${BASE_URL}#seance=${seanceId}&b_start=0`
-    ];
+    const decisionMap =
+      new Map();
 
-    const visitedPages = new Set();
-    const decisionMap = new Map();
+    /*
+     * IMPORTANT :
+     * Nous ne suivons plus les liens de pagination
+     * fournis par la page.
+     *
+     * Nous générons nous-mêmes :
+     * 0, 20, 40, 60, 80, etc.
+     */
 
-    while (queue.length > 0 && visitedPages.size < MAX_PAGES) {
-      const url = queue.shift();
+    for (
+      let pageNumber = 0;
+      pageNumber < MAX_PAGES;
+      pageNumber++
+    ) {
+      const offset =
+        pageNumber * 20;
 
-      if (visitedPages.has(url)) continue;
-
-      visitedPages.add(url);
+      const url =
+        buildPaginationUrl(
+          offset,
+          seanceId
+        );
 
       console.log("");
       console.log(
-        `PAGE ${visitedPages.size} — ${url}`
+        `PAGE ${pageNumber + 1} — offset ${offset}`
       );
+      console.log(url);
+
+      let links = [];
 
       try {
-        const result = await extractListingPage(page, url);
-
-        let added = 0;
-
-        for (const decision of result.decisionLinks) {
-          const normalized = decision.url.split("#")[0];
-
-          if (!decisionMap.has(normalized)) {
-            decisionMap.set(normalized, decision);
-            added++;
-          }
-        }
-
-        console.log(
-          `Décisions 2026 sur cette page : ${result.decisionLinks.length}`
-        );
-
-        console.log(
-          `Nouvelles décisions : ${added}`
-        );
-
-        console.log(
-          `Total unique : ${decisionMap.size}`
-        );
-
-        for (const paginationUrl of result.paginationLinks) {
-          if (!visitedPages.has(paginationUrl)) {
-            queue.push(paginationUrl);
-          }
-        }
+        links =
+          await extractDecisionLinks(
+            page,
+            url
+          );
       } catch (error) {
         console.log(
-          `ERREUR PAGE : ${error.message}`
+          `Erreur sur offset ${offset} : ${error.message}`
         );
+        continue;
       }
+
+      let newCount = 0;
+
+      for (const link of links) {
+        const cleanUrl =
+          link.href.split("#")[0];
+
+        if (
+          !decisionMap.has(
+            cleanUrl
+          )
+        ) {
+          decisionMap.set(
+            cleanUrl,
+            {
+              url: cleanUrl,
+              linkText:
+                cleanText(
+                  link.text
+                )
+            }
+          );
+
+          newCount++;
+        }
+      }
+
+      console.log(
+        `Décisions 2026 sur cette page : ${links.length}`
+      );
+
+      console.log(
+        `Nouvelles décisions : ${newCount}`
+      );
+
+      console.log(
+        `Total unique : ${decisionMap.size}`
+      );
+
+      /*
+       * Si la page ne contient plus aucune
+       * nouvelle décision, on considère que
+       * nous avons atteint la fin.
+       */
+      if (
+        links.length === 0
+      ) {
+        console.log(
+          "Aucune décision sur cette page : fin de la pagination."
+        );
+        break;
+      }
+
+      /*
+       * Sécurité supplémentaire :
+       * si aucune nouvelle décision n'est trouvée
+       * pendant une page complète, on arrête.
+       */
+      if (
+        newCount === 0
+      ) {
+        console.log(
+          "Aucune nouvelle décision : fin de la pagination."
+        );
+        break;
+      }
+
+      await sleep(300);
     }
 
     console.log("");
     console.log(
-      `TOTAL FINAL DE DÉCISIONS 2026 : ${decisionMap.size}`
+      `TOTAL FINAL : ${decisionMap.size} décisions 2026`
     );
 
-    if (decisionMap.size < 500) {
+    if (
+      decisionMap.size <
+      MIN_EXPECTED_DECISIONS
+    ) {
       throw new Error(
-        `Seulement ${decisionMap.size} décisions trouvées. Le scraper est arrêté par sécurité.`
+        `Seulement ${decisionMap.size} décisions trouvées. Arrêt de sécurité.`
       );
     }
 
-    return [...decisionMap.values()];
+    return [
+      ...decisionMap.values()
+    ];
   } finally {
     await page.close();
   }
 }
 
-async function extractDecisionPage(page, decision) {
-  for (let attempt = 1; attempt <= 3; attempt++) {
+async function extractDecisionPage(
+  page,
+  decision
+) {
+  for (
+    let attempt = 1;
+    attempt <= 3;
+    attempt++
+  ) {
     try {
-      await page.goto(decision.url, {
-        waitUntil: "networkidle2",
-        timeout: 120000
-      });
+      await page.goto(
+        decision.url,
+        {
+          waitUntil:
+            "networkidle2",
+          timeout: 120000
+        }
+      );
 
-      await sleep(DECISION_DELAY);
+      await sleep(300);
 
-      const result = await page.evaluate(() => {
-        const links = Array.from(document.querySelectorAll("a"))
-          .map(a => ({
-            text: a.innerText?.trim() || "",
-            href: a.href || ""
+      const result =
+        await page.evaluate(
+          () => {
+            const links =
+              Array.from(
+                document.querySelectorAll(
+                  "a"
+                )
+              ).map(a => ({
+                text:
+                  a.innerText?.trim() ||
+                  "",
+                href:
+                  a.href || ""
+              }));
+
+            const bodyText =
+              document.body
+                ?.innerText || "";
+
+            const headings =
+              Array.from(
+                document.querySelectorAll(
+                  "h1,h2,h3,h4"
+                )
+              )
+                .map(
+                  x =>
+                    x.innerText?.trim() ||
+                    ""
+                )
+                .filter(Boolean);
+
+            return {
+              bodyText,
+              headings,
+              links
+            };
+          }
+        );
+
+      const documentLinks =
+        result.links
+          .filter(link => {
+            const href =
+              normalizeText(
+                link.href
+              );
+
+            const text =
+              normalizeText(
+                link.text
+              );
+
+            return (
+              /\.pdf(?:$|\?)/i.test(
+                href
+              ) ||
+              /\/document/i.test(
+                href
+              ) ||
+              /\/download/i.test(
+                href
+              ) ||
+              /\/attachment/i.test(
+                href
+              ) ||
+              text.includes("pdf") ||
+              text.includes(
+                "document"
+              ) ||
+              text.includes(
+                "annexe"
+              ) ||
+              text.includes(
+                "télécharger"
+              ) ||
+              text.includes(
+                "telecharger"
+              )
+            );
+          })
+          .map(link => ({
+            text:
+              cleanText(
+                link.text
+              ),
+            href:
+              absoluteUrl(
+                link.href
+              )
           }))
           .filter(x => x.href);
 
-        const bodyText =
-          document.body?.innerText || "";
-
-        const headings = Array.from(
-          document.querySelectorAll("h1,h2,h3,h4")
-        )
-          .map(x => x.innerText?.trim() || "")
-          .filter(Boolean);
-
-        return {
-          bodyText,
-          headings,
-          links
-        };
-      });
-
-      const documentLinks = result.links
-        .filter(looksLikeDocument)
-        .map(link => ({
-          text: cleanText(link.text),
-          href: absoluteUrl(link.href)
-        }))
-        .filter(x => x.href);
-
-      const uniqueDocuments = [
-        ...new Map(
-          documentLinks.map(x => [x.href, x])
-        ).values()
-      ].slice(0, MAX_DOCUMENTS_PER_DECISION);
+      const uniqueDocuments =
+        [
+          ...new Map(
+            documentLinks.map(
+              x => [
+                x.href,
+                x
+              ]
+            )
+          ).values()
+        ].slice(0, 10);
 
       return {
         url: decision.url,
-        date: getDateFromUrl(decision.url),
-        title: getTitleFromUrl(decision.url),
-        linkText: cleanText(decision.linkText),
-        headings: result.headings.map(cleanText),
-        pageText: cleanText(result.bodyText),
-        documents: uniqueDocuments
+        date:
+          getDateFromUrl(
+            decision.url
+          ),
+        title:
+          getTitleFromUrl(
+            decision.url
+          ),
+        linkText:
+          cleanText(
+            decision.linkText
+          ),
+        headings:
+          result.headings.map(
+            cleanText
+          ),
+        pageText:
+          cleanText(
+            result.bodyText
+          ),
+        documents:
+          uniqueDocuments
       };
     } catch (error) {
       console.log(
-        `   Tentative ${attempt}/3 échouée : ${error.message}`
+        `   Tentative ${attempt}/3 : ${error.message}`
       );
 
-      if (attempt < 3) {
-        await sleep(1000 * attempt);
+      if (
+        attempt < 3
+      ) {
+        await sleep(
+          1000 * attempt
+        );
       }
     }
   }
@@ -364,47 +526,54 @@ async function extractDecisionPage(page, decision) {
   return null;
 }
 
-async function downloadPdf(url) {
+async function downloadPdf(
+  url
+) {
   try {
-    const response = await fetch(url, {
-      redirect: "follow",
-      signal: AbortSignal.timeout(45000)
-    });
+    const response =
+      await fetch(
+        url,
+        {
+          redirect:
+            "follow",
+          signal:
+            AbortSignal.timeout(
+              45000
+            )
+        }
+      );
 
-    if (!response.ok) {
+    if (
+      !response.ok
+    ) {
       return null;
     }
 
     const contentType =
-      response.headers.get("content-type") || "";
-
-    const contentLength =
-      Number(
-        response.headers.get("content-length") || 0
-      );
-
-    if (
-      contentLength &&
-      contentLength > MAX_PDF_SIZE
-    ) {
-      return null;
-    }
+      response.headers.get(
+        "content-type"
+      ) || "";
 
     const buffer =
       Buffer.from(
         await response.arrayBuffer()
       );
 
-    if (buffer.length > MAX_PDF_SIZE) {
+    if (
+      buffer.length >
+      15 * 1024 * 1024
+    ) {
       return null;
     }
 
-    const looksPdf =
-      buffer.subarray(0, 4).toString() === "%PDF";
-
     if (
-      !looksPdf &&
-      !contentType.toLowerCase().includes("pdf")
+      buffer
+        .subarray(0, 4)
+        .toString() !==
+        "%PDF" &&
+      !contentType
+        .toLowerCase()
+        .includes("pdf")
     ) {
       return null;
     }
@@ -415,25 +584,37 @@ async function downloadPdf(url) {
   }
 }
 
-async function extractPdfText(buffer, index) {
-  const tempDir = path.join(
-    OUTPUT_DIR,
-    "pdf-temp"
-  );
+async function extractPdfText(
+  buffer,
+  index
+) {
+  const tempDir =
+    path.join(
+      OUTPUT_DIR,
+      "pdf-temp"
+    );
 
-  fs.mkdirSync(tempDir, {
-    recursive: true
-  });
-
-  const pdfPath = path.join(
+  fs.mkdirSync(
     tempDir,
-    `document-${process.pid}-${index}.pdf`
+    {
+      recursive: true
+    }
   );
 
-  const txtPath = `${pdfPath}.txt`;
+  const pdfPath =
+    path.join(
+      tempDir,
+      `document-${process.pid}-${index}.pdf`
+    );
+
+  const txtPath =
+    `${pdfPath}.txt`;
 
   try {
-    fs.writeFileSync(pdfPath, buffer);
+    fs.writeFileSync(
+      pdfPath,
+      buffer
+    );
 
     await execFileAsync(
       "pdftotext",
@@ -443,8 +624,7 @@ async function extractPdfText(buffer, index) {
         txtPath
       ],
       {
-        timeout: 60000,
-        maxBuffer: 5 * 1024 * 1024
+        timeout: 60000
       }
     );
 
@@ -458,64 +638,71 @@ async function extractPdfText(buffer, index) {
     return "";
   } finally {
     try {
-      fs.unlinkSync(pdfPath);
+      fs.unlinkSync(
+        pdfPath
+      );
     } catch {}
 
     try {
-      fs.unlinkSync(txtPath);
+      fs.unlinkSync(
+        txtPath
+      );
     } catch {}
   }
 }
 
-function classifyDecision(decision) {
-  const title = normalizeText(
-    decision.title
-  );
+function classifyDecision(
+  decision
+) {
+  const title =
+    normalizeText(
+      decision.title
+    );
 
-  const pageText = normalizeText(
-    decision.pageText
-  );
-
-  const pdfText = normalizeText(
-    decision.pdfText
-  );
+  const pdfText =
+    normalizeText(
+      decision.pdfText || ""
+    );
 
   const combined =
     `${title} ${pdfText}`;
 
   const exclusions = [
-    /\bsubvention\b/,
-    /\bsubside\b/,
-    /\bconvention\b/,
-    /\bbail\b/,
-    /\blocatif\b/,
-    /\bmarche public\b/,
-    /\bcommande publique\b/,
-    /\btravaux\b/,
-    /\bfourniture\b/,
-    /\bpersonnel\b/,
-    /\bpolice\b/,
-    /\bstationnement\b/,
-    /\bparking\b/,
-    /\boccupation du domaine public\b/,
-    /\boccupation de la voirie\b/,
-    /\bmanifestation\b/,
-    /\bfestival\b/,
-    /\bevenement\b/,
-    /\bévénement\b/,
-    /\bactivite ambulante\b/,
-    /\bactivites ambulantes\b/
+    "subvention",
+    "subside",
+    "convention",
+    "bail",
+    "marche public",
+    "commande publique",
+    "travaux",
+    "fourniture",
+    "personnel",
+    "police",
+    "stationnement",
+    "parking",
+    "occupation du domaine public",
+    "occupation de la voirie",
+    "manifestation",
+    "festival",
+    "evenement",
+    "activité ambulante",
+    "activite ambulante"
   ];
 
   if (
     exclusions.some(
-      pattern => pattern.test(title)
+      x =>
+        title.includes(x)
     )
   ) {
     return {
-      status: "NON_FISCAL",
-      confidence: "EXCLU",
-      reasons: ["EXCLUSION_TITRE"]
+      status:
+        "NON_FISCAL",
+      confidence:
+        "EXCLU",
+      reasons: [
+        "EXCLUSION_TITRE"
+      ]
     };
   }
 
@@ -537,19 +724,24 @@ function classifyDecision(decision) {
 
   const certainMatches =
     certainSignals.filter(
-      signal =>
-        combined.includes(signal)
+      x =>
+        combined.includes(x)
     );
 
-  if (certainMatches.length > 0) {
+  if (
+    certainMatches.length
+  ) {
     return {
-      status: "FISCAL",
-      confidence: "CERTAIN",
-      reasons: certainMatches
+      status:
+        "FISCAL",
+      confidence:
+        "CERTAIN",
+      reasons:
+        certainMatches
     };
   }
 
-  const taxObjects = [
+  const objects = [
     "taxe sur les immeubles",
     "taxe sur les bureaux",
     "taxe sur les enseignes",
@@ -564,106 +756,35 @@ function classifyDecision(decision) {
     "taxe sur les dechets",
     "taxe sur les immondices",
     "taxe sur les secondes residences",
-    "taxe sur les secondes résidences",
     "taxe sur les vehicules",
     "taxe sur les véhicules"
   ];
 
   const objectMatches =
-    taxObjects.filter(
-      signal =>
-        combined.includes(signal)
-    );
-
-  if (objectMatches.length > 0) {
-    return {
-      status: "FISCAL",
-      confidence: "CERTAIN",
-      reasons: objectMatches
-    };
-  }
-
-  const hasTax =
-    /\btaxe\b/.test(combined) ||
-    /\btaxes\b/.test(combined);
-
-  const hasRedevance =
-    /\bredevance\b/.test(combined) ||
-    /\bredevances\b/.test(combined);
-
-  const hasReglement =
-    /\breglement\b/.test(combined) ||
-    /\brèglement\b/.test(combined);
-
-  const hasTarif =
-    /\btarif\b/.test(combined) ||
-    /\btaux\b/.test(combined);
-
-  const fiscalContext = [
-    "exercice 2026",
-    "exercices 2026",
-    "taux de la taxe",
-    "taux des taxes",
-    "base imposable",
-    "contribuable",
-    "redevable",
-    "recouvrement de la taxe",
-    "role de la taxe",
-    "rôle de la taxe",
-    "imposition",
-    "impose",
-    "imposée",
-    "imposes",
-    "imposés"
-  ];
-
-  const fiscalContextMatches =
-    fiscalContext.filter(
-      signal =>
-        combined.includes(
-          normalizeText(signal)
-        )
+    objects.filter(
+      x =>
+        combined.includes(x)
     );
 
   if (
-    hasReglement &&
-    (hasTax || hasRedevance) &&
-    fiscalContextMatches.length > 0
+    objectMatches.length
   ) {
     return {
-      status: "A_VERIFIER",
-      confidence: "PROBABLE",
-      reasons: [
-        "REGLEMENT",
-        hasTax ? "TAXE" : "REDEVANCE",
-        ...fiscalContextMatches
-      ]
-    };
-  }
-
-  if (
-    hasTax &&
-    hasTarif &&
-    fiscalContextMatches.length > 0
-  ) {
-    return {
-      status: "A_VERIFIER",
-      confidence: "POSSIBLE",
-      reasons: [
-        "TAXE",
-        "TAUX_OU_TARIF",
-        ...fiscalContextMatches
-      ]
+      status:
+        "FISCAL",
+      confidence:
+        "CERTAIN",
+      reasons:
+        objectMatches
     };
   }
 
   return {
-    status: "NON_FISCAL",
-    confidence: "FAIBLE",
-    reasons: [],
-    pageTextDetected:
-      pageText.includes("taxe") ||
-      pageText.includes("redevance")
+    status:
+      "NON_FISCAL",
+    confidence:
+      "FAIBLE",
+    reasons: []
   };
 }
 
@@ -690,18 +811,24 @@ async function processDecision(
     if (!result) {
       return {
         ...decision,
-        status: "ERREUR",
-        documents: [],
-        pdfText: ""
+        classification: {
+          status:
+            "ERREUR",
+          confidence:
+            "ERREUR",
+          reasons: []
+        }
       };
     }
 
     let pdfText = "";
-    let downloaded = 0;
+    let pdfCount = 0;
 
     for (
       let i = 0;
-      i < result.documents.length;
+      i <
+        result.documents
+          .length;
       i++
     ) {
       const document =
@@ -712,9 +839,9 @@ async function processDecision(
           document.href
         );
 
-      if (!buffer) continue;
-
-      downloaded++;
+      if (!buffer) {
+        continue;
+      }
 
       const text =
         await extractPdfText(
@@ -723,32 +850,38 @@ async function processDecision(
         );
 
       if (text) {
-        pdfText += `\n${text}`;
+        pdfText +=
+          `\n${text}`;
+        pdfCount++;
       }
     }
 
     const enriched = {
       ...result,
+      pdfText,
       pdfDocumentsDownloaded:
-        downloaded,
-      pdfText: cleanText(pdfText)
+        pdfCount
     };
 
-    const classification =
-      classifyDecision(
-        enriched
-      );
-
     return {
-      url: result.url,
-      date: result.date,
-      title: result.title,
-      linkText: result.linkText,
-      headings: result.headings,
-      documents: result.documents,
+      url:
+        enriched.url,
+      date:
+        enriched.date,
+      title:
+        enriched.title,
+      linkText:
+        enriched.linkText,
+      headings:
+        enriched.headings,
+      documents:
+        enriched.documents,
       pdfDocumentsDownloaded:
-        downloaded,
-      classification
+        pdfCount,
+      classification:
+        classifyDecision(
+          enriched
+        )
     };
   } finally {
     await page.close();
@@ -761,12 +894,11 @@ async function main() {
     "=================================================="
   );
   console.log(
-    "LIÈGE 2026 — NOUVEAU PIPELINE DE COLLECTE"
+    "LIÈGE 2026 — PIPELINE V2"
   );
   console.log(
     "=================================================="
   );
-  console.log("");
 
   fs.mkdirSync(
     OUTPUT_DIR,
@@ -786,8 +918,9 @@ async function main() {
     });
 
   try {
+    console.log("");
     console.log(
-      "ÉTAPE 1 — récupération des décisions"
+      "ÉTAPE 1 — COLLECTE"
     );
 
     const decisions =
@@ -797,101 +930,74 @@ async function main() {
 
     console.log("");
     console.log(
-      "ÉTAPE 2 — analyse des pages et documents"
+      "ÉTAPE 2 — DOCUMENTS"
     );
-    console.log("");
-
-    let cursor = 0;
 
     const results = [];
 
-    async function worker() {
-      while (true) {
-        const index = cursor++;
+    /*
+     * On traite les décisions
+     * une par une pour ce premier test.
+     *
+     * C'est plus lent mais beaucoup
+     * plus stable.
+     */
+    for (
+      let i = 0;
+      i < decisions.length;
+      i++
+    ) {
+      const result =
+        await processDecision(
+          browser,
+          decisions[i],
+          i,
+          decisions.length
+        );
 
-        if (
-          index >= decisions.length
-        ) {
-          break;
-        }
-
-        const result =
-          await processDecision(
-            browser,
-            decisions[index],
-            index,
-            decisions.length
-          );
-
-        results.push(result);
-      }
+      results.push(result);
     }
-
-    await Promise.all(
-      Array.from(
-        {
-          length: CONCURRENCY
-        },
-        () => worker()
-      )
-    );
-
-    results.sort(
-      (a, b) =>
-        String(a.url).localeCompare(
-          String(b.url)
-        )
-    );
 
     const fiscal =
       results.filter(
         x =>
-          x.classification?.status ===
+          x.classification
+            ?.status ===
           "FISCAL"
       );
 
-    const verify =
+    const documents =
       results.filter(
         x =>
-          x.classification?.status ===
-          "A_VERIFIER"
+          x.documents?.length
       );
 
-    const documentsFound =
-      results.filter(
-        x =>
-          x.documents?.length > 0
-      );
-
-    const pdfsDownloaded =
+    const pdfs =
       results.reduce(
         (sum, x) =>
           sum +
-          (x.pdfDocumentsDownloaded || 0),
+          (x.pdfDocumentsDownloaded ||
+            0),
         0
       );
 
     const output = {
-      commune: "Liège",
-      annee: YEAR,
+      commune:
+        "Liège",
+      annee:
+        YEAR,
       generatedAt:
         new Date().toISOString(),
       totalDecisions:
         results.length,
       decisionsAvecDocuments:
-        documentsFound.length,
+        documents.length,
       pdfDocumentsTelecharges:
-        pdfsDownloaded,
+        pdfs,
       fiscalCertain:
-        fiscal.filter(
-          x =>
-            x.classification
-              ?.confidence ===
-            "CERTAIN"
-        ).length,
-      fiscalAverifier:
-        verify.length,
-      decisions: results
+        fiscal.length,
+      decisions:
+        results
     };
 
     fs.writeFileSync(
@@ -909,82 +1015,35 @@ async function main() {
       "=================================================="
     );
     console.log(
-      "RÉSULTATS"
+      "RÉSULTAT"
     );
     console.log(
       "=================================================="
     );
 
     console.log(
-      `Décisions récupérées : ${results.length}`
+      `Décisions : ${results.length}`
     );
 
     console.log(
-      `Décisions avec documents : ${documentsFound.length}`
+      `Avec documents : ${documents.length}`
     );
 
     console.log(
-      `PDF téléchargés : ${pdfsDownloaded}`
+      `PDF téléchargés : ${pdfs}`
     );
 
     console.log(
-      `Fiscales certaines : ${
-        output.fiscalCertain
-      }`
-    );
-
-    console.log(
-      `À vérifier : ${
-        output.fiscalAverifier
-      }`
+      `Fiscales certaines : ${fiscal.length}`
     );
 
     console.log("");
 
     console.log(
-      "========== FISCALES CERTAINES =========="
+      "========== FISCALES =========="
     );
 
-    fiscal
-      .filter(
-        x =>
-          x.classification
-            ?.confidence ===
-          "CERTAIN"
-      )
-      .forEach(
-        (x, i) => {
-          console.log(
-            `${i + 1}. ${x.date} — ${x.title}`
-          );
-
-          console.log(
-            `   ${x.url}`
-          );
-
-          console.log(
-            `   Documents : ${x.documents.length}`
-          );
-
-          console.log(
-            `   PDF téléchargés : ${x.pdfDocumentsDownloaded}`
-          );
-
-          console.log(
-            `   Raisons : ${x.classification.reasons.join(
-              ", "
-            )}`
-          );
-        }
-      );
-
-    console.log("");
-
-    console.log(
-      "========== À VÉRIFIER =========="
-    );
-
-    verify.forEach(
+    fiscal.forEach(
       (x, i) => {
         console.log(
           `${i + 1}. ${x.date} — ${x.title}`
@@ -999,18 +1058,24 @@ async function main() {
             ", "
           )}`
         );
+
+        console.log(
+          `   Documents : ${x.documents.length}`
+        );
+
+        console.log(
+          `   PDF : ${x.pdfDocumentsDownloaded}`
+        );
       }
     );
 
     console.log("");
-
     console.log(
-      `Fichier créé : ${RAW_FILE}`
+      `Diagnostic : ${RAW_FILE}`
     );
-
     console.log("");
     console.log(
-      "AUCUN FICHIER DE PRODUCTION N'A ÉTÉ MODIFIÉ."
+      "AUCUNE DONNÉE DE PRODUCTION MODIFIÉE."
     );
   } finally {
     await browser.close();
