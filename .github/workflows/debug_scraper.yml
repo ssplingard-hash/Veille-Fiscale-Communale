@@ -8,40 +8,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # ------------------------------------------------------------
+
+      # ============================================================
       # 1. Récupération du dépôt
-      # ------------------------------------------------------------
+      # ============================================================
       - name: Checkout
         uses: actions/checkout@v4
 
-      # ------------------------------------------------------------
+      # ============================================================
       # 2. Installation de Node.js
-      # ------------------------------------------------------------
+      # ============================================================
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
-      # ------------------------------------------------------------
-      # 3. Installation des dépendances
-      # ------------------------------------------------------------
-      - name: Install dependencies
-        run: npm ci
+      # ============================================================
+      # 3. Installation UNIQUEMENT des dépendances du scraper
+      #
+      # On ne fait PAS npm ci :
+      # le projet React contient react-simple-maps, incompatible
+      # avec React 19, et cela n'a rien à voir avec notre scraper.
+      # ============================================================
+      - name: Install scraper dependencies
+        run: |
+          npm install --no-save --legacy-peer-deps puppeteer cheerio
 
-      # ------------------------------------------------------------
-      # 4. Vérification de Puppeteer
-      # ------------------------------------------------------------
-      - name: Install Puppeteer if necessary
-        run: npm install --no-save --legacy-peer-deps puppeteer cheerio
-
-      # ------------------------------------------------------------
-      # 5. Vérification des fichiers nécessaires
-      # ------------------------------------------------------------
-      - name: Check scraper files
+      # ============================================================
+      # 4. Vérification de l'environnement
+      # ============================================================
+      - name: Check environment
         run: |
           echo "=============================================="
-          echo "VERIFICATION DES FICHIERS"
+          echo "ENVIRONNEMENT"
           echo "=============================================="
 
           echo ""
@@ -53,27 +52,57 @@ jobs:
           npm --version
 
           echo ""
-          echo "Scraper:"
-          test -f scripts/scrape-reglements-taxes.mjs
-          echo "OK - scripts/scrape-reglements-taxes.mjs"
+          echo "Puppeteer:"
+          node -e "console.log(require('puppeteer/package.json').version)"
 
           echo ""
-          echo "Debug:"
+          echo "Cheerio:"
+          node -e "console.log(require('cheerio/package.json').version)"
+
+      # ============================================================
+      # 5. Vérification des fichiers
+      # ============================================================
+      - name: Check scraper files
+        run: |
+          echo "=============================================="
+          echo "VERIFICATION DES FICHIERS"
+          echo "=============================================="
+
+          echo ""
+          echo "Scraper principal:"
+          test -f scripts/scrape-reglements-taxes.mjs
+          echo "OK"
+
+          echo ""
+          echo "Debug scraper:"
           test -f scripts/debug-scraper.mjs
-          echo "OK - scripts/debug-scraper.mjs"
+          echo "OK"
 
           echo ""
           echo "JSON:"
           test -f src/data/reglements-taxes.json
-          echo "OK - src/data/reglements-taxes.json"
+          echo "OK"
 
-      # ------------------------------------------------------------
-      # 6. Affichage de la structure actuelle du JSON
-      # ------------------------------------------------------------
+      # ============================================================
+      # 6. Sauvegarde du JSON avant le debug
+      #
+      # Le debug ne doit pas modifier le fichier de production.
+      # ============================================================
+      - name: Save JSON checksum
+        run: |
+          echo "=============================================="
+          echo "CHECKSUM JSON AVANT DEBUG"
+          echo "=============================================="
+
+          sha256sum src/data/reglements-taxes.json
+
+      # ============================================================
+      # 7. Affichage de la structure actuelle du JSON
+      # ============================================================
       - name: Inspect current JSON
         run: |
           echo "=============================================="
-          echo "JSON ACTUEL"
+          echo "STRUCTURE DU JSON ACTUEL"
           echo "=============================================="
 
           node <<'NODE'
@@ -82,64 +111,82 @@ jobs:
           const file = 'src/data/reglements-taxes.json';
 
           try {
-            const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+            const data = JSON.parse(
+              fs.readFileSync(file, 'utf8')
+            );
 
-            console.log('Type racine :', Array.isArray(data) ? 'array' : typeof data);
+            console.log(
+              'Type racine :',
+              Array.isArray(data)
+                ? 'array'
+                : typeof data
+            );
 
-            if (data && typeof data === 'object' && !Array.isArray(data)) {
-              console.log('Clés racine :', Object.keys(data));
+            if (
+              data &&
+              typeof data === 'object' &&
+              !Array.isArray(data)
+            ) {
+              console.log(
+                'Clés racine :',
+                Object.keys(data)
+              );
             }
 
             console.log('');
-            console.log('Structure complète :');
-            console.log(JSON.stringify(data, null, 2).slice(0, 10000));
+            console.log('Premiers éléments :');
+
+            console.log(
+              JSON.stringify(data, null, 2).slice(0, 5000)
+            );
+
           } catch (error) {
-            console.error('Impossible de lire le JSON :');
+            console.error(
+              'Impossible de lire le JSON :'
+            );
+
             console.error(error);
             process.exit(1);
           }
           NODE
 
-      # ------------------------------------------------------------
-      # 7. Lancement du diagnostic
-      #
-      # IMPORTANT :
-      # ce script est diagnostique.
-      # Il ne doit PAS modifier le JSON de production.
-      # ------------------------------------------------------------
-      - name: Run diagnostic
+      # ============================================================
+      # 8. LANCEMENT DU DEBUG SCRAPER
+      # ============================================================
+      - name: Run debug scraper
         run: |
           echo "=============================================="
-          echo "LANCEMENT DU DEBUG SCRAPER"
+          echo "DEBUG SCRAPER LIEGE"
           echo "=============================================="
           echo ""
 
           node scripts/debug-scraper.mjs
 
-      # ------------------------------------------------------------
-      # 8. Vérification finale du JSON
-      #
-      # Le diagnostic ne doit pas modifier le fichier.
-      # ------------------------------------------------------------
+      # ============================================================
+      # 9. Vérification que le JSON n'a PAS été modifié
+      # ============================================================
       - name: Verify JSON unchanged
         run: |
           echo "=============================================="
-          echo "VERIFICATION FINALE"
+          echo "VERIFICATION JSON APRES DEBUG"
           echo "=============================================="
 
+          sha256sum src/data/reglements-taxes.json
+
           if git diff --quiet -- src/data/reglements-taxes.json; then
-            echo "OK - le JSON de production n'a pas été modifié."
+            echo ""
+            echo "OK : le JSON n'a pas été modifié."
           else
             echo ""
-            echo "ERREUR : le diagnostic a modifié src/data/reglements-taxes.json."
+            echo "ERREUR : le debug a modifié le JSON."
             echo ""
             git diff -- src/data/reglements-taxes.json
             exit 1
           fi
 
-      # ------------------------------------------------------------
-      # 9. Résumé
-      # ------------------------------------------------------------
+      # ============================================================
+      # 10. Fin
+      # ============================================================
       - name: Debug summary
         if: always()
         run: |
@@ -148,5 +195,4 @@ jobs:
           echo "FIN DU DEBUG"
           echo "=============================================="
           echo ""
-          echo "Le workflow était uniquement destiné au diagnostic."
           echo "Aucun déploiement n'a été effectué."
