@@ -1,10 +1,7 @@
-name: Test collecte Liège 2026
+name: Test Liège 2026 V2
 
 on:
   workflow_dispatch:
-
-permissions:
-  contents: read
 
 jobs:
   test-liege:
@@ -21,28 +18,57 @@ jobs:
         with:
           node-version: 20
 
-      - name: Installer Puppeteer
+      - name: Install Puppeteer
         run: |
           npm install --no-save --legacy-peer-deps puppeteer
 
-      - name: Vérifier Node et Puppeteer
-        run: |
-          node --version
-          npx puppeteer --version
-
-      - name: Tester la collecte Liège
+      - name: Run collector
         run: |
           node scripts/scrape-liege-2026-v2.mjs
 
-      - name: Vérifier le résultat
+      - name: Verify result
         run: |
-          test -f tmp/liege-2026-analysis.json
-          echo "Fichier créé :"
-          ls -lh tmp/liege-2026-analysis.json
 
-      - name: Sauvegarder le diagnostic
+          test -f tmp/liege-2026-analysis.json
+
+          node - <<'NODE'
+
+          const fs = require("fs");
+
+          const file =
+            "tmp/liege-2026-analysis.json";
+
+          const data =
+            JSON.parse(
+              fs.readFileSync(file, "utf8")
+            );
+
+          console.log("Commune :", data.commune);
+          console.log("Année   :", data.annee);
+          console.log("Nombre  :", data.count);
+
+          if (data.annee !== 2026) {
+            throw new Error(
+              "Année incorrecte"
+            );
+          }
+
+          if (data.count < 500) {
+            throw new Error(
+              "Moins de 500 décisions 2026"
+            );
+          }
+
+          console.log(
+            "✅ Collecte 2026 valide"
+          );
+
+          NODE
+
+      - name: Upload result
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: liege-2026-analysis
           path: tmp/liege-2026-analysis.json
-          retention-days: 7
+          if-no-files-found: warn
