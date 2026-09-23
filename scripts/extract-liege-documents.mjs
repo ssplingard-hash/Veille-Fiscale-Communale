@@ -1,24 +1,20 @@
 import fs from "fs";
 import path from "path";
-import puppeteer from "puppeteer";
+import os from "os";
+import { execFile } from "child_process";
+import { promisify } from "util";
 
 const INPUT = "tmp/liege-2026-analysis.json";
-const OUTPUT = "tmp/liege-2026-documents.json";
+const OUTPUT = "tmp/liege-2026-texts.json";
 
 const CONCURRENCY = 5;
-const TIMEOUT = 60000;
+const TIMEOUT = 90000;
 const RETRIES = 2;
+
+const execFileAsync = promisify(execFile);
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-function absoluteUrl(href, baseUrl) {
-  try {
-    return new URL(href, baseUrl).href;
-  } catch {
-    return null;
-  }
 }
 
 function normalizeUrl(url) {
@@ -26,146 +22,199 @@ function normalizeUrl(url) {
 
   try {
     const parsed = new URL(url);
-
     parsed.hash = "";
-
     return parsed.href;
   } catch {
     return url;
   }
 }
 
-function isPdfUrl(url) {
+function isDirectPdfUrl(url) {
   if (!url) return false;
 
   const clean = url.toLowerCase();
 
   return (
-    clean.includes(".pdf") ||
-    clean.includes("/@@download/") ||
-    clean.includes("deliberation-pdf-preview")
+    clean.endsWith(".pdf") ||
+    clean.includes(".pdf?")
   );
 }
 
-function isDocumentLikeUrl(url) {
-  if (!url) return false;
+function buildPdfUrl(decisionUrl) {
+  /*
+   * Si l'URL de la décision est déjà un PDF,
+   * on utilise directement cette URL.
+   */
+  if (isDirectPdfUrl(decisionUrl)) {
+    return normalizeUrl(decisionUrl);
+  }
 
-  const clean = url.toLowerCase();
-
-  return (
-    isPdfUrl(clean) ||
-    clean.includes("/document") ||
-    clean.includes("/attachment") ||
-    clean.includes("/annexe") ||
-    clean.includes("/annexes") ||
-    clean.includes("/download") ||
-    clean.includes("/fichier") ||
-    clean.includes("/piece-jointe") ||
-    clean.includes("/piecejointe")
-  );
-}
-
-function buildStandardPdfUrl(decisionUrl) {
-  return (
+  /*
+   * Sinon deliberations.be utilise cette structure
+   * pour le PDF de la délibération.
+   */
+  return normalizeUrl(
     decisionUrl.replace(/\/+$/, "") +
-    "/deliberation-pdf-preview/@@download/file/deliberation-pdf-preview.pdf"
+      "/deliberation-pdf-preview/@@download/file/deliberation-pdf-preview.pdf"
   );
 }
 
-async function extractPage(page, decision) {
+async function downloadPdf(url, outputFile) {
+  const response = await fetch(url, {
+    redirect: "follow",
+    signal: AbortSignal.timeout(TIMEOUT)
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `HTTP ${response.status} ${response.statusText}`
+    );
+  }
+
+  const contentType =
+    response.headers.get("content-type") || "";
+
+  const buffer = Buffer.from(
+    await response.arrayBuffer()
+  );
+
+  /*
+   * Vérification très importante :
+   * un vrai PDF commence par %PDF.
+   */
+  const header = buffer
+    .subarray(0, 5)
+    .toString("ascii");
+
+  if (header !== "%PDF-") {
+    throw new Error(
+      `Le fichier téléchargé n'est pas un PDF (content-type: ${contentType}, taille: ${buffer.length})`
+    );
+  }
+
+  fs.writeFileSync(
+    outputFile,
+    buffer
+  );
+
+  return {
+    size: buffer.length,
+    contentType
+  };
+}
+
+async function extractPdfText(pdfFile, txtFile) {
+  await execFileAsync(
+    "pdftotext",
+    [
+      "-layout",
+      pdfFile,
+      txtFile
+    ],
+    {
+      timeout: TIMEOUT
+    }
+  );
+
+  if (!fs.existsSync(txtFile)) {
+    throw new Error(
+      "pdftotext n'a pas créé le fichier texte"
+    );
+  }
+
+  const text = fs.readFileSync(
+    txtFile,
+    "utf8"
+  );
+
+  return text;
+}
+
+async function processDecision(decision) {
+  const pdfUrl = buildPdfUrl(
+    decision.url
+  );
+
   let lastError = null;
 
-  for (let attempt = 1; attempt <= RETRIES + 1; attempt++) {
+  for (
+    let attempt = 1;
+    attempt <= RETRIES + 1;
+    attempt++
+  ) {
+    const tempDir = fs.mkdtempSync(
+      path.join(
+        os.tmpdir(),
+        "liege-pdf-"
+      )
+    );
+
+    const pdfFile = path.join(
+      tempDir,
+      "document.pdf"
+    );
+
+    const txtFile = path.join(
+      tempDir,
+      "document.txt"
+    );
+
     try {
-      await page.goto(decision.url, {
-        waitUntil: "domcontentloaded",
-        timeout: TIMEOUT
-      });
-
-      await sleep(1200);
-
-      const result = await page.evaluate(() => {
-        const links = [];
-
-        for (const a of document.querySelectorAll("a[href]")) {
-          const href = a.getAttribute("href");
-          const text = (a.innerText || a.textContent || "")
-            .replace(/\s+/g, " ")
-            .trim();
-
-          if (href) {
-            links.push({
-              href,
-              text
-            });
-          }
-        }
-
-        return {
-          title: document.title || "",
-          links
-        };
-      });
-
-      const documents = [];
-      const seen = new Set();
-
-      for (const link of result.links) {
-        const absolute = normalizeUrl(
-          absoluteUrl(link.href, decision.url)
-        );
-
-        if (!absolute) continue;
-
-        if (!isDocumentLikeUrl(absolute)) continue;
-
-        if (seen.has(absolute)) continue;
-
-        seen.add(absolute);
-
-        documents.push({
-          url: absolute,
-          text: link.text || "",
-          type: isPdfUrl(absolute) ? "pdf" : "document"
-        });
-      }
-
-      /*
-       * IMPORTANT :
-       * deliberations.be utilise une URL standard pour le PDF
-       * de la délibération.
-       *
-       * On ajoute donc cette URL même lorsqu'elle n'apparaît
-       * pas explicitement dans les liens HTML.
-       */
-      const standardPdf = normalizeUrl(
-        buildStandardPdfUrl(decision.url)
+      const download = await downloadPdf(
+        pdfUrl,
+        pdfFile
       );
 
-      if (
-        standardPdf &&
-        !seen.has(standardPdf)
-      ) {
-        documents.unshift({
-          url: standardPdf,
-          text: "PDF de la délibération",
-          type: "pdf",
-          source: "standard-url"
-        });
+      const text =
+        await extractPdfText(
+          pdfFile,
+          txtFile
+        );
+
+      const cleanText = text
+        .replace(/\r/g, "")
+        .replace(/\u0000/g, "")
+        .trim();
+
+      if (cleanText.length < 20) {
+        throw new Error(
+          `PDF lisible mais texte extrait trop court (${cleanText.length} caractères)`
+        );
       }
+
+      fs.rmSync(
+        tempDir,
+        {
+          recursive: true,
+          force: true
+        }
+      );
 
       return {
         ok: true,
-        title: result.title,
-        documents
+        pdfUrl,
+        pdfSize: download.size,
+        contentType: download.contentType,
+        text: cleanText,
+        textLength: cleanText.length
       };
 
     } catch (error) {
       lastError = error;
 
       console.log(
-        `   ⚠️ Tentative ${attempt}/${RETRIES + 1} : ${error.message}`
+        `      ⚠️ tentative ${attempt}/${RETRIES + 1} : ${error.message}`
       );
+
+      try {
+        fs.rmSync(
+          tempDir,
+          {
+            recursive: true,
+            force: true
+          }
+        );
+      } catch {}
 
       await sleep(1500);
     }
@@ -173,234 +222,317 @@ async function extractPage(page, decision) {
 
   return {
     ok: false,
-    error: lastError?.message || "Erreur inconnue",
-    documents: []
+    pdfUrl,
+    pdfSize: 0,
+    contentType: null,
+    text: "",
+    textLength: 0,
+    error:
+      lastError?.message ||
+      "Erreur inconnue"
   };
 }
 
-async function worker(browser, decisions, results, workerId) {
-  const page = await browser.newPage();
-
-  await page.setDefaultNavigationTimeout(TIMEOUT);
-  await page.setDefaultTimeout(TIMEOUT);
-
+async function worker(
+  decisions,
+  results,
+  workerId
+) {
   for (;;) {
-    const index = results.nextIndex++;
+    const index =
+      results.nextIndex++;
 
-    if (index >= decisions.length) break;
+    if (
+      index >= decisions.length
+    ) {
+      break;
+    }
 
-    const decision = decisions[index];
+    const decision =
+      decisions[index];
 
     console.log(
       `[Worker ${workerId}] ${index + 1}/${decisions.length} | ${decision.date?.raw || "?"}`
     );
 
-    const extracted = await extractPage(page, decision);
+    const result =
+      await processDecision(
+        decision
+      );
 
     results.items.push({
       ...decision,
-      pageTitle: extracted.title || null,
-      documents: extracted.documents,
-      documentCount: extracted.documents.length,
-      extractionOk: extracted.ok,
-      extractionError: extracted.error || null
+
+      pdfUrl:
+        result.pdfUrl,
+
+      pdfSize:
+        result.pdfSize,
+
+      pdfContentType:
+        result.contentType,
+
+      text:
+        result.text,
+
+      textLength:
+        result.textLength,
+
+      extractionOk:
+        result.ok,
+
+      extractionError:
+        result.error || null
     });
 
-    console.log(
-      `   → ${extracted.documents.length} document(s)`
-    );
+    if (result.ok) {
+      console.log(
+        `   → PDF OK | ${result.pdfSize} octets | ${result.textLength} caractères`
+      );
+    } else {
+      console.log(
+        `   → ❌ ÉCHEC : ${result.error}`
+      );
+    }
   }
-
-  await page.close();
 }
 
 async function main() {
-  console.log("==============================================");
-  console.log(" LIÈGE 2026 - RÉCUPÉRATION DES DOCUMENTS");
-  console.log("==============================================");
-
-  if (!fs.existsSync(INPUT)) {
-    throw new Error(`Fichier introuvable : ${INPUT}`);
-  }
-
-  const input = JSON.parse(
-    fs.readFileSync(INPUT, "utf8")
-  );
-
-  if (!Array.isArray(input.decisions)) {
-    throw new Error(
-      "Le fichier d'entrée ne contient pas 'decisions'."
-    );
-  }
-
-  const decisions = input.decisions.filter(
-    decision =>
-      decision?.date?.year === 2026 &&
-      typeof decision.url === "string"
+  console.log(
+    "=============================================="
   );
 
   console.log(
-    `Décisions 2026 à analyser : ${decisions.length}`
+    " LIÈGE 2026 - TÉLÉCHARGEMENT ET EXTRACTION PDF"
   );
 
-  if (decisions.length < 500) {
+  console.log(
+    "=============================================="
+  );
+
+  if (!fs.existsSync(INPUT)) {
+    throw new Error(
+      `Fichier introuvable : ${INPUT}`
+    );
+  }
+
+  const input =
+    JSON.parse(
+      fs.readFileSync(
+        INPUT,
+        "utf8"
+      )
+    );
+
+  if (
+    !Array.isArray(
+      input.decisions
+    )
+  ) {
+    throw new Error(
+      "Le fichier ne contient pas de tableau 'decisions'."
+    );
+  }
+
+  const decisions =
+    input.decisions.filter(
+      decision =>
+        decision?.date?.year === 2026 &&
+        typeof decision.url ===
+          "string"
+    );
+
+  console.log(
+    `Décisions 2026 : ${decisions.length}`
+  );
+
+  if (
+    decisions.length < 500
+  ) {
     throw new Error(
       `Sécurité : seulement ${decisions.length} décisions 2026.`
     );
   }
-
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-      "--disable-gpu"
-    ]
-  });
 
   const results = {
     nextIndex: 0,
     items: []
   };
 
-  try {
-    const workers = [];
+  const workers = [];
 
-    for (let i = 0; i < CONCURRENCY; i++) {
-      workers.push(
-        worker(
-          browser,
-          decisions,
-          results,
-          i + 1
-        )
-      );
-    }
-
-    await Promise.all(workers);
-
-  } finally {
-    await browser.close();
+  for (
+    let i = 0;
+    i < CONCURRENCY;
+    i++
+  ) {
+    workers.push(
+      worker(
+        decisions,
+        results,
+        i + 1
+      )
+    );
   }
 
-  const byUrl = new Map(
-    results.items.map(item => [
-      item.url,
-      item
-    ])
+  await Promise.all(
+    workers
   );
 
-  const ordered = decisions.map(decision =>
-    byUrl.get(decision.url) || {
-      ...decision,
-      pageTitle: null,
-      documents: [],
-      documentCount: 0,
-      extractionOk: false,
-      extractionError: "Résultat manquant"
-    }
-  );
-
-  const withDocuments = ordered.filter(
-    item => item.documentCount > 0
-  );
-
-  const withoutDocuments = ordered.filter(
-    item => item.documentCount === 0
-  );
-
-  const failed = ordered.filter(
-    item => !item.extractionOk
-  );
-
-  const pdfCount = ordered.filter(
-    item =>
-      item.documents.some(
-        document => document.type === "pdf"
+  const byUrl =
+    new Map(
+      results.items.map(
+        item => [
+          item.url,
+          item
+        ]
       )
-  ).length;
+    );
+
+  const ordered =
+    decisions.map(
+      decision =>
+        byUrl.get(
+          decision.url
+        ) || {
+          ...decision,
+          pdfUrl:
+            buildPdfUrl(
+              decision.url
+            ),
+          pdfSize: 0,
+          pdfContentType: null,
+          text: "",
+          textLength: 0,
+          extractionOk: false,
+          extractionError:
+            "Résultat manquant"
+        }
+    );
+
+  const successful =
+    ordered.filter(
+      item =>
+        item.extractionOk
+    );
+
+  const failed =
+    ordered.filter(
+      item =>
+        !item.extractionOk
+    );
+
+  const totalCharacters =
+    successful.reduce(
+      (sum, item) =>
+        sum +
+        item.textLength,
+      0
+    );
 
   console.log("");
-  console.log("==============================================");
-  console.log(" RÉSULTAT");
-  console.log("==============================================");
-
   console.log(
-    `Décisions analysées : ${ordered.length}`
+    "=============================================="
+  );
+  console.log(
+    " RÉSULTAT EXTRACTION"
+  );
+  console.log(
+    "=============================================="
   );
 
   console.log(
-    `Avec document(s) : ${withDocuments.length}`
+    `Décisions : ${ordered.length}`
   );
 
   console.log(
-    `Sans document : ${withoutDocuments.length}`
+    `PDF/textes OK : ${successful.length}`
   );
 
   console.log(
-    `Avec PDF : ${pdfCount}`
+    `Échecs : ${failed.length}`
   );
 
   console.log(
-    `Pages en erreur : ${failed.length}`
+    `Total caractères extraits : ${totalCharacters}`
   );
 
-  console.log("");
-  console.log("Exemples de PDF trouvés :");
+  if (failed.length > 0) {
+    console.log("");
+    console.log(
+      "DÉCISIONS EN ÉCHEC :"
+    );
 
-  let displayed = 0;
-
-  for (const item of ordered) {
-    for (const document of item.documents) {
-      if (document.type !== "pdf") continue;
-
-      console.log("");
+    for (
+      const item of failed
+    ) {
       console.log(
-        `${item.date?.raw || "?"}`
+        `${item.date?.raw || "?"} | ${item.url}`
       );
 
       console.log(
-        item.url
+        `   ${item.extractionError}`
       );
-
-      console.log(
-        `→ ${document.url}`
-      );
-
-      displayed++;
-
-      if (displayed >= 20) break;
     }
+  }
 
-    if (displayed >= 20) break;
+  console.log("");
+  console.log(
+    "EXEMPLES DE TEXTE EXTRAIT :"
+  );
+
+  for (
+    const item of successful.slice(
+      0,
+      5
+    )
+  ) {
+    console.log("");
+    console.log(
+      `${item.date?.raw || "?"}`
+    );
+
+    console.log(
+      item.url
+    );
+
+    console.log(
+      `Caractères : ${item.textLength}`
+    );
+
+    console.log(
+      item.text
+        .slice(0, 500)
+        .replace(/\n+/g, " ")
+    );
   }
 
   fs.mkdirSync(
     path.dirname(OUTPUT),
-    { recursive: true }
+    {
+      recursive: true
+    }
   );
 
   const output = {
     commune: "Liège",
     annee: 2026,
-    updatedAt: new Date().toISOString(),
+    updatedAt:
+      new Date().toISOString(),
+
     source:
       "https://www.deliberations.be/liege/decisions",
 
-    count: ordered.length,
+    count:
+      ordered.length,
 
-    withDocuments:
-      withDocuments.length,
+    extractionOk:
+      successful.length,
 
-    withoutDocuments:
-      withoutDocuments.length,
-
-    withPdf:
-      pdfCount,
-
-    failedPages:
+    extractionFailed:
       failed.length,
+
+    totalCharacters,
 
     decisions:
       ordered
@@ -408,7 +540,11 @@ async function main() {
 
   fs.writeFileSync(
     OUTPUT,
-    JSON.stringify(output, null, 2),
+    JSON.stringify(
+      output,
+      null,
+      2
+    ),
     "utf8"
   );
 
@@ -422,9 +558,13 @@ async function main() {
   );
 }
 
-main().catch(error => {
-  console.error("");
-  console.error("❌ ERREUR FATALE");
-  console.error(error);
-  process.exit(1);
-});
+main().catch(
+  error => {
+    console.error("");
+    console.error(
+      "❌ ERREUR FATALE"
+    );
+    console.error(error);
+    process.exit(1);
+  }
+);
