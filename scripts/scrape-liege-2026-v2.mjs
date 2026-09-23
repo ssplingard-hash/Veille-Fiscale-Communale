@@ -1,411 +1,204 @@
-import fs from "fs";
-import path from "path";
 import puppeteer from "puppeteer";
+import fs from "fs";
 
-const BASE_URL =
-  "https://www.deliberations.be/liege/decisions";
+const BASE_URL = "https://www.deliberations.be/liege/decisions";
+const OUTPUT = "tmp/liege-2026-analysis.json";
 
-const YEAR = 2026;
+const MIN_EXPECTED = 500;
+const MAX_OFFSET = 2000;
+const STEP = 20;
 
-const OUTPUT_DIR = path.resolve("tmp");
-const OUTPUT_FILE = path.join(
-  OUTPUT_DIR,
-  "liege-2026-analysis.json"
-);
+function normalizeUrl(url) {
+  if (!url) return null;
 
-const MIN_EXPECTED_DECISIONS = 500;
-const MAX_PAGES = 200;
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-function clean(text = "") {
-  return text
-    .replace(/\u00a0/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function isDecision2026(url) {
-  return /\/decisions\/\d{1,2}-[a-zàâäéèêëîïôöùûüÿç]+-2026-\d{1,2}-\d{2}\//i.test(
-    url
-  );
-}
-
-function getTitle(url) {
   try {
-    const parts = new URL(url)
-      .pathname
-      .split("/")
-      .filter(Boolean);
+    const u = new URL(url, BASE_URL);
 
-    return decodeURIComponent(
-      parts[parts.length - 1] || ""
-    )
-      .replace(/[-_]+/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
+    if (!u.hostname.endsWith("deliberations.be")) return null;
+
+    if (!u.pathname.startsWith("/liege/decisions")) return null;
+
+    u.hash = "";
+
+    return u.toString();
   } catch {
-    return "";
+    return null;
   }
 }
 
-function getDate(url) {
-  const match = url.match(
-    /\/decisions\/(\d{1,2})-([a-zàâäéèêëîïôöùûüÿç]+)-2026-\d{1,2}-\d{2}\//i
-  );
-
-  if (!match) return null;
-
-  const months = {
-    janvier: "01",
-    février: "02",
-    fevrier: "02",
-    mars: "03",
-    avril: "04",
-    mai: "05",
-    juin: "06",
-    juillet: "07",
-    août: "08",
-    aout: "08",
-    septembre: "09",
-    octobre: "10",
-    novembre: "11",
-    décembre: "12",
-    decembre: "12"
-  };
-
-  const month =
-    months[
-      match[2].toLowerCase()
-    ];
-
-  if (!month) return null;
-
-  return `2026-${month}-${String(
-    match[1]
-  ).padStart(2, "0")}`;
-}
-
-async function inspectPage(page, url) {
-  console.log("");
-  console.log(`VISITE : ${url}`);
-
-  await page.goto(url, {
-    waitUntil: "networkidle2",
-    timeout: 120000
-  });
-
-  await sleep(1000);
-
-  return await page.evaluate(
-    () => {
-      const allLinks =
-        Array.from(
-          document.querySelectorAll("a")
-        ).map(a => ({
-          href: a.href || "",
-          text:
-            a.innerText?.trim() || ""
-        }));
-
-      const decisions =
-        allLinks.filter(
-          x =>
-            /\/decisions\/\d{1,2}-[a-zàâäéèêëîïôöùûüÿç]+-2026-\d{1,2}-\d{2}\//i.test(
-              x.href
-            )
-        );
-
-      const pagination =
-        allLinks.filter(x => {
-          return (
-            /faceted_query/i.test(
-              x.href
-            ) ||
-            /b_start/i.test(
-              x.href
-            ) ||
-            /page/i.test(
-              x.href
-            )
-          );
-        });
-
-      return {
-        decisions,
-        pagination,
-        currentUrl:
-          window.location.href,
-        title:
-          document.title
-      };
-    }
-  );
-}
-
-async function collect(browser) {
-  const page =
-    await browser.newPage();
-
-  const visited =
-    new Set();
-
-  const decisions =
-    new Map();
-
-  const queue = [
-    BASE_URL
-  ];
+function isDecisionUrl(url) {
+  if (!url) return false;
 
   try {
-    while (
-      queue.length > 0 &&
-      visited.size < MAX_PAGES
-    ) {
-      const url =
-        queue.shift();
+    const u = new URL(url);
+    const parts = u.pathname.split("/").filter(Boolean);
 
-      if (
-        visited.has(url)
-      ) {
-        continue;
-      }
+    if (parts.length < 3) return false;
+    if (parts[0] !== "liege") return false;
+    if (parts[1] !== "decisions") return false;
 
-      visited.add(url);
+    // Pas les pages techniques de recherche
+    if (u.pathname.includes("@@")) return false;
 
-      let result;
-
-      try {
-        result =
-          await inspectPage(
-            page,
-            url
-          );
-      } catch (error) {
-        console.log(
-          `ERREUR : ${error.message}`
-        );
-
-        continue;
-      }
-
-      let added = 0;
-
-      for (
-        const decision of
-        result.decisions
-      ) {
-        const cleanUrl =
-          decision.href
-            .split("#")[0];
-
-        if (
-          !decisions.has(
-            cleanUrl
-          )
-        ) {
-          decisions.set(
-            cleanUrl,
-            {
-              url: cleanUrl,
-              linkText:
-                clean(
-                  decision.text
-                ),
-              title:
-                getTitle(
-                  cleanUrl
-                ),
-              date:
-                getDate(
-                  cleanUrl
-                )
-            }
-          );
-
-          added++;
-        }
-      }
-
-      console.log(
-        `Décisions sur cette page : ${result.decisions.length}`
-      );
-
-      console.log(
-        `Nouvelles décisions : ${added}`
-      );
-
-      console.log(
-        `TOTAL UNIQUE : ${decisions.size}`
-      );
-
-      console.log(
-        `PAGINATION TROUVÉE : ${result.pagination.length}`
-      );
-
-      for (
-        const paginationLink of
-        result.pagination
-      ) {
-        const href =
-          paginationLink.href;
-
-        if (
-          !href ||
-          visited.has(href)
-        ) {
-          continue;
-        }
-
-        /*
-         * On ne suit que les vraies
-         * pages de pagination.
-         */
-        if (
-          /faceted_query/i.test(
-            href
-          ) ||
-          /b_start/i.test(
-            href
-          )
-        ) {
-          queue.push(href);
-        }
-      }
-
-      /*
-       * Affichage des liens de pagination
-       * pour comprendre exactement ce que
-       * deliberations.be nous donne.
-       */
-      if (
-        result.pagination.length
-      ) {
-        console.log(
-          "LIENS DE PAGINATION :"
-        );
-
-        for (
-          const p of
-          result.pagination
-        ) {
-          console.log(
-            `  ${p.href}`
-          );
-        }
-      }
-
-      await sleep(500);
-    }
-
-    console.log("");
-    console.log(
-      "=============================================="
-    );
-    console.log(
-      `TOTAL FINAL : ${decisions.size}`
-    );
-    console.log(
-      "=============================================="
-    );
-
-    if (
-      decisions.size <
-      MIN_EXPECTED_DECISIONS
-    ) {
-      throw new Error(
-        `Collecte incomplète : seulement ${decisions.size} décisions.`
-      );
-    }
-
-    return [
-      ...decisions.values()
-    ];
-  } finally {
-    await page.close();
+    return true;
+  } catch {
+    return false;
   }
+}
+
+async function collectPage(page, url) {
+  console.log(`\nVISITE : ${url}`);
+
+  try {
+    await page.goto(url, {
+      waitUntil: "networkidle2",
+      timeout: 60000,
+    });
+  } catch (error) {
+    console.log(`⚠️ Navigation : ${error.message}`);
+  }
+
+  await new Promise(resolve => setTimeout(resolve, 2000));
+
+  return await page.evaluate(() => {
+    return [...document.querySelectorAll("a[href]")].map(a => ({
+      href: a.href,
+      text: (a.innerText || a.textContent || "").trim(),
+    }));
+  });
 }
 
 async function main() {
-  console.log("");
-  console.log(
-    "=============================================="
-  );
-  console.log(
-    "TEST COLLECTE LIÈGE 2026"
-  );
-  console.log(
-    "=============================================="
-  );
+  fs.mkdirSync("tmp", { recursive: true });
 
-  fs.mkdirSync(
-    OUTPUT_DIR,
-    {
-      recursive: true
+  console.log("==============================================");
+  console.log("COLLECTE LIÈGE 2026");
+  console.log("==============================================");
+
+  const browser = await puppeteer.launch({
+    headless: "new",
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+    ],
+  });
+
+  const page = await browser.newPage();
+
+  await page.setViewport({
+    width: 1440,
+    height: 1000,
+  });
+
+  const decisions = new Map();
+
+  /*
+   * IMPORTANT :
+   * On ne suit PAS les liens de pagination générés
+   * par deliberations.be.
+   *
+   * Ils réinjectent automatiquement :
+   * seance=440b6cc1...
+   *
+   * Ce filtre limite la collecte à 101 décisions.
+   *
+   * On construit donc nous-mêmes les offsets.
+   */
+
+  for (let offset = 0; offset <= MAX_OFFSET; offset += STEP) {
+
+    let url;
+
+    if (offset === 0) {
+      url = BASE_URL;
+    } else {
+      url =
+        `${BASE_URL}/@@faceted_query` +
+        `?b_start:int=${offset}`;
     }
+
+    const links = await collectPage(page, url);
+
+    let newDecisions = 0;
+
+    for (const item of links) {
+      const normalized = normalizeUrl(item.href);
+
+      if (!normalized) continue;
+
+      if (!isDecisionUrl(normalized)) continue;
+
+      if (!decisions.has(normalized)) {
+        decisions.set(normalized, {
+          url: normalized,
+          title: item.text || "",
+        });
+
+        newDecisions++;
+      }
+    }
+
+    console.log(`Décisions trouvées : ${links.filter(x => isDecisionUrl(normalizeUrl(x.href))).length}`);
+    console.log(`Nouvelles décisions : ${newDecisions}`);
+    console.log(`TOTAL UNIQUE : ${decisions.size}`);
+
+    /*
+     * Si on atteint une page sans aucune nouvelle décision,
+     * on teste encore une page supplémentaire avant de conclure.
+     *
+     * Le site peut parfois renvoyer des doublons.
+     */
+
+    if (offset > 0 && newDecisions === 0) {
+      console.log(`⚠️ Aucune nouvelle décision à offset ${offset}`);
+
+      // On continue quelques offsets pour vérifier qu'il ne
+      // s'agit pas simplement d'une page vide/intermédiaire.
+      if (offset >= 400) {
+        console.log("Fin probable de la pagination.");
+        break;
+      }
+    }
+  }
+
+  await browser.close();
+
+  console.log("\n==============================================");
+  console.log("RESULTAT FINAL");
+  console.log("==============================================");
+
+  console.log(`TOTAL FINAL : ${decisions.size}`);
+
+  if (decisions.size < MIN_EXPECTED) {
+    throw new Error(
+      `Collecte incomplète : seulement ${decisions.size} décisions.`
+    );
+  }
+
+  const result = {
+    commune: "Liège",
+    annee: 2026,
+    updatedAt: new Date().toISOString(),
+    source: BASE_URL,
+    count: decisions.size,
+    decisions: [...decisions.values()],
+  };
+
+  fs.writeFileSync(
+    OUTPUT,
+    JSON.stringify(result, null, 2),
+    "utf8"
   );
 
-  const browser =
-    await puppeteer.launch({
-      headless: true,
-      args: [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--disable-dev-shm-usage"
-      ]
-    });
-
-  try {
-    const decisions =
-      await collect(
-        browser
-      );
-
-    const output = {
-      commune: "Liège",
-      annee: YEAR,
-      generatedAt:
-        new Date().toISOString(),
-      count:
-        decisions.length,
-      decisions
-    };
-
-    fs.writeFileSync(
-      OUTPUT_FILE,
-      JSON.stringify(
-        output,
-        null,
-        2
-      ),
-      "utf8"
-    );
-
-    console.log("");
-    console.log(
-      `Fichier créé : ${OUTPUT_FILE}`
-    );
-  } finally {
-    await browser.close();
-  }
+  console.log(`✅ Fichier créé : ${OUTPUT}`);
+  console.log(`✅ ${decisions.size} décisions enregistrées.`);
 }
 
 main().catch(error => {
-  console.error("");
-  console.error(
-    "=============================================="
-  );
-  console.error(
-    "ERREUR"
-  );
-  console.error(
-    "=============================================="
-  );
-  console.error(
-    error.stack || error
-  );
-
+  console.error("\n==============================================");
+  console.error("ERREUR");
+  console.error("==============================================");
+  console.error(error);
   process.exit(1);
 });
