@@ -6,7 +6,7 @@ on:
 jobs:
   test-liege:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 30
 
     steps:
 
@@ -43,9 +43,19 @@ jobs:
               fs.readFileSync(file, "utf8")
             );
 
+          console.log("================================");
+          console.log("VÉRIFICATION");
+          console.log("================================");
+
           console.log("Commune :", data.commune);
           console.log("Année   :", data.annee);
           console.log("Nombre  :", data.count);
+
+          if (data.commune !== "Liège") {
+            throw new Error(
+              "Commune incorrecte"
+            );
+          }
 
           if (data.annee !== 2026) {
             throw new Error(
@@ -59,8 +69,24 @@ jobs:
             );
           }
 
+          for (const decision of data.decisions) {
+
+            if (!decision.date) {
+              throw new Error(
+                "Une décision 2026 n'a pas de date URL"
+              );
+            }
+
+            if (decision.date.year !== 2026) {
+              throw new Error(
+                `Décision non-2026 détectée : ${decision.url}`
+              );
+            }
+
+          }
+
           console.log(
-            "✅ Collecte 2026 valide"
+            "✅ Toutes les décisions sont bien rattachées à 2026 par leur URL."
           );
 
           NODE
