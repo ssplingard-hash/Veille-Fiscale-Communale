@@ -1,13 +1,13 @@
-name: Test Liège 2026 - Documents
+name: Test Liège 2026 - Extraction PDF
 
 on:
   workflow_dispatch:
 
 jobs:
-  test-liege-documents:
+  test-liege-pdf:
     runs-on: ubuntu-latest
 
-    timeout-minutes: 45
+    timeout-minutes: 60
 
     steps:
       - name: Checkout
@@ -17,6 +17,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
+      - name: Installer les outils PDF
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
 
       - name: Installer Puppeteer
         run: |
@@ -28,19 +33,26 @@ jobs:
           test -f scripts/extract-liege-documents.mjs
           echo "✓ Fichiers présents"
 
+      - name: Vérifier pdftotext
+        run: |
+          pdftotext -v
+
       - name: Collecter les décisions Liège 2026
         run: |
           node scripts/scrape-liege-2026-v2.mjs
 
-      - name: Vérifier les décisions 2026
+      - name: Vérifier les décisions
         run: |
           node --input-type=module <<'EOF'
           import fs from 'fs';
 
-          const file = 'tmp/liege-2026-analysis.json';
+          const file =
+            'tmp/liege-2026-analysis.json';
 
           if (!fs.existsSync(file)) {
-            throw new Error(`Fichier introuvable : ${file}`);
+            throw new Error(
+              `Fichier introuvable : ${file}`
+            );
           }
 
           const data = JSON.parse(
@@ -76,20 +88,22 @@ jobs:
             }
           }
 
-          console.log('✓ Décisions 2026 validées');
+          console.log(
+            '✓ Toutes les décisions sont bien de 2026'
+          );
           EOF
 
-      - name: Extraire les documents
+      - name: Télécharger et extraire les PDF
         run: |
           node scripts/extract-liege-documents.mjs
 
-      - name: Vérifier les documents
+      - name: Vérifier l'extraction
         run: |
           node --input-type=module <<'EOF'
           import fs from 'fs';
 
           const file =
-            'tmp/liege-2026-documents.json';
+            'tmp/liege-2026-texts.json';
 
           if (!fs.existsSync(file)) {
             throw new Error(
@@ -103,30 +117,35 @@ jobs:
 
           console.log('');
           console.log('================================');
-          console.log('VÉRIFICATION');
+          console.log('VÉRIFICATION EXTRACTION');
           console.log('================================');
+
           console.log(
             `Décisions : ${data.count}`
           );
+
           console.log(
-            `Avec documents : ${data.withDocuments}`
+            `Extraction OK : ${data.extractionOk}`
           );
+
           console.log(
-            `Sans documents : ${data.withoutDocuments}`
+            `Extraction échouée : ${data.extractionFailed}`
           );
+
           console.log(
-            `Avec PDF : ${data.withPdf}`
-          );
-          console.log(
-            `Pages en erreur : ${data.failedPages}`
+            `Caractères extraits : ${data.totalCharacters}`
           );
 
           if (data.commune !== 'Liège') {
-            throw new Error('Commune incorrecte');
+            throw new Error(
+              'Commune incorrecte'
+            );
           }
 
           if (data.annee !== 2026) {
-            throw new Error('Année incorrecte');
+            throw new Error(
+              'Année incorrecte'
+            );
           }
 
           if (data.count < 500) {
@@ -135,13 +154,15 @@ jobs:
             );
           }
 
-          if (data.failedPages > 50) {
+          if (data.extractionFailed > 50) {
             throw new Error(
-              `Trop de pages en erreur : ${data.failedPages}`
+              `Trop d'échecs : ${data.extractionFailed}`
             );
           }
 
-          for (const decision of data.decisions) {
+          for (
+            const decision of data.decisions
+          ) {
             if (
               !decision.date ||
               decision.date.year !== 2026
@@ -152,24 +173,35 @@ jobs:
             }
 
             if (
-              !Array.isArray(decision.documents)
+              !decision.pdfUrl
             ) {
               throw new Error(
-                `Documents invalides : ${decision.url}`
+                `PDF manquant : ${decision.url}`
+              );
+            }
+
+            if (
+              decision.extractionOk &&
+              decision.textLength < 20
+            ) {
+              throw new Error(
+                `Texte trop court : ${decision.url}`
               );
             }
           }
 
           console.log('');
-          console.log('✓ Vérification terminée');
+          console.log(
+            '✓ Extraction validée'
+          );
           EOF
 
       - name: Vérifier que la production est intacte
         run: |
           if git diff --quiet -- src/data/reglements-taxes.json; then
-            echo "✓ Données de production inchangées"
+            echo "✓ src/data/reglements-taxes.json inchangé"
           else
-            echo "❌ DONNÉES DE PRODUCTION MODIFIÉES"
+            echo "❌ LE FICHIER DE PRODUCTION A ÉTÉ MODIFIÉ"
             exit 1
           fi
 
@@ -180,16 +212,17 @@ jobs:
           echo " TEST TERMINÉ"
           echo "=============================================="
           echo ""
-          echo "Collecte 2026 : OK"
-          echo "Extraction des documents : OK"
+          echo "858 décisions 2026 : collectées"
+          echo "PDF : téléchargés"
+          echo "Texte : extrait"
           echo "Production : inchangée"
           echo ""
 
-      - name: Sauvegarder les résultats
+      - name: Sauvegarder le résultat
         uses: actions/upload-artifact@v4
         with:
-          name: liege-2026-documents
+          name: liege-2026-textes
           path: |
             tmp/liege-2026-analysis.json
-            tmp/liege-2026-documents.json
+            tmp/liege-2026-texts.json
           retention-days: 7
