@@ -1,417 +1,640 @@
-import puppeteer from "puppeteer";
 import fs from "fs";
+import path from "path";
+import puppeteer from "puppeteer";
+import os from "os";
+import { execFile } from "child_process";
+import { promisify } from "util";
 
-const BASE_URL = "https://www.deliberations.be/liege/decisions";
-const OUTPUT = "tmp/liege-2026-analysis.json";
+const INPUT = "tmp/liege-2026-analysis.json";
+const OUTPUT = "tmp/liege-2026-texts.json";
 
-const MAX_OFFSET = 2200;
-const STEP = 20;
+const CONCURRENCY = 5;
+const TIMEOUT = 90000;
+const RETRIES = 2;
 
-const MONTHS = {
-  janvier: 1,
-  fevrier: 2,
-  février: 2,
-  mars: 3,
-  avril: 4,
-  mai: 5,
-  juin: 6,
-  juillet: 7,
-  aout: 8,
-  août: 8,
-  septembre: 9,
-  octobre: 10,
-  novembre: 11,
-  decembre: 12,
-  décembre: 12,
-};
+const execFileAsync = promisify(execFile);
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 function normalizeUrl(url) {
   if (!url) return null;
 
   try {
-    const u = new URL(url, BASE_URL);
-
-    if (!u.hostname.endsWith("deliberations.be")) {
-      return null;
-    }
-
-    if (!u.pathname.startsWith("/liege/decisions")) {
-      return null;
-    }
-
+    const u = new URL(url);
     u.hash = "";
-
-    return u.toString();
+    return u.href;
   } catch {
     return null;
   }
 }
 
-function isDecisionUrl(url) {
+function isPdf(url) {
   if (!url) return false;
 
-  try {
-    const u = new URL(url);
+  const value = url.toLowerCase();
 
-    const parts = u.pathname.split("/").filter(Boolean);
-
-    if (parts.length < 3) return false;
-
-    if (parts[0] !== "liege") return false;
-
-    if (parts[1] !== "decisions") return false;
-
-    if (u.pathname.includes("@@")) return false;
-
-    return true;
-  } catch {
-    return false;
-  }
+  return (
+    value.includes(".pdf") ||
+    value.includes("application/pdf") ||
+    value.includes("/@@download/")
+  );
 }
 
-/*
- * Les URLs de deliberations.be commencent par exemple par :
- *
- * /liege/decisions/29-juin-2026-18-00/...
- *
- * On extrait donc l'année de la date de séance
- * directement depuis l'URL.
- */
-function getYearFromUrl(url) {
-  try {
-    const u = new URL(url);
+async function findPdfOnPage(page, decisionUrl) {
+  await page.goto(decisionUrl, {
+    waitUntil: "domcontentloaded",
+    timeout: TIMEOUT
+  });
 
-    const parts = u.pathname.split("/").filter(Boolean);
+  await sleep(1500);
 
-    if (parts.length < 3) return null;
+  const links = await page.evaluate(() => {
+    const result = [];
 
-    const datePart = parts[2];
+    for (const a of document.querySelectorAll("a[href]")) {
+      const href = a.href || a.getAttribute("href");
+      const text = (
+        a.innerText ||
+        a.textContent ||
+        ""
+      ).replace(/\s+/g, " ").trim();
 
-    const match = datePart.match(
-      /^(\d{1,2})-([a-zàâçéèêëîïôûùüÿ]+)-(\d{4})/
+      if (href) {
+        result.push({
+          href,
+          text
+        });
+      }
+    }
+
+    return result;
+  });
+
+  const candidates = [];
+
+  for (const link of links) {
+    const url = normalizeUrl(link.href);
+
+    if (!url) continue;
+
+    if (isPdf(url)) {
+      candidates.push({
+        url,
+        text: link.text || ""
+      });
+    }
+  }
+
+  /*
+   * Si la page elle-même est un PDF.
+   */
+  if (isPdf(decisionUrl)) {
+    candidates.unshift({
+      url: normalizeUrl(decisionUrl),
+      text: "PDF décision"
+    });
+  }
+
+  /*
+   * Déduplication.
+   */
+  const unique = [];
+  const seen = new Set();
+
+  for (const candidate of candidates) {
+    if (!seen.has(candidate.url)) {
+      seen.add(candidate.url);
+      unique.push(candidate);
+    }
+  }
+
+  return unique;
+}
+
+async function downloadPdf(url, outputFile) {
+  const response = await fetch(url, {
+    redirect: "follow",
+    signal: AbortSignal.timeout(TIMEOUT)
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `HTTP ${response.status} ${response.statusText}`
+    );
+  }
+
+  const buffer = Buffer.from(
+    await response.arrayBuffer()
+  );
+
+  const header = buffer
+    .subarray(0, 5)
+    .toString("ascii");
+
+  if (header !== "%PDF-") {
+    throw new Error(
+      `Réponse reçue mais ce n'est pas un PDF (${buffer.length} octets)`
+    );
+  }
+
+  fs.writeFileSync(outputFile, buffer);
+
+  return buffer.length;
+}
+
+async function extractText(pdfFile, txtFile) {
+  await execFileAsync(
+    "pdftotext",
+    [
+      "-layout",
+      pdfFile,
+      txtFile
+    ],
+    {
+      timeout: TIMEOUT
+    }
+  );
+
+  if (!fs.existsSync(txtFile)) {
+    throw new Error(
+      "pdftotext n'a pas produit de fichier"
+    );
+  }
+
+  return fs.readFileSync(
+    txtFile,
+    "utf8"
+  )
+    .replace(/\r/g, "")
+    .replace(/\u0000/g, "")
+    .trim();
+}
+
+async function processDecision(page, decision) {
+  let lastError = null;
+
+  for (
+    let attempt = 1;
+    attempt <= RETRIES + 1;
+    attempt++
+  ) {
+    let tempDir = null;
+
+    try {
+      console.log(
+        `      Recherche du PDF sur la page...`
+      );
+
+      const pdfs =
+        await findPdfOnPage(
+          page,
+          decision.url
+        );
+
+      if (pdfs.length === 0) {
+        throw new Error(
+          "Aucun lien PDF trouvé sur la page"
+        );
+      }
+
+      console.log(
+        `      ${pdfs.length} PDF trouvé(s)`
+      );
+
+      /*
+       * On essaie les PDF dans l'ordre.
+       * Le premier PDF réellement lisible est conservé.
+       */
+      for (const pdf of pdfs) {
+        tempDir = fs.mkdtempSync(
+          path.join(
+            os.tmpdir(),
+            "liege-pdf-"
+          )
+        );
+
+        const pdfFile = path.join(
+          tempDir,
+          "document.pdf"
+        );
+
+        const txtFile = path.join(
+          tempDir,
+          "document.txt"
+        );
+
+        try {
+          const size =
+            await downloadPdf(
+              pdf.url,
+              pdfFile
+            );
+
+          const text =
+            await extractText(
+              pdfFile,
+              txtFile
+            );
+
+          if (text.length < 20) {
+            throw new Error(
+              `Texte trop court (${text.length} caractères)`
+            );
+          }
+
+          fs.rmSync(
+            tempDir,
+            {
+              recursive: true,
+              force: true
+            }
+          );
+
+          return {
+            ok: true,
+            pdfUrl: pdf.url,
+            pdfText: text,
+            textLength: text.length,
+            pdfSize: size
+          };
+
+        } catch (pdfError) {
+          console.log(
+            `      ⚠️ PDF ignoré : ${pdfError.message}`
+          );
+
+          try {
+            fs.rmSync(
+              tempDir,
+              {
+                recursive: true,
+                force: true
+              }
+            );
+          } catch {}
+
+          tempDir = null;
+        }
+      }
+
+      throw new Error(
+        "Les PDF trouvés ne sont pas exploitables"
+      );
+
+    } catch (error) {
+      lastError = error;
+
+      console.log(
+        `      ⚠️ Tentative ${attempt}/${RETRIES + 1} : ${error.message}`
+      );
+
+      if (tempDir) {
+        try {
+          fs.rmSync(
+            tempDir,
+            {
+              recursive: true,
+              force: true
+            }
+          );
+        } catch {}
+      }
+
+      await sleep(1500);
+    }
+  }
+
+  return {
+    ok: false,
+    pdfUrl: null,
+    pdfText: "",
+    textLength: 0,
+    pdfSize: 0,
+    error:
+      lastError?.message ||
+      "Erreur inconnue"
+  };
+}
+
+async function worker(
+  browser,
+  decisions,
+  results,
+  workerId
+) {
+  const page =
+    await browser.newPage();
+
+  await page.setDefaultNavigationTimeout(
+    TIMEOUT
+  );
+
+  for (;;) {
+    const index =
+      results.nextIndex++;
+
+    if (
+      index >= decisions.length
+    ) {
+      break;
+    }
+
+    const decision =
+      decisions[index];
+
+    console.log(
+      `[Worker ${workerId}] ${index + 1}/${decisions.length} | ${decision.date?.raw || "?"}`
     );
 
-    if (!match) return null;
+    const result =
+      await processDecision(
+        page,
+        decision
+      );
 
-    const day = Number(match[1]);
-    const monthName = match[2].toLowerCase();
-    const year = Number(match[3]);
+    results.items.push({
+      ...decision,
 
-    const month = MONTHS[monthName];
+      pdfUrl:
+        result.pdfUrl,
 
-    if (!month) return null;
+      pdfSize:
+        result.pdfSize,
 
-    return {
-      day,
-      month,
-      year,
-      raw: datePart,
-    };
-  } catch {
-    return null;
-  }
-}
+      text:
+        result.pdfText,
 
-async function collectPage(page, url) {
+      textLength:
+        result.textLength,
 
-  console.log(`\nVISITE : ${url}`);
+      extractionOk:
+        result.ok,
 
-  try {
-
-    await page.goto(url, {
-      waitUntil: "networkidle2",
-      timeout: 60000,
+      extractionError:
+        result.error || null
     });
 
-  } catch (error) {
-
-    console.log(`⚠️ Navigation : ${error.message}`);
-
+    if (result.ok) {
+      console.log(
+        `      ✓ PDF OK | ${result.pdfSize} octets | ${result.textLength} caractères`
+      );
+    } else {
+      console.log(
+        `      ❌ ÉCHEC : ${result.error}`
+      );
+    }
   }
 
-  await new Promise(resolve => setTimeout(resolve, 1200));
-
-  return await page.evaluate(() => {
-
-    return [...document.querySelectorAll("a[href]")].map(a => ({
-      href: a.href,
-      text: (a.innerText || a.textContent || "").trim(),
-    }));
-
-  });
+  await page.close();
 }
 
 async function main() {
+  console.log(
+    "=============================================="
+  );
+  console.log(
+    " LIÈGE 2026 - PDF RÉEL + EXTRACTION"
+  );
+  console.log(
+    "=============================================="
+  );
 
-  fs.mkdirSync("tmp", { recursive: true });
+  if (!fs.existsSync(INPUT)) {
+    throw new Error(
+      `Fichier introuvable : ${INPUT}`
+    );
+  }
 
-  console.log("==============================================");
-  console.log("COLLECTE LIÈGE");
-  console.log("FILTRAGE 2026 PAR DATE DE SÉANCE");
-  console.log("==============================================");
-
-  const browser = await puppeteer.launch({
-
-    headless: "new",
-
-    args: [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-    ],
-
-  });
-
-  const page = await browser.newPage();
-
-  await page.setViewport({
-    width: 1440,
-    height: 1000,
-  });
-
-  const allDecisions = new Map();
-
-  /*
-   * ---------------------------------------------------------
-   * ÉTAPE 1
-   * COLLECTE DE TOUTES LES URLs
-   * ---------------------------------------------------------
-   */
-
-  for (
-    let offset = 0;
-    offset <= MAX_OFFSET;
-    offset += STEP
-  ) {
-
-    let url;
-
-    if (offset === 0) {
-
-      url = BASE_URL;
-
-    } else {
-
-      url =
-        `${BASE_URL}/@@faceted_query` +
-        `?b_start:int=${offset}`;
-
-    }
-
-    const links = await collectPage(page, url);
-
-    let newDecisions = 0;
-
-    for (const item of links) {
-
-      const normalized = normalizeUrl(item.href);
-
-      if (!normalized) continue;
-
-      if (!isDecisionUrl(normalized)) continue;
-
-      if (!allDecisions.has(normalized)) {
-
-        const dateInfo = getYearFromUrl(normalized);
-
-        allDecisions.set(normalized, {
-
-          url: normalized,
-
-          title: item.text || "",
-
-          date: dateInfo,
-
-        });
-
-        newDecisions++;
-
-      }
-
-    }
-
-    console.log(
-      `Nouvelles décisions : ${newDecisions}`
+  const input =
+    JSON.parse(
+      fs.readFileSync(
+        INPUT,
+        "utf8"
+      )
     );
 
-    console.log(
-      `TOTAL UNIQUE : ${allDecisions.size}`
+  const decisions =
+    input.decisions.filter(
+      decision =>
+        decision?.date?.year === 2026 &&
+        typeof decision.url === "string"
     );
 
-    /*
-     * Si nous arrivons à une page vide,
-     * inutile de continuer.
-     */
+  console.log(
+    `Décisions 2026 : ${decisions.length}`
+  );
 
-    if (newDecisions === 0 && offset > 100) {
-
-      console.log(
-        `⚠️ Aucune nouvelle décision à offset ${offset}.`
-      );
-
-      console.log(
-        "Fin de la collecte."
-      );
-
-      break;
-    }
+  if (decisions.length < 500) {
+    throw new Error(
+      `Sécurité : seulement ${decisions.length} décisions`
+    );
   }
 
-  /*
-   * ---------------------------------------------------------
-   * ÉTAPE 2
-   * FILTRE STRICT SUR L'ANNÉE DE L'URL
-   * ---------------------------------------------------------
-   */
-
-  const decisions2026 = [];
-
-  let noDate = 0;
-
-  for (const decision of allDecisions.values()) {
-
-    if (!decision.date) {
-
-      noDate++;
-
-      continue;
-    }
-
-    if (decision.date.year === 2026) {
-
-      decisions2026.push(decision);
-
-    }
-
-  }
-
-  console.log("\n==============================================");
-  console.log("RÉSULTAT DU FILTRE");
-  console.log("==============================================");
-
-  console.log(
-    `Toutes les décisions : ${allDecisions.size}`
-  );
-
-  console.log(
-    `Décisions avec date URL : ${
-      allDecisions.size - noDate
-    }`
-  );
-
-  console.log(
-    `URLs sans date exploitable : ${noDate}`
-  );
-
-  console.log(
-    `DÉCISIONS 2026 : ${decisions2026.length}`
-  );
-
-  /*
-   * ---------------------------------------------------------
-   * STATISTIQUES PAR ANNÉE
-   * ---------------------------------------------------------
-   */
-
-  const years = {};
-
-  for (const decision of allDecisions.values()) {
-
-    if (!decision.date) continue;
-
-    const year = decision.date.year;
-
-    years[year] = (years[year] || 0) + 1;
-  }
-
-  console.log("\nRépartition par année :");
-
-  Object.keys(years)
-    .sort()
-    .forEach(year => {
-
-      console.log(
-        `  ${year} : ${years[year]}`
-      );
-
+  const browser =
+    await puppeteer.launch({
+      headless: true,
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-gpu"
+      ]
     });
 
-  /*
-   * ---------------------------------------------------------
-   * SÉCURITÉ
-   * ---------------------------------------------------------
-   */
-
-  if (decisions2026.length < 500) {
-
-    await browser.close();
-
-    throw new Error(
-      `Collecte 2026 insuffisante : ${decisions2026.length}`
-    );
-
-  }
-
-  /*
-   * ---------------------------------------------------------
-   * SAUVEGARDE
-   * ---------------------------------------------------------
-   */
-
-  const result = {
-
-    commune: "Liège",
-
-    annee: 2026,
-
-    updatedAt: new Date().toISOString(),
-
-    source: BASE_URL,
-
-    count: decisions2026.length,
-
-    decisions: decisions2026,
-
+  const results = {
+    nextIndex: 0,
+    items: []
   };
 
+  try {
+    const workers = [];
+
+    for (
+      let i = 0;
+      i < CONCURRENCY;
+      i++
+    ) {
+      workers.push(
+        worker(
+          browser,
+          decisions,
+          results,
+          i + 1
+        )
+      );
+    }
+
+    await Promise.all(workers);
+
+  } finally {
+    await browser.close();
+  }
+
+  const byUrl =
+    new Map(
+      results.items.map(
+        item => [
+          item.url,
+          item
+        ]
+      )
+    );
+
+  const ordered =
+    decisions.map(
+      decision =>
+        byUrl.get(
+          decision.url
+        ) || {
+          ...decision,
+          pdfUrl: null,
+          pdfSize: 0,
+          text: "",
+          textLength: 0,
+          extractionOk: false,
+          extractionError:
+            "Résultat manquant"
+        }
+    );
+
+  const successful =
+    ordered.filter(
+      item =>
+        item.extractionOk
+    );
+
+  const failed =
+    ordered.filter(
+      item =>
+        !item.extractionOk
+    );
+
+  const totalCharacters =
+    successful.reduce(
+      (sum, item) =>
+        sum + item.textLength,
+      0
+    );
+
+  console.log("");
+  console.log(
+    "=============================================="
+  );
+  console.log(
+    " RÉSULTAT"
+  );
+  console.log(
+    "=============================================="
+  );
+
+  console.log(
+    `Décisions : ${ordered.length}`
+  );
+
+  console.log(
+    `PDF + texte OK : ${successful.length}`
+  );
+
+  console.log(
+    `Échecs : ${failed.length}`
+  );
+
+  console.log(
+    `Caractères extraits : ${totalCharacters}`
+  );
+
+  console.log("");
+  console.log(
+    "PREMIERS DOCUMENTS RÉUSSIS :"
+  );
+
+  for (
+    const item of successful.slice(0, 10)
+  ) {
+    console.log("");
+    console.log(
+      item.date?.raw
+    );
+    console.log(
+      item.url
+    );
+    console.log(
+      `PDF : ${item.pdfUrl}`
+    );
+    console.log(
+      `Texte : ${item.textLength} caractères`
+    );
+    console.log(
+      item.text
+        .slice(0, 300)
+        .replace(/\n+/g, " ")
+    );
+  }
+
+  if (failed.length > 0) {
+    console.log("");
+    console.log(
+      "PREMIERS ÉCHECS :"
+    );
+
+    for (
+      const item of failed.slice(0, 30)
+    ) {
+      console.log(
+        `${item.date?.raw || "?"} | ${item.url}`
+      );
+      console.log(
+        `   ${item.extractionError}`
+      );
+    }
+  }
+
+  fs.mkdirSync(
+    path.dirname(OUTPUT),
+    {
+      recursive: true
+    }
+  );
+
   fs.writeFileSync(
-
     OUTPUT,
-
     JSON.stringify(
-      result,
+      {
+        commune: "Liège",
+        annee: 2026,
+        updatedAt:
+          new Date().toISOString(),
+        source:
+          "https://www.deliberations.be/liege/decisions",
+        count:
+          ordered.length,
+        extractionOk:
+          successful.length,
+        extractionFailed:
+          failed.length,
+        totalCharacters,
+        decisions:
+          ordered
+      },
       null,
       2
     ),
-
     "utf8"
-
   );
 
-  await browser.close();
-
-  console.log("\n==============================================");
-  console.log("COLLECTE TERMINÉE");
-  console.log("==============================================");
-
+  console.log("");
   console.log(
-    `✅ ${decisions2026.length} décisions 2026`
+    `Fichier créé : ${OUTPUT}`
   );
-
-  console.log(
-    `✅ Fichier : ${OUTPUT}`
-  );
-
 }
 
 main().catch(error => {
-
-  console.error("\n==============================================");
-  console.error("ERREUR");
-  console.error("==============================================");
-
+  console.error("");
+  console.error(
+    "❌ ERREUR FATALE"
+  );
   console.error(error);
-
   process.exit(1);
-
 });
