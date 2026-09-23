@@ -1,79 +1,77 @@
-name: Test Liège 2026 V2
+name: Test Liège 2026 - Documents
 
 on:
   workflow_dispatch:
 
 jobs:
-  test-liege:
+  test-liege-documents:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+
+    timeout-minutes: 40
 
     steps:
-
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Install Puppeteer
+      - name: Installer les dépendances nécessaires
         run: |
-          npm install --no-save --legacy-peer-deps puppeteer
+          npm install --no-save --legacy-peer-deps puppeteer cheerio
 
-      - name: Run collector
+      - name: Vérifier les fichiers
+        run: |
+          echo "=== Fichiers scraper ==="
+          ls -la scripts/
+          echo ""
+          echo "=== Nouveau scraper documents ==="
+          test -f scripts/extract-liege-documents.mjs
+          echo "OK"
+
+      - name: Collecter les décisions Liège 2026
         run: |
           node scripts/scrape-liege-2026-v2.mjs
 
-      - name: Verify result
+      - name: Vérifier les 858 décisions 2026
         run: |
+          node --input-type=module <<'EOF'
+          import fs from 'fs';
 
-          test -f tmp/liege-2026-analysis.json
+          const file = 'tmp/liege-2026-analysis.json';
 
-          node - <<'NODE'
+          if (!fs.existsSync(file)) {
+            throw new Error(`Fichier introuvable : ${file}`);
+          }
 
-          const fs = require("fs");
+          const data = JSON.parse(
+            fs.readFileSync(file, 'utf8')
+          );
 
-          const file =
-            "tmp/liege-2026-analysis.json";
+          console.log(`Commune : ${data.commune}`);
+          console.log(`Année : ${data.annee}`);
+          console.log(`Nombre : ${data.count}`);
 
-          const data =
-            JSON.parse(
-              fs.readFileSync(file, "utf8")
-            );
-
-          console.log("================================");
-          console.log("VÉRIFICATION");
-          console.log("================================");
-
-          console.log("Commune :", data.commune);
-          console.log("Année   :", data.annee);
-          console.log("Nombre  :", data.count);
-
-          if (data.commune !== "Liège") {
-            throw new Error(
-              "Commune incorrecte"
-            );
+          if (data.commune !== 'Liège') {
+            throw new Error('Commune incorrecte');
           }
 
           if (data.annee !== 2026) {
-            throw new Error(
-              "Année incorrecte"
-            );
+            throw new Error('Année incorrecte');
           }
 
           if (data.count < 500) {
             throw new Error(
-              "Moins de 500 décisions 2026"
+              `Sécurité : seulement ${data.count} décisions`
             );
           }
 
           for (const decision of data.decisions) {
-
             if (!decision.date) {
               throw new Error(
-                "Une décision 2026 n'a pas de date URL"
+                `Décision sans date : ${decision.url}`
               );
             }
 
@@ -82,19 +80,120 @@ jobs:
                 `Décision non-2026 détectée : ${decision.url}`
               );
             }
-
           }
 
           console.log(
-            "✅ Toutes les décisions sont bien rattachées à 2026 par leur URL."
+            `✓ ${data.count} décisions 2026 validées`
+          );
+          EOF
+
+      - name: Extraire les documents des 858 décisions
+        run: |
+          node scripts/extract-liege-documents.mjs
+
+      - name: Vérifier le résultat des documents
+        run: |
+          node --input-type=module <<'EOF'
+          import fs from 'fs';
+
+          const file = 'tmp/liege-2026-documents.json';
+
+          if (!fs.existsSync(file)) {
+            throw new Error(
+              `Fichier introuvable : ${file}`
+            );
+          }
+
+          const data = JSON.parse(
+            fs.readFileSync(file, 'utf8')
           );
 
-          NODE
+          console.log(`Commune : ${data.commune}`);
+          console.log(`Année : ${data.annee}`);
+          console.log(`Décisions : ${data.count}`);
+          console.log(
+            `Avec documents : ${data.withDocuments}`
+          );
+          console.log(
+            `Sans documents : ${data.withoutDocuments}`
+          );
+          console.log(
+            `Pages en erreur : ${data.failedPages}`
+          );
 
-      - name: Upload result
-        if: always()
+          if (data.commune !== 'Liège') {
+            throw new Error('Commune incorrecte');
+          }
+
+          if (data.annee !== 2026) {
+            throw new Error('Année incorrecte');
+          }
+
+          if (data.count < 500) {
+            throw new Error(
+              `Sécurité : seulement ${data.count} décisions`
+            );
+          }
+
+          if (data.failedPages > 50) {
+            throw new Error(
+              `Trop de pages en erreur : ${data.failedPages}`
+            );
+          }
+
+          for (const decision of data.decisions) {
+            if (!decision.date) {
+              throw new Error(
+                `Décision sans date : ${decision.url}`
+              );
+            }
+
+            if (decision.date.year !== 2026) {
+              throw new Error(
+                `Décision non-2026 : ${decision.url}`
+              );
+            }
+
+            if (!Array.isArray(decision.documents)) {
+              throw new Error(
+                `Champ documents invalide : ${decision.url}`
+              );
+            }
+          }
+
+          console.log('✓ Vérification terminée');
+          EOF
+
+      - name: Vérifier que la production n'a pas été modifiée
+        run: |
+          git diff -- src/data/reglements-taxes.json
+
+          if git diff --quiet -- src/data/reglements-taxes.json; then
+            echo "✓ src/data/reglements-taxes.json n'a pas été modifié"
+          else
+            echo "❌ Le fichier de production a été modifié"
+            exit 1
+          fi
+
+      - name: Afficher un résumé
+        run: |
+          echo ""
+          echo "=============================================="
+          echo " TEST TERMINÉ"
+          echo "=============================================="
+          echo ""
+          echo "Les décisions 2026 ont été collectées."
+          echo "Les pages ont été analysées."
+          echo "Les liens vers les documents ont été extraits."
+          echo ""
+          echo "Aucune donnée de production n'a été modifiée."
+          echo ""
+
+      - name: Sauvegarder les résultats
         uses: actions/upload-artifact@v4
         with:
-          name: liege-2026-analysis
-          path: tmp/liege-2026-analysis.json
-          if-no-files-found: warn
+          name: liege-2026-documents
+          path: |
+            tmp/liege-2026-analysis.json
+            tmp/liege-2026-documents.json
+          retention-days: 7
