@@ -1,4 +1,4 @@
-name: Test Liège 2026 V2
+name: Test collecte Liège 2026
 
 on:
   workflow_dispatch:
@@ -9,9 +9,10 @@ permissions:
 jobs:
   test-liege:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 60
 
     steps:
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -20,31 +21,26 @@ jobs:
         with:
           node-version: 20
 
-      - name: Installer Poppler
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y poppler-utils
-
       - name: Installer Puppeteer
         run: |
           npm install --no-save --legacy-peer-deps puppeteer
 
-      - name: Vérifier les outils
+      - name: Vérifier Node et Puppeteer
         run: |
           node --version
-          npx puppeteer --version || true
-          pdftotext -v
+          npx puppeteer --version
 
-      - name: Lancer le nouveau scraper Liège
+      - name: Tester la collecte Liège
         run: |
           node scripts/scrape-liege-2026-v2.mjs
 
-      - name: Vérifier le fichier de diagnostic
+      - name: Vérifier le résultat
         run: |
           test -f tmp/liege-2026-analysis.json
+          echo "Fichier créé :"
           ls -lh tmp/liege-2026-analysis.json
 
-      - name: Publier le diagnostic
+      - name: Sauvegarder le diagnostic
         uses: actions/upload-artifact@v4
         with:
           name: liege-2026-analysis
