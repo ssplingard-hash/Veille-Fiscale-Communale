@@ -7,7 +7,7 @@ jobs:
   test-liege-documents:
     runs-on: ubuntu-latest
 
-    timeout-minutes: 40
+    timeout-minutes: 45
 
     steps:
       - name: Checkout
@@ -18,24 +18,21 @@ jobs:
         with:
           node-version: 20
 
-      - name: Installer les dépendances nécessaires
+      - name: Installer Puppeteer
         run: |
           npm install --no-save --legacy-peer-deps puppeteer cheerio
 
       - name: Vérifier les fichiers
         run: |
-          echo "=== Fichiers scraper ==="
-          ls -la scripts/
-          echo ""
-          echo "=== Nouveau scraper documents ==="
+          test -f scripts/scrape-liege-2026-v2.mjs
           test -f scripts/extract-liege-documents.mjs
-          echo "OK"
+          echo "✓ Fichiers présents"
 
       - name: Collecter les décisions Liège 2026
         run: |
           node scripts/scrape-liege-2026-v2.mjs
 
-      - name: Vérifier les 858 décisions 2026
+      - name: Vérifier les décisions 2026
         run: |
           node --input-type=module <<'EOF'
           import fs from 'fs';
@@ -52,7 +49,7 @@ jobs:
 
           console.log(`Commune : ${data.commune}`);
           console.log(`Année : ${data.annee}`);
-          console.log(`Nombre : ${data.count}`);
+          console.log(`Décisions : ${data.count}`);
 
           if (data.commune !== 'Liège') {
             throw new Error('Commune incorrecte');
@@ -69,34 +66,30 @@ jobs:
           }
 
           for (const decision of data.decisions) {
-            if (!decision.date) {
+            if (
+              !decision.date ||
+              decision.date.year !== 2026
+            ) {
               throw new Error(
-                `Décision sans date : ${decision.url}`
-              );
-            }
-
-            if (decision.date.year !== 2026) {
-              throw new Error(
-                `Décision non-2026 détectée : ${decision.url}`
+                `Décision non-2026 : ${decision.url}`
               );
             }
           }
 
-          console.log(
-            `✓ ${data.count} décisions 2026 validées`
-          );
+          console.log('✓ Décisions 2026 validées');
           EOF
 
-      - name: Extraire les documents des 858 décisions
+      - name: Extraire les documents
         run: |
           node scripts/extract-liege-documents.mjs
 
-      - name: Vérifier le résultat des documents
+      - name: Vérifier les documents
         run: |
           node --input-type=module <<'EOF'
           import fs from 'fs';
 
-          const file = 'tmp/liege-2026-documents.json';
+          const file =
+            'tmp/liege-2026-documents.json';
 
           if (!fs.existsSync(file)) {
             throw new Error(
@@ -108,14 +101,21 @@ jobs:
             fs.readFileSync(file, 'utf8')
           );
 
-          console.log(`Commune : ${data.commune}`);
-          console.log(`Année : ${data.annee}`);
-          console.log(`Décisions : ${data.count}`);
+          console.log('');
+          console.log('================================');
+          console.log('VÉRIFICATION');
+          console.log('================================');
+          console.log(
+            `Décisions : ${data.count}`
+          );
           console.log(
             `Avec documents : ${data.withDocuments}`
           );
           console.log(
             `Sans documents : ${data.withoutDocuments}`
+          );
+          console.log(
+            `Avec PDF : ${data.withPdf}`
           );
           console.log(
             `Pages en erreur : ${data.failedPages}`
@@ -131,7 +131,7 @@ jobs:
 
           if (data.count < 500) {
             throw new Error(
-              `Sécurité : seulement ${data.count} décisions`
+              `Seulement ${data.count} décisions`
             );
           }
 
@@ -142,51 +142,47 @@ jobs:
           }
 
           for (const decision of data.decisions) {
-            if (!decision.date) {
-              throw new Error(
-                `Décision sans date : ${decision.url}`
-              );
-            }
-
-            if (decision.date.year !== 2026) {
+            if (
+              !decision.date ||
+              decision.date.year !== 2026
+            ) {
               throw new Error(
                 `Décision non-2026 : ${decision.url}`
               );
             }
 
-            if (!Array.isArray(decision.documents)) {
+            if (
+              !Array.isArray(decision.documents)
+            ) {
               throw new Error(
-                `Champ documents invalide : ${decision.url}`
+                `Documents invalides : ${decision.url}`
               );
             }
           }
 
+          console.log('');
           console.log('✓ Vérification terminée');
           EOF
 
-      - name: Vérifier que la production n'a pas été modifiée
+      - name: Vérifier que la production est intacte
         run: |
-          git diff -- src/data/reglements-taxes.json
-
           if git diff --quiet -- src/data/reglements-taxes.json; then
-            echo "✓ src/data/reglements-taxes.json n'a pas été modifié"
+            echo "✓ Données de production inchangées"
           else
-            echo "❌ Le fichier de production a été modifié"
+            echo "❌ DONNÉES DE PRODUCTION MODIFIÉES"
             exit 1
           fi
 
-      - name: Afficher un résumé
+      - name: Résumé
         run: |
           echo ""
           echo "=============================================="
           echo " TEST TERMINÉ"
           echo "=============================================="
           echo ""
-          echo "Les décisions 2026 ont été collectées."
-          echo "Les pages ont été analysées."
-          echo "Les liens vers les documents ont été extraits."
-          echo ""
-          echo "Aucune donnée de production n'a été modifiée."
+          echo "Collecte 2026 : OK"
+          echo "Extraction des documents : OK"
+          echo "Production : inchangée"
           echo ""
 
       - name: Sauvegarder les résultats
