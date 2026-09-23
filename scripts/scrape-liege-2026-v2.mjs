@@ -2,13 +2,28 @@ import puppeteer from "puppeteer";
 import fs from "fs";
 
 const BASE_URL = "https://www.deliberations.be/liege/decisions";
-
 const OUTPUT = "tmp/liege-2026-analysis.json";
 
 const MAX_OFFSET = 2200;
 const STEP = 20;
 
-const MAX_DECISIONS = 2200;
+const MONTHS = {
+  janvier: 1,
+  fevrier: 2,
+  février: 2,
+  mars: 3,
+  avril: 4,
+  mai: 5,
+  juin: 6,
+  juillet: 7,
+  aout: 8,
+  août: 8,
+  septembre: 9,
+  octobre: 10,
+  novembre: 11,
+  decembre: 12,
+  décembre: 12,
+};
 
 function normalizeUrl(url) {
   if (!url) return null;
@@ -16,9 +31,13 @@ function normalizeUrl(url) {
   try {
     const u = new URL(url, BASE_URL);
 
-    if (!u.hostname.endsWith("deliberations.be")) return null;
+    if (!u.hostname.endsWith("deliberations.be")) {
+      return null;
+    }
 
-    if (!u.pathname.startsWith("/liege/decisions")) return null;
+    if (!u.pathname.startsWith("/liege/decisions")) {
+      return null;
+    }
 
     u.hash = "";
 
@@ -50,6 +69,49 @@ function isDecisionUrl(url) {
   }
 }
 
+/*
+ * Les URLs de deliberations.be commencent par exemple par :
+ *
+ * /liege/decisions/29-juin-2026-18-00/...
+ *
+ * On extrait donc l'année de la date de séance
+ * directement depuis l'URL.
+ */
+function getYearFromUrl(url) {
+  try {
+    const u = new URL(url);
+
+    const parts = u.pathname.split("/").filter(Boolean);
+
+    if (parts.length < 3) return null;
+
+    const datePart = parts[2];
+
+    const match = datePart.match(
+      /^(\d{1,2})-([a-zàâçéèêëîïôûùüÿ]+)-(\d{4})/
+    );
+
+    if (!match) return null;
+
+    const day = Number(match[1]);
+    const monthName = match[2].toLowerCase();
+    const year = Number(match[3]);
+
+    const month = MONTHS[monthName];
+
+    if (!month) return null;
+
+    return {
+      day,
+      month,
+      year,
+      raw: datePart,
+    };
+  } catch {
+    return null;
+  }
+}
+
 async function collectPage(page, url) {
 
   console.log(`\nVISITE : ${url}`);
@@ -67,16 +129,13 @@ async function collectPage(page, url) {
 
   }
 
-  await new Promise(resolve => setTimeout(resolve, 1500));
+  await new Promise(resolve => setTimeout(resolve, 1200));
 
   return await page.evaluate(() => {
 
     return [...document.querySelectorAll("a[href]")].map(a => ({
-
       href: a.href,
-
       text: (a.innerText || a.textContent || "").trim(),
-
     }));
 
   });
@@ -87,8 +146,8 @@ async function main() {
   fs.mkdirSync("tmp", { recursive: true });
 
   console.log("==============================================");
-  console.log("COLLECTE DES DÉCISIONS LIÈGE");
-  console.log("FILTRAGE 2026");
+  console.log("COLLECTE LIÈGE");
+  console.log("FILTRAGE 2026 PAR DATE DE SÉANCE");
   console.log("==============================================");
 
   const browser = await puppeteer.launch({
@@ -110,17 +169,14 @@ async function main() {
     height: 1000,
   });
 
+  const allDecisions = new Map();
+
   /*
    * ---------------------------------------------------------
    * ÉTAPE 1
+   * COLLECTE DE TOUTES LES URLs
    * ---------------------------------------------------------
-   *
-   * On récupère les URLs des décisions.
-   *
-   * On ne suit PAS les liens contenant "seance".
    */
-
-  const decisions = new Map();
 
   for (
     let offset = 0;
@@ -154,13 +210,17 @@ async function main() {
 
       if (!isDecisionUrl(normalized)) continue;
 
-      if (!decisions.has(normalized)) {
+      if (!allDecisions.has(normalized)) {
 
-        decisions.set(normalized, {
+        const dateInfo = getYearFromUrl(normalized);
+
+        allDecisions.set(normalized, {
 
           url: normalized,
 
           title: item.text || "",
+
+          date: dateInfo,
 
         });
 
@@ -175,185 +235,116 @@ async function main() {
     );
 
     console.log(
-      `TOTAL URLs : ${decisions.size}`
+      `TOTAL UNIQUE : ${allDecisions.size}`
     );
 
     /*
-     * Le site contient manifestement environ 2 000+
-     * décisions accessibles par cette méthode.
+     * Si nous arrivons à une page vide,
+     * inutile de continuer.
      */
 
-    if (decisions.size >= MAX_DECISIONS) {
+    if (newDecisions === 0 && offset > 100) {
 
       console.log(
-        "Nombre maximum d'URLs atteint."
+        `⚠️ Aucune nouvelle décision à offset ${offset}.`
+      );
+
+      console.log(
+        "Fin de la collecte."
       );
 
       break;
-
     }
-
   }
-
-  console.log("\n==============================================");
-  console.log("URLS COLLECTÉES");
-  console.log("==============================================");
-
-  console.log(
-    `TOTAL URLs : ${decisions.size}`
-  );
 
   /*
    * ---------------------------------------------------------
    * ÉTAPE 2
+   * FILTRE STRICT SUR L'ANNÉE DE L'URL
    * ---------------------------------------------------------
-   *
-   * Maintenant on visite les décisions individuellement.
-   *
-   * C'est ici qu'on détermine l'année.
    */
-
-  const allDecisions = [...decisions.values()];
 
   const decisions2026 = [];
 
-  console.log("\n==============================================");
-  console.log("ANALYSE DES DATES");
-  console.log("==============================================");
+  let noDate = 0;
 
-  /*
-   * On traite les décisions une par une.
-   *
-   * Pour éviter de laisser Puppeteer tourner inutilement
-   * longtemps, on arrête lorsque nous avons quitté 2026
-   * dans l'ordre chronologique du site.
-   */
+  for (const decision of allDecisions.values()) {
 
-  let processed = 0;
+    if (!decision.date) {
 
-  for (const decision of allDecisions) {
+      noDate++;
 
-    processed++;
+      continue;
+    }
 
-    console.log(
-      `\n[${processed}/${allDecisions.length}]`
-    );
+    if (decision.date.year === 2026) {
 
-    console.log(decision.url);
-
-    try {
-
-      await page.goto(decision.url, {
-
-        waitUntil: "domcontentloaded",
-
-        timeout: 30000,
-
-      });
-
-      await new Promise(resolve =>
-        setTimeout(resolve, 500)
-      );
-
-      const data = await page.evaluate(() => {
-
-        const body =
-          document.body?.innerText || "";
-
-        const title =
-          document.querySelector("h1")?.innerText ||
-          document.title ||
-          "";
-
-        /*
-         * Recherche des dates sous plusieurs formats.
-         */
-
-        const dates = [
-
-          ...(body.match(
-            /\b\d{1,2}[\/.-]\d{1,2}[\/.-]2026\b/g
-          ) || []),
-
-          ...(body.match(
-            /\b2026[\/.-]\d{1,2}[\/.-]\d{1,2}\b/g
-          ) || []),
-
-          ...(body.match(
-            /\b\d{1,2}\s+(?:janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\s+2026\b/gi
-          ) || []),
-
-        ];
-
-        return {
-
-          title,
-
-          bodyStart: body.substring(0, 5000),
-
-          dates: [...new Set(dates)],
-
-        };
-
-      });
-
-      const has2026 = data.dates.length > 0;
-
-      if (has2026) {
-
-        decisions2026.push({
-
-          url: decision.url,
-
-          title: decision.title,
-
-          pageTitle: data.title,
-
-          dates: data.dates,
-
-        });
-
-        console.log(
-          `✅ 2026 : ${data.dates.join(", ")}`
-        );
-
-      } else {
-
-        console.log(
-          "❌ Aucune date 2026 détectée"
-        );
-
-      }
-
-    } catch (error) {
-
-      console.log(
-        `⚠️ Erreur : ${error.message}`
-      );
+      decisions2026.push(decision);
 
     }
 
   }
 
-  await browser.close();
-
   console.log("\n==============================================");
-  console.log("RESULTAT FINAL");
+  console.log("RÉSULTAT DU FILTRE");
   console.log("==============================================");
 
   console.log(
-    `URLs analysées : ${allDecisions.length}`
+    `Toutes les décisions : ${allDecisions.size}`
   );
 
   console.log(
-    `Décisions 2026 : ${decisions2026.length}`
+    `Décisions avec date URL : ${
+      allDecisions.size - noDate
+    }`
+  );
+
+  console.log(
+    `URLs sans date exploitable : ${noDate}`
+  );
+
+  console.log(
+    `DÉCISIONS 2026 : ${decisions2026.length}`
   );
 
   /*
+   * ---------------------------------------------------------
+   * STATISTIQUES PAR ANNÉE
+   * ---------------------------------------------------------
+   */
+
+  const years = {};
+
+  for (const decision of allDecisions.values()) {
+
+    if (!decision.date) continue;
+
+    const year = decision.date.year;
+
+    years[year] = (years[year] || 0) + 1;
+  }
+
+  console.log("\nRépartition par année :");
+
+  Object.keys(years)
+    .sort()
+    .forEach(year => {
+
+      console.log(
+        `  ${year} : ${years[year]}`
+      );
+
+    });
+
+  /*
+   * ---------------------------------------------------------
    * SÉCURITÉ
+   * ---------------------------------------------------------
    */
 
   if (decisions2026.length < 500) {
+
+    await browser.close();
 
     throw new Error(
       `Collecte 2026 insuffisante : ${decisions2026.length}`
@@ -362,7 +353,9 @@ async function main() {
   }
 
   /*
+   * ---------------------------------------------------------
    * SAUVEGARDE
+   * ---------------------------------------------------------
    */
 
   const result = {
@@ -395,12 +388,18 @@ async function main() {
 
   );
 
-  console.log(
-    `\n✅ Fichier créé : ${OUTPUT}`
-  );
+  await browser.close();
+
+  console.log("\n==============================================");
+  console.log("COLLECTE TERMINÉE");
+  console.log("==============================================");
 
   console.log(
     `✅ ${decisions2026.length} décisions 2026`
+  );
+
+  console.log(
+    `✅ Fichier : ${OUTPUT}`
   );
 
 }
@@ -408,9 +407,7 @@ async function main() {
 main().catch(error => {
 
   console.error("\n==============================================");
-
   console.error("ERREUR");
-
   console.error("==============================================");
 
   console.error(error);
