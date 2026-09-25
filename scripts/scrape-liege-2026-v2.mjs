@@ -10,11 +10,15 @@ const OUTPUT =
 
 const YEAR = 2026;
 
-const MAX_PAGES = 150;
+const PAGE_SIZE = 20;
+
+// Sécurité : on ne dépassera jamais 100 pages.
+const MAX_PAGES = 100;
 
 const NAVIGATION_TIMEOUT = 90000;
 
 const WAIT_AFTER_LOAD = 1200;
+
 
 // ============================================================
 // OUTILS
@@ -26,6 +30,7 @@ function clean(text = "") {
     .replace(/\s+/g, " ")
     .trim();
 }
+
 
 function normalizeUrl(url, baseUrl = BASE_URL) {
   if (!url) {
@@ -39,10 +44,12 @@ function normalizeUrl(url, baseUrl = BASE_URL) {
     absolute.hash = "";
 
     return absolute.href;
+
   } catch {
     return null;
   }
 }
+
 
 // ============================================================
 // IDENTIFICATION D'UNE DÉCISION 2026
@@ -57,49 +64,42 @@ function isDecision2026(url) {
   );
 }
 
-// ============================================================
-// IDENTIFICATION D'UNE DÉCISION LIÈGE
-// ============================================================
-
-function isDecisionUrl(url) {
-  return (
-    typeof url === "string" &&
-    /\/liege\/decisions\/\d{1,2}-[a-zà-ÿ]+-\d{4}-\d{1,2}-\d{2}\//i.test(
-      url
-    )
-  );
-}
 
 // ============================================================
 // EXTRACTION D'UNE PAGE
 // ============================================================
 
 async function extractPage(page, url) {
+
   console.log("");
   console.log(
     "=============================================="
   );
+
   console.log("PAGE");
+
   console.log(
     "=============================================="
   );
+
   console.log(url);
 
+
   try {
+
     await page.goto(url, {
       waitUntil: "domcontentloaded",
       timeout: NAVIGATION_TIMEOUT
     });
+
   } catch (error) {
+
     console.log(
       `⚠️ Navigation : ${error.message}`
     );
   }
 
-  /*
-   * Le site construit une partie de son contenu
-   * côté navigateur.
-   */
+
   await new Promise(resolve =>
     setTimeout(
       resolve,
@@ -107,23 +107,22 @@ async function extractPage(page, url) {
     )
   );
 
+
   return await page.evaluate(() => {
+
     const decisions = [];
 
     const pagination = [];
 
-    /*
-     * ----------------------------------------------------------
-     * DÉCISIONS
-     * ----------------------------------------------------------
-     */
 
     document
       .querySelectorAll("a[href]")
       .forEach(a => {
+
         const href =
           a.href ||
           a.getAttribute("href");
+
 
         const text = (
           a.innerText ||
@@ -133,122 +132,80 @@ async function extractPage(page, url) {
           .replace(/\s+/g, " ")
           .trim();
 
+
         if (!href) {
           return;
         }
 
-        /*
-         * On récupère toutes les décisions.
-         * Le filtrage 2026 est fait ensuite à partir
-         * de l'année présente dans l'URL.
-         */
+
         if (
           /\/liege\/decisions\/\d{1,2}-[a-zà-ÿ]+-\d{4}-\d{1,2}-\d{2}\//i.test(
             href
           )
         ) {
+
           decisions.push({
             url: href,
             title: text
           });
+
         }
+
       });
 
+
     /*
-     * ----------------------------------------------------------
-     * PAGINATION
-     * ----------------------------------------------------------
-     *
-     * IMPORTANT :
-     *
-     * Nous NE fabriquons PAS les URLs.
-     *
-     * Nous récupérons les liens réellement fournis
-     * par deliberations.be.
-     *
-     * Le site utilise notamment :
-     *
-     * @@faceted_query
-     *
-     * avec :
-     *
-     * b_start
-     *
+     * On récupère une vraie URL de pagination fournie
+     * par le site afin d'en extraire le paramètre seance[].
      */
 
     document
       .querySelectorAll("a[href]")
       .forEach(a => {
+
         const href =
           a.href ||
           a.getAttribute("href");
+
 
         if (!href) {
           return;
         }
 
-        if (
-          href.includes(
-            "@@faceted_query"
-          ) &&
-          href.includes(
-            "b_start"
-          )
-        ) {
-          pagination.push(href);
-        }
-      });
-
-    /*
-     * On récupère également les liens contenant
-     * b_start qui pourraient utiliser une variante
-     * de l'URL.
-     */
-    document
-      .querySelectorAll("a[href]")
-      .forEach(a => {
-        const href =
-          a.href ||
-          a.getAttribute("href");
-
-        if (!href) {
-          return;
-        }
 
         if (
+          href.includes("@@faceted_query") &&
           href.includes("b_start") &&
-          (
-            href.includes(
-              "/liege/decisions"
-            ) ||
-            href.includes(
-              "@@faceted_query"
-            )
-          )
+          href.includes("seance")
         ) {
+
           pagination.push(href);
+
         }
+
       });
+
 
     return {
       decisions,
       pagination
     };
+
   });
 }
+
 
 // ============================================================
 // DÉDUPLICATION
 // ============================================================
 
-function deduplicateByUrl(
-  decisions
-) {
+function deduplicateByUrl(decisions) {
+
   const map = new Map();
 
-  for (
-    const decision of decisions
-  ) {
+
+  for (const decision of decisions) {
+
     if (
       !decision ||
       !decision.url
@@ -256,18 +213,20 @@ function deduplicateByUrl(
       continue;
     }
 
+
     const url =
       normalizeUrl(
         decision.url
       );
 
+
     if (!url) {
       continue;
     }
 
-    if (
-      !map.has(url)
-    ) {
+
+    if (!map.has(url)) {
+
       map.set(
         url,
         {
@@ -275,38 +234,136 @@ function deduplicateByUrl(
           url
         }
       );
+
     }
+
   }
+
 
   return [
     ...map.values()
   ];
 }
 
+
+// ============================================================
+// EXTRACTION DU PARAMÈTRE SEANCE
+// ============================================================
+
+function extractSeanceParameter(url) {
+
+  try {
+
+    const parsed =
+      new URL(url);
+
+
+    /*
+     * Le site utilise :
+     *
+     * seance[]=440b6cc1...
+     *
+     * URLSearchParams renvoie correctement la valeur
+     * même avec les crochets.
+     */
+
+    const seance =
+      parsed.searchParams.get(
+        "seance[]"
+      );
+
+
+    if (seance) {
+      return seance;
+    }
+
+
+    /*
+     * Sécurité supplémentaire si le navigateur
+     * encode différemment le nom du paramètre.
+     */
+
+    for (
+      const [key, value]
+      of parsed.searchParams.entries()
+    ) {
+
+      if (
+        key === "seance" ||
+        key === "seance[]"
+      ) {
+
+        return value;
+
+      }
+
+    }
+
+
+    return null;
+
+  } catch {
+
+    return null;
+
+  }
+}
+
+
+// ============================================================
+// CONSTRUCTION D'UNE PAGE DE PAGINATION
+// ============================================================
+
+function buildPaginationUrl(
+  offset,
+  seance
+) {
+
+  if (!seance) {
+    return null;
+  }
+
+
+  return (
+    `${BASE_URL}/@@faceted_query` +
+    `?b_start:int=${offset}` +
+    `&seance%5B%5D=${encodeURIComponent(seance)}`
+  );
+}
+
+
 // ============================================================
 // MAIN
 // ============================================================
 
 async function main() {
+
   console.log("");
+
   console.log(
     "=============================================="
   );
+
   console.log(
     " LIÈGE 2026 - COLLECTE DES DÉCISIONS"
   );
+
   console.log(
     "=============================================="
   );
+
   console.log("");
+
 
   console.log(
     `Année recherchée : ${YEAR}`
   );
 
+
   console.log(
     `URL de départ : ${BASE_URL}`
   );
+
 
   console.log("");
 
@@ -316,242 +373,374 @@ async function main() {
 
   console.log("");
 
-  /*
-   * ----------------------------------------------------------
-   * LANCEMENT DU NAVIGATEUR
-   * ----------------------------------------------------------
-   */
 
   const browser =
     await puppeteer.launch({
+
       headless: true,
+
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
         "--disable-dev-shm-usage",
         "--disable-gpu"
       ]
+
     });
+
 
   const page =
     await browser.newPage();
+
 
   page.setDefaultNavigationTimeout(
     NAVIGATION_TIMEOUT
   );
 
+
   try {
+
     /*
-     * --------------------------------------------------------
-     * FILE DES PAGES À VISITER
-     * --------------------------------------------------------
+     * ----------------------------------------------------------
+     * 1. PAGE INITIALE
+     * ----------------------------------------------------------
      */
 
-    const urlsToVisit = [
-      BASE_URL
-    ];
+    console.log("");
 
-    const queuedPages =
-      new Set([
+    console.log(
+      "Recherche du paramètre de séance..."
+    );
+
+
+    const firstPage =
+      await extractPage(
+        page,
         BASE_URL
-      ]);
+      );
 
-    const visitedPages =
-      new Set();
+
+    const firstDecisions =
+      firstPage.decisions.filter(
+        decision =>
+          isDecision2026(
+            decision.url
+          )
+      );
+
+
+    console.log("");
+
+    console.log(
+      `Décisions trouvées sur la page initiale : ${firstPage.decisions.length}`
+    );
+
+
+    console.log(
+      `Décisions 2026 sur la page initiale : ${firstDecisions.length}`
+    );
+
 
     /*
-     * Toutes les décisions trouvées.
+     * ----------------------------------------------------------
+     * 2. RÉCUPÉRATION DU SEANCE[]
+     * ----------------------------------------------------------
      */
+
+    let seance = null;
+
+
+    for (
+      const paginationUrl
+      of firstPage.pagination
+    ) {
+
+      seance =
+        extractSeanceParameter(
+          paginationUrl
+        );
+
+
+      if (seance) {
+        break;
+      }
+
+    }
+
+
+    if (!seance) {
+
+      throw new Error(
+        "Impossible de récupérer le paramètre seance[] utilisé par deliberations.be."
+      );
+
+    }
+
+
+    console.log("");
+
+    console.log(
+      `✓ Paramètre seance[] détecté : ${seance}`
+    );
+
+
+    /*
+     * ----------------------------------------------------------
+     * 3. COLLECTE
+     * ----------------------------------------------------------
+     */
+
     const allDecisions =
       new Map();
 
-    /*
-     * --------------------------------------------------------
-     * PAGINATION
-     * --------------------------------------------------------
-     */
 
-    while (
-      urlsToVisit.length > 0 &&
-      visitedPages.size <
-        MAX_PAGES
+    for (
+      const decision
+      of firstDecisions
     ) {
-      const currentUrl =
-        urlsToVisit.shift();
 
-      if (
-        visitedPages.has(
-          currentUrl
-        )
-      ) {
+      const url =
+        normalizeUrl(
+          decision.url
+        );
+
+
+      if (!url) {
         continue;
       }
 
-      visitedPages.add(
-        currentUrl
-      );
 
-      console.log("");
-      console.log(
-        `PAGINATION : page ${visitedPages.size}`
-      );
-
-      console.log(
-        `Pages restantes dans la file : ${urlsToVisit.length}`
-      );
-
-      try {
-        const result =
-          await extractPage(
-            page,
-            currentUrl
-          );
-
-        /*
-         * ----------------------------------------------------
-         * DÉCISIONS
-         * ----------------------------------------------------
-         */
-
-        const decisions2026 =
-          result.decisions.filter(
-            decision =>
-              isDecision2026(
-                decision.url
-              )
-          );
-
-        console.log(
-          `Décisions trouvées sur cette page : ${result.decisions.length}`
-        );
-
-        console.log(
-          `Décisions 2026 sur cette page : ${decisions2026.length}`
-        );
-
-        let newDecisions =
-          0;
-
-        for (
-          const decision of
-            decisions2026
-        ) {
-          const url =
-            normalizeUrl(
-              decision.url
-            );
-
-          if (!url) {
-            continue;
-          }
-
-          if (
-            !allDecisions.has(
-              url
+      allDecisions.set(
+        url,
+        {
+          url,
+          title:
+            clean(
+              decision.title
             )
-          ) {
-            allDecisions.set(
-              url,
-              {
-                url,
-                title:
-                  clean(
-                    decision.title
-                  )
-              }
-            );
-
-            newDecisions++;
-          }
         }
+      );
 
-        console.log(
-          `Nouvelles décisions 2026 : ${newDecisions}`
-        );
-
-        console.log(
-          `TOTAL UNIQUE 2026 : ${allDecisions.size}`
-        );
-
-        /*
-         * ----------------------------------------------------
-         * PAGINATION DÉCOUVERTE
-         * ----------------------------------------------------
-         */
-
-        let newPages =
-          0;
-
-        for (
-          const paginationUrlRaw of
-            result.pagination
-        ) {
-          const paginationUrl =
-            normalizeUrl(
-              paginationUrlRaw,
-              currentUrl
-            );
-
-          if (!paginationUrl) {
-            continue;
-          }
-
-          if (
-            visitedPages.has(
-              paginationUrl
-            )
-          ) {
-            continue;
-          }
-
-          if (
-            queuedPages.has(
-              paginationUrl
-            )
-          ) {
-            continue;
-          }
-
-          queuedPages.add(
-            paginationUrl
-          );
-
-          urlsToVisit.push(
-            paginationUrl
-          );
-
-          newPages++;
-        }
-
-        console.log(
-          `Nouvelles pages de pagination découvertes : ${newPages}`
-        );
-
-        console.log(
-          `Pages encore à visiter : ${urlsToVisit.length}`
-        );
-
-      } catch (error) {
-        console.error("");
-
-        console.error(
-          "ERREUR SUR LA PAGE :"
-        );
-
-        console.error(
-          currentUrl
-        );
-
-        console.error(
-          error.message
-        );
-      }
     }
 
+
+    console.log("");
+
+    console.log(
+      `TOTAL UNIQUE 2026 : ${allDecisions.size}`
+    );
+
+
     /*
-     * --------------------------------------------------------
-     * FIN DE COLLECTE
-     * --------------------------------------------------------
+     * ----------------------------------------------------------
+     * 4. PAGINATION PAR OFFSET
+     *
+     * Nous utilisons maintenant la bonne URL :
+     *
+     * @@faceted_query
+     * ?b_start:int=20
+     * &seance[]=...
+     *
+     * Le problème précédent venait du fait que nous
+     * fabriquions b_start sans conserver seance[].
+     * ----------------------------------------------------------
+     */
+
+    for (
+      let pageNumber = 2;
+      pageNumber <= MAX_PAGES;
+      pageNumber++
+    ) {
+
+      const offset =
+        (pageNumber - 1) *
+        PAGE_SIZE;
+
+
+      const paginationUrl =
+        buildPaginationUrl(
+          offset,
+          seance
+        );
+
+
+      if (!paginationUrl) {
+        break;
+      }
+
+
+      console.log("");
+
+      console.log(
+        "=============================================="
+      );
+
+      console.log(
+        `PAGINATION : page ${pageNumber}`
+      );
+
+      console.log(
+        "=============================================="
+      );
+
+
+      console.log(
+        `Offset : ${offset}`
+      );
+
+
+      console.log(
+        `URL : ${paginationUrl}`
+      );
+
+
+      const result =
+        await extractPage(
+          page,
+          paginationUrl
+        );
+
+
+      const decisions2026 =
+        result.decisions.filter(
+          decision =>
+            isDecision2026(
+              decision.url
+            )
+        );
+
+
+      console.log("");
+
+      console.log(
+        `Décisions trouvées : ${result.decisions.length}`
+      );
+
+
+      console.log(
+        `Décisions 2026 : ${decisions2026.length}`
+      );
+
+
+      let newDecisions = 0;
+
+
+      for (
+        const decision
+        of decisions2026
+      ) {
+
+        const url =
+          normalizeUrl(
+            decision.url
+          );
+
+
+        if (!url) {
+          continue;
+        }
+
+
+        if (
+          !allDecisions.has(url)
+        ) {
+
+          allDecisions.set(
+            url,
+            {
+              url,
+              title:
+                clean(
+                  decision.title
+                )
+            }
+          );
+
+
+          newDecisions++;
+
+        }
+
+      }
+
+
+      console.log(
+        `Nouvelles décisions 2026 : ${newDecisions}`
+      );
+
+
+      console.log(
+        `TOTAL UNIQUE 2026 : ${allDecisions.size}`
+      );
+
+
+      /*
+       * --------------------------------------------------------
+       * FIN DE PAGINATION
+       * --------------------------------------------------------
+       *
+       * Une page vide ou une page ne contenant plus aucune
+       * nouvelle décision signifie que nous avons atteint
+       * la fin.
+       */
+
+      if (
+        result.decisions.length === 0
+      ) {
+
+        console.log("");
+
+        console.log(
+          "Fin de pagination détectée : page vide."
+        );
+
+        break;
+
+      }
+
+
+      if (
+        newDecisions === 0
+      ) {
+
+        console.log("");
+
+        console.log(
+          "Fin de pagination détectée : aucune nouvelle décision."
+        );
+
+        break;
+
+      }
+
+
+      /*
+       * Si la page contient moins de 20 décisions,
+       * nous sommes normalement sur la dernière page.
+       */
+
+      if (
+        result.decisions.length <
+        PAGE_SIZE
+      ) {
+
+        console.log("");
+
+        console.log(
+          "Dernière page détectée : moins de 20 décisions."
+        );
+
+        break;
+
+      }
+
+    }
+
+
+    /*
+     * ----------------------------------------------------------
+     * 5. FINALISATION
+     * ----------------------------------------------------------
      */
 
     const decisions =
@@ -561,52 +750,53 @@ async function main() {
         ]
       );
 
-    console.log("");
-    console.log(
-      "=============================================="
-    );
-    console.log(
-      " COLLECTE TERMINÉE"
-    );
-    console.log(
-      "=============================================="
-    );
+
     console.log("");
 
     console.log(
-      `Pages visitées : ${visitedPages.size}`
+      "=============================================="
     );
+
+    console.log(
+      " COLLECTE TERMINÉE"
+    );
+
+    console.log(
+      "=============================================="
+    );
+
+    console.log("");
+
 
     console.log(
       `Décisions 2026 uniques : ${decisions.length}`
     );
 
+
     console.log("");
 
+
     /*
-     * --------------------------------------------------------
-     * SÉCURITÉ
-     * --------------------------------------------------------
-     *
-     * Nous savons que la collecte complète précédente
-     * produisait largement plus de 500 décisions.
-     *
-     * Si nous obtenons moins de 500 :
-     * ON BLOQUE.
+     * ----------------------------------------------------------
+     * 6. SÉCURITÉ
+     * ----------------------------------------------------------
      */
 
     if (
       decisions.length < 500
     ) {
+
       throw new Error(
-        `Sécurité : seulement ${decisions.length} décisions 2026 collectées. La pagination est incomplète. Aucun fichier de données n'est produit.`
+        `Sécurité : seulement ${decisions.length} décisions 2026 collectées. La collecte est considérée comme incomplète. Aucun fichier de données n'est produit.`
       );
+
     }
 
+
     /*
-     * --------------------------------------------------------
-     * VÉRIFICATION ANNÉE
-     * --------------------------------------------------------
+     * ----------------------------------------------------------
+     * 7. VÉRIFICATION ANNÉE
+     * ----------------------------------------------------------
      */
 
     const invalidYear =
@@ -617,18 +807,22 @@ async function main() {
           )
       );
 
+
     if (
       invalidYear.length > 0
     ) {
+
       throw new Error(
         `${invalidYear.length} décision(s) ne correspondent pas à une URL 2026.`
       );
+
     }
 
+
     /*
-     * --------------------------------------------------------
-     * TRI
-     * --------------------------------------------------------
+     * ----------------------------------------------------------
+     * 8. TRI
+     * ----------------------------------------------------------
      */
 
     decisions.sort(
@@ -638,28 +832,33 @@ async function main() {
         )
     );
 
+
     /*
-     * --------------------------------------------------------
-     * RÉPARTITION PAR DATE
-     * --------------------------------------------------------
+     * ----------------------------------------------------------
+     * 9. RÉPARTITION PAR DATE
+     * ----------------------------------------------------------
      */
 
     const byDate =
       new Map();
 
+
     for (
-      const decision of
-        decisions
+      const decision
+      of decisions
     ) {
+
       const match =
         decision.url.match(
           /\/decisions\/([^/]+)\//
         );
 
+
       const date =
         match
           ? match[1]
           : "inconnue";
+
 
       byDate.set(
         date,
@@ -669,27 +868,34 @@ async function main() {
           ) || 0
         ) + 1
       );
+
     }
+
 
     console.log(
       "Répartition par séance/date :"
     );
 
+
     for (
       const [
         date,
         count
-      ] of byDate
+      ]
+      of byDate
     ) {
+
       console.log(
         `  ${date} : ${count}`
       );
+
     }
 
+
     /*
-     * --------------------------------------------------------
-     * ÉCRITURE DU FICHIER
-     * --------------------------------------------------------
+     * ----------------------------------------------------------
+     * 10. ÉCRITURE
+     * ----------------------------------------------------------
      */
 
     fs.mkdirSync(
@@ -701,7 +907,9 @@ async function main() {
       }
     );
 
+
     const output = {
+
       commune:
         "Liège",
 
@@ -718,7 +926,9 @@ async function main() {
         decisions.length,
 
       decisions
+
     };
+
 
     fs.writeFileSync(
       OUTPUT,
@@ -730,45 +940,58 @@ async function main() {
       "utf8"
     );
 
+
     console.log("");
 
     console.log(
       `✓ Fichier créé : ${OUTPUT}`
     );
 
+
     console.log(
       `✓ ${decisions.length} décisions 2026 enregistrées`
     );
+
 
     console.log(
       "✓ Aucune donnée de production modifiée"
     );
 
+
     console.log("");
 
   } finally {
+
     await page.close();
 
     await browser.close();
+
   }
+
 }
 
+
 // ============================================================
-// GESTION DES ERREURS
+// ERREURS
 // ============================================================
 
 main().catch(
   error => {
+
     console.error("");
+
     console.error(
       "=============================================="
     );
+
     console.error(
       " ERREUR FATALE"
     );
+
     console.error(
       "=============================================="
     );
+
     console.error("");
 
     console.error(
@@ -776,5 +999,6 @@ main().catch(
     );
 
     process.exit(1);
+
   }
 );
