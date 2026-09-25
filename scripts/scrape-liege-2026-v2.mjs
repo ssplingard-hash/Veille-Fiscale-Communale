@@ -10,11 +10,15 @@ const OUTPUT =
 
 const YEAR = 2026;
 
-const MAX_PAGES = 150;
+const MIN_EXPECTED = 500;
+
+const MAX_PAGES = 500;
 
 const NAVIGATION_TIMEOUT = 60000;
 
 const WAIT_AFTER_LOAD = 800;
+
+const PAGE_SIZE = 20;
 
 
 // ============================================================
@@ -28,24 +32,6 @@ function clean(text = "") {
     .trim();
 }
 
-
-// ============================================================
-// IDENTIFICATION D'UNE DÉCISION 2026
-// ============================================================
-
-function isDecision2026(url) {
-  return (
-    typeof url === "string" &&
-    /\/liege\/decisions\/\d{1,2}-[a-zà-ÿ]+-2026-\d{1,2}-\d{2}\//i.test(
-      url
-    )
-  );
-}
-
-
-// ============================================================
-// NORMALISATION URL
-// ============================================================
 
 function normalizeUrl(url, baseUrl = BASE_URL) {
   if (!url) {
@@ -65,53 +51,30 @@ function normalizeUrl(url, baseUrl = BASE_URL) {
 }
 
 
-// ============================================================
-// EXTRACTION D'UNE PAGE
-// ============================================================
-
-async function extractPage(page, url) {
-
-  console.log("");
-  console.log(
-    "=============================================="
-  );
-  console.log("PAGE");
-  console.log(
-    "=============================================="
-  );
-  console.log(url);
-
-  await page.goto(url, {
-    waitUntil: "domcontentloaded",
-    timeout: NAVIGATION_TIMEOUT
-  });
-
-  await new Promise(resolve =>
-    setTimeout(
-      resolve,
-      WAIT_AFTER_LOAD
+function isDecision2026(url) {
+  return (
+    typeof url === "string" &&
+    /\/liege\/decisions\/\d{1,2}-[a-zà-ÿ]+-2026-\d{1,2}-\d{2}\//i.test(
+      url
     )
   );
+}
 
+
+// ============================================================
+// EXTRACTION DES DÉCISIONS D'UNE PAGE
+// ============================================================
+
+async function extractDecisions(page) {
   return await page.evaluate(() => {
-
     const decisions = [];
-
-    const pagination = [];
-
-
-    // ========================================================
-    // DÉCISIONS
-    // ========================================================
 
     document
       .querySelectorAll("a[href]")
-      .forEach(a => {
+      .forEach((a) => {
+        const href = a.href;
 
-        const href =
-          a.href;
-
-        const text =
+        const title =
           (
             a.innerText ||
             a.textContent ||
@@ -127,81 +90,188 @@ async function extractPage(page, url) {
             href
           )
         ) {
-
           decisions.push({
             url: href,
-            title: text
+            title
           });
-
         }
-
       });
 
-
-    // ========================================================
-    // PAGINATION
-    //
-    // IMPORTANT :
-    // On récupère TOUS les vrais liens de pagination.
-    //
-    // On ne regarde PAS seance[].
-    // On ne fabrique PAS les URLs.
-    // ========================================================
-
-    document
-      .querySelectorAll("a[href]")
-      .forEach(a => {
-
-        const href =
-          a.href;
-
-        if (!href) {
-          return;
-        }
-
-        if (
-          href.includes("@@faceted_query") &&
-          href.includes("b_start")
-        ) {
-
-          pagination.push(href);
-
-        }
-
-      });
-
-
-    return {
-      decisions,
-      pagination
-    };
-
+    return decisions;
   });
 }
 
 
 // ============================================================
-// DÉDUPLICATION
+// EXTRACTION DES IDENTIFIANTS DE SÉANCES
+//
+// On cherche les UUID associés à "seance" dans :
+// - href
+// - value
+// - data-*
+// - attributs
+// - HTML complet
 // ============================================================
 
-function deduplicateDecisions(
+async function extractSeanceIds(page) {
+  return await page.evaluate(() => {
+
+    const ids = new Set();
+
+    const uuidRegex =
+      /[0-9a-f]{32}/gi;
+
+
+    function addFromText(text) {
+      if (!text) {
+        return;
+      }
+
+      const matches =
+        text.match(uuidRegex);
+
+      if (!matches) {
+        return;
+      }
+
+      for (const id of matches) {
+        ids.add(id.toLowerCase());
+      }
+    }
+
+
+    // --------------------------------------------------------
+    // Attributs des éléments
+    // --------------------------------------------------------
+
+    document
+      .querySelectorAll("*")
+      .forEach((element) => {
+
+        for (
+          const attribute
+          of Array.from(element.attributes)
+        ) {
+
+          const name =
+            attribute.name
+              .toLowerCase();
+
+          const value =
+            attribute.value || "";
+
+
+          if (
+            name.includes("seance") ||
+            name.includes("session") ||
+            name.includes("facet") ||
+            name.includes("value") ||
+            name.startsWith("data-")
+          ) {
+            addFromText(value);
+          }
+        }
+      });
+
+
+    // --------------------------------------------------------
+    // Liens
+    // --------------------------------------------------------
+
+    document
+      .querySelectorAll("a[href]")
+      .forEach((a) => {
+
+        const href =
+          a.href || "";
+
+        const text =
+          a.innerText ||
+          a.textContent ||
+          "";
+
+        if (
+          href.includes("seance") ||
+          href.includes("session")
+        ) {
+          addFromText(href);
+          addFromText(text);
+        }
+      });
+
+
+    // --------------------------------------------------------
+    // HTML complet
+    // --------------------------------------------------------
+
+    addFromText(
+      document.documentElement.outerHTML
+    );
+
+
+    return Array.from(ids);
+  });
+}
+
+
+// ============================================================
+// CHARGEMENT D'UNE PAGE
+// ============================================================
+
+async function loadPage(page, url) {
+
+  console.log("");
+  console.log(
+    "----------------------------------------------"
+  );
+
+  console.log(
+    `Chargement : ${url}`
+  );
+
+
+  await page.goto(url, {
+    waitUntil: "domcontentloaded",
+    timeout: NAVIGATION_TIMEOUT
+  });
+
+
+  await new Promise((resolve) =>
+    setTimeout(
+      resolve,
+      WAIT_AFTER_LOAD
+    )
+  );
+
+
+  const decisions =
+    await extractDecisions(page);
+
+
+  console.log(
+    `Décisions 2026 visibles : ${decisions.length}`
+  );
+
+
+  return decisions;
+}
+
+
+// ============================================================
+// AJOUT DES DÉCISIONS
+// ============================================================
+
+function addDecisions(
+  map,
   decisions
 ) {
 
-  const map =
-    new Map();
+  let added = 0;
 
   for (
     const decision
     of decisions
   ) {
-
-    if (
-      !decision ||
-      !decision.url
-    ) {
-      continue;
-    }
 
     const url =
       normalizeUrl(
@@ -213,13 +283,18 @@ function deduplicateDecisions(
     }
 
     if (
+      !isDecision2026(url)
+    ) {
+      continue;
+    }
+
+    if (
       !map.has(url)
     ) {
 
       map.set(
         url,
         {
-          ...decision,
           url,
           title:
             clean(
@@ -228,13 +303,447 @@ function deduplicateDecisions(
         }
       );
 
+      added++;
     }
-
   }
 
-  return Array.from(
-    map.values()
+  return added;
+}
+
+
+// ============================================================
+// CONSTRUCTION D'UNE URL DE PAGINATION
+// ============================================================
+
+function paginationUrl(
+  start,
+  seanceId = null
+) {
+
+  const url =
+    new URL(
+      `${BASE_URL}/@@faceted_query`
+    );
+
+
+  url.searchParams.set(
+    "b_start:int",
+    String(start)
   );
+
+
+  if (seanceId) {
+
+    url.searchParams.set(
+      "seance[]",
+      seanceId
+    );
+  }
+
+
+  return url.href;
+}
+
+
+// ============================================================
+// STRATÉGIE 1 : PAGINATION SANS FILTRE DE SÉANCE
+// ============================================================
+
+async function collectWithoutSeance(
+  page,
+  allDecisions
+) {
+
+  console.log("");
+  console.log(
+    "=============================================="
+  );
+  console.log(
+    "STRATÉGIE 1 : PAGINATION SANS SÉANCE"
+  );
+  console.log(
+    "=============================================="
+  );
+
+
+  let consecutiveEmptyPages = 0;
+
+
+  for (
+    let start = 0;
+    start <= MAX_PAGES * PAGE_SIZE;
+    start += PAGE_SIZE
+  ) {
+
+    const url =
+      paginationUrl(start);
+
+
+    console.log("");
+    console.log(
+      `Pagination globale : ${start}`
+    );
+
+
+    try {
+
+      const decisions =
+        await loadPage(
+          page,
+          url
+        );
+
+
+      const added =
+        addDecisions(
+          allDecisions,
+          decisions
+        );
+
+
+      console.log(
+        `Nouvelles décisions 2026 : ${added}`
+      );
+
+
+      console.log(
+        `TOTAL UNIQUE 2026 : ${allDecisions.size}`
+      );
+
+
+      if (
+        added === 0
+      ) {
+
+        consecutiveEmptyPages++;
+
+      } else {
+
+        consecutiveEmptyPages = 0;
+      }
+
+
+      // ------------------------------------------------------
+      // Si plusieurs pages successives ne donnent plus rien,
+      // on considère que la série est terminée.
+      // ------------------------------------------------------
+
+      if (
+        consecutiveEmptyPages >= 2
+      ) {
+
+        console.log(
+          "Fin de la pagination globale."
+        );
+
+        break;
+      }
+
+    } catch (error) {
+
+      console.error(
+        `Erreur pagination ${start}:`,
+        error.message
+      );
+    }
+  }
+}
+
+
+// ============================================================
+// DÉCOUVERTE DES SÉANCES
+// ============================================================
+
+async function discoverSeances(
+  page
+) {
+
+  console.log("");
+  console.log(
+    "=============================================="
+  );
+  console.log(
+    "DÉCOUVERTE DES SÉANCES"
+  );
+  console.log(
+    "=============================================="
+  );
+
+
+  await page.goto(
+    BASE_URL,
+    {
+      waitUntil: "domcontentloaded",
+      timeout: NAVIGATION_TIMEOUT
+    }
+  );
+
+
+  await new Promise((resolve) =>
+    setTimeout(
+      resolve,
+      WAIT_AFTER_LOAD
+    )
+  );
+
+
+  const ids =
+    await extractSeanceIds(
+      page
+    );
+
+
+  console.log(
+    `Identifiants de séances détectés : ${ids.length}`
+  );
+
+
+  for (
+    const id
+    of ids
+  ) {
+
+    console.log(
+      `  - ${id}`
+    );
+  }
+
+
+  return ids;
+}
+
+
+// ============================================================
+// STRATÉGIE 2 : PAR SÉANCE
+// ============================================================
+
+async function collectBySeance(
+  page,
+  seanceIds,
+  allDecisions
+) {
+
+  console.log("");
+  console.log(
+    "=============================================="
+  );
+  console.log(
+    "STRATÉGIE 2 : COLLECTE PAR SÉANCE"
+  );
+  console.log(
+    "=============================================="
+  );
+
+
+  let sessionNumber = 0;
+
+
+  for (
+    const seanceId
+    of seanceIds
+  ) {
+
+    sessionNumber++;
+
+
+    console.log("");
+    console.log(
+      "=============================================="
+    );
+
+    console.log(
+      `SÉANCE ${sessionNumber}/${seanceIds.length}`
+    );
+
+    console.log(
+      `ID : ${seanceId}`
+    );
+
+    console.log(
+      "=============================================="
+    );
+
+
+    let consecutiveEmptyPages = 0;
+
+    let previousPageSignature =
+      null;
+
+
+    for (
+      let start = 0;
+      start <= MAX_PAGES * PAGE_SIZE;
+      start += PAGE_SIZE
+    ) {
+
+      const url =
+        paginationUrl(
+          start,
+          seanceId
+        );
+
+
+      try {
+
+        const decisions =
+          await loadPage(
+            page,
+            url
+          );
+
+
+        const signature =
+          decisions
+            .map(
+              decision =>
+                decision.url
+            )
+            .sort()
+            .join("|");
+
+
+        // ----------------------------------------------------
+        // Protection contre une URL qui renvoie toujours
+        // exactement la même page.
+        // ----------------------------------------------------
+
+        if (
+          signature &&
+          signature ===
+            previousPageSignature
+        ) {
+
+          console.log(
+            "Page identique à la précédente : fin de cette séance."
+          );
+
+          break;
+        }
+
+
+        previousPageSignature =
+          signature;
+
+
+        const added =
+          addDecisions(
+            allDecisions,
+            decisions
+          );
+
+
+        console.log(
+          `Nouvelles décisions 2026 : ${added}`
+        );
+
+
+        console.log(
+          `TOTAL UNIQUE 2026 : ${allDecisions.size}`
+        );
+
+
+        if (
+          decisions.length === 0
+        ) {
+
+          break;
+        }
+
+
+        if (
+          added === 0
+        ) {
+
+          consecutiveEmptyPages++;
+
+        } else {
+
+          consecutiveEmptyPages = 0;
+        }
+
+
+        if (
+          consecutiveEmptyPages >= 2
+        ) {
+
+          break;
+        }
+
+      } catch (error) {
+
+        console.error(
+          `Erreur séance ${seanceId}, offset ${start}:`,
+          error.message
+        );
+
+        break;
+      }
+    }
+  }
+}
+
+
+// ============================================================
+// STRATÉGIE 3 : DÉCOUVERTE DES LIENS DE SÉANCE
+// ============================================================
+//
+// Certaines versions du site ne mettent pas directement les
+// UUID dans les attributs classiques. On inspecte donc aussi
+// les liens de navigation présents sur la page.
+//
+// ============================================================
+
+async function discoverSeanceLinks(
+  page
+) {
+
+  await page.goto(
+    BASE_URL,
+    {
+      waitUntil: "domcontentloaded",
+      timeout: NAVIGATION_TIMEOUT
+    }
+  );
+
+
+  await new Promise((resolve) =>
+    setTimeout(
+      resolve,
+      WAIT_AFTER_LOAD
+    )
+  );
+
+
+  const links =
+    await page.evaluate(() => {
+
+      return Array.from(
+        document.querySelectorAll(
+          "a[href]"
+        )
+      )
+        .map(
+          a => ({
+            href:
+              a.href || "",
+            text:
+              (
+                a.innerText ||
+                a.textContent ||
+                ""
+              ).trim()
+          })
+        )
+        .filter(
+          item =>
+            item.href.includes(
+              "seance"
+            )
+        );
+    });
+
+
+  return links;
 }
 
 
@@ -245,331 +754,185 @@ function deduplicateDecisions(
 async function main() {
 
   console.log("");
-
   console.log(
     "=============================================="
   );
-
   console.log(
     "       COLLECTE LIÈGE 2026"
   );
-
   console.log(
     "=============================================="
   );
 
   console.log("");
-
   console.log(
-    `Année recherchée : ${YEAR}`
+    `Année : ${YEAR}`
   );
 
   console.log(
-    `URL de départ : ${BASE_URL}`
-  );
-
-  console.log("");
-
-  console.log(
-    "IMPORTANT : aucun fichier de production n'est modifié."
+    `Source : ${BASE_URL}`
   );
 
   console.log("");
+  console.log(
+    "Aucun fichier de production ne sera modifié."
+  );
 
 
   const browser =
     await puppeteer.launch({
-
       headless: true,
-
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
         "--disable-dev-shm-usage"
       ]
-
     });
 
 
   const page =
     await browser.newPage();
 
+
   page.setDefaultNavigationTimeout(
     NAVIGATION_TIMEOUT
   );
 
 
+  const allDecisions =
+    new Map();
+
+
   try {
 
     // ========================================================
-    // FILE DES PAGES
+    // ÉTAPE 1
     // ========================================================
 
-    const urlsToVisit =
-      [BASE_URL];
+    await collectWithoutSeance(
+      page,
+      allDecisions
+    );
 
-    const queuedPages =
-      new Set([
-        BASE_URL
-      ]);
 
-    const visitedPages =
-      new Set();
+    console.log("");
+    console.log(
+      "=============================================="
+    );
 
-    const allDecisions =
-      new Map();
+    console.log(
+      `Après stratégie 1 : ${allDecisions.size} décisions`
+    );
 
 
     // ========================================================
-    // EXPLORATION
+    // SI LA PAGINATION SANS SÉANCE SUFFIT
     // ========================================================
 
-    while (
-      urlsToVisit.length > 0 &&
-      visitedPages.size < MAX_PAGES
+    if (
+      allDecisions.size >=
+      MIN_EXPECTED
     ) {
 
-      const currentUrl =
-        urlsToVisit.shift();
+      console.log(
+        "✓ La pagination globale suffit."
+      );
 
+    } else {
+
+      // ======================================================
+      // ÉTAPE 2
+      // ======================================================
+
+      const seanceIds =
+        await discoverSeances(
+          page
+        );
+
+
+      // ======================================================
+      // ÉTAPE 3
+      // ======================================================
 
       if (
-        visitedPages.has(
-          currentUrl
-        )
+        seanceIds.length > 0
       ) {
-        continue;
+
+        await collectBySeance(
+          page,
+          seanceIds,
+          allDecisions
+        );
+
+      } else {
+
+        console.log(
+          "Aucun identifiant de séance supplémentaire détecté."
+        );
       }
 
 
-      visitedPages.add(
-        currentUrl
-      );
+      // ======================================================
+      // ÉTAPE 4
+      // ======================================================
+
+      const seanceLinks =
+        await discoverSeanceLinks(
+          page
+        );
 
 
       console.log("");
-
       console.log(
-        `PAGINATION : page ${visitedPages.size}`
-      );
-
-      console.log(
-        `URL visitée : ${currentUrl}`
+        `Liens contenant "seance" détectés : ${seanceLinks.length}`
       );
 
 
-      try {
-
-        const result =
-          await extractPage(
-            page,
-            currentUrl
-          );
-
-
-        // ====================================================
-        // DÉCISIONS 2026
-        // ====================================================
-
-        const decisions2026 =
-          result.decisions.filter(
-            decision =>
-              isDecision2026(
-                decision.url
-              )
-          );
-
+      for (
+        const link
+        of seanceLinks
+      ) {
 
         console.log(
-          `Décisions trouvées sur cette page : ${result.decisions.length}`
+          `  ${link.href}`
         );
-
-        console.log(
-          `Décisions 2026 sur cette page : ${decisions2026.length}`
-        );
-
-
-        let newDecisions =
-          0;
-
-
-        for (
-          const decision
-          of decisions2026
-        ) {
-
-          const url =
-            normalizeUrl(
-              decision.url
-            );
-
-
-          if (!url) {
-            continue;
-          }
-
-
-          if (
-            !allDecisions.has(url)
-          ) {
-
-            allDecisions.set(
-              url,
-              {
-                url,
-                title:
-                  clean(
-                    decision.title
-                  )
-              }
-            );
-
-
-            newDecisions++;
-
-          }
-
-        }
-
-
-        console.log(
-          `Nouvelles décisions 2026 : ${newDecisions}`
-        );
-
-        console.log(
-          `TOTAL UNIQUE 2026 : ${allDecisions.size}`
-        );
-
-
-        // ====================================================
-        // NOUVELLES PAGES DE PAGINATION
-        //
-        // C'est ici que nous reprenons EXACTEMENT
-        // l'approche du debug-scraper.
-        // ====================================================
-
-        let newPages =
-          0;
-
-
-        for (
-          const paginationUrlRaw
-          of result.pagination
-        ) {
-
-          const paginationUrl =
-            normalizeUrl(
-              paginationUrlRaw,
-              currentUrl
-            );
-
-
-          if (!paginationUrl) {
-            continue;
-          }
-
-
-          if (
-            visitedPages.has(
-              paginationUrl
-            )
-          ) {
-            continue;
-          }
-
-
-          if (
-            queuedPages.has(
-              paginationUrl
-            )
-          ) {
-            continue;
-          }
-
-
-          queuedPages.add(
-            paginationUrl
-          );
-
-
-          urlsToVisit.push(
-            paginationUrl
-          );
-
-
-          newPages++;
-
-        }
-
-
-        console.log(
-          `Nouvelles pages de pagination découvertes : ${newPages}`
-        );
-
-        console.log(
-          `Pages encore à visiter : ${urlsToVisit.length}`
-        );
-
-
-      } catch (error) {
-
-        console.error("");
-
-        console.error(
-          "ERREUR sur la page :"
-        );
-
-        console.error(
-          currentUrl
-        );
-
-        console.error(
-          error.message
-        );
-
       }
-
     }
 
 
     // ========================================================
-    // FIN DE COLLECTE
+    // RÉSULTAT FINAL
     // ========================================================
 
     const decisions =
-      deduplicateDecisions(
-        Array.from(
-          allDecisions.values()
-        )
+      Array.from(
+        allDecisions.values()
       );
 
 
-    console.log("");
+    decisions.sort(
+      (a, b) =>
+        a.url.localeCompare(
+          b.url
+        )
+    );
 
+
+    console.log("");
+    console.log(
+      "=============================================="
+    );
+    console.log(
+      "       RÉSULTAT FINAL"
+    );
     console.log(
       "=============================================="
     );
 
-    console.log(
-      "       COLLECTE TERMINÉE"
-    );
-
-    console.log(
-      "=============================================="
-    );
-
     console.log("");
-
-
     console.log(
-      `Pages visitées : ${visitedPages.size}`
+      `Décisions 2026 collectées : ${decisions.length}`
     );
-
-    console.log(
-      `Décisions 2026 uniques : ${decisions.length}`
-    );
-
-    console.log("");
 
 
     // ========================================================
@@ -577,21 +940,50 @@ async function main() {
     // ========================================================
 
     if (
-      decisions.length < 500
+      decisions.length <
+      MIN_EXPECTED
     ) {
 
-      throw new Error(
-        `Sécurité : seulement ${decisions.length} décisions 2026 collectées. La pagination est probablement incomplète. Aucun fichier de données n'est produit.`
+      console.error("");
+      console.error(
+        "=============================================="
       );
 
+      console.error(
+        "COLLECTE INSUFFISANTE"
+      );
+
+      console.error(
+        "=============================================="
+      );
+
+      console.error("");
+
+      console.error(
+        `Seulement ${decisions.length} décisions 2026 ont été collectées.`
+      );
+
+      console.error(
+        `Minimum attendu : ${MIN_EXPECTED}.`
+      );
+
+      console.error("");
+
+      console.error(
+        "Le fichier de données n'est PAS créé."
+      );
+
+      process.exitCode = 1;
+
+      return;
     }
 
 
     // ========================================================
-    // VÉRIFICATION ANNÉE
+    // VÉRIFICATION DE L'ANNÉE
     // ========================================================
 
-    const invalidYear =
+    const wrongYear =
       decisions.filter(
         decision =>
           !isDecision2026(
@@ -601,26 +993,13 @@ async function main() {
 
 
     if (
-      invalidYear.length > 0
+      wrongYear.length > 0
     ) {
 
       throw new Error(
-        `${invalidYear.length} décision(s) ne correspondent pas à une URL 2026.`
+        `${wrongYear.length} décision(s) ne correspondent pas à 2026.`
       );
-
     }
-
-
-    // ========================================================
-    // TRI
-    // ========================================================
-
-    decisions.sort(
-      (a, b) =>
-        a.url.localeCompare(
-          b.url
-        )
-    );
 
 
     // ========================================================
@@ -656,10 +1035,10 @@ async function main() {
           ) || 0
         ) + 1
       );
-
     }
 
 
+    console.log("");
     console.log(
       "Répartition par séance/date :"
     );
@@ -676,7 +1055,6 @@ async function main() {
       console.log(
         `  ${date} : ${count}`
       );
-
     }
 
 
@@ -712,7 +1090,6 @@ async function main() {
         decisions.length,
 
       decisions
-
     };
 
 
@@ -728,30 +1105,40 @@ async function main() {
 
 
     console.log("");
-
     console.log(
-      `✓ Fichier créé : ${OUTPUT}`
+      "=============================================="
     );
 
     console.log(
-      `✓ ${decisions.length} décisions 2026 enregistrées`
+      "COLLECTE RÉUSSIE"
     );
 
     console.log(
-      "✓ Aucune donnée de production modifiée"
+      "=============================================="
     );
 
     console.log("");
 
+    console.log(
+      `✓ ${decisions.length} décisions 2026`
+    );
+
+    console.log(
+      `✓ Fichier : ${OUTPUT}`
+    );
+
+    console.log(
+      "✓ Production inchangée"
+    );
+
+    console.log("");
 
   } finally {
 
     await page.close();
 
     await browser.close();
-
   }
-
 }
 
 
@@ -783,6 +1170,5 @@ main().catch(
     );
 
     process.exit(1);
-
   }
 );
