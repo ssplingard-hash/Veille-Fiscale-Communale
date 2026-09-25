@@ -119,29 +119,28 @@ function isDecisionUrl(url) {
   try {
     const u = new URL(url);
 
-    if (u.hostname !== "www.deliberations.be") {
+    if (
+      u.hostname !== "www.deliberations.be"
+    ) {
       return false;
     }
 
-    const parts = u.pathname
-      .split("/")
-      .filter(Boolean);
+    const parts =
+      u.pathname
+        .split("/")
+        .filter(Boolean);
 
-    if (parts[0] !== "liege") {
+    if (
+      parts[0] !== "liege" ||
+      parts[1] !== "decisions" ||
+      parts.length < 4
+    ) {
       return false;
     }
 
-    if (parts[1] !== "decisions") {
-      return false;
-    }
-
-    if (parts.length < 4) {
-      return false;
-    }
-
-    const date = parseDecisionDate(url);
-
-    return Boolean(date);
+    return Boolean(
+      parseDecisionDate(url)
+    );
   } catch {
     return false;
   }
@@ -155,15 +154,18 @@ async function getPageLinks(page, url) {
     });
   } catch (error) {
     console.log(
-      `⚠️ Navigation ${url} : ${error.message}`
+      `⚠️ Navigation : ${error.message}`
     );
   }
 
-  // deliberations.be charge une partie du contenu en JS.
   await sleep(2000);
 
   return await page.evaluate(() => {
-    return [...document.querySelectorAll("a[href]")]
+    return [
+      ...document.querySelectorAll(
+        "a[href]"
+      )
+    ]
       .map(a => ({
         href: a.href,
         text: (
@@ -179,17 +181,17 @@ async function getPageLinks(page, url) {
 }
 
 function decisionFromLink(link) {
-  const url = normalizeUrl(link.href);
+  const url =
+    normalizeUrl(link.href);
 
-  if (!url) {
-    return null;
-  }
+  if (!url) return null;
 
   if (!isDecisionUrl(url)) {
     return null;
   }
 
-  const date = parseDecisionDate(url);
+  const date =
+    parseDecisionDate(url);
 
   if (!date) {
     return null;
@@ -202,20 +204,34 @@ function decisionFromLink(link) {
   };
 }
 
-async function collectPage(page, offset) {
+async function collectPage(
+  page,
+  offset
+) {
+  /*
+   * IMPORTANT :
+   * Plone utilise b_start:int pour la pagination
+   * côté serveur.
+   */
   const url =
     offset === 0
       ? BASE_URL
-      : `${BASE_URL}#b_start=${offset}`;
+      : `${BASE_URL}?b_start:int=${offset}`;
 
   console.log("");
-  console.log(`--- Offset ${offset} ---`);
+  console.log(
+    `--- Offset ${offset} ---`
+  );
   console.log(url);
 
   const links =
-    await getPageLinks(page, url);
+    await getPageLinks(
+      page,
+      url
+    );
 
-  const decisions = new Map();
+  const decisions =
+    new Map();
 
   for (const link of links) {
     const decision =
@@ -295,8 +311,14 @@ async function main() {
 
       let newCount = 0;
 
-      for (const decision of decisions) {
-        if (!all.has(decision.url)) {
+      for (
+        const decision of decisions
+      ) {
+        if (
+          !all.has(
+            decision.url
+          )
+        ) {
           all.set(
             decision.url,
             decision
@@ -317,7 +339,8 @@ async function main() {
       }
 
       if (
-        emptyPages >= MAX_EMPTY_PAGES
+        emptyPages >=
+        MAX_EMPTY_PAGES
       ) {
         console.log(
           "Fin de pagination détectée."
@@ -334,9 +357,8 @@ async function main() {
 
   const decisions2026 =
     allDecisions.filter(
-      d =>
-        d.date &&
-        d.date.year === 2026
+      decision =>
+        decision.date?.year === 2026
     );
 
   console.log("");
@@ -360,7 +382,9 @@ async function main() {
 
   const years = {};
 
-  for (const decision of allDecisions) {
+  for (
+    const decision of allDecisions
+  ) {
     const year =
       decision.date?.year;
 
@@ -384,21 +408,19 @@ async function main() {
   }
 
   /*
-   * Sécurité :
-   * nous avons déjà validé qu'une collecte
-   * normale donne largement plus de 500 décisions
-   * pour Liège en 2026.
+   * Sécurité.
    */
-  if (decisions2026.length < 500) {
+  if (
+    decisions2026.length < 500
+  ) {
     throw new Error(
-      `Sécurité : seulement ${decisions2026.length} décisions 2026 collectées. Aucun fichier de production n'est modifié.`
+      `Sécurité : seulement ${decisions2026.length} décisions 2026 collectées.`
     );
   }
 
-  /*
-   * Vérification finale.
-   */
-  for (const decision of decisions2026) {
+  for (
+    const decision of decisions2026
+  ) {
     if (
       !decision.date ||
       decision.date.year !== 2026
@@ -414,7 +436,8 @@ async function main() {
     annee: 2026,
     updatedAt:
       new Date().toISOString(),
-    source: BASE_URL,
+    source:
+      BASE_URL,
     count:
       decisions2026.length,
     decisions:
