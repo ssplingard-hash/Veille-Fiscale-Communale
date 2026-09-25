@@ -2,155 +2,93 @@ import fs from "fs";
 import path from "path";
 import puppeteer from "puppeteer";
 
-const OUTPUT = "tmp/liege-2026-analysis.json";
-
 const BASE_URL =
   "https://www.deliberations.be/liege/decisions";
 
-const TIMEOUT = 90000;
-const OFFSET_STEP = 20;
-const MAX_OFFSET = 4000;
-const MAX_EMPTY_PAGES = 3;
+const OUTPUT =
+  "tmp/liege-2026-analysis.json";
 
-const MONTHS = {
-  janvier: 1,
-  février: 2,
-  fevrier: 2,
-  mars: 3,
-  avril: 4,
-  mai: 5,
-  juin: 6,
-  juillet: 7,
-  août: 8,
-  aout: 8,
-  septembre: 9,
-  octobre: 10,
-  novembre: 11,
-  décembre: 12,
-  decembre: 12
-};
+const YEAR = 2026;
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+const MAX_PAGES = 150;
+
+const NAVIGATION_TIMEOUT = 90000;
+
+const WAIT_AFTER_LOAD = 1200;
+
+// ============================================================
+// OUTILS
+// ============================================================
+
+function clean(text = "") {
+  return text
+    .replace(/\u00a0/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
-function normalizeUrl(url) {
-  if (!url) return null;
+function normalizeUrl(url, baseUrl = BASE_URL) {
+  if (!url) {
+    return null;
+  }
 
   try {
-    const u = new URL(url);
-    u.hash = "";
-    return u.href;
+    const absolute =
+      new URL(url, baseUrl);
+
+    absolute.hash = "";
+
+    return absolute.href;
   } catch {
     return null;
   }
 }
 
-function parseDecisionDate(url) {
-  if (!url) return null;
+// ============================================================
+// IDENTIFICATION D'UNE DÉCISION 2026
+// ============================================================
 
-  try {
-    const u = new URL(url);
-
-    const parts = u.pathname
-      .split("/")
-      .filter(Boolean);
-
-    const index = parts.indexOf("decisions");
-
-    if (index === -1) {
-      return null;
-    }
-
-    const datePart = parts[index + 1];
-
-    if (!datePart) {
-      return null;
-    }
-
-    const match = datePart.match(
-      /^(\d{1,2})-([a-zàâäçéèêëîïôöùûüÿœæ]+)-(\d{4})(?:-(\d{1,2})-(\d{2}))?$/i
-    );
-
-    if (!match) {
-      return null;
-    }
-
-    const day = Number(match[1]);
-    const monthName = match[2].toLowerCase();
-    const year = Number(match[3]);
-
-    const hour =
-      match[4] !== undefined
-        ? Number(match[4])
-        : null;
-
-    const minute =
-      match[5] !== undefined
-        ? Number(match[5])
-        : null;
-
-    const month = MONTHS[monthName];
-
-    if (!month) {
-      return null;
-    }
-
-    return {
-      day,
-      month,
-      year,
-      hour,
-      minute,
-      raw: `${day}-${monthName}-${year}${
-        hour !== null
-          ? `-${String(hour).padStart(2, "0")}-${String(minute).padStart(2, "0")}`
-          : ""
-      }`
-    };
-  } catch {
-    return null;
-  }
+function isDecision2026(url) {
+  return (
+    typeof url === "string" &&
+    /\/liege\/decisions\/\d{1,2}-[a-zà-ÿ]+-2026-\d{1,2}-\d{2}\//i.test(
+      url
+    )
+  );
 }
+
+// ============================================================
+// IDENTIFICATION D'UNE DÉCISION LIÈGE
+// ============================================================
 
 function isDecisionUrl(url) {
-  if (!url) return false;
-
-  try {
-    const u = new URL(url);
-
-    if (
-      u.hostname !== "www.deliberations.be"
-    ) {
-      return false;
-    }
-
-    const parts =
-      u.pathname
-        .split("/")
-        .filter(Boolean);
-
-    if (
-      parts[0] !== "liege" ||
-      parts[1] !== "decisions" ||
-      parts.length < 4
-    ) {
-      return false;
-    }
-
-    return Boolean(
-      parseDecisionDate(url)
-    );
-  } catch {
-    return false;
-  }
+  return (
+    typeof url === "string" &&
+    /\/liege\/decisions\/\d{1,2}-[a-zà-ÿ]+-\d{4}-\d{1,2}-\d{2}\//i.test(
+      url
+    )
+  );
 }
 
-async function getPageLinks(page, url) {
+// ============================================================
+// EXTRACTION D'UNE PAGE
+// ============================================================
+
+async function extractPage(page, url) {
+  console.log("");
+  console.log(
+    "=============================================="
+  );
+  console.log("PAGE");
+  console.log(
+    "=============================================="
+  );
+  console.log(url);
+
   try {
     await page.goto(url, {
       waitUntil: "domcontentloaded",
-      timeout: TIMEOUT
+      timeout: NAVIGATION_TIMEOUT
     });
   } catch (error) {
     console.log(
@@ -158,102 +96,196 @@ async function getPageLinks(page, url) {
     );
   }
 
-  await sleep(2000);
+  /*
+   * Le site construit une partie de son contenu
+   * côté navigateur.
+   */
+  await new Promise(resolve =>
+    setTimeout(
+      resolve,
+      WAIT_AFTER_LOAD
+    )
+  );
 
   return await page.evaluate(() => {
-    return [
-      ...document.querySelectorAll(
-        "a[href]"
-      )
-    ]
-      .map(a => ({
-        href: a.href,
-        text: (
+    const decisions = [];
+
+    const pagination = [];
+
+    /*
+     * ----------------------------------------------------------
+     * DÉCISIONS
+     * ----------------------------------------------------------
+     */
+
+    document
+      .querySelectorAll("a[href]")
+      .forEach(a => {
+        const href =
+          a.href ||
+          a.getAttribute("href");
+
+        const text = (
           a.innerText ||
           a.textContent ||
           ""
         )
           .replace(/\s+/g, " ")
-          .trim()
-      }))
-      .filter(x => x.href);
+          .trim();
+
+        if (!href) {
+          return;
+        }
+
+        /*
+         * On récupère toutes les décisions.
+         * Le filtrage 2026 est fait ensuite à partir
+         * de l'année présente dans l'URL.
+         */
+        if (
+          /\/liege\/decisions\/\d{1,2}-[a-zà-ÿ]+-\d{4}-\d{1,2}-\d{2}\//i.test(
+            href
+          )
+        ) {
+          decisions.push({
+            url: href,
+            title: text
+          });
+        }
+      });
+
+    /*
+     * ----------------------------------------------------------
+     * PAGINATION
+     * ----------------------------------------------------------
+     *
+     * IMPORTANT :
+     *
+     * Nous NE fabriquons PAS les URLs.
+     *
+     * Nous récupérons les liens réellement fournis
+     * par deliberations.be.
+     *
+     * Le site utilise notamment :
+     *
+     * @@faceted_query
+     *
+     * avec :
+     *
+     * b_start
+     *
+     */
+
+    document
+      .querySelectorAll("a[href]")
+      .forEach(a => {
+        const href =
+          a.href ||
+          a.getAttribute("href");
+
+        if (!href) {
+          return;
+        }
+
+        if (
+          href.includes(
+            "@@faceted_query"
+          ) &&
+          href.includes(
+            "b_start"
+          )
+        ) {
+          pagination.push(href);
+        }
+      });
+
+    /*
+     * On récupère également les liens contenant
+     * b_start qui pourraient utiliser une variante
+     * de l'URL.
+     */
+    document
+      .querySelectorAll("a[href]")
+      .forEach(a => {
+        const href =
+          a.href ||
+          a.getAttribute("href");
+
+        if (!href) {
+          return;
+        }
+
+        if (
+          href.includes("b_start") &&
+          (
+            href.includes(
+              "/liege/decisions"
+            ) ||
+            href.includes(
+              "@@faceted_query"
+            )
+          )
+        ) {
+          pagination.push(href);
+        }
+      });
+
+    return {
+      decisions,
+      pagination
+    };
   });
 }
 
-function decisionFromLink(link) {
-  const url =
-    normalizeUrl(link.href);
+// ============================================================
+// DÉDUPLICATION
+// ============================================================
 
-  if (!url) return null;
-
-  if (!isDecisionUrl(url)) {
-    return null;
-  }
-
-  const date =
-    parseDecisionDate(url);
-
-  if (!date) {
-    return null;
-  }
-
-  return {
-    url,
-    title: link.text || "",
-    date
-  };
-}
-
-async function collectPage(
-  page,
-  offset
+function deduplicateByUrl(
+  decisions
 ) {
-  /*
-   * IMPORTANT :
-   * Plone utilise b_start:int pour la pagination
-   * côté serveur.
-   */
-  const url =
-    offset === 0
-      ? BASE_URL
-      : `${BASE_URL}?b_start:int=${offset}`;
+  const map = new Map();
 
-  console.log("");
-  console.log(
-    `--- Offset ${offset} ---`
-  );
-  console.log(url);
+  for (
+    const decision of decisions
+  ) {
+    if (
+      !decision ||
+      !decision.url
+    ) {
+      continue;
+    }
 
-  const links =
-    await getPageLinks(
-      page,
-      url
-    );
+    const url =
+      normalizeUrl(
+        decision.url
+      );
 
-  const decisions =
-    new Map();
+    if (!url) {
+      continue;
+    }
 
-  for (const link of links) {
-    const decision =
-      decisionFromLink(link);
-
-    if (decision) {
-      decisions.set(
-        decision.url,
-        decision
+    if (
+      !map.has(url)
+    ) {
+      map.set(
+        url,
+        {
+          ...decision,
+          url
+        }
       );
     }
   }
 
-  const result =
-    [...decisions.values()];
-
-  console.log(
-    `Décisions trouvées : ${result.length}`
-  );
-
-  return result;
+  return [
+    ...map.values()
+  ];
 }
+
+// ============================================================
+// MAIN
+// ============================================================
 
 async function main() {
   console.log("");
@@ -266,13 +298,29 @@ async function main() {
   console.log(
     "=============================================="
   );
+  console.log("");
 
-  fs.mkdirSync(
-    path.dirname(OUTPUT),
-    {
-      recursive: true
-    }
+  console.log(
+    `Année recherchée : ${YEAR}`
   );
+
+  console.log(
+    `URL de départ : ${BASE_URL}`
+  );
+
+  console.log("");
+
+  console.log(
+    "IMPORTANT : ce script ne modifie PAS les données de production."
+  );
+
+  console.log("");
+
+  /*
+   * ----------------------------------------------------------
+   * LANCEMENT DU NAVIGATEUR
+   * ----------------------------------------------------------
+   */
 
   const browser =
     await puppeteer.launch({
@@ -288,191 +336,445 @@ async function main() {
   const page =
     await browser.newPage();
 
-  await page.setDefaultNavigationTimeout(
-    TIMEOUT
+  page.setDefaultNavigationTimeout(
+    NAVIGATION_TIMEOUT
   );
-
-  const all =
-    new Map();
-
-  let emptyPages = 0;
 
   try {
-    for (
-      let offset = 0;
-      offset <= MAX_OFFSET;
-      offset += OFFSET_STEP
+    /*
+     * --------------------------------------------------------
+     * FILE DES PAGES À VISITER
+     * --------------------------------------------------------
+     */
+
+    const urlsToVisit = [
+      BASE_URL
+    ];
+
+    const queuedPages =
+      new Set([
+        BASE_URL
+      ]);
+
+    const visitedPages =
+      new Set();
+
+    /*
+     * Toutes les décisions trouvées.
+     */
+    const allDecisions =
+      new Map();
+
+    /*
+     * --------------------------------------------------------
+     * PAGINATION
+     * --------------------------------------------------------
+     */
+
+    while (
+      urlsToVisit.length > 0 &&
+      visitedPages.size <
+        MAX_PAGES
     ) {
-      const decisions =
-        await collectPage(
-          page,
-          offset
-        );
-
-      let newCount = 0;
-
-      for (
-        const decision of decisions
-      ) {
-        if (
-          !all.has(
-            decision.url
-          )
-        ) {
-          all.set(
-            decision.url,
-            decision
-          );
-
-          newCount++;
-        }
-      }
-
-      console.log(
-        `Nouvelles décisions : ${newCount}`
-      );
-
-      if (newCount === 0) {
-        emptyPages++;
-      } else {
-        emptyPages = 0;
-      }
+      const currentUrl =
+        urlsToVisit.shift();
 
       if (
-        emptyPages >=
-        MAX_EMPTY_PAGES
+        visitedPages.has(
+          currentUrl
+        )
       ) {
+        continue;
+      }
+
+      visitedPages.add(
+        currentUrl
+      );
+
+      console.log("");
+      console.log(
+        `PAGINATION : page ${visitedPages.size}`
+      );
+
+      console.log(
+        `Pages restantes dans la file : ${urlsToVisit.length}`
+      );
+
+      try {
+        const result =
+          await extractPage(
+            page,
+            currentUrl
+          );
+
+        /*
+         * ----------------------------------------------------
+         * DÉCISIONS
+         * ----------------------------------------------------
+         */
+
+        const decisions2026 =
+          result.decisions.filter(
+            decision =>
+              isDecision2026(
+                decision.url
+              )
+          );
+
         console.log(
-          "Fin de pagination détectée."
+          `Décisions trouvées sur cette page : ${result.decisions.length}`
         );
-        break;
+
+        console.log(
+          `Décisions 2026 sur cette page : ${decisions2026.length}`
+        );
+
+        let newDecisions =
+          0;
+
+        for (
+          const decision of
+            decisions2026
+        ) {
+          const url =
+            normalizeUrl(
+              decision.url
+            );
+
+          if (!url) {
+            continue;
+          }
+
+          if (
+            !allDecisions.has(
+              url
+            )
+          ) {
+            allDecisions.set(
+              url,
+              {
+                url,
+                title:
+                  clean(
+                    decision.title
+                  )
+              }
+            );
+
+            newDecisions++;
+          }
+        }
+
+        console.log(
+          `Nouvelles décisions 2026 : ${newDecisions}`
+        );
+
+        console.log(
+          `TOTAL UNIQUE 2026 : ${allDecisions.size}`
+        );
+
+        /*
+         * ----------------------------------------------------
+         * PAGINATION DÉCOUVERTE
+         * ----------------------------------------------------
+         */
+
+        let newPages =
+          0;
+
+        for (
+          const paginationUrlRaw of
+            result.pagination
+        ) {
+          const paginationUrl =
+            normalizeUrl(
+              paginationUrlRaw,
+              currentUrl
+            );
+
+          if (!paginationUrl) {
+            continue;
+          }
+
+          if (
+            visitedPages.has(
+              paginationUrl
+            )
+          ) {
+            continue;
+          }
+
+          if (
+            queuedPages.has(
+              paginationUrl
+            )
+          ) {
+            continue;
+          }
+
+          queuedPages.add(
+            paginationUrl
+          );
+
+          urlsToVisit.push(
+            paginationUrl
+          );
+
+          newPages++;
+        }
+
+        console.log(
+          `Nouvelles pages de pagination découvertes : ${newPages}`
+        );
+
+        console.log(
+          `Pages encore à visiter : ${urlsToVisit.length}`
+        );
+
+      } catch (error) {
+        console.error("");
+
+        console.error(
+          "ERREUR SUR LA PAGE :"
+        );
+
+        console.error(
+          currentUrl
+        );
+
+        console.error(
+          error.message
+        );
       }
     }
-  } finally {
-    await browser.close();
-  }
 
-  const allDecisions =
-    [...all.values()];
+    /*
+     * --------------------------------------------------------
+     * FIN DE COLLECTE
+     * --------------------------------------------------------
+     */
 
-  const decisions2026 =
-    allDecisions.filter(
-      decision =>
-        decision.date?.year === 2026
-    );
+    const decisions =
+      deduplicateByUrl(
+        [
+          ...allDecisions.values()
+        ]
+      );
 
-  console.log("");
-  console.log(
-    "=============================================="
-  );
-  console.log(
-    " RÉSULTAT COLLECTE"
-  );
-  console.log(
-    "=============================================="
-  );
-
-  console.log(
-    `Décisions uniques : ${allDecisions.length}`
-  );
-
-  console.log(
-    `Décisions 2026 : ${decisions2026.length}`
-  );
-
-  const years = {};
-
-  for (
-    const decision of allDecisions
-  ) {
-    const year =
-      decision.date?.year;
-
-    if (year) {
-      years[year] =
-        (years[year] || 0) + 1;
-    }
-  }
-
-  console.log("");
-  console.log(
-    "Répartition par année :"
-  );
-
-  for (
-    const year of Object.keys(years).sort()
-  ) {
+    console.log("");
     console.log(
-      `  ${year} : ${years[year]}`
+      "=============================================="
     );
-  }
-
-  /*
-   * Sécurité.
-   */
-  if (
-    decisions2026.length < 500
-  ) {
-    throw new Error(
-      `Sécurité : seulement ${decisions2026.length} décisions 2026 collectées.`
+    console.log(
+      " COLLECTE TERMINÉE"
     );
-  }
+    console.log(
+      "=============================================="
+    );
+    console.log("");
 
-  for (
-    const decision of decisions2026
-  ) {
+    console.log(
+      `Pages visitées : ${visitedPages.size}`
+    );
+
+    console.log(
+      `Décisions 2026 uniques : ${decisions.length}`
+    );
+
+    console.log("");
+
+    /*
+     * --------------------------------------------------------
+     * SÉCURITÉ
+     * --------------------------------------------------------
+     *
+     * Nous savons que la collecte complète précédente
+     * produisait largement plus de 500 décisions.
+     *
+     * Si nous obtenons moins de 500 :
+     * ON BLOQUE.
+     */
+
     if (
-      !decision.date ||
-      decision.date.year !== 2026
+      decisions.length < 500
     ) {
       throw new Error(
-        `Décision non-2026 détectée : ${decision.url}`
+        `Sécurité : seulement ${decisions.length} décisions 2026 collectées. La pagination est incomplète. Aucun fichier de données n'est produit.`
       );
     }
+
+    /*
+     * --------------------------------------------------------
+     * VÉRIFICATION ANNÉE
+     * --------------------------------------------------------
+     */
+
+    const invalidYear =
+      decisions.filter(
+        decision =>
+          !isDecision2026(
+            decision.url
+          )
+      );
+
+    if (
+      invalidYear.length > 0
+    ) {
+      throw new Error(
+        `${invalidYear.length} décision(s) ne correspondent pas à une URL 2026.`
+      );
+    }
+
+    /*
+     * --------------------------------------------------------
+     * TRI
+     * --------------------------------------------------------
+     */
+
+    decisions.sort(
+      (a, b) =>
+        a.url.localeCompare(
+          b.url
+        )
+    );
+
+    /*
+     * --------------------------------------------------------
+     * RÉPARTITION PAR DATE
+     * --------------------------------------------------------
+     */
+
+    const byDate =
+      new Map();
+
+    for (
+      const decision of
+        decisions
+    ) {
+      const match =
+        decision.url.match(
+          /\/decisions\/([^/]+)\//
+        );
+
+      const date =
+        match
+          ? match[1]
+          : "inconnue";
+
+      byDate.set(
+        date,
+        (
+          byDate.get(
+            date
+          ) || 0
+        ) + 1
+      );
+    }
+
+    console.log(
+      "Répartition par séance/date :"
+    );
+
+    for (
+      const [
+        date,
+        count
+      ] of byDate
+    ) {
+      console.log(
+        `  ${date} : ${count}`
+      );
+    }
+
+    /*
+     * --------------------------------------------------------
+     * ÉCRITURE DU FICHIER
+     * --------------------------------------------------------
+     */
+
+    fs.mkdirSync(
+      path.dirname(
+        OUTPUT
+      ),
+      {
+        recursive: true
+      }
+    );
+
+    const output = {
+      commune:
+        "Liège",
+
+      annee:
+        YEAR,
+
+      updatedAt:
+        new Date().toISOString(),
+
+      source:
+        BASE_URL,
+
+      count:
+        decisions.length,
+
+      decisions
+    };
+
+    fs.writeFileSync(
+      OUTPUT,
+      JSON.stringify(
+        output,
+        null,
+        2
+      ),
+      "utf8"
+    );
+
+    console.log("");
+
+    console.log(
+      `✓ Fichier créé : ${OUTPUT}`
+    );
+
+    console.log(
+      `✓ ${decisions.length} décisions 2026 enregistrées`
+    );
+
+    console.log(
+      "✓ Aucune donnée de production modifiée"
+    );
+
+    console.log("");
+
+  } finally {
+    await page.close();
+
+    await browser.close();
   }
-
-  const output = {
-    commune: "Liège",
-    annee: 2026,
-    updatedAt:
-      new Date().toISOString(),
-    source:
-      BASE_URL,
-    count:
-      decisions2026.length,
-    decisions:
-      decisions2026
-  };
-
-  fs.writeFileSync(
-    OUTPUT,
-    JSON.stringify(
-      output,
-      null,
-      2
-    ),
-    "utf8"
-  );
-
-  console.log("");
-  console.log(
-    `✓ Fichier créé : ${OUTPUT}`
-  );
-
-  console.log(
-    `✓ ${decisions2026.length} décisions 2026 enregistrées`
-  );
-
-  console.log(
-    "✓ Données de production inchangées"
-  );
 }
 
-main().catch(error => {
-  console.error("");
-  console.error(
-    "❌ ERREUR FATALE"
-  );
-  console.error(error);
-  process.exit(1);
-});
+// ============================================================
+// GESTION DES ERREURS
+// ============================================================
+
+main().catch(
+  error => {
+    console.error("");
+    console.error(
+      "=============================================="
+    );
+    console.error(
+      " ERREUR FATALE"
+    );
+    console.error(
+      "=============================================="
+    );
+    console.error("");
+
+    console.error(
+      error
+    );
+
+    process.exit(1);
+  }
+);
