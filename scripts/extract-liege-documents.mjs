@@ -1,1172 +1,587 @@
-import fs from "fs";
-import path from "path";
-import os from "os";
-import { execFile } from "child_process";
-import { promisify } from "util";
+import fs from "node:fs/promises";
+import path from "node:path";
+import { spawn } from "node:child_process";
 import puppeteer from "puppeteer";
 
-const INPUT =
-  "tmp/liege-2026-analysis.json";
+const INPUT = "tmp/liege-2026-analysis.json";
+const OUTPUT = "tmp/liege-2026-texts.json";
 
-const OUTPUT =
-  "tmp/liege-2026-texts.json";
+const TEXT_DIR = "tmp/liege-2026-text";
+const PDF_DIR = "tmp/liege-2026-pdf";
 
 const CONCURRENCY = 5;
+const NAVIGATION_TIMEOUT = 60000;
+const NETWORK_IDLE_TIMEOUT = 30000;
 
-const TIMEOUT = 90000;
+const USER_AGENT =
+  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 " +
+  "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
 
-const RETRIES = 2;
-
-const PAGE_WAIT = 1800;
-
-const execFileAsync =
-  promisify(execFile);
-
-function sleep(ms) {
-  return new Promise(
-    resolve => setTimeout(resolve, ms)
-  );
+function log(message) {
+  console.log(`[EXTRACT] ${message}`);
 }
 
-function normalizeUrl(
-  url,
-  baseUrl
-) {
-  if (!url) return null;
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
-  try {
-    return new URL(
-      url,
-      baseUrl
-    ).href;
-  } catch {
-    return null;
-  }
+function safeFilename(value) {
+  return value
+    .replace(/[^a-zA-Z0-9._-]+/g, "_")
+    .replace(/_+/g, "_")
+    .replace(/^_+|_+$/g, "")
+    .slice(0, 180);
 }
 
 function isPdfUrl(url) {
-  if (!url) return false;
-
-  const value =
-    url.toLowerCase();
-
-  return (
-    value.includes(".pdf") ||
-    value.includes(
-      "application/pdf"
-    ) ||
-    value.includes(
-      "/@@download/"
-    ) ||
-    value.includes(
-      "/download/"
-    ) ||
-    value.includes(
-      "download"
-    )
-  );
-}
-
-function candidateScore(item) {
-  const url =
-    (item.url || "")
-      .toLowerCase();
-
-  const text =
-    (item.text || "")
-      .toLowerCase();
-
-  let score = 0;
-
-  if (
-    url.endsWith(".pdf") ||
-    url.includes(".pdf?")
-  ) {
-    score += 100;
-  }
-
-  if (
-    url.includes("/@@download/")
-  ) {
-    score += 90;
-  }
-
-  if (
-    url.includes("download")
-  ) {
-    score += 60;
-  }
-
-  if (
-    url.includes("pdf")
-  ) {
-    score += 50;
-  }
-
-  if (
-    url.includes("document")
-  ) {
-    score += 25;
-  }
-
-  if (
-    url.includes("preview")
-  ) {
-    score += 20;
-  }
-
-  if (
-    text.includes("pdf")
-  ) {
-    score += 40;
-  }
-
-  if (
-    text.includes("télécharger") ||
-    text.includes("telecharger")
-  ) {
-    score += 35;
-  }
-
-  if (
-    text.includes("document")
-  ) {
-    score += 25;
-  }
-
-  if (
-    text.includes("délibération") ||
-    text.includes("deliberation")
-  ) {
-    score += 20;
-  }
-
-  return score;
-}
-
-async function findPdfCandidates(
-  page,
-  decisionUrl
-) {
-  const discovered =
-    new Map();
-
-  function addCandidate(
-    url,
-    text,
-    source
-  ) {
-    const normalized =
-      normalizeUrl(
-        url,
-        decisionUrl
-      );
-
-    if (!normalized) {
-      return;
-    }
-
-    if (
-      !normalized.startsWith(
-        "http://"
-      ) &&
-      !normalized.startsWith(
-        "https://"
-      )
-    ) {
-      return;
-    }
-
-    const existing =
-      discovered.get(
-        normalized
-      );
-
-    const item = {
-      url: normalized,
-      text: text || "",
-      source:
-        source || "page"
-    };
-
-    if (
-      !existing ||
-      candidateScore(item) >
-        candidateScore(existing)
-    ) {
-      discovered.set(
-        normalized,
-        item
-      );
-    }
-  }
-
-  /*
-   * Si l'URL elle-même est un PDF,
-   * aucun besoin de chercher plus loin.
-   */
-  if (
-    isPdfUrl(decisionUrl)
-  ) {
-    addCandidate(
-      decisionUrl,
-      "URL directe",
-      "decision-url"
+  try {
+    const parsed = new URL(url);
+    return (
+      parsed.pathname.toLowerCase().endsWith(".pdf") ||
+      parsed.pathname.toLowerCase().includes("/@@download/")
     );
+  } catch {
+    return false;
+  }
+}
+
+function looksLikePdfBuffer(buffer) {
+  if (!buffer || buffer.length < 5) {
+    return false;
   }
 
-  const networkPdfUrls =
-    new Set();
+  return buffer.subarray(0, 5).toString("ascii") === "%PDF-";
+}
 
-  const responseHandler =
-    response => {
-      try {
-        const url =
-          response.url();
+function runPdftotext(pdfPath, txtPath) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(
+      "pdftotext",
+      ["-layout", pdfPath, txtPath],
+      {
+        stdio: ["ignore", "pipe", "pipe"],
+      }
+    );
 
-        const headers =
-          response.headers();
+    let stdout = "";
+    let stderr = "";
 
-        const contentType =
-          (
-            headers[
-              "content-type"
-            ] || ""
-          ).toLowerCase();
+    child.stdout.on("data", (data) => {
+      stdout += data.toString();
+    });
 
-        if (
-          contentType.includes(
-            "application/pdf"
-          ) ||
-          isPdfUrl(url)
-        ) {
-          networkPdfUrls.add(
-            url
-          );
-        }
-      } catch {}
-    };
+    child.stderr.on("data", (data) => {
+      stderr += data.toString();
+    });
 
-  page.on(
-    "response",
-    responseHandler
-  );
+    child.on("error", reject);
+
+    child.on("close", (code) => {
+      if (code === 0) {
+        resolve({
+          stdout,
+          stderr,
+        });
+        return;
+      }
+
+      reject(
+        new Error(
+          `pdftotext terminé avec le code ${code}: ${stderr || stdout}`
+        )
+      );
+    });
+  });
+}
+
+async function getPageLinks(page, decisionUrl) {
+  await page.goto(decisionUrl, {
+    waitUntil: "domcontentloaded",
+    timeout: NAVIGATION_TIMEOUT,
+  });
 
   try {
-    await page.goto(
-      decisionUrl,
-      {
-        waitUntil:
-          "domcontentloaded",
-        timeout:
-          TIMEOUT
-      }
-    );
-  } catch (error) {
-    console.log(
-      `      ⚠️ ouverture page : ${error.message}`
-    );
-  }
-
-  await sleep(
-    PAGE_WAIT
-  );
-
-  /*
-   * Récupération des liens et
-   * sources de documents présents
-   * dans le DOM.
-   */
-  const domItems =
-    await page.evaluate(() => {
-      const items = [];
-
-      const selectors = [
-        "a[href]",
-        "iframe[src]",
-        "embed[src]",
-        "object[data]",
-        "source[src]",
-        "[data-href]",
-        "[data-url]",
-        "[data-download]"
-      ];
-
-      for (
-        const selector of selectors
-      ) {
-        for (
-          const element of
-            document.querySelectorAll(
-              selector
-            )
-        ) {
-          const href =
-            element.getAttribute(
-              "href"
-            ) ||
-            element.getAttribute(
-              "src"
-            ) ||
-            element.getAttribute(
-              "data"
-            ) ||
-            element.getAttribute(
-              "data-href"
-            ) ||
-            element.getAttribute(
-              "data-url"
-            ) ||
-            element.getAttribute(
-              "data-download"
-            );
-
-          if (!href) {
-            continue;
-          }
-
-          const text =
-            (
-              element.innerText ||
-              element.textContent ||
-              ""
-            )
-              .replace(
-                /\s+/g,
-                " "
-              )
-              .trim();
-
-          items.push({
-            url: href,
-            text
-          });
-        }
-      }
-
-      /*
-       * Certains sites mettent l'URL du
-       * document directement dans le HTML
-       * d'un attribut ou d'un script.
-       */
-      const html =
-        document.documentElement
-          ?.outerHTML || "";
-
-      const regex =
-        /https?:\/\/[^"'<>\\\s]+/gi;
-
-      const matches =
-        html.match(regex) || [];
-
-      for (
-        const match of matches
-      ) {
-        if (
-          match.includes(
-            ".pdf"
-          ) ||
-          match.includes(
-            "@@download"
-          ) ||
-          match.includes(
-            "/download/"
-          )
-        ) {
-          items.push({
-            url: match,
-            text: "HTML URL"
-          });
-        }
-      }
-
-      return items;
+    await page.waitForNetworkIdle({
+      idleTime: 1000,
+      timeout: NETWORK_IDLE_TIMEOUT,
     });
-
-  for (
-    const item of domItems
-  ) {
-    if (
-      isPdfUrl(item.url) ||
-      candidateScore(item) >= 20
-    ) {
-      addCandidate(
-        item.url,
-        item.text,
-        "dom"
-      );
-    }
+  } catch {
+    // Certaines pages gardent des connexions ouvertes.
+    // Le DOM chargé reste exploitable.
   }
 
-  /*
-   * Ressources PDF détectées
-   * pendant le chargement.
-   */
-  for (
-    const url of networkPdfUrls
-  ) {
-    addCandidate(
-      url,
-      "Ressource PDF réseau",
-      "network"
-    );
-  }
+  await sleep(500);
 
-  page.off(
-    "response",
-    responseHandler
-  );
-
-  /*
-   * On récupère aussi les URLs de
-   * ressources chargées par le navigateur.
-   */
-  const resources =
-    await page.evaluate(() => {
-      try {
-        return performance
-          .getEntriesByType(
-            "resource"
-          )
-          .map(
-            entry =>
-              entry.name
-          );
-      } catch {
-        return [];
-      }
-    });
-
-  for (
-    const resource of resources
-  ) {
-    if (
-      isPdfUrl(resource)
-    ) {
-      addCandidate(
-        resource,
-        "Ressource navigateur",
-        "performance"
-      );
-    }
-  }
-
-  const candidates =
-    [...discovered.values()]
-      .sort(
-        (a, b) =>
-          candidateScore(b) -
-          candidateScore(a)
-      );
-
-  return candidates;
+  return await page.evaluate(() => {
+    return Array.from(document.querySelectorAll("a[href]"))
+      .map((a) => ({
+        href: a.href,
+        text: (a.textContent || "").replace(/\s+/g, " ").trim(),
+        download:
+          a.getAttribute("download") ||
+          a.getAttribute("data-download") ||
+          "",
+      }))
+      .filter((link) => link.href);
+  });
 }
 
-async function downloadPdf(
-  page,
-  url,
-  outputFile
-) {
-  /*
-   * On télécharge depuis le contexte
-   * du navigateur afin de conserver les
-   * éventuels cookies/session du site.
-   */
-  const result =
-    await page.evaluate(
-      async url => {
-        const response =
-          await fetch(
-            url,
-            {
-              credentials:
-                "include"
-            }
-          );
+function rankDocumentLinks(links) {
+  const candidates = [];
 
-        const contentType =
-          response.headers.get(
-            "content-type"
-          ) || "";
+  for (const link of links) {
+    const href = link.href;
+    const text = link.text || "";
+    const lowerHref = href.toLowerCase();
+    const lowerText = text.toLowerCase();
 
-        const buffer =
-          await response.arrayBuffer();
+    let score = 0;
 
-        return {
-          ok:
-            response.ok,
-          status:
-            response.status,
-          statusText:
-            response.statusText,
-          contentType,
-          data:
-            Array.from(
-              new Uint8Array(
-                buffer
-              )
-            )
-        };
+    if (isPdfUrl(href)) {
+      score += 100;
+    }
+
+    if (lowerHref.includes(".pdf")) {
+      score += 50;
+    }
+
+    if (lowerHref.includes("/@@download/")) {
+      score += 40;
+    }
+
+    if (
+      lowerText.includes("pdf") ||
+      lowerText.includes("document") ||
+      lowerText.includes("annexe") ||
+      lowerText.includes("délibération") ||
+      lowerText.includes("deliberation") ||
+      lowerText.includes("rapport")
+    ) {
+      score += 20;
+    }
+
+    if (link.download) {
+      score += 10;
+    }
+
+    if (score > 0) {
+      candidates.push({
+        ...link,
+        score,
+      });
+    }
+  }
+
+  candidates.sort((a, b) => b.score - a.score);
+
+  const seen = new Set();
+
+  return candidates.filter((candidate) => {
+    if (seen.has(candidate.href)) {
+      return false;
+    }
+
+    seen.add(candidate.href);
+    return true;
+  });
+}
+
+async function downloadUrl(url, page) {
+  // Cas 1 : l'URL de document peut être récupérée directement.
+  try {
+    const response = await fetch(url, {
+      redirect: "follow",
+      headers: {
+        "User-Agent": USER_AGENT,
+        Accept:
+          "application/pdf,application/octet-stream,text/html;q=0.9,*/*;q=0.8",
       },
-      url
-    );
+    });
 
-  if (!result.ok) {
-    throw new Error(
-      `HTTP ${result.status} ${result.statusText}`
-    );
-  }
+    const arrayBuffer = await response.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
 
-  const buffer =
-    Buffer.from(
-      result.data
-    );
-
-  if (
-    buffer.length < 5
-  ) {
-    throw new Error(
-      `Réponse vide (${buffer.length} octets)`
-    );
-  }
-
-  const header =
-    buffer
-      .subarray(
-        0,
-        5
-      )
-      .toString(
-        "ascii"
-      );
-
-  if (
-    header !== "%PDF-"
-  ) {
-    throw new Error(
-      `La ressource n'est pas un PDF (content-type: ${result.contentType}, taille: ${buffer.length})`
-    );
-  }
-
-  fs.writeFileSync(
-    outputFile,
-    buffer
-  );
-
-  return {
-    size:
-      buffer.length,
-    contentType:
-      result.contentType
-  };
-}
-
-async function extractPdfText(
-  pdfFile,
-  txtFile
-) {
-  await execFileAsync(
-    "pdftotext",
-    [
-      "-layout",
-      pdfFile,
-      txtFile
-    ],
-    {
-      timeout:
-        TIMEOUT
+    if (response.ok && looksLikePdfBuffer(buffer)) {
+      return {
+        buffer,
+        finalUrl: response.url,
+        status: response.status,
+        method: "fetch",
+      };
     }
-  );
-
-  if (
-    !fs.existsSync(
-      txtFile
-    )
-  ) {
-    throw new Error(
-      "pdftotext n'a pas créé le fichier texte"
-    );
+  } catch {
+    // On essaie ensuite avec le navigateur.
   }
 
-  const text =
-    fs.readFileSync(
-      txtFile,
-      "utf8"
-    );
-
-  return text;
-}
-
-async function processDecision(
-  page,
-  decision
-) {
-  let candidates = [];
-
-  /*
-   * Pour les PDF directs, on évite
-   * toute navigation supplémentaire.
-   */
-  if (
-    isPdfUrl(
-      decision.url
-    )
-  ) {
-    candidates = [
-      {
-        url:
-          decision.url,
-        text:
-          "PDF direct",
-        source:
-          "decision-url"
-      }
-    ];
-  } else {
-    candidates =
-      await findPdfCandidates(
-        page,
-        decision.url
-      );
-  }
-
-  if (
-    candidates.length === 0
-  ) {
-    return {
-      ok: false,
-      pdfUrl: null,
-      pdfSize: 0,
-      contentType: null,
-      text: "",
-      textLength: 0,
-      error:
-        "Aucun lien PDF/document trouvé sur la page"
-    };
-  }
-
-  let lastError = null;
-
-  /*
-   * On essaie les candidats dans
-   * leur ordre de pertinence.
-   */
-  for (
-    const candidate of candidates
-  ) {
-    for (
-      let attempt = 1;
-      attempt <=
-      RETRIES + 1;
-      attempt++
-    ) {
-      const tempDir =
-        fs.mkdtempSync(
-          path.join(
-            os.tmpdir(),
-            "liege-pdf-"
-          )
-        );
-
-      const pdfFile =
-        path.join(
-          tempDir,
-          "document.pdf"
-        );
-
-      const txtFile =
-        path.join(
-          tempDir,
-          "document.txt"
-        );
-
-      try {
-        const download =
-          await downloadPdf(
-            page,
-            candidate.url,
-            pdfFile
-          );
-
-        const text =
-          await extractPdfText(
-            pdfFile,
-            txtFile
-          );
-
-        const cleanText =
-          text
-            .replace(
-              /\r/g,
-              ""
-            )
-            .replace(
-              /\u0000/g,
-              ""
-            )
-            .trim();
-
-        /*
-         * PDF valide mais texte vide :
-         * on garde l'information comme
-         * échec d'extraction textuelle.
-         */
-        if (
-          cleanText.length < 20
-        ) {
-          throw new Error(
-            `PDF lisible mais texte extrait trop court (${cleanText.length} caractères)`
-          );
-        }
-
-        fs.rmSync(
-          tempDir,
-          {
-            recursive: true,
-            force: true
-          }
-        );
-
-        return {
-          ok: true,
-          pdfUrl:
-            candidate.url,
-          pdfSize:
-            download.size,
-          contentType:
-            download.contentType,
-          text:
-            cleanText,
-          textLength:
-            cleanText.length
-        };
-      } catch (error) {
-        lastError =
-          error;
-
-        console.log(
-          `      ⚠️ ${candidate.source} | ${candidate.url} | tentative ${attempt}/${RETRIES + 1} : ${error.message}`
-        );
-
-        try {
-          fs.rmSync(
-            tempDir,
-            {
-              recursive: true,
-              force: true
-            }
-          );
-        } catch {}
-
-        await sleep(
-          800
-        );
-      }
-    }
-  }
-
-  return {
-    ok: false,
-    pdfUrl:
-      candidates[0]?.url ||
-      null,
-    pdfSize: 0,
-    contentType: null,
-    text: "",
-    textLength: 0,
-    error:
-      lastError?.message ||
-      "Aucun document exploitable"
-  };
-}
-
-async function worker(
-  browser,
-  decisions,
-  results,
-  workerId
-) {
-  const page =
-    await browser.newPage();
-
-  await page.setDefaultNavigationTimeout(
-    TIMEOUT
-  );
-
+  // Cas 2 : téléchargement via le contexte Chromium.
   try {
-    for (;;) {
-      const index =
-        results.nextIndex++;
-
-      if (
-        index >=
-        decisions.length
-      ) {
-        break;
-      }
-
-      const decision =
-        decisions[index];
-
-      console.log(
-        `[Worker ${workerId}] ${index + 1}/${decisions.length} | ${decision.date?.raw || "?"}`
-      );
-
-      const result =
-        await processDecision(
-          page,
-          decision
-        );
-
-      results.items.push({
-        ...decision,
-
-        pdfUrl:
-          result.pdfUrl,
-
-        pdfSize:
-          result.pdfSize,
-
-        pdfContentType:
-          result.contentType,
-
-        text:
-          result.text,
-
-        textLength:
-          result.textLength,
-
-        extractionOk:
-          result.ok,
-
-        extractionError:
-          result.error ||
-          null
+    const result = await page.evaluate(async (targetUrl) => {
+      const response = await fetch(targetUrl, {
+        credentials: "include",
       });
 
-      if (
-        result.ok
-      ) {
-        console.log(
-          `   → ✓ PDF OK | ${result.pdfSize} octets | ${result.textLength} caractères`
-        );
-      } else {
-        console.log(
-          `   → ❌ ÉCHEC : ${result.error}`
-        );
+      const contentType =
+        response.headers.get("content-type") || "";
+
+      const arrayBuffer = await response.arrayBuffer();
+
+      return {
+        ok: response.ok,
+        status: response.status,
+        contentType,
+        finalUrl: response.url,
+        bytes: Array.from(new Uint8Array(arrayBuffer)),
+      };
+    }, url);
+
+    const buffer = Buffer.from(result.bytes);
+
+    if (result.ok && looksLikePdfBuffer(buffer)) {
+      return {
+        buffer,
+        finalUrl: result.finalUrl,
+        status: result.status,
+        method: "browser-fetch",
+      };
+    }
+  } catch {
+    // Échec définitif de cette URL.
+  }
+
+  return null;
+}
+
+async function processDecision(browser, item, index, total) {
+  const page = await browser.newPage();
+
+  page.setDefaultNavigationTimeout(NAVIGATION_TIMEOUT);
+  await page.setUserAgent(USER_AGENT);
+  await page.setViewport({
+    width: 1440,
+    height: 1000,
+  });
+
+  const id = String(index + 1).padStart(4, "0");
+
+  try {
+    log(`[${index + 1}/${total}] ${item.title || item.url}`);
+
+    const links = await getPageLinks(page, item.url);
+
+    const candidates = rankDocumentLinks(links);
+
+    if (candidates.length === 0) {
+      return {
+        ...item,
+        status: "NO_DOCUMENT_LINK",
+        documentUrl: null,
+        textFile: null,
+        pdfFile: null,
+        textLength: 0,
+        error: "Aucun lien PDF/document détecté sur la page",
+      };
+    }
+
+    let downloaded = null;
+    let selectedCandidate = null;
+
+    for (const candidate of candidates) {
+      log(
+        `[${index + 1}/${total}] Test document: ${candidate.href}`
+      );
+
+      const result = await downloadUrl(candidate.href, page);
+
+      if (result) {
+        downloaded = result;
+        selectedCandidate = candidate;
+        break;
       }
     }
+
+    if (!downloaded) {
+      return {
+        ...item,
+        status: "DOCUMENT_DOWNLOAD_FAILED",
+        documentUrl: candidates[0]?.href || null,
+        textFile: null,
+        pdfFile: null,
+        textLength: 0,
+        error:
+          `Aucun des ${candidates.length} lien(s) candidat(s) ` +
+          `n'a fourni un véritable PDF`,
+        candidates: candidates.slice(0, 10),
+      };
+    }
+
+    const baseName = `${id}-${safeFilename(
+      item.title || item.url.split("/").pop() || "decision"
+    )}`;
+
+    const pdfPath = path.join(PDF_DIR, `${baseName}.pdf`);
+    const txtPath = path.join(TEXT_DIR, `${baseName}.txt`);
+
+    await fs.writeFile(pdfPath, downloaded.buffer);
+
+    if (!looksLikePdfBuffer(downloaded.buffer)) {
+      return {
+        ...item,
+        status: "INVALID_PDF",
+        documentUrl: selectedCandidate.href,
+        textFile: null,
+        pdfFile: null,
+        textLength: 0,
+        error: "Le fichier téléchargé ne commence pas par %PDF-",
+      };
+    }
+
+    await runPdftotext(pdfPath, txtPath);
+
+    let text = "";
+
+    try {
+      text = await fs.readFile(txtPath, "utf8");
+    } catch (error) {
+      return {
+        ...item,
+        status: "TEXT_READ_FAILED",
+        documentUrl: selectedCandidate.href,
+        textFile: txtPath,
+        pdfFile: pdfPath,
+        textLength: 0,
+        error: error.message,
+      };
+    }
+
+    text = text
+      .replace(/\r\n/g, "\n")
+      .replace(/\r/g, "\n")
+      .replace(/\u0000/g, "")
+      .trim();
+
+    await fs.writeFile(txtPath, text, "utf8");
+
+    return {
+      ...item,
+      status: text.length > 0 ? "OK" : "EMPTY_TEXT",
+      documentUrl: selectedCandidate.href,
+      documentFinalUrl: downloaded.finalUrl,
+      documentText: selectedCandidate.text || "",
+      downloadMethod: downloaded.method,
+      pdfFile: pdfPath,
+      textFile: txtPath,
+      textLength: text.length,
+      candidateCount: candidates.length,
+      error: text.length > 0 ? null : "PDF valide mais texte vide",
+    };
+  } catch (error) {
+    return {
+      ...item,
+      status: "PAGE_ERROR",
+      documentUrl: null,
+      textFile: null,
+      pdfFile: null,
+      textLength: 0,
+      error: error?.message || String(error),
+    };
   } finally {
-    await page.close();
+    await page.close().catch(() => {});
+  }
+}
+
+async function worker(browser, items, results, workerId) {
+  while (true) {
+    const index = items.nextIndex++;
+
+    if (index >= items.list.length) {
+      return;
+    }
+
+    const item = items.list[index];
+
+    log(`Worker ${workerId} traite ${index + 1}/${items.list.length}`);
+
+    const result = await processDecision(
+      browser,
+      item,
+      index,
+      items.list.length
+    );
+
+    results[index] = result;
+
+    if (result.status === "OK") {
+      log(
+        `OK ${index + 1}/${items.list.length} — ` +
+        `${result.textLength} caractères`
+      );
+    } else {
+      log(
+        `ATTENTION ${index + 1}/${items.list.length} — ` +
+        `${result.status} — ${result.error || ""}`
+      );
+    }
+
+    // Petite pause pour éviter d'agresser le serveur.
+    await sleep(150);
   }
 }
 
 async function main() {
-  console.log(
-    "=============================================="
-  );
+  log("========================================");
+  log("EXTRACTION DES DOCUMENTS DE LIÈGE 2026");
+  log("========================================");
 
-  console.log(
-    " LIÈGE 2026 - RECHERCHE DES VRAIS DOCUMENTS PDF"
-  );
-
-  console.log(
-    "=============================================="
-  );
-
-  if (
-    !fs.existsSync(
-      INPUT
-    )
-  ) {
+  try {
+    await fs.access(INPUT);
+  } catch {
     throw new Error(
-      `Fichier introuvable : ${INPUT}`
+      `Fichier introuvable: ${INPUT}. ` +
+      `Le collecteur scrape-liege-2026-v2.mjs doit être exécuté avant.`
     );
   }
 
-  const input =
-    JSON.parse(
-      fs.readFileSync(
-        INPUT,
-        "utf8"
-      )
-    );
+  await fs.mkdir("tmp", { recursive: true });
+  await fs.mkdir(TEXT_DIR, { recursive: true });
+  await fs.mkdir(PDF_DIR, { recursive: true });
 
-  if (
-    !Array.isArray(
-      input.decisions
-    )
-  ) {
+  const raw = await fs.readFile(INPUT, "utf8");
+  const data = JSON.parse(raw);
+
+  let decisions;
+
+  if (Array.isArray(data)) {
+    decisions = data;
+  } else if (Array.isArray(data.decisions)) {
+    decisions = data.decisions;
+  } else if (Array.isArray(data.items)) {
+    decisions = data.items;
+  } else {
     throw new Error(
-      "Le fichier ne contient pas de tableau 'decisions'."
+      "Format inattendu dans tmp/liege-2026-analysis.json : " +
+      "aucune liste de décisions trouvée."
     );
   }
 
-  const decisions =
-    input.decisions.filter(
-      decision =>
-        decision?.date?.year ===
-          2026 &&
-        typeof decision.url ===
-          "string"
-    );
+  const normalized = decisions
+    .map((item) => ({
+      ...item,
+      url: item.url || item.decisionUrl || item.link || null,
+      title:
+        item.title ||
+        item.name ||
+        item.subject ||
+        item.titre ||
+        "",
+    }))
+    .filter((item) => item.url);
 
-  console.log(
-    `Décisions 2026 : ${decisions.length}`
-  );
+  log(`Décisions à traiter : ${normalized.length}`);
 
-  if (
-    decisions.length < 500
-  ) {
-    throw new Error(
-      `Sécurité : seulement ${decisions.length} décisions 2026.`
-    );
+  if (normalized.length === 0) {
+    throw new Error("Aucune décision exploitable.");
   }
 
-  const browser =
-    await puppeteer.launch({
-      headless: true,
-      args: [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--disable-dev-shm-usage",
-        "--disable-gpu"
-      ]
-    });
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-gpu",
+    ],
+  });
 
-  const results = {
+  const results = new Array(normalized.length);
+
+  const state = {
+    list: normalized,
     nextIndex: 0,
-    items: []
   };
 
   try {
     const workers = [];
 
     for (
-      let i = 0;
-      i < CONCURRENCY;
-      i++
+      let workerId = 1;
+      workerId <= Math.min(CONCURRENCY, normalized.length);
+      workerId++
     ) {
-      workers.push(
-        worker(
-          browser,
-          decisions,
-          results,
-          i + 1
-        )
-      );
+      workers.push(worker(browser, state, results, workerId));
     }
 
-    await Promise.all(
-      workers
-    );
+    await Promise.all(workers);
   } finally {
     await browser.close();
   }
 
-  const byUrl =
-    new Map(
-      results.items.map(
-        item => [
-          item.url,
-          item
-        ]
-      )
-    );
+  const summary = {
+    generatedAt: new Date().toISOString(),
+    input: INPUT,
+    total: results.length,
 
-  const ordered =
-    decisions.map(
-      decision =>
-        byUrl.get(
-          decision.url
-        ) || {
-          ...decision,
-          pdfUrl: null,
-          pdfSize: 0,
-          pdfContentType: null,
-          text: "",
-          textLength: 0,
-          extractionOk: false,
-          extractionError:
-            "Résultat manquant"
-        }
-    );
+    ok: results.filter((x) => x.status === "OK").length,
 
-  const successful =
-    ordered.filter(
-      item =>
-        item.extractionOk
-    );
+    emptyText: results.filter((x) => x.status === "EMPTY_TEXT").length,
 
-  const failed =
-    ordered.filter(
-      item =>
-        !item.extractionOk
-    );
+    noDocumentLink: results.filter(
+      (x) => x.status === "NO_DOCUMENT_LINK"
+    ).length,
 
-  const totalCharacters =
-    successful.reduce(
-      (sum, item) =>
-        sum +
-        item.textLength,
+    downloadFailed: results.filter(
+      (x) => x.status === "DOCUMENT_DOWNLOAD_FAILED"
+    ).length,
+
+    invalidPdf: results.filter(
+      (x) => x.status === "INVALID_PDF"
+    ).length,
+
+    pageErrors: results.filter(
+      (x) => x.status === "PAGE_ERROR"
+    ).length,
+
+    textReadFailed: results.filter(
+      (x) => x.status === "TEXT_READ_FAILED"
+    ).length,
+
+    totalCharacters: results.reduce(
+      (sum, x) => sum + (x.textLength || 0),
       0
-    );
-
-  console.log("");
-  console.log(
-    "=============================================="
-  );
-
-  console.log(
-    " RÉSULTAT EXTRACTION"
-  );
-
-  console.log(
-    "=============================================="
-  );
-
-  console.log(
-    `Décisions : ${ordered.length}`
-  );
-
-  console.log(
-    `PDF/textes OK : ${successful.length}`
-  );
-
-  console.log(
-    `Échecs : ${failed.length}`
-  );
-
-  console.log(
-    `Total caractères extraits : ${totalCharacters}`
-  );
-
-  if (
-    failed.length > 0
-  ) {
-    console.log("");
-    console.log(
-      "PREMIERS ÉCHECS :"
-    );
-
-    for (
-      const item of
-        failed.slice(0, 30)
-    ) {
-      console.log(
-        `${item.date?.raw || "?"} | ${item.url}`
-      );
-
-      console.log(
-        `   ${item.extractionError}`
-      );
-    }
-
-    if (
-      failed.length > 30
-    ) {
-      console.log(
-        `... ${failed.length - 30} autres échecs dans le fichier JSON`
-      );
-    }
-  }
-
-  console.log("");
-  console.log(
-    "EXEMPLES DE TEXTE EXTRAIT :"
-  );
-
-  for (
-    const item of
-      successful.slice(0, 5)
-  ) {
-    console.log("");
-    console.log(
-      item.date?.raw || "?"
-    );
-
-    console.log(
-      item.url
-    );
-
-    console.log(
-      `Caractères : ${item.textLength}`
-    );
-
-    console.log(
-      item.text
-        .slice(0, 500)
-        .replace(
-          /\n+/g,
-          " "
-        )
-    );
-  }
-
-  fs.mkdirSync(
-    path.dirname(
-      OUTPUT
     ),
-    {
-      recursive: true
-    }
-  );
-
-  const output = {
-    commune:
-      "Liège",
-
-    annee:
-      2026,
-
-    updatedAt:
-      new Date().toISOString(),
-
-    source:
-      "https://www.deliberations.be/liege/decisions",
-
-    count:
-      ordered.length,
-
-    extractionOk:
-      successful.length,
-
-    extractionFailed:
-      failed.length,
-
-    totalCharacters,
-
-    decisions:
-      ordered
   };
 
-  fs.writeFileSync(
+  const output = {
+    summary,
+    decisions: results,
+  };
+
+  await fs.writeFile(
     OUTPUT,
-    JSON.stringify(
-      output,
-      null,
-      2
-    ),
+    JSON.stringify(output, null, 2),
     "utf8"
   );
 
-  console.log("");
-  console.log(
-    `✓ Fichier créé : ${OUTPUT}`
-  );
+  log("========================================");
+  log("EXTRACTION TERMINÉE");
+  log("========================================");
+  log(`Total : ${summary.total}`);
+  log(`PDF + texte OK : ${summary.ok}`);
+  log(`Texte vide : ${summary.emptyText}`);
+  log(`Aucun lien document : ${summary.noDocumentLink}`);
+  log(`Téléchargement échoué : ${summary.downloadFailed}`);
+  log(`PDF invalide : ${summary.invalidPdf}`);
+  log(`Erreur page : ${summary.pageErrors}`);
+  log(`Erreur lecture texte : ${summary.textReadFailed}`);
+  log(`Total caractères : ${summary.totalCharacters}`);
+  log(`Résultat : ${OUTPUT}`);
+  log("========================================");
 
-  console.log(
-    "=============================================="
-  );
+  // On ne modifie volontairement PAS src/data/reglements-taxes.json.
 }
 
-main().catch(
-  error => {
-    console.error("");
-    console.error(
-      "❌ ERREUR FATALE"
-    );
-    console.error(error);
-    process.exit(1);
-  }
-);
+main().catch((error) => {
+  console.error("");
+  console.error("ERREUR FATALE :", error);
+  console.error("");
+  process.exit(1);
+});
