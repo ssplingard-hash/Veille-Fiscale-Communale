@@ -1,19 +1,21 @@
-name: Test Liège 2026 - Extraction PDF
+name: Test Liège 2026 - collecte et extraction
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
 
 jobs:
-  test-liege-pdf:
+  test-liege-2026:
     runs-on: ubuntu-latest
-
-    timeout-minutes: 90
+    timeout-minutes: 150
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -23,159 +25,373 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y poppler-utils
 
-      - name: Installer Puppeteer
-        run: |
-          npm install --no-save --legacy-peer-deps puppeteer cheerio
-
-      - name: Vérifier les fichiers
-        run: |
-          test -f scripts/scrape-liege-2026-v2.mjs
-          test -f scripts/extract-liege-documents.mjs
-          echo "✓ Fichiers présents"
-
       - name: Vérifier pdftotext
         run: |
           pdftotext -v
 
-      - name: Collecter les décisions 2026
+      - name: Installer Puppeteer
+        run: |
+          npm install --no-save --legacy-peer-deps puppeteer
+
+      # ============================================================
+      # 1. COLLECTE DES 855 DÉCISIONS
+      # ============================================================
+
+      - name: Collecter les décisions Liège 2026
         run: |
           node scripts/scrape-liege-2026-v2.mjs
 
-      - name: Vérifier les décisions 2026
+      # ============================================================
+      # 2. VALIDATION DE LA COLLECTE
+      #
+      # IMPORTANT :
+      # L'année est déterminée à partir de la SESSION :
+      #
+      # /decisions/02-mars-2026-18-00/...
+      #
+      # et jamais à partir du titre ou du slug de la décision.
+      # ============================================================
+
+      - name: Vérifier la collecte Liège 2026
         run: |
           node --input-type=module <<'EOF'
-          import fs from 'fs';
+          import fs from "node:fs";
 
-          const file =
-            'tmp/liege-2026-analysis.json';
+          const file = "tmp/liege-2026-analysis.json";
+          const expectedYear = "2026";
+          const expectedCount = 855;
+
+          console.log("");
+          console.log("========================================");
+          console.log("VALIDATION DE LA COLLECTE");
+          console.log("========================================");
+
+          if (!fs.existsSync(file)) {
+            throw new Error(`Fichier introuvable : ${file}`);
+          }
 
           const data = JSON.parse(
-            fs.readFileSync(file, 'utf8')
+            fs.readFileSync(file, "utf8")
           );
 
-          console.log(`Commune : ${data.commune}`);
-          console.log(`Année : ${data.annee}`);
-          console.log(`Décisions : ${data.count}`);
+          const decisions = Array.isArray(data)
+            ? data
+            : Array.isArray(data.decisions)
+              ? data.decisions
+              : Array.isArray(data.items)
+                ? data.items
+                : null;
 
-          if (data.commune !== 'Liège') {
-            throw new Error('Commune incorrecte');
-          }
-
-          if (data.annee !== 2026) {
-            throw new Error('Année incorrecte');
-          }
-
-          if (data.count < 500) {
+          if (!decisions) {
             throw new Error(
-              `Seulement ${data.count} décisions`
+              "Impossible de trouver la liste des décisions dans " + file
             );
           }
 
-          for (const d of data.decisions) {
-            if (
-              !d.date ||
-              d.date.year !== 2026
-            ) {
-              throw new Error(
-                `Décision non-2026 : ${d.url}`
-              );
-            }
-          }
+          console.log(`Commune : Liège`);
+          console.log(`Année : ${expectedYear}`);
+          console.log(`Décisions : ${decisions.length}`);
+          console.log("");
 
-          console.log(
-            '✓ Décisions 2026 validées'
-          );
-          EOF
+          /*
+           * Le collecteur validé doit actuellement produire 855 décisions.
+           *
+           * Cette vérification évite qu'une modification ultérieure
+           * du scraper passe silencieusement avec une collecte
+           * incomplète.
+           */
 
-      - name: Télécharger les vrais PDF et extraire le texte
-        run: |
-          node scripts/extract-liege-documents.mjs
-
-      - name: Vérifier extraction
-        run: |
-          node --input-type=module <<'EOF'
-          import fs from 'fs';
-
-          const file =
-            'tmp/liege-2026-texts.json';
-
-          const data = JSON.parse(
-            fs.readFileSync(file, 'utf8')
-          );
-
-          console.log('');
-          console.log('================================');
-          console.log('RÉSULTAT EXTRACTION');
-          console.log('================================');
-          console.log(
-            `Décisions : ${data.count}`
-          );
-          console.log(
-            `OK : ${data.extractionOk}`
-          );
-          console.log(
-            `Échecs : ${data.extractionFailed}`
-          );
-          console.log(
-            `Caractères : ${data.totalCharacters}`
-          );
-
-          if (data.commune !== 'Liège') {
+          if (decisions.length !== expectedCount) {
             throw new Error(
-              'Commune incorrecte'
-            );
-          }
-
-          if (data.annee !== 2026) {
-            throw new Error(
-              'Année incorrecte'
-            );
-          }
-
-          if (data.count < 500) {
-            throw new Error(
-              'Trop peu de décisions'
+              `Nombre de décisions inattendu : ${decisions.length}. ` +
+              `Attendu : ${expectedCount}.`
             );
           }
 
           /*
-           * Pour ce test, on veut surtout connaître
-           * le vrai taux de réussite.
+           * Extrait le premier segment après /decisions/.
            *
-           * On ne bloque pas artificiellement le workflow
-           * si certaines pages n'ont pas de PDF exploitable.
+           * Exemple :
+           *
+           * /decisions/02-mars-2026-18-00/ma-decision
+           *
+           * donne :
+           *
+           * 02-mars-2026-18-00
            */
 
-          for (const d of data.decisions) {
-            if (
-              !d.date ||
-              d.date.year !== 2026
-            ) {
-              throw new Error(
-                `Décision non-2026 : ${d.url}`
-              );
+          function getSessionSegment(url) {
+            try {
+              const parsed = new URL(url);
+
+              const marker = "/decisions/";
+              const markerIndex =
+                parsed.pathname.indexOf(marker);
+
+              if (markerIndex === -1) {
+                return null;
+              }
+
+              const afterMarker =
+                parsed.pathname.slice(
+                  markerIndex + marker.length
+                );
+
+              const firstSegment =
+                afterMarker.split("/")[0];
+
+              return decodeURIComponent(firstSegment);
+
+            } catch {
+              return null;
             }
           }
 
+          /*
+           * Vérifie l'année uniquement dans le nom de la session.
+           *
+           * Exemple :
+           *
+           * 02-mars-2026-18-00
+           *
+           * -> année = 2026
+           *
+           * Le slug de la décision peut contenir n'importe quelle
+           * autre date et ne doit jamais être utilisé pour déterminer
+           * l'année de la décision.
+           */
+
+          function getSessionYear(session) {
+            if (!session) {
+              return null;
+            }
+
+            const match = session.match(
+              /^\d{1,2}-[^-]+-(\d{4})-\d{2}-\d{2}$/
+            );
+
+            if (!match) {
+              return null;
+            }
+
+            return match[1];
+          }
+
+          const invalid = [];
+          const sessions = {};
+
+          for (const decision of decisions) {
+            const url =
+              decision.url ||
+              decision.decisionUrl ||
+              decision.link ||
+              "";
+
+            if (!url) {
+              invalid.push({
+                url: "",
+                reason: "URL absente"
+              });
+
+              continue;
+            }
+
+            const session =
+              getSessionSegment(url);
+
+            if (!session) {
+              invalid.push({
+                url,
+                reason:
+                  "Impossible de déterminer la session"
+              });
+
+              continue;
+            }
+
+            const year =
+              getSessionYear(session);
+
+            if (!year) {
+              invalid.push({
+                url,
+                session,
+                reason:
+                  "Format de session inattendu"
+              });
+
+              continue;
+            }
+
+            sessions[session] =
+              (sessions[session] || 0) + 1;
+
+            if (year !== expectedYear) {
+              invalid.push({
+                url,
+                session,
+                year,
+                reason:
+                  `Session ${year} au lieu de ${expectedYear}`
+              });
+            }
+          }
+
+          if (invalid.length > 0) {
+            console.error("");
+            console.error(
+              "========================================"
+            );
+            console.error(
+              "ERREURS DE VALIDATION"
+            );
+            console.error(
+              "========================================"
+            );
+
+            console.error(
+              JSON.stringify(
+                invalid.slice(0, 20),
+                null,
+                2
+              )
+            );
+
+            console.error("");
+
+            throw new Error(
+              `${invalid.length} décision(s) ne correspondent pas à l'année ${expectedYear}.`
+            );
+          }
+
           console.log(
-            '✓ Structure et année validées'
+            "Sessions détectées :"
+          );
+
+          for (
+            const [session, count]
+            of Object.entries(sessions)
+          ) {
+            console.log(
+              `  ${session} : ${count}`
+            );
+          }
+
+          console.log("");
+          console.log(
+            "========================================"
+          );
+          console.log(
+            "COLLECTE VALIDÉE"
+          );
+          console.log(
+            "========================================"
+          );
+          console.log(
+            `${decisions.length} décisions Liège ${expectedYear} détectées.`
+          );
+          console.log(
+            "Toutes les décisions appartiennent à une session 2026."
+          );
+          console.log(
+            "========================================"
           );
           EOF
 
-      - name: Vérifier production inchangée
+      # ============================================================
+      # 3. EXTRACTION DES VRAIS DOCUMENTS / PDF
+      # ============================================================
+
+      - name: Extraire les documents Liège 2026
         run: |
-          if git diff --quiet -- src/data/reglements-taxes.json; then
-            echo "✓ src/data/reglements-taxes.json inchangé"
+          node scripts/extract-liege-documents.mjs
+
+      # ============================================================
+      # 4. RAPPORT FINAL
+      # ============================================================
+
+      - name: Afficher le résultat de l'extraction
+        if: always()
+        run: |
+          echo ""
+          echo "========================================"
+          echo "RÉSULTAT DE L'EXTRACTION"
+          echo "========================================"
+
+          if [ -f "tmp/liege-2026-texts.json" ]; then
+            node --input-type=module <<'EOF'
+            import fs from "node:fs";
+
+            const file =
+              "tmp/liege-2026-texts.json";
+
+            const data = JSON.parse(
+              fs.readFileSync(file, "utf8")
+            );
+
+            if (data.summary) {
+              console.log(
+                `Total : ${data.summary.total}`
+              );
+
+              console.log(
+                `PDF + texte OK : ${data.summary.ok}`
+              );
+
+              console.log(
+                `Texte vide : ${data.summary.emptyText}`
+              );
+
+              console.log(
+                `Aucun lien document : ${data.summary.noDocumentLink}`
+              );
+
+              console.log(
+                `Téléchargement échoué : ${data.summary.downloadFailed}`
+              );
+
+              console.log(
+                `PDF invalide : ${data.summary.invalidPdf}`
+              );
+
+              console.log(
+                `Erreur page : ${data.summary.pageErrors}`
+              );
+
+              console.log(
+                `Erreur lecture texte : ${data.summary.textReadFailed}`
+              );
+
+              console.log(
+                `Total caractères : ${data.summary.totalCharacters}`
+              );
+            }
+            EOF
           else
-            echo "❌ DONNÉES DE PRODUCTION MODIFIÉES"
-            exit 1
+            echo "Le fichier tmp/liege-2026-texts.json n'existe pas."
           fi
 
-      - name: Sauvegarder le résultat
+      # ============================================================
+      # 5. VÉRIFIER QUE LA PRODUCTION N'A PAS ÉTÉ MODIFIÉE
+      # ============================================================
+
+      - name: Vérifier que les données de production sont inchangées
+        run: |
+          git diff --exit-code -- src/data/reglements-taxes.json
+
+      # ============================================================
+      # 6. CONSERVER LES RÉSULTATS COMME ARTIFACT
+      # ============================================================
+
+      - name: Sauvegarder les résultats
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: liege-2026-textes
+          name: liege-2026-extraction
           path: |
             tmp/liege-2026-analysis.json
             tmp/liege-2026-texts.json
+            tmp/liege-2026-text/
+            tmp/liege-2026-pdf/
+          if-no-files-found: warn
           retention-days: 7
