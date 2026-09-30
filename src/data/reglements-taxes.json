@@ -67,7 +67,7 @@
     }
   ],
   "Anderlecht": {
-    "updatedAt": "2026-09-29T11:37:44.045Z",
+    "updatedAt": "2026-09-30T11:23:59.844Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlement-taxe sur les agences de paris aux courses de chevaux",
@@ -559,7 +559,7 @@
     "prochainesTaxes": []
   },
   "Auderghem": {
-    "updatedAt": "2026-09-29T11:37:45.816Z",
+    "updatedAt": "2026-09-30T11:24:01.260Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
@@ -913,7 +913,7 @@
     "prochainesTaxes": []
   },
   "Berchem-Sainte-Agathe": {
-    "updatedAt": "2026-09-29T11:37:48.536Z",
+    "updatedAt": "2026-09-30T11:24:04.250Z",
     "reglementsEnVigueur": [
       {
         "titre": "Commerce : règlements, primes, taxes et redevances",
@@ -1621,7 +1621,7 @@
     "prochainesTaxes": []
   },
   "Ville de Bruxelles": {
-    "updatedAt": "2026-09-29T11:37:50.590Z",
+    "updatedAt": "2026-09-30T11:24:06.912Z",
     "reglementsEnVigueur": [
       {
         "titre": "Centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique pour l'exercice 2027 - principe",
@@ -2701,27 +2701,27 @@
     "prochainesTaxes": []
   },
   "Etterbeek": {
-    "updatedAt": "2026-09-29T11:37:52.370Z",
+    "updatedAt": "2026-09-30T11:24:07.914Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous une rubrique 'emploi et commerce' inhabituelle : à vérifier que c'est bien la bonne page."
   },
   "Evere": {
-    "updatedAt": "2026-09-29T11:37:55.745Z",
+    "updatedAt": "2026-09-30T11:24:11.255Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous 'actualité' : pourrait être une brève plutôt que la liste complète des règlements."
   },
   "Forest": {
-    "updatedAt": "2026-09-29T11:37:59.111Z",
+    "updatedAt": "2026-09-30T11:24:13.649Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "HTTP 404 pour https://www.forest.brussels/fr/services-communaux/finances-communales/reglements-taxes"
   },
   "Ganshoren": {
-    "updatedAt": "2026-09-29T11:38:00.658Z",
+    "updatedAt": "2026-09-30T11:24:14.951Z",
     "reglementsEnVigueur": [
       {
         "titre": "Téléchargez les documents Taxes, redevances et impôts",
@@ -2735,7 +2735,7 @@
     "note": "Pas trouvé de page dédiée 'règlements-taxes' ; be.brussels renvoie vers publi.irisnet.be (non scrapable, cf. notes précédentes) pour cette commune."
   },
   "Ixelles": {
-    "updatedAt": "2026-09-29T11:38:01.903Z",
+    "updatedAt": "2026-09-30T11:24:16.282Z",
     "reglementsEnVigueur": [
       {
         "titre": "Ordonnance relative à l'établissement, au recouvrement et au contentieux en matière des taxes communales",
@@ -3029,20 +3029,20 @@
     "prochainesTaxes": []
   },
   "Jette": {
-    "updatedAt": "2026-09-29T11:38:03.648Z",
+    "updatedAt": "2026-09-30T11:24:17.858Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "low",
     "note": "Pas trouvé de sous-page 'taxes' précise ; page d'accueil seulement, à affiner."
   },
   "Koekelberg": {
-    "updatedAt": "2026-09-29T11:38:04.148Z",
+    "updatedAt": "2026-09-30T11:24:18.358Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "Le site officiel indique explicitement que les règlements ne sont consultables que sur rendez-vous au secrétariat communal (pas de publication en ligne). Aucune URL exploitable trouvée."
   },
   "Molenbeek-Saint-Jean": {
-    "updatedAt": "2026-09-29T11:38:06.762Z",
+    "updatedAt": "2026-09-30T11:24:20.732Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes et recettes",
@@ -3054,7 +3054,7 @@
     "prochainesTaxes": []
   },
   "Saint-Gilles": {
-    "updatedAt": "2026-09-29T11:38:09.842Z",
+    "updatedAt": "2026-09-30T11:24:23.366Z",
     "reglementsEnVigueur": [
       {
         "titre": "Liste des taxes",
@@ -3288,7 +3288,7 @@
     "prochainesTaxes": []
   },
   "Saint-Josse-ten-Noode": {
-    "updatedAt": "2026-09-29T11:38:11.507Z",
+    "updatedAt": "2026-09-30T11:24:25.022Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements & Taxes",
@@ -3530,7 +3530,7 @@
     "note": "URL FR devinée par analogie avec la version anglaise (sjtn.brussels/en/municipality/regulations-taxes) : à vérifier."
   },
   "Schaerbeek": {
-    "updatedAt": "2026-09-29T11:38:13.142Z",
+    "updatedAt": "2026-09-30T11:24:26.881Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes & Redevances",
@@ -3548,13 +3548,13 @@
     "prochainesTaxes": []
   },
   "Uccle": {
-    "updatedAt": "2026-09-29T11:38:24.136Z",
+    "updatedAt": "2026-09-30T11:24:37.880Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "fetch failed"
   },
   "Watermael-Boitsfort": {
-    "updatedAt": "2026-09-29T11:38:25.940Z",
+    "updatedAt": "2026-09-30T11:24:39.728Z",
     "reglementsEnVigueur": [
       {
         "titre": "Impôts et taxes",
@@ -3594,19 +3594,19 @@
       },
       {
         "titre": "Taxe sur les agences de paris aux courses de chevaux - Règlement - Modification",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2026-09-22-taxe-sur-les-agences-de-paris-aux-courses-de-chevaux.pdf",
+        "url": "https://www.watermael-boitsfort.be/resolveuid/f2d02233eadb40c8a6a37d0d4fa6173d",
         "matiere": null,
         "date": null
       },
       {
         "titre": "Taxe sur les bornes de recharge pour véhicules électriques accessibles au public – Règlement",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2026-09-22-taxe-sur-les-bornes-de-recharge-pour-vehicules-electriques-accessibles-au-public.pdf",
+        "url": "https://www.watermael-boitsfort.be/resolveuid/16dd59aa145d4ccbb55ed89502c6cb51",
         "matiere": null,
         "date": null
       },
       {
         "titre": "Taxe sur les surfaces commerciales inoccupées – Règlement - Modification",
-        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2026-09-22-taxe-sur-les-surfaces-commerciales-inoccupees.pdf",
+        "url": "https://www.watermael-boitsfort.be/resolveuid/e7d5999e2b29439a8206658546364ccf",
         "matiere": null,
         "date": null
       },
@@ -3872,7 +3872,7 @@
     "prochainesTaxes": []
   },
   "Woluwe-Saint-Lambert": {
-    "updatedAt": "2026-09-29T11:38:27.549Z",
+    "updatedAt": "2026-09-30T11:24:40.868Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements, primes et taxes",
@@ -3886,7 +3886,7 @@
     "note": "Page trouvée mais contenu non vérifié en détail (site nécessitait peut-être un rendu JS lors de la recherche)."
   },
   "Woluwe-Saint-Pierre": {
-    "updatedAt": "2026-09-29T11:38:29.437Z",
+    "updatedAt": "2026-09-30T11:24:42.817Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
