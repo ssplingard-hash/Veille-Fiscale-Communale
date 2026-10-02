@@ -1,0 +1,29 @@
+name: Diagnostic recherche taxe Liège
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Installer Puppeteer
+        run: |
+          npm install --no-save --legacy-peer-deps puppeteer
+
+      - name: Lancer le diagnostic
+        run: |
+          node scripts/debug-recherche-taxe-liege.mjs
