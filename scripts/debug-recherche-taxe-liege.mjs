@@ -7,7 +7,7 @@ const SEARCH_TERM = "taxe";
 const YEAR = "2026";
 
 const NAVIGATION_TIMEOUT = 60000;
-const WAIT_AFTER_LOAD = 1500;
+const WAIT_AFTER_ACTION = 2000;
 
 function clean(text = "") {
   return text
@@ -16,21 +16,293 @@ function clean(text = "") {
     .trim();
 }
 
-async function main() {
-  console.log("");
-  console.log("==============================================");
-  console.log(" DIAGNOSTIC RECHERCHE TAXE - LIÈGE");
-  console.log("==============================================");
-  console.log("");
+async function waitForPage(page) {
+  await new Promise((resolve) =>
+    setTimeout(resolve, WAIT_AFTER_ACTION)
+  );
+}
 
-  console.log(`URL de départ : ${BASE_URL}`);
-  console.log(`Recherche     : ${SEARCH_TERM}`);
-  console.log(`Année         : ${YEAR}`);
+async function getPageInformation(page) {
+  return await page.evaluate(() => {
+    const textInput =
+      document.querySelector('input[name="text"]');
+
+    const yearSelect =
+      document.querySelector('select[name="annee"]');
+
+    const resultLinks = Array.from(
+      document.querySelectorAll("a[href]")
+    )
+      .map((a) => ({
+        text: cleanText(
+          a.innerText || a.textContent || ""
+        ),
+        href: a.href || "",
+      }))
+      .filter((item) => {
+        return (
+          item.href.includes("/decisions/") &&
+          !item.href.includes("@@faceted_query")
+        );
+      });
+
+    function cleanText(text = "") {
+      return text
+        .replace(/\u00a0/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    const bodyText = cleanText(
+      document.body?.innerText || ""
+    );
+
+    return {
+      url: window.location.href,
+      title: document.title || "",
+      searchValue: textInput?.value || "",
+      yearValue: yearSelect?.value || "",
+      yearOptions: yearSelect
+        ? Array.from(yearSelect.options).map(
+            (option) => ({
+              value: option.value || "",
+              text:
+                option.textContent?.trim() || "",
+              selected: option.selected,
+            })
+          )
+        : [],
+      resultLinks,
+      bodyText,
+    };
+  });
+}
+
+async function submitSearch(page, searchTerm) {
+  console.log("");
+  console.log("==============================================");
+  console.log("TEST 1 — RECHERCHE TEXTE");
+  console.log("==============================================");
   console.log("");
 
   console.log(
-    "IMPORTANT : ce script ne modifie aucun fichier de production."
+    `Recherche envoyée : "${searchTerm}"`
   );
+
+  await page.evaluate((term) => {
+    const input =
+      document.querySelector('input[name="text"]');
+
+    if (!input) {
+      throw new Error(
+        'Champ input[name="text"] introuvable.'
+      );
+    }
+
+    input.value = term;
+
+    input.dispatchEvent(
+      new Event("input", {
+        bubbles: true,
+      })
+    );
+
+    input.dispatchEvent(
+      new Event("change", {
+        bubbles: true,
+      })
+    );
+  }, searchTerm);
+
+  const formResult = await page.evaluate(() => {
+    const input =
+      document.querySelector('input[name="text"]');
+
+    if (!input) {
+      throw new Error(
+        'Champ input[name="text"] introuvable.'
+      );
+    }
+
+    const form = input.closest("form");
+
+    if (!form) {
+      throw new Error(
+        "Formulaire de recherche introuvable."
+      );
+    }
+
+    return {
+      action: form.action,
+      method: form.method,
+    };
+  });
+
+  console.log(
+    `Formulaire : ${formResult.method.toUpperCase()} ${formResult.action}`
+  );
+
+  console.log("");
+
+  await page.evaluate(() => {
+    const button =
+      document.querySelector(
+        'button[name="text_button"]'
+      );
+
+    if (!button) {
+      throw new Error(
+        'Bouton button[name="text_button"] introuvable.'
+      );
+    }
+
+    button.click();
+  });
+
+  await page.waitForNavigation({
+    waitUntil: "domcontentloaded",
+    timeout: NAVIGATION_TIMEOUT,
+  }).catch(() => {});
+
+  await waitForPage(page);
+
+  const result = await getPageInformation(page);
+
+  console.log("");
+  console.log("URL APRÈS RECHERCHE :");
+  console.log(result.url);
+
+  console.log("");
+
+  console.log(
+    `Champ de recherche après recherche : "${result.searchValue}"`
+  );
+
+  console.log("");
+
+  console.log(
+    `Nombre de liens de décisions détectés : ${result.resultLinks.length}`
+  );
+
+  console.log("");
+
+  console.log("PREMIERS RÉSULTATS :");
+
+  result.resultLinks
+    .slice(0, 20)
+    .forEach((item, index) => {
+      console.log("");
+      console.log(
+        `${index + 1}. ${item.text}`
+      );
+      console.log(
+        `   ${item.href}`
+      );
+    });
+
+  return result;
+}
+
+async function applyYearFilter(page, year) {
+  console.log("");
+  console.log("==============================================");
+  console.log("TEST 2 — FILTRE ANNÉE");
+  console.log("==============================================");
+  console.log("");
+
+  console.log(
+    `Année sélectionnée : ${year}`
+  );
+
+  const before = await getPageInformation(page);
+
+  console.log("");
+  console.log(
+    `URL avant sélection de l'année : ${before.url}`
+  );
+
+  await page.evaluate((yearValue) => {
+    const select =
+      document.querySelector('select[name="annee"]');
+
+    if (!select) {
+      throw new Error(
+        'Sélecteur select[name="annee"] introuvable.'
+      );
+    }
+
+    const option = Array.from(
+      select.options
+    ).find(
+      (item) => item.value === yearValue
+    );
+
+    if (!option) {
+      throw new Error(
+        `Option année ${yearValue} introuvable.`
+      );
+    }
+
+    select.value = yearValue;
+
+    select.dispatchEvent(
+      new Event("change", {
+        bubbles: true,
+      })
+    );
+  }, year);
+
+  await waitForPage(page);
+
+  const after = await getPageInformation(page);
+
+  console.log("");
+  console.log(
+    `URL après sélection de l'année : ${after.url}`
+  );
+
+  console.log("");
+
+  console.log(
+    `Valeur année après sélection : ${after.yearValue}`
+  );
+
+  console.log("");
+
+  console.log(
+    `Nombre de liens de décisions détectés : ${after.resultLinks.length}`
+  );
+
+  console.log("");
+
+  console.log("PREMIERS RÉSULTATS :");
+
+  after.resultLinks
+    .slice(0, 20)
+    .forEach((item, index) => {
+      console.log("");
+      console.log(
+        `${index + 1}. ${item.text}`
+      );
+      console.log(
+        `   ${item.href}`
+      );
+    });
+
+  return after;
+}
+
+async function main() {
+  console.log("");
+  console.log("==============================================");
+  console.log(" DIAGNOSTIC RECHERCHE TAXE — LIÈGE");
+  console.log("==============================================");
+  console.log("");
+
+  console.log(
+    "Ce script ne modifie aucune donnée de production."
+  );
+
   console.log("");
 
   const browser = await puppeteer.launch({
@@ -49,322 +321,40 @@ async function main() {
   );
 
   try {
-    console.log("1. Ouverture de la page Liège...");
+    console.log(
+      `Ouverture : ${BASE_URL}`
+    );
 
     await page.goto(BASE_URL, {
       waitUntil: "domcontentloaded",
       timeout: NAVIGATION_TIMEOUT,
     });
 
-    await new Promise((resolve) =>
-      setTimeout(resolve, WAIT_AFTER_LOAD)
-    );
-
-    console.log("Page chargée.");
-    console.log("");
-
-    const diagnostic = await page.evaluate(() => {
-      const forms = [];
-
-      document
-        .querySelectorAll("form")
-        .forEach((form, formIndex) => {
-          const formData = {
-            index: formIndex,
-            action: form.action || "",
-            method: form.method || "",
-            id: form.id || "",
-            name: form.getAttribute("name") || "",
-            classes: form.className || "",
-            inputs: [],
-            selects: [],
-            buttons: [],
-          };
-
-          form
-            .querySelectorAll("input")
-            .forEach((input) => {
-              formData.inputs.push({
-                type: input.type || "",
-                name: input.name || "",
-                id: input.id || "",
-                value: input.value || "",
-                placeholder:
-                  input.getAttribute("placeholder") || "",
-                ariaLabel:
-                  input.getAttribute("aria-label") || "",
-                title:
-                  input.getAttribute("title") || "",
-              });
-            });
-
-          form
-            .querySelectorAll("select")
-            .forEach((select) => {
-              formData.selects.push({
-                name: select.name || "",
-                id: select.id || "",
-                value: select.value || "",
-                ariaLabel:
-                  select.getAttribute("aria-label") || "",
-                options: Array.from(select.options).map(
-                  (option) => ({
-                    value: option.value || "",
-                    text:
-                      option.textContent?.trim() || "",
-                    selected:
-                      option.selected,
-                  })
-                ),
-              });
-            });
-
-          form
-            .querySelectorAll(
-              'button, input[type="submit"]'
-            )
-            .forEach((button) => {
-              formData.buttons.push({
-                tag:
-                  button.tagName || "",
-                type:
-                  button.getAttribute("type") || "",
-                name:
-                  button.getAttribute("name") || "",
-                value:
-                  button.getAttribute("value") || "",
-                id:
-                  button.id || "",
-                text:
-                  button.textContent?.trim() ||
-                  button.value ||
-                  "",
-              });
-            });
-
-          forms.push(formData);
-        });
-
-      const links = Array.from(
-        document.querySelectorAll("a[href]")
-      )
-        .map((a) => ({
-          text:
-            a.innerText ||
-            a.textContent ||
-            "",
-          href: a.href || "",
-        }))
-        .filter(
-          (item) =>
-            item.href.includes("@@faceted_query") ||
-            item.href.includes("taxe") ||
-            item.href.includes("2026") ||
-            item.text.toLowerCase().includes("taxe") ||
-            item.text.includes("2026")
-        );
-
-      const allInputs = Array.from(
-        document.querySelectorAll("input")
-      ).map((input) => ({
-        type: input.type || "",
-        name: input.name || "",
-        id: input.id || "",
-        value: input.value || "",
-        placeholder:
-          input.getAttribute("placeholder") || "",
-        ariaLabel:
-          input.getAttribute("aria-label") || "",
-      }));
-
-      const allSelects = Array.from(
-        document.querySelectorAll("select")
-      ).map((select) => ({
-        name: select.name || "",
-        id: select.id || "",
-        value: select.value || "",
-        options: Array.from(select.options).map(
-          (option) => ({
-            value: option.value || "",
-            text:
-              option.textContent?.trim() || "",
-            selected:
-              option.selected,
-          })
-        ),
-      }));
-
-      return {
-        currentUrl: window.location.href,
-        title: document.title || "",
-        forms,
-        allInputs,
-        allSelects,
-        links,
-      };
-    });
-
-    console.log("==============================================");
-    console.log("URL ACTUELLE");
-    console.log("==============================================");
-    console.log("");
+    await waitForPage(page);
 
     console.log(
-      diagnostic.currentUrl
+      "Page initiale chargée."
+    );
+
+    await submitSearch(
+      page,
+      SEARCH_TERM
+    );
+
+    await applyYearFilter(
+      page,
+      YEAR
     );
 
     console.log("");
-
-    console.log("==============================================");
-    console.log("TITRE");
-    console.log("==============================================");
-    console.log("");
-
-    console.log(
-      diagnostic.title
-    );
-
-    console.log("");
-
-    console.log("==============================================");
-    console.log("FORMULAIRES");
-    console.log("==============================================");
-    console.log("");
-
-    if (diagnostic.forms.length === 0) {
-      console.log(
-        "Aucun formulaire HTML classique détecté."
-      );
-    }
-
-    diagnostic.forms.forEach((form) => {
-      console.log("");
-      console.log(
-        `FORMULAIRE ${form.index}`
-      );
-
-      console.log(
-        `  action : ${form.action}`
-      );
-
-      console.log(
-        `  method : ${form.method}`
-      );
-
-      console.log(
-        `  id     : ${form.id}`
-      );
-
-      console.log(
-        `  name   : ${form.name}`
-      );
-
-      console.log("");
-
-      console.log("  INPUTS :");
-
-      form.inputs.forEach((input) => {
-        console.log(
-          `    type=${input.type} | name=${input.name} | id=${input.id} | value=${input.value} | placeholder=${input.placeholder} | aria=${input.ariaLabel}`
-        );
-      });
-
-      console.log("");
-
-      console.log("  SELECTS :");
-
-      form.selects.forEach((select) => {
-        console.log(
-          `    name=${select.name} | id=${select.id} | value=${select.value}`
-        );
-
-        select.options.forEach((option) => {
-          console.log(
-            `      option value="${option.value}" text="${option.text}" selected=${option.selected}`
-          );
-        });
-      });
-
-      console.log("");
-
-      console.log("  BOUTONS :");
-
-      form.buttons.forEach((button) => {
-        console.log(
-          `    tag=${button.tag} | type=${button.type} | name=${button.name} | value=${button.value} | id=${button.id} | text=${button.text}`
-        );
-      });
-    });
-
-    console.log("");
-
-    console.log("==============================================");
-    console.log("TOUS LES INPUTS");
-    console.log("==============================================");
-    console.log("");
-
-    diagnostic.allInputs.forEach((input) => {
-      console.log(
-        `type=${input.type} | name=${input.name} | id=${input.id} | value=${input.value} | placeholder=${input.placeholder} | aria=${input.ariaLabel}`
-      );
-    });
-
-    console.log("");
-
-    console.log("==============================================");
-    console.log("TOUS LES SELECTS");
-    console.log("==============================================");
-    console.log("");
-
-    diagnostic.allSelects.forEach((select) => {
-      console.log(
-        `name=${select.name} | id=${select.id} | value=${select.value}`
-      );
-
-      select.options.forEach((option) => {
-        console.log(
-          `  value="${option.value}" | text="${option.text}" | selected=${option.selected}`
-        );
-      });
-    });
-
-    console.log("");
-
-    console.log("==============================================");
-    console.log("LIENS INTÉRESSANTS");
-    console.log("==============================================");
-    console.log("");
-
-    if (diagnostic.links.length === 0) {
-      console.log(
-        "Aucun lien correspondant détecté."
-      );
-    }
-
-    diagnostic.links.forEach((link) => {
-      console.log(
-        `TEXTE : ${clean(link.text)}`
-      );
-
-      console.log(
-        `URL   : ${link.href}`
-      );
-
-      console.log("");
-    });
-
-    console.log("");
-
     console.log("==============================================");
     console.log("FIN DU DIAGNOSTIC");
     console.log("==============================================");
     console.log("");
 
     console.log(
-      "Aucun fichier de production n'a été modifié."
+      "Les données de production n'ont pas été modifiées."
     );
-
-    console.log("");
   } finally {
     await page.close();
     await browser.close();
