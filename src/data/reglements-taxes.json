@@ -67,7 +67,7 @@
     }
   ],
   "Anderlecht": {
-    "updatedAt": "2026-10-01T11:51:20.241Z",
+    "updatedAt": "2026-10-02T11:24:05.705Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlement-taxe sur les agences de paris aux courses de chevaux",
@@ -559,7 +559,7 @@
     "prochainesTaxes": []
   },
   "Auderghem": {
-    "updatedAt": "2026-10-01T11:51:21.816Z",
+    "updatedAt": "2026-10-02T11:24:07.532Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
@@ -913,7 +913,7 @@
     "prochainesTaxes": []
   },
   "Berchem-Sainte-Agathe": {
-    "updatedAt": "2026-10-01T11:51:24.746Z",
+    "updatedAt": "2026-10-02T11:24:10.723Z",
     "reglementsEnVigueur": [
       {
         "titre": "Commerce : règlements, primes, taxes et redevances",
@@ -1621,7 +1621,7 @@
     "prochainesTaxes": []
   },
   "Ville de Bruxelles": {
-    "updatedAt": "2026-10-01T11:51:26.707Z",
+    "updatedAt": "2026-10-02T11:24:11.980Z",
     "reglementsEnVigueur": [
       {
         "titre": "Centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique pour l'exercice 2027 - principe",
@@ -2701,27 +2701,27 @@
     "prochainesTaxes": []
   },
   "Etterbeek": {
-    "updatedAt": "2026-10-01T11:51:27.781Z",
+    "updatedAt": "2026-10-02T11:24:13.548Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous une rubrique 'emploi et commerce' inhabituelle : à vérifier que c'est bien la bonne page."
   },
   "Evere": {
-    "updatedAt": "2026-10-01T11:51:31.883Z",
+    "updatedAt": "2026-10-02T11:24:17.095Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous 'actualité' : pourrait être une brève plutôt que la liste complète des règlements."
   },
   "Forest": {
-    "updatedAt": "2026-10-01T11:51:35.579Z",
+    "updatedAt": "2026-10-02T11:24:20.777Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "HTTP 404 pour https://www.forest.brussels/fr/services-communaux/finances-communales/reglements-taxes"
   },
   "Ganshoren": {
-    "updatedAt": "2026-10-01T11:51:37.031Z",
+    "updatedAt": "2026-10-02T11:24:22.719Z",
     "reglementsEnVigueur": [
       {
         "titre": "Téléchargez les documents Taxes, redevances et impôts",
@@ -2735,7 +2735,7 @@
     "note": "Pas trouvé de page dédiée 'règlements-taxes' ; be.brussels renvoie vers publi.irisnet.be (non scrapable, cf. notes précédentes) pour cette commune."
   },
   "Ixelles": {
-    "updatedAt": "2026-10-01T11:51:38.267Z",
+    "updatedAt": "2026-10-02T11:24:24.338Z",
     "reglementsEnVigueur": [
       {
         "titre": "Ordonnance relative à l'établissement, au recouvrement et au contentieux en matière des taxes communales",
@@ -3029,20 +3029,20 @@
     "prochainesTaxes": []
   },
   "Jette": {
-    "updatedAt": "2026-10-01T11:51:39.679Z",
+    "updatedAt": "2026-10-02T11:24:26.498Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "low",
     "note": "Pas trouvé de sous-page 'taxes' précise ; page d'accueil seulement, à affiner."
   },
   "Koekelberg": {
-    "updatedAt": "2026-10-01T11:51:40.180Z",
+    "updatedAt": "2026-10-02T11:24:26.999Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "Le site officiel indique explicitement que les règlements ne sont consultables que sur rendez-vous au secrétariat communal (pas de publication en ligne). Aucune URL exploitable trouvée."
   },
   "Molenbeek-Saint-Jean": {
-    "updatedAt": "2026-10-01T11:51:42.249Z",
+    "updatedAt": "2026-10-02T11:24:29.912Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes et recettes",
@@ -3054,7 +3054,7 @@
     "prochainesTaxes": []
   },
   "Saint-Gilles": {
-    "updatedAt": "2026-10-01T11:51:44.545Z",
+    "updatedAt": "2026-10-02T11:24:32.819Z",
     "reglementsEnVigueur": [
       {
         "titre": "Liste des taxes",
@@ -3288,7 +3288,7 @@
     "prochainesTaxes": []
   },
   "Saint-Josse-ten-Noode": {
-    "updatedAt": "2026-10-01T11:51:45.972Z",
+    "updatedAt": "2026-10-02T11:24:34.280Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements & Taxes",
@@ -3530,7 +3530,7 @@
     "note": "URL FR devinée par analogie avec la version anglaise (sjtn.brussels/en/municipality/regulations-taxes) : à vérifier."
   },
   "Schaerbeek": {
-    "updatedAt": "2026-10-01T11:51:47.573Z",
+    "updatedAt": "2026-10-02T11:24:36.209Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes & Redevances",
@@ -3548,13 +3548,13 @@
     "prochainesTaxes": []
   },
   "Uccle": {
-    "updatedAt": "2026-10-01T11:51:58.568Z",
+    "updatedAt": "2026-10-02T11:24:47.203Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "fetch failed"
   },
   "Watermael-Boitsfort": {
-    "updatedAt": "2026-10-01T11:52:00.371Z",
+    "updatedAt": "2026-10-02T11:24:49.413Z",
     "reglementsEnVigueur": [
       {
         "titre": "Impôts et taxes",
@@ -3697,6 +3697,12 @@
       {
         "titre": "Taxe sur les panneaux fixes",
         "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2025-12-16-taxe-sur-les-panneaux-fixes-reglement.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Formulaire de déclaration",
+        "url": "https://www.watermael-boitsfort.be/fr/fichiers/taxes-reglements/taxes/2026-pf-fr.pdf",
         "matiere": null,
         "date": null
       },
@@ -3872,7 +3878,7 @@
     "prochainesTaxes": []
   },
   "Woluwe-Saint-Lambert": {
-    "updatedAt": "2026-10-01T11:52:01.495Z",
+    "updatedAt": "2026-10-02T11:24:50.826Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements, primes et taxes",
@@ -3886,7 +3892,7 @@
     "note": "Page trouvée mais contenu non vérifié en détail (site nécessitait peut-être un rendu JS lors de la recherche)."
   },
   "Woluwe-Saint-Pierre": {
-    "updatedAt": "2026-10-01T11:52:04.027Z",
+    "updatedAt": "2026-10-02T11:24:53.025Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
