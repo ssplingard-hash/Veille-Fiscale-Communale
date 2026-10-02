@@ -3,11 +3,8 @@ import puppeteer from "puppeteer";
 const BASE_URL =
   "https://www.deliberations.be/liege/decisions";
 
-const SEARCH_TERM = "taxe";
-const YEAR = "2026";
-
 const NAVIGATION_TIMEOUT = 60000;
-const WAIT_AFTER_ACTION = 2000;
+const WAIT_AFTER_LOAD = 3000;
 
 function clean(text = "") {
   return text
@@ -16,36 +13,14 @@ function clean(text = "") {
     .trim();
 }
 
-async function waitForPage(page) {
+async function waitForResults(page) {
   await new Promise((resolve) =>
-    setTimeout(resolve, WAIT_AFTER_ACTION)
+    setTimeout(resolve, WAIT_AFTER_LOAD)
   );
 }
 
-async function getPageInformation(page) {
+async function getResults(page) {
   return await page.evaluate(() => {
-    const textInput =
-      document.querySelector('input[name="text"]');
-
-    const yearSelect =
-      document.querySelector('select[name="annee"]');
-
-    const resultLinks = Array.from(
-      document.querySelectorAll("a[href]")
-    )
-      .map((a) => ({
-        text: cleanText(
-          a.innerText || a.textContent || ""
-        ),
-        href: a.href || "",
-      }))
-      .filter((item) => {
-        return (
-          item.href.includes("/decisions/") &&
-          !item.href.includes("@@faceted_query")
-        );
-      });
-
     function cleanText(text = "") {
       return text
         .replace(/\u00a0/g, " ")
@@ -53,307 +28,243 @@ async function getPageInformation(page) {
         .trim();
     }
 
-    const bodyText = cleanText(
-      document.body?.innerText || ""
-    );
+    const links = Array.from(
+      document.querySelectorAll("a[href]")
+    )
+      .map((a) => ({
+        text: cleanText(
+          a.innerText ||
+            a.textContent ||
+            ""
+        ),
+        href: a.href || "",
+      }))
+      .filter((item) => {
+        const href = item.href;
+
+        return (
+          href.includes(
+            "www.deliberations.be/liege/decisions/"
+          ) &&
+          !href.includes("@@faceted_query") &&
+          !href.endsWith("/RSS")
+        );
+      });
+
+    const unique = [];
+    const seen = new Set();
+
+    for (const link of links) {
+      if (seen.has(link.href)) {
+        continue;
+      }
+
+      seen.add(link.href);
+      unique.push(link);
+    }
 
     return {
       url: window.location.href,
       title: document.title || "",
-      searchValue: textInput?.value || "",
-      yearValue: yearSelect?.value || "",
-      yearOptions: yearSelect
-        ? Array.from(yearSelect.options).map(
-            (option) => ({
-              value: option.value || "",
-              text:
-                option.textContent?.trim() || "",
-              selected: option.selected,
-            })
-          )
-        : [],
-      resultLinks,
-      bodyText,
+      count: unique.length,
+      results: unique,
+      bodyText: cleanText(
+        document.body?.innerText || ""
+      ),
     };
   });
 }
 
-async function submitSearch(page, searchTerm) {
+async function testUrl(page, label, hash) {
   console.log("");
-  console.log("==============================================");
-  console.log("TEST 1 — RECHERCHE TEXTE");
-  console.log("==============================================");
-  console.log("");
-
   console.log(
-    `Recherche envoyée : "${searchTerm}"`
+    "=================================================="
   );
+  console.log(label);
+  console.log(
+    "=================================================="
+  );
+  console.log("");
 
-  await page.evaluate((term) => {
-    const input =
-      document.querySelector('input[name="text"]');
-
-    if (!input) {
-      throw new Error(
-        'Champ input[name="text"] introuvable.'
-      );
-    }
-
-    input.value = term;
-
-    input.dispatchEvent(
-      new Event("input", {
-        bubbles: true,
-      })
-    );
-
-    input.dispatchEvent(
-      new Event("change", {
-        bubbles: true,
-      })
-    );
-  }, searchTerm);
-
-  const formResult = await page.evaluate(() => {
-    const input =
-      document.querySelector('input[name="text"]');
-
-    if (!input) {
-      throw new Error(
-        'Champ input[name="text"] introuvable.'
-      );
-    }
-
-    const form = input.closest("form");
-
-    if (!form) {
-      throw new Error(
-        "Formulaire de recherche introuvable."
-      );
-    }
-
-    return {
-      action: form.action,
-      method: form.method,
-    };
-  });
+  const url =
+    `${BASE_URL}${hash}`;
 
   console.log(
-    `Formulaire : ${formResult.method.toUpperCase()} ${formResult.action}`
+    `URL testée : ${url}`
   );
 
   console.log("");
 
-  await page.evaluate(() => {
-    const button =
-      document.querySelector(
-        'button[name="text_button"]'
-      );
-
-    if (!button) {
-      throw new Error(
-        'Bouton button[name="text_button"] introuvable.'
-      );
-    }
-
-    button.click();
-  });
-
-  await page.waitForNavigation({
+  await page.goto(url, {
     waitUntil: "domcontentloaded",
     timeout: NAVIGATION_TIMEOUT,
-  }).catch(() => {});
+  });
 
-  await waitForPage(page);
+  await waitForResults(page);
 
-  const result = await getPageInformation(page);
-
-  console.log("");
-  console.log("URL APRÈS RECHERCHE :");
-  console.log(result.url);
-
-  console.log("");
+  const result =
+    await getResults(page);
 
   console.log(
-    `Champ de recherche après recherche : "${result.searchValue}"`
+    `URL finale : ${result.url}`
   );
 
   console.log("");
 
   console.log(
-    `Nombre de liens de décisions détectés : ${result.resultLinks.length}`
+    `Nombre de décisions détectées : ${result.count}`
   );
 
   console.log("");
 
-  console.log("PREMIERS RÉSULTATS :");
+  if (result.count === 0) {
+    console.log(
+      "Aucune décision détectée."
+    );
+  } else {
+    console.log(
+      "Premiers résultats :"
+    );
 
-  result.resultLinks
-    .slice(0, 20)
-    .forEach((item, index) => {
-      console.log("");
-      console.log(
-        `${index + 1}. ${item.text}`
-      );
-      console.log(
-        `   ${item.href}`
-      );
-    });
+    result.results
+      .slice(0, 30)
+      .forEach((item, index) => {
+        console.log("");
+        console.log(
+          `${index + 1}. ${item.text || "(sans titre)"}`
+        );
+        console.log(
+          `   ${item.href}`
+        );
+      });
+  }
+
+  console.log("");
 
   return result;
 }
 
-async function applyYearFilter(page, year) {
-  console.log("");
-  console.log("==============================================");
-  console.log("TEST 2 — FILTRE ANNÉE");
-  console.log("==============================================");
-  console.log("");
-
-  console.log(
-    `Année sélectionnée : ${year}`
-  );
-
-  const before = await getPageInformation(page);
-
-  console.log("");
-  console.log(
-    `URL avant sélection de l'année : ${before.url}`
-  );
-
-  await page.evaluate((yearValue) => {
-    const select =
-      document.querySelector('select[name="annee"]');
-
-    if (!select) {
-      throw new Error(
-        'Sélecteur select[name="annee"] introuvable.'
-      );
-    }
-
-    const option = Array.from(
-      select.options
-    ).find(
-      (item) => item.value === yearValue
-    );
-
-    if (!option) {
-      throw new Error(
-        `Option année ${yearValue} introuvable.`
-      );
-    }
-
-    select.value = yearValue;
-
-    select.dispatchEvent(
-      new Event("change", {
-        bubbles: true,
-      })
-    );
-  }, year);
-
-  await waitForPage(page);
-
-  const after = await getPageInformation(page);
-
-  console.log("");
-  console.log(
-    `URL après sélection de l'année : ${after.url}`
-  );
-
-  console.log("");
-
-  console.log(
-    `Valeur année après sélection : ${after.yearValue}`
-  );
-
-  console.log("");
-
-  console.log(
-    `Nombre de liens de décisions détectés : ${after.resultLinks.length}`
-  );
-
-  console.log("");
-
-  console.log("PREMIERS RÉSULTATS :");
-
-  after.resultLinks
-    .slice(0, 20)
-    .forEach((item, index) => {
-      console.log("");
-      console.log(
-        `${index + 1}. ${item.text}`
-      );
-      console.log(
-        `   ${item.href}`
-      );
-    });
-
-  return after;
-}
-
 async function main() {
   console.log("");
-  console.log("==============================================");
-  console.log(" DIAGNOSTIC RECHERCHE TAXE — LIÈGE");
-  console.log("==============================================");
+  console.log(
+    "=================================================="
+  );
+  console.log(
+    " DIAGNOSTIC RECHERCHE TAXE — TEST DES URL"
+  );
+  console.log(
+    "=================================================="
+  );
   console.log("");
 
   console.log(
-    "Ce script ne modifie aucune donnée de production."
+    "Objectif : déterminer si deliberations.be permet"
+  );
+
+  console.log(
+    "de rechercher directement taxe + année sans"
+  );
+
+  console.log(
+    "rester limité à une séance."
   );
 
   console.log("");
 
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-    ],
-  });
+  const browser =
+    await puppeteer.launch({
+      headless: true,
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+      ],
+    });
 
-  const page = await browser.newPage();
+  const page =
+    await browser.newPage();
 
   page.setDefaultNavigationTimeout(
     NAVIGATION_TIMEOUT
   );
 
   try {
-    console.log(
-      `Ouverture : ${BASE_URL}`
-    );
+    /*
+     * TEST 1
+     *
+     * Recherche taxe avec la séance actuelle.
+     * Sert uniquement de référence.
+     */
 
-    await page.goto(BASE_URL, {
-      waitUntil: "domcontentloaded",
-      timeout: NAVIGATION_TIMEOUT,
-    });
-
-    await waitForPage(page);
-
-    console.log(
-      "Page initiale chargée."
-    );
-
-    await submitSearch(
+    await testUrl(
       page,
-      SEARCH_TERM
+      "TEST 1 — TAXE + SÉANCE ACTUELLE",
+      "#seance=440b6cc1e68a4183b17e640e5eb7a8b8&b_start=0&text=taxe"
     );
 
-    await applyYearFilter(
+    /*
+     * TEST 2
+     *
+     * Recherche taxe sans aucune séance.
+     */
+
+    await testUrl(
       page,
-      YEAR
+      "TEST 2 — TAXE SANS SÉANCE",
+      "#b_start=0&text=taxe"
+    );
+
+    /*
+     * TEST 3
+     *
+     * Recherche taxe + année 2026,
+     * sans séance.
+     */
+
+    await testUrl(
+      page,
+      "TEST 3 — TAXE + 2026 SANS SÉANCE",
+      "#b_start=0&text=taxe&annee=2026"
+    );
+
+    /*
+     * TEST 4
+     *
+     * Même recherche sans b_start.
+     */
+
+    await testUrl(
+      page,
+      "TEST 4 — TAXE + 2026 SANS SÉANCE NI B_START",
+      "#text=taxe&annee=2026"
+    );
+
+    /*
+     * TEST 5
+     *
+     * Année + taxe dans l'ordre inverse.
+     */
+
+    await testUrl(
+      page,
+      "TEST 5 — 2026 + TAXE SANS SÉANCE",
+      "#annee=2026&text=taxe"
     );
 
     console.log("");
-    console.log("==============================================");
-    console.log("FIN DU DIAGNOSTIC");
-    console.log("==============================================");
+    console.log(
+      "=================================================="
+    );
+    console.log(
+      "FIN DU DIAGNOSTIC"
+    );
+    console.log(
+      "=================================================="
+    );
     console.log("");
 
     console.log(
-      "Les données de production n'ont pas été modifiées."
+      "Aucune donnée de production n'a été modifiée."
     );
   } finally {
     await page.close();
@@ -363,9 +274,15 @@ async function main() {
 
 main().catch((error) => {
   console.error("");
-  console.error("==============================================");
-  console.error("ERREUR FATALE");
-  console.error("==============================================");
+  console.error(
+    "=================================================="
+  );
+  console.error(
+    "ERREUR FATALE"
+  );
+  console.error(
+    "=================================================="
+  );
   console.error("");
 
   console.error(error);
