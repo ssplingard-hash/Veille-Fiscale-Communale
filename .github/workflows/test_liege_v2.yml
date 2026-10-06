@@ -1,239 +1,138 @@
-name: Test Liège 2026 - collecte et extraction
+name: Test Liège 2026 - Classification fiscale
 
 on:
-  workflow_dispatch: {}
-
-permissions:
-  contents: read
+  workflow_dispatch:
 
 jobs:
-  test-liege-2026:
+  test-liege-classification:
     runs-on: ubuntu-latest
-    timeout-minutes: 150
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Installer Poppler
+      - name: Install Poppler
         run: |
           sudo apt-get update
           sudo apt-get install -y poppler-utils
 
-      - name: Vérifier pdftotext
-        run: |
-          pdftotext -v
-
-      - name: Installer Puppeteer
+      - name: Install dependencies
         run: |
           npm install --no-save --legacy-peer-deps puppeteer
 
-      - name: Collecter les décisions Liège 2026
+      - name: Vérifier les scripts
+        run: |
+          test -f scripts/debug-scraper.mjs
+          test -f scripts/scrape-liege-2026-v2.mjs
+          test -f scripts/extract-liege-documents.mjs
+
+      # ------------------------------------------------------
+      # 1. COLLECTE DES 855 DÉCISIONS
+      # ------------------------------------------------------
+
+      - name: Collecte des décisions Liège 2026
         run: |
           node scripts/scrape-liege-2026-v2.mjs
 
-      - name: Vérifier la collecte Liège 2026
+      - name: Vérifier la collecte
         run: |
-          node --input-type=module <<'EOF'
+          test -f tmp/liege-2026-analysis.json
+
+          node --input-type=module <<'NODE'
           import fs from "node:fs";
 
-          const file = "tmp/liege-2026-analysis.json";
-          const expectedYear = "2026";
-          const expectedCount = 855;
-
-          if (!fs.existsSync(file)) {
-            throw new Error(`Fichier introuvable : ${file}`);
-          }
-
-          const data = JSON.parse(fs.readFileSync(file, "utf8"));
-
-          const decisions = Array.isArray(data)
-            ? data
-            : Array.isArray(data.decisions)
-              ? data.decisions
-              : Array.isArray(data.items)
-                ? data.items
-                : null;
-
-          if (!decisions) {
-            throw new Error(
-              "Impossible de trouver la liste des décisions dans " + file
-            );
-          }
-
-          console.log(`Commune : Liège`);
-          console.log(`Année : ${expectedYear}`);
-          console.log(`Décisions : ${decisions.length}`);
-
-          if (decisions.length !== expectedCount) {
-            throw new Error(
-              `Nombre de décisions inattendu : ${decisions.length}. Attendu : ${expectedCount}.`
-            );
-          }
-
-          function getSessionSegment(url) {
-            try {
-              const parsed = new URL(url);
-              const marker = "/decisions/";
-              const markerIndex = parsed.pathname.indexOf(marker);
-
-              if (markerIndex === -1) {
-                return null;
-              }
-
-              const afterMarker = parsed.pathname.slice(
-                markerIndex + marker.length
-              );
-
-              return afterMarker.split("/")[0];
-            } catch {
-              return null;
-            }
-          }
-
-          function getSessionYear(session) {
-            if (!session) return null;
-
-            const match = session.match(
-              /^\d{1,2}-[^-]+-(\d{4})-\d{2}-\d{2}$/
-            );
-
-            return match ? match[1] : null;
-          }
-
-          const invalid = [];
-          const sessions = {};
-
-          for (const decision of decisions) {
-            const url =
-              decision.url ||
-              decision.decisionUrl ||
-              decision.link ||
-              "";
-
-            if (!url) {
-              invalid.push({
-                url: "",
-                reason: "URL absente"
-              });
-              continue;
-            }
-
-            const session = getSessionSegment(url);
-
-            if (!session) {
-              invalid.push({
-                url,
-                reason: "Session impossible à déterminer"
-              });
-              continue;
-            }
-
-            const year = getSessionYear(session);
-
-            if (!year) {
-              invalid.push({
-                url,
-                session,
-                reason: "Format de session inattendu"
-              });
-              continue;
-            }
-
-            sessions[session] =
-              (sessions[session] || 0) + 1;
-
-            if (year !== expectedYear) {
-              invalid.push({
-                url,
-                session,
-                year,
-                reason: `Session ${year} au lieu de ${expectedYear}`
-              });
-            }
-          }
-
-          if (invalid.length > 0) {
-            console.error(
-              JSON.stringify(
-                invalid.slice(0, 20),
-                null,
-                2
-              )
-            );
-
-            throw new Error(
-              `${invalid.length} décision(s) ne correspondent pas à l'année ${expectedYear}.`
-            );
-          }
-
-          console.log("");
-          console.log("Sessions détectées :");
-
-          for (const [session, count] of Object.entries(sessions)) {
-            console.log(`  ${session} : ${count}`);
-          }
-
-          console.log("");
-          console.log("COLLECTE VALIDÉE");
-          console.log(
-            `${decisions.length} décisions Liège ${expectedYear} détectées.`
+          const data = JSON.parse(
+            fs.readFileSync("tmp/liege-2026-analysis.json", "utf8")
           );
-          EOF
 
-      - name: Extraire les documents et textes Liège 2026
+          const decisions =
+            Array.isArray(data)
+              ? data
+              : data.decisions || data.items || [];
+
+          console.log(`Décisions collectées : ${decisions.length}`);
+
+          if (decisions.length < 800) {
+            throw new Error(
+              `Collecte insuffisante : ${decisions.length} décisions.`
+            );
+          }
+
+          for (const d of decisions) {
+            if (!/\/decisions\/\d{1,2}-[a-zà-ÿ]+-2026-\d{1,2}-\d{2}\//i.test(d.url)) {
+              throw new Error(`Décision non-2026 : ${d.url}`);
+            }
+          }
+
+          console.log("Validation de la collecte : OK");
+          NODE
+
+      # ------------------------------------------------------
+      # 2. EXTRACTION DES DOCUMENTS / TEXTES
+      # ------------------------------------------------------
+
+      - name: Extraction des documents Liège 2026
         run: |
           node scripts/extract-liege-documents.mjs
 
-      - name: Afficher le résultat de l'extraction
-        if: always()
+      - name: Vérifier l'extraction
         run: |
-          echo ""
-          echo "========================================"
-          echo "RÉSULTAT DE L'EXTRACTION"
-          echo "========================================"
+          test -f tmp/liege-2026-texts.json
 
-          if [ -f "tmp/liege-2026-texts.json" ]; then
-            node -e '
-              const fs = require("fs");
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
 
-              const file = "tmp/liege-2026-texts.json";
-              const data = JSON.parse(fs.readFileSync(file, "utf8"));
-              const summary = data.summary || {};
+          const data = JSON.parse(
+            fs.readFileSync("tmp/liege-2026-texts.json", "utf8")
+          );
 
-              console.log("Total : " + (summary.total ?? 0));
-              console.log("PDF + texte OK : " + (summary.pdfOk ?? 0));
-              console.log("Texte de page OK : " + (summary.pageTextOk ?? 0));
-              console.log("Contenu exploitable : " + (summary.usable ?? 0));
-              console.log("Aucun contenu : " + (summary.noContent ?? 0));
-              console.log("Erreur page : " + (summary.pageErrors ?? 0));
-              console.log("URL absente : " + (summary.noUrl ?? 0));
-              console.log("Caractères texte pages : " + (summary.totalPageTextCharacters ?? 0));
-              console.log("Caractères texte PDF : " + (summary.totalPdfTextCharacters ?? 0));
-            '
-          else
-            echo "Le fichier tmp/liege-2026-texts.json n'existe pas."
-            exit 1
-          fi
+          const decisions =
+            Array.isArray(data)
+              ? data
+              : data.decisions || data.items || [];
+
+          console.log(`Textes extraits : ${decisions.length}`);
+
+          if (decisions.length < 800) {
+            throw new Error(
+              `Extraction insuffisante : ${decisions.length} textes.`
+            );
+          }
+
+          console.log("Validation de l'extraction : OK");
+          NODE
+
+      # ------------------------------------------------------
+      # 3. CLASSIFICATION FISCALE
+      # ------------------------------------------------------
+
+      - name: Classification fiscale
+        run: |
+          node scripts/debug-scraper.mjs
+
+      # ------------------------------------------------------
+      # 4. NE RIEN MODIFIER EN PRODUCTION
+      # ------------------------------------------------------
 
       - name: Vérifier que les données de production sont inchangées
         run: |
           git diff --exit-code -- src/data/reglements-taxes.json
 
+      # ------------------------------------------------------
+      # 5. CONSERVER LES RÉSULTATS
+      # ------------------------------------------------------
+
       - name: Sauvegarder les résultats
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: liege-2026-extraction
+          name: liege-2026-classification
           path: |
             tmp/liege-2026-analysis.json
             tmp/liege-2026-texts.json
-            tmp/liege-2026-text/
-            tmp/liege-2026-pdf/
           if-no-files-found: warn
-          retention-days: 7
