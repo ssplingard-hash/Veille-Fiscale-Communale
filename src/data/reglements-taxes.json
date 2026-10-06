@@ -67,7 +67,7 @@
     }
   ],
   "Anderlecht": {
-    "updatedAt": "2026-10-05T12:42:36.359Z",
+    "updatedAt": "2026-10-06T12:16:02.698Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlement-taxe sur les agences de paris aux courses de chevaux",
@@ -559,13 +559,361 @@
     "prochainesTaxes": []
   },
   "Auderghem": {
-    "updatedAt": "2026-10-05T12:42:42.501Z",
-    "reglementsEnVigueur": [],
-    "prochainesTaxes": [],
-    "error": "fetch failed"
+    "updatedAt": "2026-10-06T12:16:04.471Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Taxes",
+        "url": "https://www.auderghem.be/taxes-communales",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Redevances",
+        "url": "https://www.auderghem.be/redevances",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxes",
+        "url": "https://www.auderghem.be/reglements-taxe",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Contester une taxe",
+        "url": "https://www.auderghem.be/contester-une-taxe",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxes additionnelles à l'impôt sur les personnes physiques",
+        "url": "https://www.auderghem.be/node/457",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxes sur les centimes additionnels au précompte immobilier",
+        "url": "https://www.auderghem.be/node/459",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement relatif aux centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique",
+        "url": "https://www.auderghem.be/node/4245",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les agences de paris aux courses de chevaux",
+        "url": "https://www.auderghem.be/node/461",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les pompes distributrices de carburant",
+        "url": "https://www.auderghem.be/node/463",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les cercles privés et sur les établissements dont l'accès est réservé à des personnes qui se soumettent à certaines formalités",
+        "url": "https://www.auderghem.be/node/465",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les chambres garnies ou appartements meublés donnés en location dans les maisons privées, hôtels, maisons de logements, pensions ou établissements analogues",
+        "url": "https://www.auderghem.be/node/467",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les commerces de nuit et les entreprises de télécommunication",
+        "url": "https://www.auderghem.be/node/469",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les enseignes",
+        "url": "https://www.auderghem.be/node/471",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les établissements bancaires et les organismes financiers",
+        "url": "https://www.auderghem.be/node/473",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les panneaux fixes",
+        "url": "https://www.auderghem.be/node/475",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur l'usage d'appareils de réclame en public",
+        "url": "https://www.auderghem.be/node/477",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement-taxe sur les marchés et brocantes et sur les foires",
+        "url": "https://www.auderghem.be/node/479",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur la distribution d'imprimés publicitaires non adressés",
+        "url": "https://www.auderghem.be/node/481",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement portant des mesures de soutien économique dans le cadre de la crise du coronavirus via le remboursement du précompte immobilier",
+        "url": "https://www.auderghem.be/node/15549",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les appareils distributeurs automatiques de billets de banque et sur les appareils automatiques permettant d’effectuer des opérations bancaires",
+        "url": "https://www.auderghem.be/node/26006",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement taxe sur les fastfood",
+        "url": "https://www.auderghem.be/node/43365",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement-taxe sur les établissements de vente de cigarettes électroniques, flacons de recharge et additifs",
+        "url": "https://www.auderghem.be/node/43713",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe pour la prestation de services et de la délivrance de documents administratifs",
+        "url": "https://www.auderghem.be/node/487",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxes en matière de funérailles et de sépultures",
+        "url": "https://www.auderghem.be/node/489",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement taxe relatif à la récupération des frais de certaines interventions des services communaux pour des raisons de sécurité publique",
+        "url": "https://www.auderghem.be/node/491",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les dispositifs publicitaires ayant pour fonction principale le financement d'un service public reconnu par le législateur",
+        "url": "https://www.auderghem.be/node/495",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement-taxe relatif au transport de personnes par des véhicules de la police locale",
+        "url": "https://www.auderghem.be/node/497",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement-taxe relatif aux occupations des infrastructures sportives communales",
+        "url": "https://www.auderghem.be/reglement-taxe-relatif-aux-occupations-des-infrastructures-sportives-communales",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement-taxe relatif aux occupations des infrastructures scolaires communales",
+        "url": "https://www.auderghem.be/reglement-taxe-relatif-aux-occupations-des-infrastructures-scolaires-communales",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur des emplacements de parcage",
+        "url": "https://www.auderghem.be/node/505",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement-taxe sur l'occupation de l'espace public",
+        "url": "https://www.auderghem.be/node/1467",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxes sur les dépôts clandestins et le nettoyage de la voie publique",
+        "url": "https://www.auderghem.be/node/511",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur certains véhicules en stationnement",
+        "url": "https://www.auderghem.be/node/513",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement-taxe sur les bornes de recharge pour véhicules électriques en voirie",
+        "url": "https://www.auderghem.be/reglement-taxe-sur-les-bornes-de-recharge-pour-vehicules-electriques-en-voirie",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les immeubles ayant une affectation de bureaux",
+        "url": "https://www.auderghem.be/node/519",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les immeubles bâtis totalement ou partiellement inoccupés",
+        "url": "https://www.auderghem.be/node/521",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les immeubles déclarés insalubres ou inhabitables ou qui ne satisfont pas aux exigences élémentaires de sécurité et de salubrité",
+        "url": "https://www.auderghem.be/node/523",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les immeubles inachevés",
+        "url": "https://www.auderghem.be/node/525",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les secondes résidences",
+        "url": "https://www.auderghem.be/node/527",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les terrains constructibles et non bâtis",
+        "url": "https://www.auderghem.be/node/529",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement taxe sur le défaut de déclaration de certains actes et travaux et sur le défaut d'une demande de dérogation aux horaires de travaux normaux d'un chantier de construction",
+        "url": "https://www.auderghem.be/node/531",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement-taxe sur les pylônes, mâts, antennes et autres dispositifs de télécommunications, d'émission de signaux et d'échanges d'informations par voie hertzienne",
+        "url": "https://www.auderghem.be/node/533",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe relatif à divers actes et travaux soumis à permis d’urbanisme ou permis de lotir",
+        "url": "https://www.auderghem.be/node/535",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe relatif à divers actes et travaux soumis à permis d’urbanisme ou permis de lotir sans qu’un tel permis n’ait été obtenu",
+        "url": "https://www.auderghem.be/node/537",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Modification de 27 règlements taxes suite à l’entrée en vigueur de l’Ordonnance du 3 avril 2014 relative à l’établissement, au recouvrement et au contentieux en matière de taxes communales.",
+        "url": "https://www.auderghem.be/node/539",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "formulaire de déclaration",
+        "url": "https://www.auderghem.be/sites/default/files/content-files/Reglements/Taxes/taxe_chambres%20garnies_declaration-2026.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "formulaire de déclaration",
+        "url": "https://www.auderghem.be/sites/default/files/content-files/Reglements/Taxes/taxe_antennes_declaration%202026.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "formulaire de déclaration",
+        "url": "https://www.auderghem.be/sites/default/files/content-files/Reglements/Taxes/taxe_nights%20shop_d%C3%A9claration%202026.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "formulaire de déclaration",
+        "url": "https://www.auderghem.be/sites/default/files/content-files/Reglements/Taxes/taxe_cercle_prive_declaration%202026.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "formulaire de déclaration",
+        "url": "https://www.auderghem.be/sites/default/files/content-files/Reglements/Taxes/taxe_parcage_declaration%202026.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "formulaire de déclaration",
+        "url": "https://www.auderghem.be/sites/default/files/content-files/Reglements/Taxes/taxe_imprimes_publicitaires_declaration%202026.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "formulaire de déclaration",
+        "url": "https://www.auderghem.be/sites/default/files/content-files/Reglements/Taxes/taxe_secondes_residences_declaration%20ex%202026.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "formulaire de déclaration",
+        "url": "https://www.auderghem.be/sites/default/files/content-files/Reglements/Taxes/taxe_bureaux_declaration%202026.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "formulaire de déclaration",
+        "url": "https://www.auderghem.be/sites/default/files/content-files/Reglements/Taxes/Taxes%20TNB-declaration%202026.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "formulaire de déclaration",
+        "url": "https://www.auderghem.be/sites/default/files/content-files/Reglements/Taxes/D%C3%A9claration-Etablissements%20bancaires%20et%20organismes%20financiers%202026.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "formulaire de déclaration",
+        "url": "https://www.auderghem.be/sites/default/files/content-files/Reglements/Taxes/Declaration%20Fast%20Food%202026.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "formulaire de déclaration",
+        "url": "https://www.auderghem.be/sites/default/files/content-files/Reglements/Taxes/D%C3%89CLARATION%20TAXE%20SUR%20LES%20%C3%89TABLISSEMENTS%20DE%20VENTE%20DE%20CIGARETTES%20%C3%89LECTRONIQUES%202026.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "#Service Taxes communales",
+        "url": "https://www.auderghem.be/tags/service-taxes-communales",
+        "matiere": null,
+        "date": null
+      }
+    ],
+    "prochainesTaxes": []
   },
   "Berchem-Sainte-Agathe": {
-    "updatedAt": "2026-10-05T12:42:45.772Z",
+    "updatedAt": "2026-10-06T12:16:08.580Z",
     "reglementsEnVigueur": [
       {
         "titre": "Commerce : règlements, primes, taxes et redevances",
@@ -1273,7 +1621,7 @@
     "prochainesTaxes": []
   },
   "Ville de Bruxelles": {
-    "updatedAt": "2026-10-05T12:42:46.943Z",
+    "updatedAt": "2026-10-06T12:16:11.595Z",
     "reglementsEnVigueur": [
       {
         "titre": "Centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique pour l'exercice 2027 - principe",
@@ -2353,27 +2701,27 @@
     "prochainesTaxes": []
   },
   "Etterbeek": {
-    "updatedAt": "2026-10-05T12:42:48.097Z",
+    "updatedAt": "2026-10-06T12:16:13.707Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous une rubrique 'emploi et commerce' inhabituelle : à vérifier que c'est bien la bonne page."
   },
   "Evere": {
-    "updatedAt": "2026-10-05T12:42:52.548Z",
+    "updatedAt": "2026-10-06T12:16:18.599Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous 'actualité' : pourrait être une brève plutôt que la liste complète des règlements."
   },
   "Forest": {
-    "updatedAt": "2026-10-05T12:42:55.724Z",
+    "updatedAt": "2026-10-06T12:16:22.490Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "HTTP 404 pour https://www.forest.brussels/fr/services-communaux/finances-communales/reglements-taxes"
   },
   "Ganshoren": {
-    "updatedAt": "2026-10-05T12:42:57.342Z",
+    "updatedAt": "2026-10-06T12:16:24.354Z",
     "reglementsEnVigueur": [
       {
         "titre": "Téléchargez les documents Taxes, redevances et impôts",
@@ -2387,7 +2735,7 @@
     "note": "Pas trouvé de page dédiée 'règlements-taxes' ; be.brussels renvoie vers publi.irisnet.be (non scrapable, cf. notes précédentes) pour cette commune."
   },
   "Ixelles": {
-    "updatedAt": "2026-10-05T12:42:58.576Z",
+    "updatedAt": "2026-10-06T12:16:26.516Z",
     "reglementsEnVigueur": [
       {
         "titre": "Ordonnance relative à l'établissement, au recouvrement et au contentieux en matière des taxes communales",
@@ -2681,20 +3029,20 @@
     "prochainesTaxes": []
   },
   "Jette": {
-    "updatedAt": "2026-10-05T12:42:59.979Z",
+    "updatedAt": "2026-10-06T12:16:28.239Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "low",
     "note": "Pas trouvé de sous-page 'taxes' précise ; page d'accueil seulement, à affiner."
   },
   "Koekelberg": {
-    "updatedAt": "2026-10-05T12:43:00.479Z",
+    "updatedAt": "2026-10-06T12:16:28.740Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "Le site officiel indique explicitement que les règlements ne sont consultables que sur rendez-vous au secrétariat communal (pas de publication en ligne). Aucune URL exploitable trouvée."
   },
   "Molenbeek-Saint-Jean": {
-    "updatedAt": "2026-10-05T12:43:02.815Z",
+    "updatedAt": "2026-10-06T12:16:31.796Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes et recettes",
@@ -2706,7 +3054,7 @@
     "prochainesTaxes": []
   },
   "Saint-Gilles": {
-    "updatedAt": "2026-10-05T12:43:05.581Z",
+    "updatedAt": "2026-10-06T12:16:35.000Z",
     "reglementsEnVigueur": [
       {
         "titre": "Liste des taxes",
@@ -2940,7 +3288,7 @@
     "prochainesTaxes": []
   },
   "Saint-Josse-ten-Noode": {
-    "updatedAt": "2026-10-05T12:43:06.570Z",
+    "updatedAt": "2026-10-06T12:16:36.235Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements & Taxes",
@@ -3182,7 +3530,7 @@
     "note": "URL FR devinée par analogie avec la version anglaise (sjtn.brussels/en/municipality/regulations-taxes) : à vérifier."
   },
   "Schaerbeek": {
-    "updatedAt": "2026-10-05T12:43:07.781Z",
+    "updatedAt": "2026-10-06T12:16:37.756Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes & Redevances",
@@ -3200,13 +3548,13 @@
     "prochainesTaxes": []
   },
   "Uccle": {
-    "updatedAt": "2026-10-05T12:43:18.776Z",
+    "updatedAt": "2026-10-06T12:16:48.751Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "fetch failed"
   },
   "Watermael-Boitsfort": {
-    "updatedAt": "2026-10-05T12:43:20.601Z",
+    "updatedAt": "2026-10-06T12:16:50.977Z",
     "reglementsEnVigueur": [
       {
         "titre": "Impôts et taxes",
@@ -3530,7 +3878,7 @@
     "prochainesTaxes": []
   },
   "Woluwe-Saint-Lambert": {
-    "updatedAt": "2026-10-05T12:43:22.301Z",
+    "updatedAt": "2026-10-06T12:16:53.084Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements, primes et taxes",
@@ -3544,7 +3892,7 @@
     "note": "Page trouvée mais contenu non vérifié en détail (site nécessitait peut-être un rendu JS lors de la recherche)."
   },
   "Woluwe-Saint-Pierre": {
-    "updatedAt": "2026-10-05T12:43:24.213Z",
+    "updatedAt": "2026-10-06T12:16:55.305Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
