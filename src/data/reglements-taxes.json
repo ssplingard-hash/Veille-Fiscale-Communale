@@ -67,7 +67,7 @@
     }
   ],
   "Anderlecht": {
-    "updatedAt": "2026-10-08T12:17:18.328Z",
+    "updatedAt": "2026-10-09T12:08:06.422Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlement-taxe sur les agences de paris aux courses de chevaux",
@@ -559,7 +559,7 @@
     "prochainesTaxes": []
   },
   "Auderghem": {
-    "updatedAt": "2026-10-08T12:17:20.659Z",
+    "updatedAt": "2026-10-09T12:08:07.684Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
@@ -913,7 +913,7 @@
     "prochainesTaxes": []
   },
   "Berchem-Sainte-Agathe": {
-    "updatedAt": "2026-10-08T12:17:23.550Z",
+    "updatedAt": "2026-10-09T12:08:10.782Z",
     "reglementsEnVigueur": [
       {
         "titre": "Commerce : règlements, primes, taxes et redevances",
@@ -1621,7 +1621,7 @@
     "prochainesTaxes": []
   },
   "Ville de Bruxelles": {
-    "updatedAt": "2026-10-08T12:17:25.753Z",
+    "updatedAt": "2026-10-09T12:08:12.154Z",
     "reglementsEnVigueur": [
       {
         "titre": "Centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique pour l'exercice 2027 - principe",
@@ -1882,806 +1882,8 @@
         "date": null
       },
       {
-        "titre": "Centimes additionnels au précompte immobilier",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/RT%20PRI%202025%20-%20FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Impôt additionnel à l'impôt des personnes physiques",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/RT%20IPP%202025%20-%20FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique pour l'exercice 2025",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/R%C3%A8glement%20'centimes%20additionnels%20%C3%A0%20la%20taxe%20r%C3%A9gionale%20sur%20les%20%C3%A9tablissements%20d'h%C3%A9bergement%20touristique%20pour%20l'exercice%202025'.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique pour l'exercice 2025",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/R%C3%A8glement%20'centimes%20additionnels%20%C3%A0%20la%20taxe%20r%C3%A9gionale%20sur%20les%20%C3%A9tablissements%20d'h%C3%A9bergement%20touristique%20pour%20l'exercice%202025'%20(1).pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la délivrance de documents administratifs",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/2025%20WEB%20FR%20-%20Taxe%20sur%20la%20d%C3%A9livrance%20de%20documents%20administratifs.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les résidences non principales",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/2025%20WEB%20FR%20-%20Taxe%20sur%20les%20r%C3%A9sidences%20non%20principales.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les résidences non principales",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Taxe_sur_les_residences_non_principales.-_Exercices_2024_a_2026_inclus.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les emplacements de parcage",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/2025%20WEB%20FR%20-%20Taxe%20sur%20les%20emplacements%20de%20parcage.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les emplacements de parcage",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/023_Taxe_sur_les_emplacements_de_parcage.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les parkings",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/011_Taxe_sur_les_parkings.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les antennes de télécommunications, d'émissions de signaux et d'échanges d'informations par voie hertzienne",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/RT_Pylones_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les immeubles à l'abandon ou négligés ou inoccupés ou inachevés et les terrains à l'abandon ou négligés",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Taxe_sur_les_immeubles_a_labandon_ou_negliges_ou_inoccupes_ou_inacheves_et_les_terrains_a_labandon_ou_negliges.-_Exercices_2024_a_2026_inclus.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les dispositifs publicitaires",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/014_Taxe_sur_les_dispositifs_publicitaires.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les dispositifs publicitaires ayant pour fonction principale le financement d'un service public reconnu par le législateur",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/016_Taxe_sur_les_dispositifs_publicitaires_ayant_pour_fonction_principale_le_financement_dun_servic_public.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la distribution à domicile d'imprimés publicitaires non adressés",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/007_Taxe_sur_la_distribution_a_domicile_dimprimes_publicitaires_non_adresses.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les enseignes",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/2025%20WEB%20FR%20-%20Taxe%20sur%20les%20enseignes.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les enseignes",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Taxe_sur_les_enseignes._-_Exercices_2024_a_2026_inclus.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les citernes et réservoirs fixes et exploités à des fins commerciales ou industrielles",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/020_Taxe_sur_les_citernes_et_reservoirs_fixes.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxes sur les agences de paris aux courses de chevaux",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/024_Taxe_sur_les_agences_de_paris_aux_courses_de_chevaux.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les surfaces de bureau",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/022_Taxe_sur_les_surfaces_de_bureau.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les serveuses et serveurs occupés dans les débits de boissons",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/012_Taxe_sur_les_serveuses_et_serveurs_occupes_dans_les_debits_de_boissons.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les logements garnis",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/FR_0.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les logements garnis",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/017_Taxe_sur_les_logements_garnis.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les locaux abrités dans des maisons de rendez-vous ou dans des immeubles où s'exercent des activités analogues",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/018_Taxe_sur_les_locaux_abrites_dans_les_maisons_de_rendez-vous.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les magasins de nuit",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/009_Taxe_sur_les_magasins_de_nuit.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les logements loués sous forme de co-living",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Taxe_sur_les_logements_loues_sous_forme_de_co-living.-Exercices_2023_a_2026_inclus_-_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les spectacles, les divertissements et les manifestations assimilées",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/FR4.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les locaux où sont organisés des spectacles de charme",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/019_Taxe_sur_les_locaux_ou_sont_organises_des_spectacles_de_charme.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les manifestations sportives",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/FR1.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe relative à l'occupation temporaire de la voie publique",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Texte_du_reglement_pour_site_FR_0.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les appareils distributeurs de carburant",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/025_Taxe_sur_les_appareils_distributeurs_de_carburant.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les incivilités en matière de propreté publique",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/texte_reglement_taxe_incivilites_en_matiere_de_Proprete_publique.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Centimes additionnels au précompte immobilier",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Centimes_additionnels_au_precompte_immobilier_pour_lexercice_2024_-_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Impôt additionnel à l'impôt des personnes physiques",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Impot_communal_additionnel_a_limpot_des_personnes_physiques_pour_lexercice_2024_-_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique pour l'exercice 2024",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Hebergements_touristiques_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe de remboursement sur l'acquisition de l'assiette des voies publiques, l'aménagement nouvelles voiries et le placement d'un nouvel égouttage",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Reglements_taxes.-_Taxe_de_remboursement_sur_lacquisition_de_lassiette_des_voies_publiques.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la récupération des frais de travaux faits pour des particuliers et d'utilité publique",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Reglements_taxes_2019.-_Taxe_sur_la_recuperation_des_frais_de_travaux_faits_pour_des_particuliers_et_dutilite_publique.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la délivrance de documents administratifs",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Taxe_sur_la_delivrance_de_documents_administratifs.-_Exercices_2024_a_2025_inclus.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe relative aux décès, aux inhumations et aux exhumations",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Taxe_relative_aux_deces_aux_inhumations_et_aux_exhumations.-_Exercices_2024_a_2025_inclus.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Centimes additionnels au précompte immobilier",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/001_Centimes_additionnels_au_precompte_immobilier.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Impôt additionnel à l'impôt des personnes physiques",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/002_Impot_communal_additionnel_a_limpot_des_personnes_physiques.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique pour l'exercice 2023",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/FR2.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la délivrance de documents administratifs",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/texte_reglement_taxe_delivrance_de_documents_administratifs_2022-2025.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe relative aux décès, aux inhumations et aux exhumations",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Texte_du_reglement_pour_site_FR_1.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les résidences non principales",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/026_Taxe_sur_les_residences_non_principales.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les pylônes, mats, antennes & autres dispositifs de télécommunication, d'émissions de signaux et d'échanges d'informations par voie hertzienne",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/027_Taxe_sur_les_pylones_mats_antennes_et_autres_dispositifs_de_telecommunications.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les immeubles à l'abandon ou négligés ou inoccupés ou inachevés et les terrains à l'abandon ou négligés",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/006_Taxe_sur_les_immeubles_a_labandon_ou_negliges_ou_inoccupes_ou_inacheves.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les enseignes",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/015_Taxe_sur_les_enseignes.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les logements loués sous forme de co-living",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Texte_du_reglement_Fr_pour_site_web.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les discothèques, les night clubs, les boîtes de nuit et les bars dans lesquels le public danse",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/texte_fr_pour_site.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les discothèques, les night clubs, les boîtes de nuit et les bars dans lesquels le public danse",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/003_les_discotheques_les_night_clubs_les_boites_de_nuit_et_les_bars_dans_lesquels_le_public_danse.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Centimes additionnels au précompte immobilier",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Texte_site_web_FR_-_RT_Centimes_additionnels_au_precompte_immobilier_2022.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Impôt additionnel à l'impôt des personnes physiques",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Texte_site_web_FR_-_RT_Impot_communal_additionnel_a_lIPP_2022.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique pour l'exercice 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Texte_site_web_FR_-_RT_Centimes_additionnels_hebergement_touristique_2022.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les résidences non principales",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Texte_du_reglement_pour_site_FR_2.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_22_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les emplacements de parcage",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/014_emplacements_de_parcage.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les parkings",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/006_Taxe_sur_les_parkings.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_121_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les pylônes, mats, antennes & autres dispositifs de télécommunication, d'émissions de signaux et d'échanges d'informations par voie hertzienne",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Texte_du_reglement_pour_le_site_Internet_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_34_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les immeubles à l'abandon ou négligés ou inoccupés ou inachevés et les terrains à l'abandon ou négligés",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/texte_reglement_taxe_immeubles_et_terrains_a_labandon_ou_negliges_modifications_techniques_2022-2025.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les immeubles à l'abandon ou négligés ou inoccupés ou inachevés et les terrains à l'abandon ou négligés",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Taxe_sur_les_immeubles_a_labandon_ou_negliges._CC_du_18.10.2021.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la construction, la reconstruction et la transformation de bâtiments",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/008_construction_la_reconstruction.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les dispositifs publicitaires",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/012_dispositifs_publicitaires.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022 - véhicules publicitaires",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_913_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022 - stands publicitaires",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_916_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les dispositifs publicitaires ayant pour fonction principale le financement d'un service public reconnu par le législateur",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/011_dispositifs_publicitaires_ayant_pour_fonction_principale_le.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_918_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la distribution à domicile d'imprimés publicitaires non adressés",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/013_distribution_a_domicile_dimprimes_publicitaires_non_adresses.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_36_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur l'apposition d'imprimés publicitaires sur des véhicules situés sur la voie publique",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/001_lapposition_dimprimes_publicitaires_sur_des_vehicules_situes_sur_la.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les établissements bancaires et assimilés",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/005_etablissements_bancaires_et_assimiles.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_15_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les enseignes",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Texte_site_web_FR_-_RT_Enseignes.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_6_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les citernes et réservoirs fixes et exploités à des fins commerciales ou industrielles",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/007_citernes_et_reservoirs_fixes.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_13_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxes sur les agences de paris aux courses de chevaux",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/002_agences_de_paris_aux_courses_de_chevaux.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_14_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les surfaces de bureau",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/taxe_surface_de_bureau_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_203_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les serveuses et serveurs occupés dans les débits de boissons",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/009_serveurs_et_serveuses.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_12_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les salles de ventes de biens mobiliers",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/021_salles_de_ventes_publiques_de_biens_mobiliers.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_9_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les logements garnis",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/015_logements_garnis.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_209_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la mise à disposition d'appareils de télécommunication contre rétribution",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/003_appareils_de_telecommunication.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_42_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022 - taxe d'ouverture",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_43_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les locaux abrités dans des maisons de rendez-vous ou dans des immeubles où s'exercent des activités analogues",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/017_locaux_abrites_dans_les_maisons_de_rendez-vous.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_308_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les magasins de nuit",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/019_magasins_de_nuit.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_40_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022 - taxe d'ouverture",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_41_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les spectacles, les divertissements et les manifestations assimilées",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/022_spectacles_les_divertissements_et_les_manifestations_assimilees.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_131_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022 - bourses, salons et expositions",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_232_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les locaux où sont organisés des spectacles de charme",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/018_locaux_ou_sont_organises_des_spectacles_de_charme.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les discothèques, les night clubs, les boîtes de nuit et les bars dans lesquels le public danse",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/010_discotheques_les_night_clubs_les_boites_de_nuit_et_les_bars_dans.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_135_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les manifestations sportives",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/023_Taxe_sur_les_manifestations_sportives.-.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_136_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur le placement sur la voie publique de conteneurs",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Reglements_taxes.-_Taxe_sur_le_placement_sur_la_voie_publique_de_conteneurs.-_Exercices_2021-2024.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe relative à l'occupation temporaire de la voie publique",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/Taxe_relative_a_loccupation_temporaire_de_la_voie_publique._CC_du_08.11.2021.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Déclaration d'impôt 2022",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/GDPR_2022_16_declaration_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les appareils distributeurs de carburant",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/004_appareils_distributeurs_de_carburant.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les résidences non principales",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/22_-_Taxe_sur_les_residences_non_principales.-_Exercices_2021_a_2025_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les emplacements de parcage",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/204_-_Taxe_sur_les_emplacements_de_parcage.-_Exercices_2021_a_2025_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les parkings",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/121_-_Taxe_sur_les_parkings.-_Exercices_2021_a_2025_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les pylônes, mats, antennes & autres dispositifs de télécommunication, d'émissions de signaux et d'échanges d'informations par voie hertzienne",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/34_-_Taxe_sur_les_pylones_mats_antennes_et_autres_dispositifs.-_Exercices_2021_a_2025_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les immeubles et terrains à l'abandon ou négligés ou inoccupés ou inachevés",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/777_-_Taxe_sur_les_immeubles_et_terrains_a_labandon._-_Exercices_2021_a_2024_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la construction, la reconstruction et la transformation de bâtiments",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/219_-_Taxe_sur_la_construction_la_reconstruction_la_transformation_de_batiments.-_Exercices_2019_a_2024_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les dispositifs publicitaires",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/913_a_916_-_Taxe_sur_les_dispositifs_publicitaires.-_Exercices_2019_a_2024_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les dispositifs publicitaires ayant pour fonction principale le financement d'un service public reconnu par le législateur",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/918_-_Taxe_sur_les_dispositifs_publicitaires_ayant_pour_fonction_principale_le_financement_dun_service_public_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les établissements bancaires et assimilés",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/15_-_Taxe_sur_les_etablissements_bancaires_et_assimiles.-_Exercices_2021_a_2025_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les enseignes",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/6_-_Taxe_sur_les_enseignes._-_Exercices_2019_a_2024_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les citernes et réservoirs fixes et exploités à des fins commerciales ou industrielles",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/13_-_Taxe_sur_les_citernes_et_reservoirs_fixes.-_Exercices_2021_a_2025_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxes sur les agences de paris aux courses de chevaux",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/14_-_Taxe_sur_les_agences_de_paris_aux_courses_de_chevaux.-_Exercices_2021_a_2025_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les surfaces de bureau",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/203_-_Taxe_sur_les_surfaces_de_bureau.-_Exercices_2021_a_2025_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les serveuses et serveurs occupés dans les débits de boissons",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/12_-_Taxe_sur_les_serveuses_et_serveurs_occupes_dans_les_debits_de_boissons.-_Exercices_2019_a_2024_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les salles de ventes de biens mobiliers",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/9_-_Taxe_sur_les_salles_de_ventes_publiques_de_biens_mobiliers.-_Exercices_2021_a_2025_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les logements garnis",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/209_-_Taxe_sur_les_logements_garnis.-_Exercices_2021_a_2025_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la mise à disposition d'appareils de télécommunication contre rétribution",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/42-43_-_Taxe_sur_la_mise_a_disposition_dappareils_de_telecommunication_contre_retribution.-_Exercices_2021_a_2025_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les locaux abrités dans des maisons de rendez-vous ou dans des immeubles où s'exercent des activités analogues",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/308_-_Taxe_sur_les_locaux_abrites_dans_les_maisons_de_rendez-vous.-_Exercices_2021_a_2025_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les magasins de nuit",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/40-41_-_Taxe_sur_les_magasins_de_nuit.-_Exercices_2021_a_2025_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les spectacles, les divertissements et les manifestations assimilées",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/131_-_Taxe_sur_les_spectacles_les_divertissements_et_les_manifestations_assimilees.-_Exercices_2019_a_2024_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les locaux où sont organisés des spectacles de charme",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/5_-_Taxe_sur_les_locaux_ou_sont_organises_des_spectacles_de_charme.-_Exercices_2021_a_2025_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les parties de danse habituelles",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/135_-_Taxe_sur_les_parties_de_danse_habituelles.-_Exercices_2019_a_2024_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les manifestations sportives",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/136_-_Taxe_sur_les_manifestations_sportives.-_Exercices_2019_a_2024_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe relative à l'occupation temporaire de la voie publique",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/117_-_Taxe_relative_a_loccupation_temporaire_de_la_voie_publique._-_Exercices_2020_a_2024_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les appareils distributeurs de carburant",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/16_-_Taxe_sur_les_appareils_distributeurs_de_carburant.-_Exercices_2021_a_2025_inclus_FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les incivilités en matière de propreté publique",
-        "url": "https://www.bruxelles.be/sites/default/files/bxl/700_-_Taxe_sur_les_incivilites_en_matiere_de_Proprete_publique._-_Exercices_2020_a_2024_inclus_FR.pdf",
+        "titre": "Taxes communales (2021-2025)",
+        "url": "https://www.bruxelles.be/taxes-communales-2021-2025",
         "matiere": null,
         "date": null
       },
@@ -2701,27 +1903,27 @@
     "prochainesTaxes": []
   },
   "Etterbeek": {
-    "updatedAt": "2026-10-08T12:17:27.549Z",
+    "updatedAt": "2026-10-09T12:08:14.050Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous une rubrique 'emploi et commerce' inhabituelle : à vérifier que c'est bien la bonne page."
   },
   "Evere": {
-    "updatedAt": "2026-10-08T12:17:31.622Z",
+    "updatedAt": "2026-10-09T12:08:17.952Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous 'actualité' : pourrait être une brève plutôt que la liste complète des règlements."
   },
   "Forest": {
-    "updatedAt": "2026-10-08T12:17:35.385Z",
+    "updatedAt": "2026-10-09T12:08:21.103Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "HTTP 404 pour https://www.forest.brussels/fr/services-communaux/finances-communales/reglements-taxes"
   },
   "Ganshoren": {
-    "updatedAt": "2026-10-08T12:17:37.776Z",
+    "updatedAt": "2026-10-09T12:08:22.697Z",
     "reglementsEnVigueur": [
       {
         "titre": "Téléchargez les documents Taxes, redevances et impôts",
@@ -2735,7 +1937,7 @@
     "note": "Pas trouvé de page dédiée 'règlements-taxes' ; be.brussels renvoie vers publi.irisnet.be (non scrapable, cf. notes précédentes) pour cette commune."
   },
   "Ixelles": {
-    "updatedAt": "2026-10-08T12:17:39.331Z",
+    "updatedAt": "2026-10-09T12:08:24.202Z",
     "reglementsEnVigueur": [
       {
         "titre": "Ordonnance relative à l'établissement, au recouvrement et au contentieux en matière des taxes communales",
@@ -3029,20 +2231,20 @@
     "prochainesTaxes": []
   },
   "Jette": {
-    "updatedAt": "2026-10-08T12:17:40.942Z",
+    "updatedAt": "2026-10-09T12:08:25.590Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "low",
     "note": "Pas trouvé de sous-page 'taxes' précise ; page d'accueil seulement, à affiner."
   },
   "Koekelberg": {
-    "updatedAt": "2026-10-08T12:17:41.442Z",
+    "updatedAt": "2026-10-09T12:08:26.090Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "Le site officiel indique explicitement que les règlements ne sont consultables que sur rendez-vous au secrétariat communal (pas de publication en ligne). Aucune URL exploitable trouvée."
   },
   "Molenbeek-Saint-Jean": {
-    "updatedAt": "2026-10-08T12:17:45.384Z",
+    "updatedAt": "2026-10-09T12:08:28.564Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes et recettes",
@@ -3054,7 +2256,7 @@
     "prochainesTaxes": []
   },
   "Saint-Gilles": {
-    "updatedAt": "2026-10-08T12:17:48.419Z",
+    "updatedAt": "2026-10-09T12:08:31.033Z",
     "reglementsEnVigueur": [
       {
         "titre": "Liste des taxes",
@@ -3288,249 +2490,13 @@
     "prochainesTaxes": []
   },
   "Saint-Josse-ten-Noode": {
-    "updatedAt": "2026-10-08T12:17:50.060Z",
-    "reglementsEnVigueur": [
-      {
-        "titre": "Règlements & Taxes",
-        "url": "https://sjtn.brussels/fr/la-commune/reglements-taxes",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les panneaux d’affichage et les supports de publicités visibles d’une voie de communication (2021-2024)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/2021-2024-rt_panneaux_aff-supports_pub-version_web-ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les panneaux d'affichages (2025-2028)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/communicat25060317200.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la distribution à domicile de feuilles, cartes publicitaires, catalogues et journaux contenant de la pub (2025-2028)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/communicat25060317221.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur le placement de calicots ou de dispositifs assimilés (2025-2028)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/communicat25060317240.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les enseignes et réclames lumineuses et non lumineuses (2026-2029)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/dccc_2_2026-2029_rt-br_enseignes_lum_nonlum-verlichte_uithangborden_nov25_v_web_ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les surfaces de bureaux (2024-2027)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/rt-br_sbureaux-kantooroppervlakten-2024-2027-version_web-2-ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les magasins de nuit (2025-2028)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/2025-2028_rt-br_night_shops-v.web-ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les marchandises",
-        "url": "https://sjtn.brussels/sites/default/files/documents/dccc-251022-rt-marchandis-v.web-bilingue-ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur l'occupation du domaine public à l'occasion des marchés (2026-2029)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/rt-br_marches-markten_2026-2029_v_web-ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les terrasses",
-        "url": "https://sjtn.brussels/sites/default/files/documents/dccc-251022-rt-br-terrasses-v.web-bilingue-ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-redevance concernant l'installation et l'exploitation de terrasses sur les parkings du domaine public",
-        "url": "https://sjtn.brussels/sites/default/files/documents/reglement_terrasse_sur_pk_26-31.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-redevance pour l’occupation des places Saint-Josse, Charles Rogier, Houwaert, Bossuet et Saint-Lazare",
-        "url": "https://sjtn.brussels/sites/default/files/documents/rr_occup_pl-publk_bezetting-openbare_pl_v_web_version_amendee_cc_251217.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les constructions, reconstructions, modifications et sur les transformations apportées aux bâtisses",
-        "url": "https://sjtn.brussels/sites/default/files/documents/2026-2029-rt-br-constructions-bouwen-v.web-bilingue-ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les constructions (2025-2028)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/2025-2028-rt-br-constructions-bouwen-v.web-ni_1.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les cercles privés (2025-2028)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/2025-2028_rt-br_cercles_prives-prive_clubs-v.web-ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les immeubles ou parties d'immeubles appelées \"carrées\" (2025-2028)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/2025-2028_rt-br_carrees_v.web-ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la mise à disposition d'appareils de télécommunication (2021-2024)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/2021-2024-rt_phone_shops-version_web-ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les établissements bancaires (2025-2028)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/2025-2028-rt-br-ets_bancaires-bank_instellingen-v.web-ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les appareils automatiques bancaires (2025-2028)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/2025-2028-rt_-br-appareils_auto_bancaires-auto_appparaten_bank-v.web-ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les établissements d’hébergement touristique (2026)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/taxe_sur_les_etablissements_dhebergement_touristique_2026.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Centimes additionnels à la Taxe régionale sur les établissements d’hébergement touristique ; Renouvellement pour l'exercice 2026",
-        "url": "https://sjtn.brussels/sites/default/files/documents/cent_add_city_tax_2026.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Centimes additionnels communaux au précompte immobilier – PRI – pour l’exercice 2026",
-        "url": "https://sjtn.brussels/sites/default/files/documents/pri-2026-ov-renouvellement-modification-hernieuwing-wijziging-web.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les Immeubles inachevés ou laissés à l'abandon",
-        "url": "https://sjtn.brussels/sites/default/files/documents/rt-br_imm-aband_verwaarloosde-gebouwen_v_web_ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe communale additionnelle à l’impôt des personnes physiques (2026)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/dccc_251022_ipp_2026_fr_ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement gén. relatif à l'établissement et au recouvrement des impôts communaux",
-        "url": "https://sjtn.brussels/sites/default/files/documents/rg_ets-rec-impots-2020-dccc191211-fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe communale additionnelle à l’impôt des personnes physiques (2025)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/dc_cc_241211_addipp_2025_fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les agences de paris aux courses de chevaux (2025-2028)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/2025-2028_rt-br_agences_paris-agentschap_weddenschappen_v.web-ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-redevance relatif à la location du matériel communal",
-        "url": "https://sjtn.brussels/sites/default/files/documents/service_events_1.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-redevance pour la délivrance de documents administratifs (17/12/2025)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/reglement-redevance_conseil_communal_17.12.2025.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe en matière de propreté publique 2026-2030",
-        "url": "https://sjtn.brussels/sites/default/files/documents/260305_rt-pp_2026-2030_version-web-fr-nl_ja-sf-ni-maj260629.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les secondes résidences (2025-2028)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/2025-2028-rt-br-2de_residences-2de_verblijfplaatsen-v.web-ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les dancings et établissements assimilés (2021-2024)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/2021-2024-rt_dancings-ni.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement redevance relatif au stationnement réglementé dans l'espace public",
-        "url": "https://sjtn.brussels/sites/default/files/documents/reglement_080726_fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement redevance relatif au placement de potelets anti-stationnement sur la voie publique",
-        "url": "https://sjtn.brussels/sites/default/files/documents/reglement_2026.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement-redevance relatif à la tarification du parking Scailquin",
-        "url": "https://sjtn.brussels/sites/default/files/documents/reglement_24-06-2026.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur les antennes relais, pylônes et autres dispositifs de télécommunication (2025-2028)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/communicat25060317211.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur la mise à disposition d'appareils de télécommunication (2025-2028)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/communicat25060317252.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxe sur le dépôt de matériaux et de matériels sur la voie publique (2022-2026)",
-        "url": "https://sjtn.brussels/sites/default/files/documents/2022-2026-rt_ovp_version_web-ni.pdf",
-        "matiere": null,
-        "date": null
-      }
-    ],
+    "updatedAt": "2026-10-09T12:08:31.897Z",
+    "reglementsEnVigueur": [],
     "prochainesTaxes": [],
-    "confidence": "low",
-    "note": "URL FR devinée par analogie avec la version anglaise (sjtn.brussels/en/municipality/regulations-taxes) : à vérifier."
+    "error": "fetch failed"
   },
   "Schaerbeek": {
-    "updatedAt": "2026-10-08T12:17:51.905Z",
+    "updatedAt": "2026-10-09T12:08:33.491Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes & Redevances",
@@ -3548,13 +2514,13 @@
     "prochainesTaxes": []
   },
   "Uccle": {
-    "updatedAt": "2026-10-08T12:18:02.899Z",
+    "updatedAt": "2026-10-09T12:08:44.485Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "fetch failed"
   },
   "Watermael-Boitsfort": {
-    "updatedAt": "2026-10-08T12:18:05.416Z",
+    "updatedAt": "2026-10-09T12:08:46.559Z",
     "reglementsEnVigueur": [
       {
         "titre": "Impôts et taxes",
@@ -3878,7 +2844,7 @@
     "prochainesTaxes": []
   },
   "Woluwe-Saint-Lambert": {
-    "updatedAt": "2026-10-08T12:18:07.457Z",
+    "updatedAt": "2026-10-09T12:08:48.361Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements, primes et taxes",
@@ -3892,7 +2858,7 @@
     "note": "Page trouvée mais contenu non vérifié en détail (site nécessitait peut-être un rendu JS lors de la recherche)."
   },
   "Woluwe-Saint-Pierre": {
-    "updatedAt": "2026-10-08T12:18:11.377Z",
+    "updatedAt": "2026-10-09T12:08:50.235Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
