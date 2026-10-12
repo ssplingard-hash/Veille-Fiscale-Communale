@@ -67,7 +67,7 @@
     }
   ],
   "Anderlecht": {
-    "updatedAt": "2026-10-11T11:39:57.436Z",
+    "updatedAt": "2026-10-12T13:34:54.234Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlement-taxe sur les agences de paris aux courses de chevaux",
@@ -559,7 +559,7 @@
     "prochainesTaxes": []
   },
   "Auderghem": {
-    "updatedAt": "2026-10-11T11:39:59.454Z",
+    "updatedAt": "2026-10-12T13:34:55.931Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
@@ -913,7 +913,7 @@
     "prochainesTaxes": []
   },
   "Berchem-Sainte-Agathe": {
-    "updatedAt": "2026-10-11T11:40:03.007Z",
+    "updatedAt": "2026-10-12T13:34:59.738Z",
     "reglementsEnVigueur": [
       {
         "titre": "Commerce : règlements, primes, taxes et redevances",
@@ -1621,7 +1621,7 @@
     "prochainesTaxes": []
   },
   "Ville de Bruxelles": {
-    "updatedAt": "2026-10-11T11:40:04.546Z",
+    "updatedAt": "2026-10-12T13:35:01.859Z",
     "reglementsEnVigueur": [
       {
         "titre": "Centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique pour l'exercice 2027 - principe",
@@ -1903,27 +1903,27 @@
     "prochainesTaxes": []
   },
   "Etterbeek": {
-    "updatedAt": "2026-10-11T11:40:06.368Z",
+    "updatedAt": "2026-10-12T13:35:03.563Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous une rubrique 'emploi et commerce' inhabituelle : à vérifier que c'est bien la bonne page."
   },
   "Evere": {
-    "updatedAt": "2026-10-11T11:40:10.892Z",
+    "updatedAt": "2026-10-12T13:35:08.060Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous 'actualité' : pourrait être une brève plutôt que la liste complète des règlements."
   },
   "Forest": {
-    "updatedAt": "2026-10-11T11:40:14.741Z",
+    "updatedAt": "2026-10-12T13:35:11.980Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "HTTP 404 pour https://www.forest.brussels/fr/services-communaux/finances-communales/reglements-taxes"
   },
   "Ganshoren": {
-    "updatedAt": "2026-10-11T11:40:16.826Z",
+    "updatedAt": "2026-10-12T13:35:14.106Z",
     "reglementsEnVigueur": [
       {
         "titre": "Téléchargez les documents Taxes, redevances et impôts",
@@ -1937,7 +1937,7 @@
     "note": "Pas trouvé de page dédiée 'règlements-taxes' ; be.brussels renvoie vers publi.irisnet.be (non scrapable, cf. notes précédentes) pour cette commune."
   },
   "Ixelles": {
-    "updatedAt": "2026-10-11T11:40:18.375Z",
+    "updatedAt": "2026-10-12T13:35:15.984Z",
     "reglementsEnVigueur": [
       {
         "titre": "Ordonnance relative à l'établissement, au recouvrement et au contentieux en matière des taxes communales",
@@ -2231,20 +2231,20 @@
     "prochainesTaxes": []
   },
   "Jette": {
-    "updatedAt": "2026-10-11T11:40:20.737Z",
+    "updatedAt": "2026-10-12T13:35:17.555Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "low",
     "note": "Pas trouvé de sous-page 'taxes' précise ; page d'accueil seulement, à affiner."
   },
   "Koekelberg": {
-    "updatedAt": "2026-10-11T11:40:21.236Z",
+    "updatedAt": "2026-10-12T13:35:18.055Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "Le site officiel indique explicitement que les règlements ne sont consultables que sur rendez-vous au secrétariat communal (pas de publication en ligne). Aucune URL exploitable trouvée."
   },
   "Molenbeek-Saint-Jean": {
-    "updatedAt": "2026-10-11T11:40:24.511Z",
+    "updatedAt": "2026-10-12T13:35:20.758Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes et recettes",
@@ -2256,7 +2256,7 @@
     "prochainesTaxes": []
   },
   "Saint-Gilles": {
-    "updatedAt": "2026-10-11T11:40:28.532Z",
+    "updatedAt": "2026-10-12T13:35:23.439Z",
     "reglementsEnVigueur": [
       {
         "titre": "Liste des taxes",
@@ -2490,13 +2490,249 @@
     "prochainesTaxes": []
   },
   "Saint-Josse-ten-Noode": {
-    "updatedAt": "2026-10-11T11:40:29.630Z",
-    "reglementsEnVigueur": [],
+    "updatedAt": "2026-10-12T13:35:25.566Z",
+    "reglementsEnVigueur": [
+      {
+        "titre": "Règlements & Taxes",
+        "url": "https://sjtn.brussels/fr/la-commune/reglements-taxes",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les panneaux d’affichage et les supports de publicités visibles d’une voie de communication (2021-2024)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/2021-2024-rt_panneaux_aff-supports_pub-version_web-ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les panneaux d'affichages (2025-2028)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/communicat25060317200.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur la distribution à domicile de feuilles, cartes publicitaires, catalogues et journaux contenant de la pub (2025-2028)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/communicat25060317221.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur le placement de calicots ou de dispositifs assimilés (2025-2028)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/communicat25060317240.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les enseignes et réclames lumineuses et non lumineuses (2026-2029)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/dccc_2_2026-2029_rt-br_enseignes_lum_nonlum-verlichte_uithangborden_nov25_v_web_ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les surfaces de bureaux (2024-2027)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/rt-br_sbureaux-kantooroppervlakten-2024-2027-version_web-2-ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les magasins de nuit (2025-2028)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/2025-2028_rt-br_night_shops-v.web-ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les marchandises",
+        "url": "https://sjtn.brussels/sites/default/files/documents/dccc-251022-rt-marchandis-v.web-bilingue-ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur l'occupation du domaine public à l'occasion des marchés (2026-2029)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/rt-br_marches-markten_2026-2029_v_web-ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les terrasses",
+        "url": "https://sjtn.brussels/sites/default/files/documents/dccc-251022-rt-br-terrasses-v.web-bilingue-ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement-redevance concernant l'installation et l'exploitation de terrasses sur les parkings du domaine public",
+        "url": "https://sjtn.brussels/sites/default/files/documents/reglement_terrasse_sur_pk_26-31.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement-redevance pour l’occupation des places Saint-Josse, Charles Rogier, Houwaert, Bossuet et Saint-Lazare",
+        "url": "https://sjtn.brussels/sites/default/files/documents/rr_occup_pl-publk_bezetting-openbare_pl_v_web_version_amendee_cc_251217.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les constructions, reconstructions, modifications et sur les transformations apportées aux bâtisses",
+        "url": "https://sjtn.brussels/sites/default/files/documents/2026-2029-rt-br-constructions-bouwen-v.web-bilingue-ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les constructions (2025-2028)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/2025-2028-rt-br-constructions-bouwen-v.web-ni_1.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les cercles privés (2025-2028)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/2025-2028_rt-br_cercles_prives-prive_clubs-v.web-ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les immeubles ou parties d'immeubles appelées \"carrées\" (2025-2028)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/2025-2028_rt-br_carrees_v.web-ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur la mise à disposition d'appareils de télécommunication (2021-2024)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/2021-2024-rt_phone_shops-version_web-ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les établissements bancaires (2025-2028)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/2025-2028-rt-br-ets_bancaires-bank_instellingen-v.web-ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les appareils automatiques bancaires (2025-2028)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/2025-2028-rt_-br-appareils_auto_bancaires-auto_appparaten_bank-v.web-ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les établissements d’hébergement touristique (2026)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/taxe_sur_les_etablissements_dhebergement_touristique_2026.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Centimes additionnels à la Taxe régionale sur les établissements d’hébergement touristique ; Renouvellement pour l'exercice 2026",
+        "url": "https://sjtn.brussels/sites/default/files/documents/cent_add_city_tax_2026.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Centimes additionnels communaux au précompte immobilier – PRI – pour l’exercice 2026",
+        "url": "https://sjtn.brussels/sites/default/files/documents/pri-2026-ov-renouvellement-modification-hernieuwing-wijziging-web.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les Immeubles inachevés ou laissés à l'abandon",
+        "url": "https://sjtn.brussels/sites/default/files/documents/rt-br_imm-aband_verwaarloosde-gebouwen_v_web_ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe communale additionnelle à l’impôt des personnes physiques (2026)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/dccc_251022_ipp_2026_fr_ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement gén. relatif à l'établissement et au recouvrement des impôts communaux",
+        "url": "https://sjtn.brussels/sites/default/files/documents/rg_ets-rec-impots-2020-dccc191211-fr.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe communale additionnelle à l’impôt des personnes physiques (2025)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/dc_cc_241211_addipp_2025_fr.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les agences de paris aux courses de chevaux (2025-2028)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/2025-2028_rt-br_agences_paris-agentschap_weddenschappen_v.web-ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement-redevance relatif à la location du matériel communal",
+        "url": "https://sjtn.brussels/sites/default/files/documents/service_events_1.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement-redevance pour la délivrance de documents administratifs (17/12/2025)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/reglement-redevance_conseil_communal_17.12.2025.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe en matière de propreté publique 2026-2030",
+        "url": "https://sjtn.brussels/sites/default/files/documents/260305_rt-pp_2026-2030_version-web-fr-nl_ja-sf-ni-maj260629.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les secondes résidences (2025-2028)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/2025-2028-rt-br-2de_residences-2de_verblijfplaatsen-v.web-ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les dancings et établissements assimilés (2021-2024)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/2021-2024-rt_dancings-ni.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement redevance relatif au stationnement réglementé dans l'espace public",
+        "url": "https://sjtn.brussels/sites/default/files/documents/reglement_080726_fr.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement redevance relatif au placement de potelets anti-stationnement sur la voie publique",
+        "url": "https://sjtn.brussels/sites/default/files/documents/reglement_2026.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Règlement-redevance relatif à la tarification du parking Scailquin",
+        "url": "https://sjtn.brussels/sites/default/files/documents/reglement_24-06-2026.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur les antennes relais, pylônes et autres dispositifs de télécommunication (2025-2028)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/communicat25060317211.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur la mise à disposition d'appareils de télécommunication (2025-2028)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/communicat25060317252.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Taxe sur le dépôt de matériaux et de matériels sur la voie publique (2022-2026)",
+        "url": "https://sjtn.brussels/sites/default/files/documents/2022-2026-rt_ovp_version_web-ni.pdf",
+        "matiere": null,
+        "date": null
+      }
+    ],
     "prochainesTaxes": [],
-    "error": "fetch failed"
+    "confidence": "low",
+    "note": "URL FR devinée par analogie avec la version anglaise (sjtn.brussels/en/municipality/regulations-taxes) : à vérifier."
   },
   "Schaerbeek": {
-    "updatedAt": "2026-10-11T11:40:31.661Z",
+    "updatedAt": "2026-10-12T13:35:27.381Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes & Redevances",
@@ -2514,13 +2750,13 @@
     "prochainesTaxes": []
   },
   "Uccle": {
-    "updatedAt": "2026-10-11T11:40:42.654Z",
+    "updatedAt": "2026-10-12T13:35:38.376Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "fetch failed"
   },
   "Watermael-Boitsfort": {
-    "updatedAt": "2026-10-11T11:40:45.116Z",
+    "updatedAt": "2026-10-12T13:35:40.387Z",
     "reglementsEnVigueur": [
       {
         "titre": "Impôts et taxes",
@@ -2844,7 +3080,7 @@
     "prochainesTaxes": []
   },
   "Woluwe-Saint-Lambert": {
-    "updatedAt": "2026-10-11T11:40:46.686Z",
+    "updatedAt": "2026-10-12T13:35:41.755Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements, primes et taxes",
@@ -2858,7 +3094,7 @@
     "note": "Page trouvée mais contenu non vérifié en détail (site nécessitait peut-être un rendu JS lors de la recherche)."
   },
   "Woluwe-Saint-Pierre": {
-    "updatedAt": "2026-10-11T11:40:48.855Z",
+    "updatedAt": "2026-10-12T13:35:43.647Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
