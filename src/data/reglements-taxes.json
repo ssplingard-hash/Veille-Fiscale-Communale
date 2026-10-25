@@ -67,7 +67,7 @@
     }
   ],
   "Anderlecht": {
-    "updatedAt": "2026-10-24T09:50:04.790Z",
+    "updatedAt": "2026-10-25T10:11:51.617Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlement-taxe sur les agences de paris aux courses de chevaux",
@@ -559,7 +559,7 @@
     "prochainesTaxes": []
   },
   "Auderghem": {
-    "updatedAt": "2026-10-24T09:50:06.383Z",
+    "updatedAt": "2026-10-25T10:11:53.610Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
@@ -913,715 +913,13 @@
     "prochainesTaxes": []
   },
   "Berchem-Sainte-Agathe": {
-    "updatedAt": "2026-10-24T09:50:09.195Z",
-    "reglementsEnVigueur": [
-      {
-        "titre": "Commerce : règlements, primes, taxes et redevances",
-        "url": "https://berchem.brussels/fr/vous-citoyen/commerce/",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Documents officiels : règlements, primes, taxes et redevances",
-        "url": "https://berchem.brussels/fr/nous-administration/documents-officiels/",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Ordonnance du 03.04.2014.pdf",
-        "url": "https://berchem.brussels/wp-content/uploads/2015/11/Taxes-communales-Ordonnance-du-03.04.2014.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Ordonnantie van 12.02.2015.pdf",
-        "url": "https://berchem.brussels/wp-content/uploads/2015/11/Taxes-communales-Ordonnance-du-12.02.2015.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Règlement général communal.pdf",
-        "url": "https://berchem.brussels/wp-content/uploads/2015/11/Reglement-recouvrement-redevances.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/01/Taxe-sur-la-distribution-de-la-publicites-Renouv-et-modif-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Taxe-sur-la-distribution-de-la-publicites-Renouv-et-modif-2025-2027-Approbation-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2026/01/251218-A-0013-Taxe-distribution-pubs-2026-2028-FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2026/02/251218-A-0013-Taxe-distribution-pubs-2026-2028-TUTELLE.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/01/Taxe-sur-les-panneaux-publicitaires-2024-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/09/Taxe-sur-les-panneaux-publicitaires-2024-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2026/01/251218-A-0011-Taxe-sur-les-panneaux-publicitaires-2026-2028-VF.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2026/02/251218-A-0011-Taxe-sur-les-panneaux-publicitaires-2026-2028-TUTELLE.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/01/Taxe-occupation-espace-public-2022-2024-Delibe-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/03/Taxe-occupation-espace-public-2022-2024-Tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/01/Taxe-sur-loccupation-de-lespace-public-renouv-2025-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Taxe-sur-loccupation-de-lespace-public-renouv-2025-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/01/Taxe-proprete-2024-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/09/Taxe-proprete-2024-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/01/Taxe-sur-la-proprete-publique-Renouv-et-modif-2025-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Taxe-sur-la-proprete-publique-Renouv-et-modif-2025-2027-Approbation-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/01/Taxe-amenagement-de-biens-2024-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/09/Taxe-amenagement-de-biens-2024-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/01/Taxe-sur-lamenagement-de-biens-batis-ou-non-batis-renouv-et-modif-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Taxe-sur-lamenagement-de-biens-batis-ou-non-batis-renouv-et-modif-2025-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/01/Taxe-terrains-abandon-2022-2024-Delibe-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/03/Taxe-terrains-abandon-2022-2024-Tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/01/Taxe-sur-les-parcelles-de-terrain-non-baties-laissees-a-labandon-Renouv-2025-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Taxe-sur-les-parcelles-de-terrain-non-baties-laissees-a-labandon-Renouv-2025-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/09/Taxe-immeubles-inoccupes-2024-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/09/Taxe-immeubles-inoccupes-2024-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/06/Taxe-sur-les-immeubles-declares-insalubres-ou-inhabitables-Tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/01/Taxe-immeubles-insalubres-2024-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/09/Taxe-immeubles-insalubres-2024-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/01/Taxe-secondes-residences-2022-2024-Delibe-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/03/Taxe-secondes-residences-2022-2024-Tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/01/Taxe-sur-les-secondes-residences-2025-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Taxe-sur-les-secondes-residences-2025-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/01/Taxe-Self-banking-2024-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/09/Taxe-Self-banking-2024-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/01/Taxe-sur-les-pylones-2024-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/09/Taxe-sur-les-pylones-2024-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/01/Taxe-sur-les-antennes-2025-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Taxe-sur-les-antennes-2025-2027-Approbation-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Taxe-surfaces-bureaux-2025-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Taxe-surfaces-bureaux-2025-2027-Approbation-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2026/01/251218-A-0010-Taxe-surfaces-bureaux-2026-2028-VF.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2026/02/251218-A-0010-Taxe-surfaces-bureaux-2026-2028-TUTELLE.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/01/Taxe-carburants-2024-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/09/Taxe-carburants-2024-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/01/Taxe-surfaces-commerciales-2024-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/09/Taxe-surfaces-commerciales-2024-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2026/01/251218-A-0012-Taxe-surfaces-commerciales-2026-2028-VF.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2026/02/251218-A-0012-Taxe-surfaces-commerciales-2026-2028-TUTELLE.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/01/Taxe-docs-administratifs-2024-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/09/Taxe-docs-administratifs-2024-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/01/Taxe-sur-la-delivrance-de-documents-administratifs-Renouv-et-modif-FR.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Taxe-sur-la-delivrance-de-documents-administratifs-Renouv-et-modif-2025-2027-Approbation-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/01/Taxe-exhumations-2022-2024-Delibe-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/03/Taxe-exhumations-2022-2024-Tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/01/Taxe-sur-les-exhumations-Renouv-2025-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Taxe-sur-les-exhumations-Renouv-2025-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/01/Taxe-transports-funebres-2022-2024-Delibe-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/03/Taxe-transports-funebres-2022-2024-Tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2023/01/Taxe-transports-funebres-Abrogation-Delibe-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2023/03/Taxe-transports-funebres-Abrogation-Approbation-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/01/Taxe-magasins-de-nuit-2022-2024-Delibe-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/03/Taxe-magasins-de-nuit-2022-2024-Tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/01/Taxe-sur-les-magasins-de-nuit-Renouv-2025-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Taxe-sur-les-magasins-de-nuit-Renouv-2025-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/01/Taxe-phone-shops-2022-2024-Delibe-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/03/Taxe-phone-shops-2022-2024-Tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/01/Taxe-sur-les-Ese-mettant-a-dispo-appareils-de-telecom-contre-ret-2025-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/01/Taxe-paris-aux-courses-de-chevaux-2022-2024-Delibe-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/03/Taxe-paris-aux-courses-de-chevaux-2022-2024-Tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/01/Taxe-sur-les-agences-de-paris-aux-courses-de-chevaux-2025-2027-Renouv-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Taxe-sur-les-agences-de-paris-aux-courses-de-chevaux-2025-2027-Approbation-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/01/Taxe-sur-les-emplacements-de-parking-2024-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/09/Taxe-sur-les-emplacements-de-parking-2024-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2026/01/251218-A-0014-Taxe-parking-2026-2028-VF.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2026/02/251218-A-0014-Taxe-parking-2026-2028-TUTELLE.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2026/01/251218-A-0008-Taxe-logements-surnumeraires-2026-2028-Deliberation-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2026/02/251218-A-0008-Taxe-logements-surnumeraires-2026-2028-Approb-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2026/01/251218-A-0009-Taxe-bornes-recharges-2026-2028-VF.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2026/02/251218-A-0009-Taxe-bornes-recharges-2026-2028-TUTELLE.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Centimes-add-a-la-taxe-regionale-sur-les-etablissements-dhebergement-touristique-Delibe-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Redevance-concessions-2024-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/01/Redevance-concessions-2024-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/09/Redevance-concessions-2024-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/01/Redevance-caveaux-dattente-2022-2024-Delibe-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/03/Redevance-caveaux-dattente-2022-2024-Tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/01/Redevance-utilisation-de-caveaux-dattente-et-ouverture-caveau-2025-2027-renouv-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Redevance-utilisation-de-caveaux-dattente-et-ouverture-caveau-2025-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/01/Redevance-mariages-2022-2024-Delibe-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/03/Redevance-mariages-2022-2024-Tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/01/Redevance-pour-la-celebration-civile-des-mariages-2025-2027-renouv-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Redevance-pour-la-celebration-civile-des-mariages-2025-2027-renouv-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/01/Redevance-services-techniques-2022-2024-Delibe-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/03/Redevance-services-techniques-2022-2024-Tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/01/Redevance-pour-services-techniques-2025-2027-Renouv-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Redevance-pour-services-techniques-2025-2027-Renouv-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/01/Redevance-services-administratifs-2022-2024-Delibe-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2022/03/Redevance-services-administratifs-2022-2024-Tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/01/Redevances-pour-services-administratifs-Renouv-2025-2027-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Redevances-pour-services-administratifs-Renouv-2025-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2020/03/Redevance-activit%C3%A9s-foraines-et-ambulantes-2019-%C3%A0-2022.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2023/01/Redevance-activites-foraines-2023-2026-Delibe-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Redevance-activites-foraines-2023-2026-Approbation-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Redevance-activites-vente-ambulante-Delibe-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Redevance-activites-foraines-2025-2027-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2024/01/Redevance-bornes-electriques-2024-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Redevance-bornes-electriques-2024-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/01/Redevance-stationnement-vehicule-dans-une-zone-reglementee-chargement-elec-2025-Fr.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2025/02/Redevance-stationnement-vehicule-chargement-elec-2025-Avis-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "règlement (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2026/01/251218-A-0015-Redevance-zones-devitements-2026-2027-VF.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "avis tutelle (.pdf)",
-        "url": "https://berchem.brussels/wp-content/uploads/2026/02/251218-A-0015-Redevance-zones-devitements-2026-2027-Approb-tutelle.pdf",
-        "matiere": null,
-        "date": null
-      },
-      {
-        "titre": "Taxes, primes & redevances",
-        "url": "https://berchem.brussels/fr/publications/taxes-redevances/",
-        "matiere": null,
-        "date": null
-      }
-    ],
-    "prochainesTaxes": []
+    "updatedAt": "2026-10-25T10:11:59.119Z",
+    "reglementsEnVigueur": [],
+    "prochainesTaxes": [],
+    "error": "HTTP 500 pour https://berchem.brussels/fr/publications/taxes-redevances/"
   },
   "Ville de Bruxelles": {
-    "updatedAt": "2026-10-24T09:50:10.413Z",
+    "updatedAt": "2026-10-25T10:12:00.248Z",
     "reglementsEnVigueur": [
       {
         "titre": "Centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique pour l'exercice 2027 - principe",
@@ -1909,27 +1207,27 @@
     "prochainesTaxes": []
   },
   "Etterbeek": {
-    "updatedAt": "2026-10-24T09:50:11.914Z",
+    "updatedAt": "2026-10-25T10:12:01.935Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous une rubrique 'emploi et commerce' inhabituelle : à vérifier que c'est bien la bonne page."
   },
   "Evere": {
-    "updatedAt": "2026-10-24T09:50:15.709Z",
+    "updatedAt": "2026-10-25T10:12:06.021Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous 'actualité' : pourrait être une brève plutôt que la liste complète des règlements."
   },
   "Forest": {
-    "updatedAt": "2026-10-24T09:50:18.629Z",
+    "updatedAt": "2026-10-25T10:12:09.272Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "HTTP 404 pour https://www.forest.brussels/fr/services-communaux/finances-communales/reglements-taxes"
   },
   "Ganshoren": {
-    "updatedAt": "2026-10-24T09:50:20.755Z",
+    "updatedAt": "2026-10-25T10:12:11.214Z",
     "reglementsEnVigueur": [
       {
         "titre": "Téléchargez les documents Taxes, redevances et impôts",
@@ -1943,7 +1241,7 @@
     "note": "Pas trouvé de page dédiée 'règlements-taxes' ; be.brussels renvoie vers publi.irisnet.be (non scrapable, cf. notes précédentes) pour cette commune."
   },
   "Ixelles": {
-    "updatedAt": "2026-10-24T09:50:22.357Z",
+    "updatedAt": "2026-10-25T10:12:12.814Z",
     "reglementsEnVigueur": [
       {
         "titre": "Ordonnance relative à l'établissement, au recouvrement et au contentieux en matière des taxes communales",
@@ -2237,20 +1535,20 @@
     "prochainesTaxes": []
   },
   "Jette": {
-    "updatedAt": "2026-10-24T09:50:24.281Z",
+    "updatedAt": "2026-10-25T10:12:14.488Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "low",
     "note": "Pas trouvé de sous-page 'taxes' précise ; page d'accueil seulement, à affiner."
   },
   "Koekelberg": {
-    "updatedAt": "2026-10-24T09:50:24.782Z",
+    "updatedAt": "2026-10-25T10:12:14.988Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "Le site officiel indique explicitement que les règlements ne sont consultables que sur rendez-vous au secrétariat communal (pas de publication en ligne). Aucune URL exploitable trouvée."
   },
   "Molenbeek-Saint-Jean": {
-    "updatedAt": "2026-10-24T09:50:27.176Z",
+    "updatedAt": "2026-10-25T10:12:17.570Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes et recettes",
@@ -2262,7 +1560,7 @@
     "prochainesTaxes": []
   },
   "Saint-Gilles": {
-    "updatedAt": "2026-10-24T09:50:29.979Z",
+    "updatedAt": "2026-10-25T10:12:20.244Z",
     "reglementsEnVigueur": [
       {
         "titre": "Liste des taxes",
@@ -2496,7 +1794,7 @@
     "prochainesTaxes": []
   },
   "Saint-Josse-ten-Noode": {
-    "updatedAt": "2026-10-24T09:50:31.322Z",
+    "updatedAt": "2026-10-25T10:12:21.477Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements & Taxes",
@@ -2738,7 +2036,7 @@
     "note": "URL FR devinée par analogie avec la version anglaise (sjtn.brussels/en/municipality/regulations-taxes) : à vérifier."
   },
   "Schaerbeek": {
-    "updatedAt": "2026-10-24T09:50:33.093Z",
+    "updatedAt": "2026-10-25T10:12:23.260Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes & Redevances",
@@ -2756,13 +2054,13 @@
     "prochainesTaxes": []
   },
   "Uccle": {
-    "updatedAt": "2026-10-24T09:50:44.089Z",
+    "updatedAt": "2026-10-25T10:12:34.252Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "fetch failed"
   },
   "Watermael-Boitsfort": {
-    "updatedAt": "2026-10-24T09:50:45.979Z",
+    "updatedAt": "2026-10-25T10:12:36.348Z",
     "reglementsEnVigueur": [
       {
         "titre": "Impôts et taxes",
@@ -3068,7 +2366,7 @@
     "prochainesTaxes": []
   },
   "Woluwe-Saint-Lambert": {
-    "updatedAt": "2026-10-24T09:50:47.217Z",
+    "updatedAt": "2026-10-25T10:12:37.724Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements, primes et taxes",
@@ -3082,7 +2380,7 @@
     "note": "Page trouvée mais contenu non vérifié en détail (site nécessitait peut-être un rendu JS lors de la recherche)."
   },
   "Woluwe-Saint-Pierre": {
-    "updatedAt": "2026-10-24T09:50:48.309Z",
+    "updatedAt": "2026-10-25T10:12:38.936Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
