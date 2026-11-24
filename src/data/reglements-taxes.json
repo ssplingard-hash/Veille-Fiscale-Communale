@@ -67,7 +67,7 @@
     }
   ],
   "Anderlecht": {
-    "updatedAt": "2026-11-23T16:32:13.185Z",
+    "updatedAt": "2026-11-24T16:30:51.991Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlement-taxe sur les agences de paris aux courses de chevaux",
@@ -571,7 +571,7 @@
     "prochainesTaxes": []
   },
   "Auderghem": {
-    "updatedAt": "2026-11-23T16:32:14.718Z",
+    "updatedAt": "2026-11-24T16:30:53.827Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
@@ -925,7 +925,7 @@
     "prochainesTaxes": []
   },
   "Berchem-Sainte-Agathe": {
-    "updatedAt": "2026-11-23T16:32:17.971Z",
+    "updatedAt": "2026-11-24T16:30:57.937Z",
     "reglementsEnVigueur": [
       {
         "titre": "Commerce : règlements, primes, taxes et redevances",
@@ -1633,7 +1633,7 @@
     "prochainesTaxes": []
   },
   "Ville de Bruxelles": {
-    "updatedAt": "2026-11-23T16:32:19.977Z",
+    "updatedAt": "2026-11-24T16:30:59.878Z",
     "reglementsEnVigueur": [
       {
         "titre": "Centimes additionnels à la taxe régionale sur les établissements d'hébergement touristique pour l'exercice 2027 - principe",
@@ -1921,27 +1921,27 @@
     "prochainesTaxes": []
   },
   "Etterbeek": {
-    "updatedAt": "2026-11-23T16:32:21.246Z",
+    "updatedAt": "2026-11-24T16:31:01.624Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous une rubrique 'emploi et commerce' inhabituelle : à vérifier que c'est bien la bonne page."
   },
   "Evere": {
-    "updatedAt": "2026-11-23T16:32:25.514Z",
+    "updatedAt": "2026-11-24T16:31:06.038Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "medium",
     "note": "Page trouvée sous 'actualité' : pourrait être une brève plutôt que la liste complète des règlements."
   },
   "Forest": {
-    "updatedAt": "2026-11-23T16:32:29.167Z",
+    "updatedAt": "2026-11-24T16:31:09.419Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "HTTP 404 pour https://www.forest.brussels/fr/services-communaux/finances-communales/reglements-taxes"
   },
   "Ganshoren": {
-    "updatedAt": "2026-11-23T16:32:31.709Z",
+    "updatedAt": "2026-11-24T16:31:12.830Z",
     "reglementsEnVigueur": [
       {
         "titre": "Téléchargez les documents Taxes, redevances et impôts",
@@ -1955,7 +1955,7 @@
     "note": "Pas trouvé de page dédiée 'règlements-taxes' ; be.brussels renvoie vers publi.irisnet.be (non scrapable, cf. notes précédentes) pour cette commune."
   },
   "Ixelles": {
-    "updatedAt": "2026-11-23T16:32:33.596Z",
+    "updatedAt": "2026-11-24T16:31:14.696Z",
     "reglementsEnVigueur": [
       {
         "titre": "Ordonnance relative à l'établissement, au recouvrement et au contentieux en matière des taxes communales",
@@ -2249,20 +2249,20 @@
     "prochainesTaxes": []
   },
   "Jette": {
-    "updatedAt": "2026-11-23T16:32:35.582Z",
+    "updatedAt": "2026-11-24T16:31:17.022Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "confidence": "low",
     "note": "Pas trouvé de sous-page 'taxes' précise ; page d'accueil seulement, à affiner."
   },
   "Koekelberg": {
-    "updatedAt": "2026-11-23T16:32:36.083Z",
+    "updatedAt": "2026-11-24T16:31:17.522Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "Le site officiel indique explicitement que les règlements ne sont consultables que sur rendez-vous au secrétariat communal (pas de publication en ligne). Aucune URL exploitable trouvée."
   },
   "Molenbeek-Saint-Jean": {
-    "updatedAt": "2026-11-23T16:32:40.678Z",
+    "updatedAt": "2026-11-24T16:31:20.747Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes et recettes",
@@ -2274,7 +2274,7 @@
     "prochainesTaxes": []
   },
   "Saint-Gilles": {
-    "updatedAt": "2026-11-23T16:32:43.567Z",
+    "updatedAt": "2026-11-24T16:31:26.004Z",
     "reglementsEnVigueur": [
       {
         "titre": "Liste des taxes",
@@ -2508,7 +2508,7 @@
     "prochainesTaxes": []
   },
   "Saint-Josse-ten-Noode": {
-    "updatedAt": "2026-11-23T16:32:44.900Z",
+    "updatedAt": "2026-11-24T16:31:27.419Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements & Taxes",
@@ -2750,7 +2750,7 @@
     "note": "URL FR devinée par analogie avec la version anglaise (sjtn.brussels/en/municipality/regulations-taxes) : à vérifier."
   },
   "Schaerbeek": {
-    "updatedAt": "2026-11-23T16:32:47.117Z",
+    "updatedAt": "2026-11-24T16:31:29.176Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes & Redevances",
@@ -2768,13 +2768,13 @@
     "prochainesTaxes": []
   },
   "Uccle": {
-    "updatedAt": "2026-11-23T16:32:58.112Z",
+    "updatedAt": "2026-11-24T16:31:40.170Z",
     "reglementsEnVigueur": [],
     "prochainesTaxes": [],
     "error": "fetch failed"
   },
   "Watermael-Boitsfort": {
-    "updatedAt": "2026-11-23T16:33:00.241Z",
+    "updatedAt": "2026-11-24T16:31:42.586Z",
     "reglementsEnVigueur": [
       {
         "titre": "Impôts et taxes",
@@ -3080,7 +3080,7 @@
     "prochainesTaxes": []
   },
   "Woluwe-Saint-Lambert": {
-    "updatedAt": "2026-11-23T16:33:02.300Z",
+    "updatedAt": "2026-11-24T16:31:44.234Z",
     "reglementsEnVigueur": [
       {
         "titre": "Règlements, primes et taxes",
@@ -3094,7 +3094,7 @@
     "note": "Page trouvée mais contenu non vérifié en détail (site nécessitait peut-être un rendu JS lors de la recherche)."
   },
   "Woluwe-Saint-Pierre": {
-    "updatedAt": "2026-11-23T16:33:04.636Z",
+    "updatedAt": "2026-11-24T16:31:46.605Z",
     "reglementsEnVigueur": [
       {
         "titre": "Taxes",
@@ -3315,6 +3315,18 @@
       {
         "titre": "Redevance relative à I’académie néerlandophone de Woluwe-Saint-Pierre",
         "url": "https://www.woluwe1150.be/app/uploads/2013/02/Academie-neerlandophone-WSP-2.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Redevance relative à la préservation des alignements de voirie et de la commodité de passage",
+        "url": "https://woluwe1150.be/app/uploads/2013/02/Preservation-des-alignements-de-voirie-et-commodite-de-passage.pdf",
+        "matiere": null,
+        "date": null
+      },
+      {
+        "titre": "Redevance relative au parrainage de biens commémoratifs dans l’espace public communal",
+        "url": "https://woluwe1150.be/app/uploads/2013/02/Parrainage-de-biens-commemoratifs.pdf",
         "matiere": null,
         "date": null
       },
